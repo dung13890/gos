@@ -19,11 +19,15 @@ class CreateProductsTable extends Migration
             $table->string('code', 11)->nullable();
             $table->string('name', 120)->nullable();
             $table->string('model', 50)->nullable();
+            $table->decimal('price_in', 10, 3); // Giá nhập
+            $table->decimal('price_out', 10, 3); // Giá bán
             $table->string('description', 255)->nullable();
             $table->string('made_in', 100)->nullable();
             $table->string('year_of_production', 8)->nullable();
             $table->date('expir_date')->nullable();
             $table->unsignedInteger('category_id')->nullable(); // Loại sản phẩm
+            $table->unsignedInteger('user_id')->nullable(); // Sản phẩm được thêm bởi ai
+
             $table->unsignedInteger('unit_id');
             $table->unsignedInteger('manufacturer_id')->nullable();
             $table->timestamps();
@@ -35,6 +39,8 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade');
             $table->foreign('unit_id')->references('id')->on('units')->onUpdate('cascade');
             $table->foreign('manufacturer_id')->references('id')->on('manufacturers')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
