@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateRoomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,24 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
 
-            // Main category information (Thông loại và nhóm hàng hóa và khách hàng)
+            // Main room information
             $table->string('code', 11)->nullable();
             $table->string('name', 50)->nullable();
             $table->string('description', 200)->nullable();
-            $table->string('image', 255)->nullable();
-            $table->unsignedTinyInteger('type')->nullable();
+            $table->text('organizational')->nullable();
+            $table->string('manager', 50)->nullable();
+            $table->unsignedSmallInteger('member')->nullable();
+            $table->dateTime('founding');
+            $table->unsignedInteger('branch_id');
             $table->timestamps();
-            
+
             // Indexes or unique
             $table->unique('code');
-            $table->unique('name');
+
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
         });
     }
 
@@ -36,6 +40,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('rooms');
     }
 }
