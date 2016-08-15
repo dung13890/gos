@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Data\System;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Data\System\Room;
+use App\Model\User;
+use App\Model\Permission;
 
-class Room extends Model
+class Role extends Model
 {
     protected $fillable = [
-        'code',
         'name',
         'description',
-        'organizational',
-        'manager',
-        'member',
-        'founding',
     ];
 
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);   
     }
 }

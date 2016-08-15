@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Data\System;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Data\Main\Product;
 
 class Unit extends Model
 {
@@ -12,9 +11,4 @@ class Unit extends Model
         'short_name',
         'description',
     ];
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
 }

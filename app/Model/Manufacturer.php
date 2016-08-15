@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Data\Main;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Data\Main\Product;
 
 class Manufacturer extends Model
 {
@@ -13,9 +12,4 @@ class Manufacturer extends Model
         'description',
         'image',
     ];
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
 }
