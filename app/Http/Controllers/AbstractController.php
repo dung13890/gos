@@ -19,24 +19,26 @@ abstract class AbstractController extends Controller
 
     protected $dataSelect = ['*'];
 
-    protected $lang = array(
+    protected $lang = [
         'prefix' => 'repositories.',
         'replacements' => array(),
-    );
+    ];
 
-    protected $e = array(
+    protected $e = [
         'code' => 0,
         'message' => null,
-    );
+    ];
 
     public function __construct($repository = null)
     {
         if ($repository) {
             $this->repositorySetup($repository);
         }
+
         $this->lang['replacements'] = [
             'object' => $this->trans($this->repositoryName),
         ];
+
         $this->user = Auth::guard($this->getGuard())->user();
     }
 
@@ -70,6 +72,6 @@ abstract class AbstractController extends Controller
         $view = $view ? $view : $this->view;
         $compacts = array_merge($data, $this->compacts);
 
-        return view($this->viewPrefix.$view, $compacts);
+        return view($this->viewPrefix . $view, $compacts);
     }
 }
