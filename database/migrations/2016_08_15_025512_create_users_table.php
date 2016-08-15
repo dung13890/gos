@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->unsignedTinyInteger('gender')->nullable();
             $table->unsignedInteger('branch_id')->nullable();
             $table->unsignedInteger('position_id')->nullable();
+            $table->rememberToken();
             $table->timestamps();
 
             // Indexes or unique
