@@ -22,10 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone', 32)->nullable();
             $table->string('address', 100)->nullable();
-            $table->date('birthdat');
+            $table->date('birthday');
             $table->string('image')->nullable();
             $table->unsignedTinyInteger('gender')->nullable();
             $table->unsignedInteger('branch_id')->nullable();
+            $table->unsignedInteger('position_id')->nullable();
             $table->timestamps();
 
             // Indexes or unique
@@ -35,6 +36,7 @@ class CreateUsersTable extends Migration
 
             $table->foreign('branch_id')->references('id')->on('branches')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
         });
     }
 

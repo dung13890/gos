@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Data\System;
+namespace App\Model;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Data\System\Role;
-use App\Data\System\Room;
-use App\Data\Main\Branch;
-use App\Data\Main\Customer;
-use App\Data\Main\Bill;
-use App\Data\Main\Warehouse;
+use Illuminate\Database\Eloquent\Model;
+use App\Model\Role;
+use App\Model\Room;
+use App\Model\Branch;
+use App\Model\Permission;
+use App\Model\Position;
 
-class User extends Authenticatable
+class User extends Model
 {
     protected $fillable = [
         'code',
@@ -22,6 +21,7 @@ class User extends Authenticatable
         'image',
         'gender',
         'branch_id',
+        'birthday',
     ];
 
     protected $hidden = [
@@ -44,18 +44,13 @@ class User extends Authenticatable
         return $this->belongsTo(Branch::class);
     }
 
-    public function customers()
+    public function permissions()
     {
-        return $this->hasMany(Customer::class);
+        return $this->belongsToMany(Permission::class);   
     }
 
-    public function bills()
+    public function position()
     {
-        return $this->hasMany(Bill::class);
-    }
-
-    public function warehouses()
-    {
-        return $this->hasMany(Warehouse::class);
+        return $this->belongsTo(Position::class);
     }
 }
