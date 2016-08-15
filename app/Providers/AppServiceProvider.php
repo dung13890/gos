@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
         }
 
-        $this->app->singleton('glide', function ($app) {
+        $this->app->singleton('glide', function () {
             return ServerFactory::create([
                 'source' => \Storage::disk('image')->getDriver(),
                 'cache' => \Storage::disk('image')->getDriver(),
@@ -65,8 +65,29 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        $this->app->singleton('glide.builder', function ($app) {
+        $this->app->singleton('glide.builder', function () {
             return UrlBuilderFactory::create(null, env('GLIDE_SIGNKEY'));
         });
+
+        $this->app->bind(
+            \App\Contracts\Services\UserService::class,
+            \App\Services\UserServiceJob::class
+        );
+        $this->app->bind(
+            \App\Contracts\Services\BranchService::class,
+            \App\Services\BranchServiceJob::class
+        );
+        $this->app->bind(
+            \App\Contracts\Services\LocationService::class,
+            \App\Services\LocationServiceJob::class
+        );
+        $this->app->bind(
+            \App\Contracts\Services\ManufacturerService::class,
+            \App\Services\ManufacturerServiceJob::class
+        );
+        $this->app->bind(
+            \App\Contracts\Services\PositionService::class,
+            \App\Services\PositionServiceJob::class
+        );
     }
 }

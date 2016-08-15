@@ -2,15 +2,13 @@
 
 namespace App\Model;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Model\Role;
-use App\Model\Room;
-use App\Model\Branch;
-use App\Model\Permission;
-use App\Model\Position;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\Eloquent\GetImageTrait;
 
-class User extends Model
+class User extends Authenticatable
 {
+    use GetImageTrait;
+
     protected $fillable = [
         'code',
         'username',
