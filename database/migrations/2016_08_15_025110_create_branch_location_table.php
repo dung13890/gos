@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoomRoleTable extends Migration
+class CreateBranchLocationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,16 @@ class CreateRoomRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('room_role', function (Blueprint $table) {
-            $table->unsignedInteger('room_id');
-            $table->unsignedInteger('role_id');
+        Schema::create('branch_location', function (Blueprint $table) {
+            $table->unsignedInteger('location_id');
+            $table->unsignedInteger('branch_id');
             $table->timestamps();
 
-            $table->primary(['room_id', 'role_id']);
+            $table->primary(['location_id', 'branch_id']);
 
-            $table->foreign('room_id')->references('id')->on('rooms')
+            $table->foreign('location_id')->references('id')->on('locations')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('role_id')->references('id')->on('roles')
+            $table->foreign('branch_id')->references('id')->on('branches')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -33,6 +33,6 @@ class CreateRoomRoleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('room_role');
+        Schema::drop('branch_location');
     }
 }

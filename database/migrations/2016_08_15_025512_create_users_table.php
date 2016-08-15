@@ -22,16 +22,19 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone', 32)->nullable();
             $table->string('address', 100)->nullable();
+            $table->date('birthdat');
             $table->string('image')->nullable();
             $table->unsignedTinyInteger('gender')->nullable();
+            $table->unsignedInteger('branch_id')->nullable();
             $table->timestamps();
 
             // Indexes or unique
             $table->unique('email');
             $table->unique('code');
             $table->unique('username');
-            $table->index('username');
-            $table->index('phone');
+
+            $table->foreign('branch_id')->references('id')->on('branches')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
