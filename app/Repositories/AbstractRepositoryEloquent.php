@@ -19,6 +19,11 @@ abstract class AbstractRepositoryEloquent implements AbstractRepository
         return $this->model;
     }
 
+    public function getFillable()
+    {
+        return $this->model->getFillable();
+    }
+
     public function on($connection = null)
     {
         return $this->model->on($connection);

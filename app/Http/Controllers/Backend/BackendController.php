@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\AbstractController;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\Contracts\AbstractService;
+use App\Contracts\Services\AbstractService;
 
 abstract class BackendController extends AbstractController
 {

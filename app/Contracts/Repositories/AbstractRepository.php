@@ -8,6 +8,8 @@ interface AbstractRepository
 {
     public function getModel();
 
+    public function getFillable();
+
     public function on($connection = null);
 
     public function newQuery();
