@@ -31,6 +31,9 @@ Route::group(['middlewareGroups' => ['web']], function () {
 		Route::get('/', 'DashboardController@index');
 		Route::post('summernote/image', ['as' => 'summernote.image', 'uses' => 'DashboardController@summernoteImage']);
 		Route::PATCH('notification/{notification}', array('as' => 'notification.read', 'uses' => 'DashboardController@readNotification'));
+		
+		Route::get('user/data', ['as'=>'user.data', 'uses'=>'UserController@getData']);
+		Route::resource('user', 'UserController');
 	});
 });
 

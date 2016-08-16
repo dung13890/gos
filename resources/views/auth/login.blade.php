@@ -7,10 +7,9 @@
     </div>
 
     <div class="login-content">
-        <p class="login-box-msg">Đăng nhập hệ thống</p>
         @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>Lỗi!</strong> Đã có lỗi xảy ra.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -26,7 +25,7 @@
                         <span class="input-group-addon" id="username">
                             <i class="fa fa-user"></i>
                         </span>
-                        <input type="text" class="form-control" placeholder="Tài khoản" aria-describedby="username">
+                        <input name="username" type="text" class="form-control" placeholder="Tài khoản" aria-describedby="username">
                     </div>
 
                 </div>
@@ -37,7 +36,7 @@
                         <span class="input-group-addon" id="password">
                             <i class="fa fa-lock"></i>
                         </span>
-                        <input type="text" class="form-control" placeholder="Mật khẩu" aria-describedby="password">
+                        <input name="password" type="password" class="form-control" placeholder="Mật khẩu" aria-describedby="password">
                     </div>
                 </div>
             </div>
@@ -45,7 +44,7 @@
                 <div class="col-xs-12">
                     <div class="checkbox">
                         <label for="rememberMe">
-                            <input type="checkbox" id="rememberMe"> Duy trì đăng nhập?
+                            <input checked type="checkbox" id="rememberMe"> Duy trì đăng nhập?
                         </label>
                     </div>
                 </div>
@@ -54,7 +53,6 @@
                 <div class="col-xs-12">
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Đăng nhập</button>
-                        <a href="#" class="btn btn-default">HỦY BỎ</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +61,7 @@
 
     <div class="login-footer">
         <div class="text-center">
-            <a href="#">Quên mật khẩu?</a>
+            <a href="password/reset">Quên mật khẩu?</a>
         </div>
     </div>
 </div>

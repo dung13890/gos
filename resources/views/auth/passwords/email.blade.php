@@ -2,46 +2,48 @@
 
 <!-- Main Content -->
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div id="login" class="animated @if (count($errors) > 0) jello @else fadeInDown @endif">
+    <div class="login-heading">
+        <h1 class="title">Lấy lại mật khẩu</h1>
+    </div>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
-                        {{ csrf_field() }}
+    <div class="login-content">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Lỗi!</strong> Đã có lỗi xảy ra.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        {!! Form::open(['url' => url('/password/email'),'autocomplete'=>'off','class' => 'form-horizontal']) !!}
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="username">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                    </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Nhận mật khẩu</button>
+                    </div>
+                </div>
+            </div>
+
+        {!! Form::close() !!}
+    </div>
+    <div class="login-footer">
     </div>
 </div>
+
 @endsection
