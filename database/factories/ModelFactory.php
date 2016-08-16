@@ -86,6 +86,7 @@ $factory->define(App\Model\Position::class, function (Faker\Generator $faker) {
 $factory->define(App\Model\User::class, function (Faker\Generator $faker) {
     return [
         'code' => str_random(5),
+        'fullname' =>  $faker->text(15),
         'username' => $faker->firstNameMale,
         'password' => bcrypt(12345678),
         'email' => $faker->email,

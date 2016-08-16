@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
 
             // Main user information
             $table->string('code', 11)->nullable();
+            $table->string('fullname', 50)->nullable();
             $table->string('username', 50)->nullable();
             $table->string('password', 60)->nullable();
             $table->string('email')->nullable();
@@ -28,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('branch_id')->nullable();
             $table->unsignedInteger('position_id')->nullable();
             $table->rememberToken();
+            $table->softDeletes(); 
             $table->timestamps();
 
             // Indexes or unique

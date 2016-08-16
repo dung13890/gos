@@ -26,7 +26,7 @@
                         <span class="input-group-addon" id="username">
                             <i class="fa fa-envelope"></i>
                         </span>
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                        <input id="email" type="email" class="form-control" name="email" placeholder="Email của bạn" value="{{ old('email') }}">
                     </div>
 
                 </div>

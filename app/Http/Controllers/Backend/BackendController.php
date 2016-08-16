@@ -29,7 +29,7 @@ abstract class BackendController extends AbstractController
     public function show($id)
     {
         $this->view = $this->repositoryName . '.show';
-        $this->compacts['item'] = $this->repository->findOrFail($id);
+        // $this->compacts['item'] = $this->repository->findOrFail($id);
         $this->compacts['heading'] = $this->trans('object.show');
         $this->compacts['resource'] = $this->repositoryName;
     }

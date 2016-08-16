@@ -4,10 +4,12 @@ namespace App\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\Eloquent\GetImageTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use GetImageTrait;
+    use SoftDeletes;
 
     protected $fillable = [
         'code',
@@ -26,6 +28,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function roles()
     {
