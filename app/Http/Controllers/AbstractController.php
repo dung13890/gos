@@ -60,6 +60,11 @@ abstract class AbstractController extends Controller
         return trans($this->lang['prefix'].$str, $replacements);
     }
 
+    public function before($action, $object = null, $abort = true)
+    {
+        return true;
+    }
+
     public function activityLog($actions, $item = null, $message = null)
     {
         $userName = $this->user->name;

@@ -89,5 +89,14 @@ class AppServiceProvider extends ServiceProvider
             \App\Contracts\Services\PositionService::class,
             \App\Services\PositionServiceJob::class
         );
+
+        $this->composers();
+    }
+
+    public function composers()
+    {
+        view()->composer('backend.*', function ($view) {
+            $view->with('me', \Auth::user());
+        });
     }
 }
