@@ -1,10 +1,6 @@
 var plugins = {
   bower: [
     {
-      in: 'AdminLTE/dist',
-      out: 'adminlte'
-    },
-    {
       in: 'bootstrap/dist',
       out: 'bootstrap'
     },

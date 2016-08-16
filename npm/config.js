@@ -1,6 +1,10 @@
 var config = {
   paths: {
     plugins: {
+      styles: {
+        in: 'resources/assets/css',
+        out: 'public/assets/css'
+      },
       scripts: {
         out: 'public/asset/js'
       },
