@@ -16,7 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "AdminLTE": "admin-lte#^2.3.3",
     "components-font-awesome": "^4.6.1",
     "animate.css": "latest",
     "jquery-slimscroll": "latest",

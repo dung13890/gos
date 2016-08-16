@@ -1,4 +1,11 @@
+process.env.DISABLE_NOTIFIER = true;
 var elixir = require('laravel-elixir');
+var vueify = require('vueify');
+var path = require('path');
+var plugins = require('./npm/plugins');
+var config = require('./npm/config');
+require('./npm/elixir.extensions');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +19,30 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix
+    .copy(config.paths.plugins.img.in, config.paths.plugins.img.out)
+    .copy(config.paths.plugins.styles.in, config.paths.plugins.styles.out)
+    .bower(config.paths.plugins.bower, plugins.bower)
+    .sass('backend/*.scss','public/assets/css/backend/app.css')
+    .styles([
+        '../bower/sweetalert/dist/sweetalert.css',
+        '../bower/animate.css/animate.min.css',
+        '../bower/toastr/toastr.min.css',
+        '../bower/bootstrap-toggle/css/bootstrap-toggle.min.css',
+        ], 'public/assets/css/backend/plugins.css')
+    .scripts([
+	    'laroute.js',
+	    'backend.js',
+	    '../bower/jquery-slimscroll/jquery.slimscroll.min.js',
+        '../bower/sweetalert/dist/sweetalert.min.js',
+        '../bower/toastr/toastr.min.js',
+        '../bower/bootstrap-toggle/js/bootstrap-toggle.min.js',
+	  ],'public/assets/js/backend/app.js')
+    .version([
+        'assets/css/backend/app.css',
+        'assets/js/backend/app.js',
+    	])
+    .browserSync({
+        proxy: 'gos.dev'
+      });
 });
