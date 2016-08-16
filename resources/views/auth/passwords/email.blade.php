@@ -36,6 +36,7 @@
                 <div class="col-xs-12">
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Nhận mật khẩu</button>
+                        <a href="javascript:window.history.back()" class="btn btn-default" ><i class="fa fa-arrow-circle-left"></i> Trở lại</a>
                     </div>
                 </div>
             </div>

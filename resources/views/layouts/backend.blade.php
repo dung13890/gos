@@ -33,8 +33,10 @@
     <!-- /#scrollTop -->
     <div class="wrapper">
         @include('backend._partials.header')
-        <div class="content-wrapper">
-            @yield('page-content')
+        <div id="content">
+            <div class="container-fluid">
+                @yield('page-content')
+            </div>
         </div>
         @include('backend._partials.footer')
     </div>
