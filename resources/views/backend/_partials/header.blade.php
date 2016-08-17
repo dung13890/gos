@@ -45,17 +45,17 @@
                 </li>
 
                 <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Hóa đơn mua hàng</a>
+                    <a href="/providers"  title="Hóa đơn mua hàng">
+                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quản lý nhà cung cấp</a>
                 </li>
                 <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Hóa đơn bán buôn</a>
+                    <a href="/rooms"  title="Phòng ban">
+                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quản lý phòng ban</a>
                 </li>
 
                 <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Hóa đơn bán lẻ</a>
+                    <a href="/units"  title="Đơn vị tính">
+                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Đơn vị tính</a>
                 </li>
                 <li>
                     <a href="#"  title="Hóa đơn mua hàng">

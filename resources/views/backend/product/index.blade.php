@@ -15,61 +15,61 @@
                 <div class="modal-body">
                     <form action="" class="form-horizontal">
                         <div class="form-group">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Mã sản phẩm">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Mã sản phẩm">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" value="Model">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" value="Model">
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Tên sản phẩm">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Tên sản phẩm">
                             </div>
-                            <div class="col-md-6">
-                                <select name="" id="" class="form-control">
+                            <div class="col-md-6 form-field">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Đơn vị tính</option>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Nhóm sản phẩm">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm " placeholder="Nhóm sản phẩm">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Chủng loại">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Chủng loại">
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Xuất xứ">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Xuất xứ">
                             </div>
-                            <div class="col-md-6">
-                                <select name="" id="" class="form-control">
+                            <div class="col-md-6 form-field">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Đơn vị sản xuất</option>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Năm sản xuất">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Năm sản xuất">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Kích thước, trọng lượng">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Hạn sử dụng">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Thông tin báo cáo">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Kích thước, trọng lượng">
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Thông số kỹ thuật">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Hạn sử dụng">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Tồn tối thiểu">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Thông tin báo cáo">
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Tồn tối đa">
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Thông số kỹ thuật">
+                            </div>
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Tồn tối thiểu">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-6 form-field">
+                                <input type="text" class="form-control input-sm" placeholder="Tồn tối đa">
                             </div>
                             <div class="col-md-6">
                                 <div class="checkbox">
@@ -77,14 +77,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="text-center">
-                                    <a href="javascript:;" class="btn btn-primary">Lưu</a>
-                                    <a href="javascript:;" class="btn btn-primary">Lưu và thêm mới</a>
-                                    <a href="javascript:;" class="btn btn-default" data-dismiss="modal">Hủy</a>
-                                </div>
-                            </div>
+
+                        <div class="form-group text-center">
+                            <button class="btn btn-success" type="submit">
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
+                            </button>
+
+                            <button class="btn btn-info" type="submit">
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu và thêm mới
+                            </button>
+
+                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
                         </div>
                     </form>
                 </div>
@@ -112,13 +115,13 @@
                                 <label for="" class="lineside">
                                     <span class="text">Nhập từ khóa</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Tên hoặc mã khách hàng" />
+                                <input type="text" class="form-control input-sm" placeholder="Tên hoặc mã khách hàng" />
                             </div>
                             <div class="form-group">
                                 <label for="" class="lineside">
                                     <span class="text">Theo chi nhánh</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Chọn chi nhánh</option>
                                 </select>
                             </div>
@@ -126,7 +129,7 @@
                                 <label for="" class="lineside">
                                     <span class="text">Theo Gara</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Chọn Gara</option>
                                 </select>
                             </div>
@@ -134,7 +137,7 @@
                                 <label for="" class="lineside">
                                     <span class="text">Theo kho hàng</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Chọn kho hàng</option>
                                 </select>
                             </div>

@@ -22,7 +22,7 @@ class CustomersController extends BackendController
         return $this->viewRender();
     }
 
-    public function show($id = '')
+    public function show($id)
     {
         parent::show($id);
         return $this->viewRender();

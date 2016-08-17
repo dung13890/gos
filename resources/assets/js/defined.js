@@ -210,3 +210,14 @@ function addTableSortIcon() {
         }
     });
 }
+
+function makeInputRequired() {
+    $('.form-required').focus(function(){
+        $(this).parent().children().eq(1).show();
+    });
+
+    $('.form-required').focusout(function(){
+        $(this).parent().children().eq(1).hide();
+    });
+}
+

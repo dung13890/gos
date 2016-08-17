@@ -26,7 +26,6 @@ Route::group(['middlewareGroups' => ['web']], function () {
 
     });
 
-
     Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth']], function () {
         Route::get('/', 'DashboardController@index');
         Route::post('summernote/image', ['as' => 'summernote.image', 'uses' => 'DashboardController@summernoteImage']);
@@ -40,6 +39,8 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::resource('products', 'ProductsController');
         Route::resource('customers', 'CustomersController');
         Route::resource('providers', 'ProvidersController');
+        Route::resource('rooms', 'RoomsController');
+        Route::resource('units', 'UnitsController');
     });
 });
 
