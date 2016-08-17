@@ -71,6 +71,9 @@ abstract class BackendController extends AbstractController
             $this->e['code'] = 100;
             $this->e['message'] = $this->trans('object_updated_unsuccessfully');
         }
+        if (\Request::ajax() || \Request::wantsJson()) {
+            return $this->e;
+        }
         $redirect = $redirect ? $redirect : route($this->repositoryName . '.index');
         if (is_callable($callback)) {
             call_user_func_array($callback, [$newEntity]);

@@ -1,6 +1,6 @@
 <template>
     <!-- Update profile -->
-    <div id="profile" class="modal fade">
+    <div id="profile" v-el:profile class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -8,8 +8,9 @@
                     <h4 class="modal-title">THÔNG TIN TÀI KHOẢN</h4>
                 </div>
                 <div class="modal-body">
+                <validator name="validation" :classes="{ touched: 'touched-validator', dirty: 'dirty-validator' }">
                     <form class="form-horizontal">
-                        <div v-show="errors.length > 0" class="alert alert-danger animated jello">
+                        <div v-show="isError" class="alert alert-danger animated jello">
                             <ul>
                                 <li v-for="error in errors">{{ error }}</li>
                             </ul>
@@ -29,7 +30,8 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-3">Họ tên</label>
                             <div class="col-sm-9">
-                                <input type="text" v-model="value.fullname" :value="item.fullname" class="form-control">
+                                <input type="text" v-validate:fullname="rules" v-model="value.fullname" :value="item.fullname" class="form-control">
+                                <span v-if="$validation.fullname.errors">{{ $validation.fullname.errors[0].message  }}</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,13 +44,15 @@
                         <div class="form-group">
                             <label for="phone" class="col-sm-3">Điện thoại</label>
                             <div class="col-sm-9">
-                                <input type="text" v-model="value.phone" :value="item.phone" class="form-control"/>
+                                <input type="text" v-validate:phone="rules" v-model="value.phone" :value="item.phone" class="form-control"/>
+                                <span v-if="$validation.phone.errors">{{ $validation.phone.errors[0].message  }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address" class="col-sm-3">Địa chỉ</label>
                             <div class="col-sm-9">
-                                <input type="text" v-model="value.address" :value="item.address" class="form-control"/>
+                                <input type="text" v-validate:address="rules" v-model="value.address" :value="item.address" class="form-control"/>
+                                <span v-if="$validation.address.errors">{{ $validation.address.errors[0].message  }}</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -65,6 +69,7 @@
                             </div>
                         </div>
                     </form>
+                    </validator>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
@@ -82,16 +87,36 @@
         },
         data: function () {
             return {
-                image: '',
+                rules: {
+                    required: {
+                        rule: true,
+                        message: 'Không được trống.'
+                    },
+                    minlength: {
+                        rule: 2,
+                        message: 'Nhập từ 2 ký tự trở lên.'
+                    },
+                    maxlength: {
+                        rule: 40,
+                        message: 'Không được nhiều hơn 40 ký tự.'
+                    }
+                },
                 value: {},
                 errors: {},
+                fileImage: {},
+                image: '',
+                isError: false,
             }
         },
         methods: {
             onFileChange: function (e) {
                 var files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                return;
+
+                if (!files.length) {
+                    return;
+                }
+
+                this.fileImage = files[0];
                 this.createImage(files[0]);
             },
             createImage: function (file) {
@@ -108,17 +133,33 @@
             },
             postForm: function () {
                 var self = this;
-                $.extend(this.value, {_token: token});
-                this.$parent.UserService.updateProfile(this.value).then((response) => {
-                    toastr.success('Success!', 'Cập nhật thành công')
-                }, (errors) => {
-                    console.log(errors.errors);
-                    if (errors.errors) {
-                        self.errors = errors.errors;
-                    }
-                });
-            }
 
+                var formData = new FormData();
+                formData.append('_token', token);
+                this.$validate(true, function () {
+                    if (self.$validation.invalid) {
+                        return;
+                    }
+
+                    if (typeof self.fileImage.name !== 'undefined' ) {
+                        formData.append('image', self.fileImage);
+                    }
+
+                    formData.append('fullname', self.value.fullname);
+                    formData.append('phone', self.value.phone);
+                    formData.append('address', self.value.address);
+                    
+                    self.$parent.UserService.updateProfile(formData).then((response) => {
+                        toastr.success(response.message);
+                        $('#profile').modal('hide');
+                    }, (errors) => {
+                        if (errors.errors) {
+                            self.isError = true;
+                            self.errors = errors.errors;
+                        }
+                    });
+                })
+            }
         }
     }
 </script>
