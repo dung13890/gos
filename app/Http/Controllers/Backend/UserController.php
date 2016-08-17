@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\UserRequest;
+use App\Http\Requests\Backend\ProfileRequest;
 use App\Contracts\Repositories\UserRepository;
 use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Services\UserService;
@@ -17,6 +18,16 @@ class UserController extends BackendController
     {
         parent::__construct($user);
         $this->branchRepository = $branch;
+    }
+
+    public function ajaxProfile()
+    {
+        return $this->user;
+    }
+
+    public function storeProfile(ProfileRequest $request, UserService $service)
+    {
+        dd($request->all());
     }
 
     public function getData($items = null)

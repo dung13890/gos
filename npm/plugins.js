@@ -79,8 +79,8 @@ var plugins = {
   ],
   vue: [
     {
-      in: 'backend/dropzone.js',
-      out: 'backend/dropzone.js'
+      in: 'app.js',
+      out: 'app.js'
     }
   ]
 }

@@ -32,8 +32,8 @@
     <!-- /#scrollTop -->
     <div class="wrapper">
         @include('backend._partials.header')
-        @include('backend.user.modal_change_profile_password')
         <div id="content">
+            <div id="vue-content"></div>
             @yield('page-content')
         </div>
         @include('backend._partials.footer')
@@ -41,6 +41,7 @@
         {{ HTML::script('vendor/jquery/jquery.min.js') }}
         {{ HTML::script('vendor/bootstrap/js/bootstrap.min.js') }}
         {{ HTML::script(elixir('assets/js/backend/app.js')) }}
+        {{ HTML::script(elixir('assets/vue/app.js')) }}
         @stack('prescripts')
     </body>
 </html>

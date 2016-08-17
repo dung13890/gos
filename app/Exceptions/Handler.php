@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -45,6 +46,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($this->isHttpException($e))
+        {   
+            if($e instanceof NotFoundHttpException)
+            {
+                return response()->view('front.missing', [], 404);
+            }
+            return $this->renderHttpException($e);
+        }
         return parent::render($request, $e);
     }
 }

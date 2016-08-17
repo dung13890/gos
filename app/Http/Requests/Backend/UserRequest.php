@@ -38,6 +38,7 @@ class UserRequest extends Request
                 'password' => 'confirmed|alpha_dash|min:6',
                 'password_confirmation' => 'min:6',
                 'gender' => 'required',
+                'branch_id' => 'required|not_in:0',
                 'birthday' => 'date_format:d/m/Y|before:tomorrow',
                 'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200',
             ];
@@ -50,6 +51,7 @@ class UserRequest extends Request
                 'password_confirmation' => 'required|min:6',
                 'birthday' => 'date_format:d/m/Y|before:tomorrow',
                 'gender' => 'required',
+                'branch_id' => 'required|not_in:0',
                 'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200',
             ];
         }
