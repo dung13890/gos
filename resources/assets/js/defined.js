@@ -71,9 +71,8 @@ function renderTable(route, columns, options, callback, selector) {
     if (typeof callback === 'function') setTimeout(callback, 500);
     if (route) {
         $(selector).DataTable(options);
-        $('.dataTables_filter input').attr('placeholder','Search...');
-        $('.dataTables_length').parent().addClass("col-xs-6");
-        $('.dataTables_filter').parent().addClass("col-xs-6");
+        $('.dataTables_filter input').attr('placeholder','Tìm kiếm...');
+        $("#filter").append($(".dataTables_length")).append($(".dataTables_filter"));
     } else {
         return;
     }

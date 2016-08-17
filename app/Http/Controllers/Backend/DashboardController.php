@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\UserRepository;
-use App\Services\Contracts\UploadService;
+use App\Contracts\Services\UploadService;
 
 class DashboardController extends BackendController
 {

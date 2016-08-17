@@ -4,22 +4,28 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\UserRequest;
 use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Services\UserService;
 
 class UserController extends BackendController
 {
-    protected $dataSelect = ['id', 'username', 'email'];
+    protected $dataSelect = ['id', 'username', 'email', 'phone'];
 
-    public function __construct(UserRepository $user)
+    protected $branchRepository; 
+
+    public function __construct(UserRepository $user, BranchRepository $branch)
     {
         parent::__construct($user);
+        $this->branchRepository = $branch;
     }
 
     public function getData($items = null)
     {
         return \Datatables::of($items ? $items : $this->repository->datatables($this->dataSelect, ['rooms']))
         ->addColumn('rooms', function ($item) {
-            return '<span class="label label-primary">' . 'abad'. '</span> ';
+            return $item->rooms->map(function ($room) {
+                return '<span class="label label-primary">' . $room->name . '</span>';
+            })->implode(' ');
         })
         ->addColumn('actions', function ($item) {
             $actions = [];
@@ -46,9 +52,22 @@ class UserController extends BackendController
         })->make(true);
     }
 
+    public function getDataWithRoom($room)
+    {
+        $this->before('index');
+        $room = app(\App\Model\Room::class)->findOrFail($room);
+        $items = $room->users()->with('rooms')->get($this->dataSelect);
+
+        return $this->getData($items);
+    }
+
     public function renderResource($action = 'create')
     {
-        $this->compacts['action'] = $this->trans($action);
+        $this->compacts['action'] = $this->trans("object.{$action}");
+        $this->compacts['listHeading'] = $this->trans("object.list");
+        $this->compacts['button'] = $this->trans($action);
+        $this->compacts['listBrands'] = $this->branchRepository->all()->lists('name', 'id')->prepend('Thuộc chi nhánh');
+        $this->compacts['listRooms'] = app(\App\Model\Room::class)->all()->lists('name', 'id')->prepend('Vị trí hiện tại');
         $this->view = $this->repositoryName . '.index';
 
         return $this->viewRender();
@@ -57,6 +76,14 @@ class UserController extends BackendController
     public function index()
     {
         parent::index();
+
+        return $this->renderResource();
+    }
+
+    public function room($room)
+    {
+        $this->before('index');
+        $this->compacts['room'] = app(\App\Model\Room::class)->findOrFail($room);
 
         return $this->renderResource();
     }

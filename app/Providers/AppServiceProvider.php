@@ -70,6 +70,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(
+            \App\Contracts\Services\UploadService::class,
+            \App\Services\UploadServiceJob::class
+        );
+        $this->app->bind(
             \App\Contracts\Services\UserService::class,
             \App\Services\UserServiceJob::class
         );

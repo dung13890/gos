@@ -32,17 +32,25 @@ class UserRequest extends Request
         if ($this->method() == 'PATCH')
         {
             return [
-                'username' => "required|alpha_dash|min:4|max:255|unique:users,username," . $this->user,
+                'fullname' => 'required|min:2|max:40',
+                'username' => "required|alpha_dash|min:4|max:40|unique:users,username," . $this->user,
                 'email' => "required|email|max:255|unique:users,email," . $this->user,
                 'password' => 'confirmed|alpha_dash|min:6',
                 'password_confirmation' => 'min:6',
+                'gender' => 'required',
+                'birthday' => 'date_format:d/m/Y|before:tomorrow',
+                'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200',
             ];
         } else {
             return [
-                'username' => "required|alpha_dash|min:4|max:255|unique:users",
+                'fullname' => 'required|min:2|max:40',
+                'username' => "required|alpha_dash|min:4|max:40|unique:users",
                 'email' => "required|email|max:255|unique:users",
                 'password' => 'required|alpha_dash|confirmed|min:6',
                 'password_confirmation' => 'required|min:6',
+                'birthday' => 'date_format:d/m/Y|before:tomorrow',
+                'gender' => 'required',
+                'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200',
             ];
         }
     }

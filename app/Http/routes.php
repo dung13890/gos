@@ -32,8 +32,11 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::post('summernote/image', ['as' => 'summernote.image', 'uses' => 'DashboardController@summernoteImage']);
         Route::PATCH('notification/{notification}', array('as' => 'notification.read', 'uses' => 'DashboardController@readNotification'));
         
+        Route::get('user/data/room/{room}', ['as' => 'user.data.room', 'uses' => 'UserController@getDataWithRoom']);
         Route::get('user/data', ['as' => 'user.data', 'uses' => 'UserController@getData']);
+        Route::get('user/room/{room}', ['as' => 'user.room', 'uses' => 'UserController@room']);
         Route::resource('user', 'UserController', ['except' => ['create']]);
+        
         Route::resource('products', 'ProductsController');
         Route::resource('customers', 'CustomersController');
         Route::resource('providers', 'ProvidersController');

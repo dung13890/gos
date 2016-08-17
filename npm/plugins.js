@@ -68,6 +68,14 @@ var plugins = {
       in: 'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
       out: 'datepicker/js/bootstrap-datepicker.min.js'
     },
+    {
+      in: 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
+      out: 'datepicker/css/bootstrap-datepicker.min.css'
+    },
+    {
+      in: 'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+      out: 'datepicker/js/bootstrap-datepicker.min.js'
+    },
   ],
   vue: [
     {
