@@ -31,6 +31,10 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    $(".searchclear").click(function(){
+        $(".searchinput").val('');
+    });
 });
 
 // Alert Swal
@@ -49,34 +53,6 @@ function alertDestroy(route) {
         });
     });
 };
-
-// Datatables
-function renderTable(route, columns, options, callback, selector) {
-    var route = route || null;
-    var columns = columns || [];
-    var options = options || {};
-    var selector = selector || "#table-index";
-    var defaultOptions = {
-        processing: true,
-        serverSide: true,
-        ajax: route,
-        sorting: [0,'desc'],
-        columns: columns,
-        language: {
-            search:"_INPUT_",
-            lengthMenu: "_MENU_",
-        }
-    };
-    options = $.extend(defaultOptions, options);
-    if (typeof callback === 'function') setTimeout(callback, 500);
-    if (route) {
-        $(selector).DataTable(options);
-        $('.dataTables_filter input').attr('placeholder','Tìm kiếm...');
-        $("#filter").append($(".dataTables_length")).append($(".dataTables_filter"));
-    } else {
-        return;
-    }
-}
 
 // show menu top
 function makeEventHeaderMenu() {
@@ -97,6 +73,25 @@ function makeEventHeaderMenu() {
                 "display": "none"
             });
 
+        }
+    });
+}
+
+// make tasks menu
+function makeMenuTasks() {
+    $('.toggle-menu').click(function() {
+        var display = $(this).attr('display');
+
+        if (display == 0) {
+            var html = $(this).html().replace('down', 'up');
+            $(this).html(html);
+            $(this).attr('display', 1);
+            $(this).parent().children().eq(1).slideDown();
+        } else {
+            var html = $(this).html().replace('up', 'down');
+            $(this).html(html);
+            $(this).attr('display', 0);
+            $(this).parent().children().eq(1).slideUp();
         }
     });
 }
@@ -185,39 +180,12 @@ function toggleContent(className, seconds) {
     });
 }
 
-// add sort icon to table columns
-function addTableSortIcon() {
-    var columnTitle = '<a href="javascript:;" class="column-title" type="asc">' +
-                        'label' +
-                        '<span class="sort-icon">' +
-                            '<i class="fa fa-angle-down"></i>' +
-                        '</span>' +
-                    '</a>';
-    $('.table tr:first-child th').each(function() {
-        var html = columnTitle.replace('label', $(this).html());
-        $(this).html(html);
-    });
-
-    $('.column-title').click(function() {
-        var type = $(this).attr('type');
-
-        if (type == 'asc') {
-            $(this).attr('type', 'desc');
-            $(this).children().eq(0).html('<i class="fa fa-angle-down"></i>');
-        } else {
-            $(this).children().eq(0).html('<i class="fa fa-angle-up"></i>');
-            $(this).attr('type', 'asc');
-        }
-    });
-}
-
 function makeInputRequired() {
-    $('.form-required').focus(function(){
+    $('.form-required, .form-required-sm').focus(function(){
         $(this).parent().children().eq(1).show();
     });
 
-    $('.form-required').focusout(function(){
+    $('.form-required, .form-required-sm').focusout(function(){
         $(this).parent().children().eq(1).hide();
     });
 }
-

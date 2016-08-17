@@ -22,9 +22,9 @@ class UserController extends BackendController
     public function getData($items = null)
     {
         return \Datatables::of($items ? $items : $this->repository->datatables($this->dataSelect, ['rooms']))
-        ->addColumn('rooms', function ($item) {
-            return $item->rooms->map(function ($room) {
-                return '<span class="label label-primary">' . $room->name . '</span>';
+            ->addColumn('rooms', function ($item) {
+                return $item->rooms->map(function ($room) {
+                    return '<span class="label label-primary">' . $room->name . '</span>';
             })->implode(' ');
         })
         ->addColumn('actions', function ($item) {

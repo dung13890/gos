@@ -12,10 +12,10 @@ return [
 
     'list' => "Danh sách",
     'index' => "Quản lý",
-    'create' => "thêm mới",
-    'edit'  => "cập nhật",
-    'delete' => "xóa",
-    'show'  => "xem",
+    'create' => "Thêm mới",
+    'edit'  => "Cập nhật",
+    'delete' => "Xóa",
+    'show'  => "Xem",
 
     'dashboard' => 'bảng điều khiển',
     'user' => 'người dùng',

@@ -29,6 +29,7 @@ elixir(function(mix) {
     .scripts([
 	    'common.js',
 	    'defined.js',
+        'laroute.js',
 	    '../bower/jquery-slimscroll/jquery.slimscroll.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
         '../bower/toastr/toastr.min.js',

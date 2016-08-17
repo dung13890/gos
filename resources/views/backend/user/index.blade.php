@@ -13,20 +13,55 @@
     {{ HTML::script("vendor/datatables-bs/js/dataTables.bootstrap.min.js") }}
     {{ HTML::script('vendor/datepicker/js/bootstrap-datepicker.min.js') }}
     {{ HTML::script('vendor/jasny-bootstrap/js/jasny-bootstrap.min.js') }}
+
     <script>
-        var flash_message = '{!!session("flash_message")!!}';
+        function renderTable(route, columns, options, callback, selector) {
+            var route = route || null;
+            var columns = columns || [];
+            var options = options || {};
+            var selector = selector || "#table-index";
+
+            var defaultOptions = {
+                processing: true,
+                serverSide: true,
+                ajax: route,
+                sorting: [0, 'desc'],
+                columns: columns,
+                bLengthChange: false,
+                pageLength: 15,
+                language: {
+                    search:"_INPUT_",
+                    lengthMenu: "_MENU_",
+                }
+            };
+
+            options = $.extend(defaultOptions, options);
+
+            if (typeof callback === 'function') setTimeout(callback, 500);
+            if (route) {
+                $(selector).DataTable(options);
+                $('.dataTables_filter input').remove();
+                $("#filter").append($(".dataTables_length")).append($(".dataTables_filter"));
+            } else {
+                return;
+            }
+        }
+
+        var flash_message = '{!! session("flash_message") !!}';
         var datatableRoute = '{!! isset($room->id) ? route('user.data.room', $room->id) : route('user.data') !!}';
+
         var datatableColumns = [
-            { data: 'id', name: 'id', searchable: false },
-            { data: 'username', name: 'username'},
-            { data: 'email', orderable: true, name: 'email'},
-            { data: 'phone', orderable: true, name: 'phone'},
-            { data: 'rooms', orderable: true, name: 'rooms', searchable: false},
-            { data: 'actions', name: 'actions', orderable: false, searchable: false, sClass: "text-center"}
+            {data: 'id', name: 'id', searchable: false},
+            {data: 'username', name: 'username'},
+            {data: 'email', orderable: true, name: 'email'},
+            {data: 'phone', orderable: true, name: 'phone'},
+            {data: 'rooms', orderable: true, name: 'rooms', searchable: false},
+            {data: 'actions', name: 'actions', orderable: false, searchable: false, sClass: "text-center"}
         ];
+
         var datatableOptions = {
-            createdRow: function ( row, data, index ) {
-                $('td', row).eq(0).css('display','none');
+            createdRow: function (row, data, index) {
+                $('td', row).eq(0).css('display', 'none');
                 if (data.actions.show) {
                     $('td', row).eq(1).html('<a title="'+data.actions.show.label+'" href="'+data.actions.show.uri+'">'+data.username+'</a>');
                 }
@@ -34,21 +69,25 @@
                 if (!actions || actions.length < 1) { return; }
                 var actionHtml = $('td', row).eq(5);
                 actionHtml.html('');
+
                 if (actions.edit) { 
                     actionHtml.append('<a title ="'+actions.edit.label+'" class="btn btn-default btn-xs" href="'+actions.edit.uri+'"><i class="fa fa-pencil"></i></a>');
                 }
+
                 if (actions.delete) { 
                     actionHtml.append('<a title ="'+actions.delete.label+'" class="btn btn-danger btn-xs handle-delete" href="'+actions.delete.uri+'"><i class="fa fa-times"></i></a>');
                 }
             }
         };
-        $(function(){
+
+        $(function() {
             renderTable(datatableRoute, datatableColumns, datatableOptions, function () {
                 $('.handle-delete').click(function (e) {
                     e.preventDefault();
                     alertDestroy($(this).attr('href'));
                 });
             });
+
             $(".input-datepicker").datepicker({
                 todayHighlight: true, 
                 format: 'dd/mm/yyyy', 
@@ -56,6 +95,12 @@
                 language: "vi",
                 endDate: 'd'
             });
+
+            $('.searchinput').keyup(function() {
+                $('#table-index').DataTable().search($(this).val()).draw() ;
+            });
+            
+            $('#table-index_wrapper .row:first').remove();
         });
     </script>
 @endpush
@@ -98,21 +143,28 @@
                         <div class="widget-tools">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="form-inline">
-                                        <div class="form-group" id="filter"></div>
-                                    </div>
-                                    <div class="btn-group">
-                                        <span class="btn btn-default btn-sm">{{ $room->name or 'Tất cả' }}</span>
-                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
-                                            <i class="caret"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-left">
-                                            <li><a href="{{ route('user.index') }}">Tất cả</a></li>
-                                            @foreach ($listRooms->slice(1) as $id => $name)
-                                            <li><a href="{{ route('user.room', $id) }}">{{ $name }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                    <form action="" class="form-inline">
+                                        <div class="form-group" id="user-search">
+                                            <div class="btn-group">
+                                                <input type="search" aria-controls="table-index" class="form-control input-sm searchinput" 
+                                                    placeholder="Tìm theo mã, tên, email hoặc phòng ban" size="50px" />
+                                                <span class="glyphicon glyphicon-remove-circle searchclear"></span>
+                                            </div>
+
+                                            <div class="btn-group">
+                                                <span class="btn btn-default btn-sm">{{ $room->name or 'Tất cả phòng ban' }}</span>
+                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
+                                                    <i class="caret"></i>
+                                                </button>
+                                                <ul class="dropdown-menu pull-left">
+                                                    <li><a href="{{ route('user.index') }}">Tất cả phòng ban</a></li>
+                                                        @foreach ($listRooms->slice(1) as $id => $name)
+                                                    <li><a href="{{ route('user.room', $id) }}">{{ $name }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="col-sm-6 text-right">
                                     <div class="tool">
@@ -134,20 +186,6 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="#">Excel</a></li>
                                                 <li><a href="#">PDF</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="tool">
-                                        <div class="btn-group">
-                                            <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle" aria-expanded="false">
-                                                <span class="fa fa-bars"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Item selected</a></li>
-                                                <li><a href="#">Item selected</a></li>
-                                                <li><a href="#">Item selected</a></li>
-                                                <li><a href="#">Item selected</a></li>
-                                                <li><a href="#">Item selected</a></li>
                                             </ul>
                                         </div>
                                     </div>

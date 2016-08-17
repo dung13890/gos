@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    addTableSortIcon();
     makeEventHeaderMenu();
+    makeMenuTasks();
     makeMenuMobile();
     scrollTop();
     showTableData('test');
