@@ -9,23 +9,38 @@
 @endif
 
 <div class="form-group">
-    {{ Form::text('fullname',null, ['class' => 'form-control input-sm', 'placeholder' => 'Tên đầy đủ (*)']) }}
+    <div class="required-wrapper">
+        {{ Form::text('fullname',null, ['class' => 'form-required input-sm', 'placeholder' => 'Tên đầy đủ']) }}
+        <span class="fa fa-exclamation"></span>
+    </div>
 </div>
 
 <div class="form-group">
-    {{ Form::text('username',null, ['class' => 'form-control input-sm', 'placeholder' => 'Tên đăng nhập (*)']) }}
+    <div class="required-wrapper">
+        {{ Form::text('username',null, ['class' => 'form-required input-sm', 'placeholder' => 'Tên đăng nhập']) }}
+        <span class="fa fa-exclamation"></span>
+    </div>
 </div>
 
 <div class="form-group">
-	{{ Form::password('password', ['class' => 'form-control input-sm', 'placeholder' => 'Mật khẩu']) }}	
+    <div class="required-wrapper">
+       {{ Form::password('password', ['class' => 'form-required input-sm', 'placeholder' => 'Mật khẩu']) }}
+       <span class="fa fa-exclamation"></span>
+    </div>
 </div>
 
 <div class="form-group">
-    {{ Form::password('password_confirmation', ['class' => 'form-control input-sm', 'placeholder' => 'Xác nhận mật khẩu']) }}
+    <div class="required-wrapper">
+        {{ Form::password('password_confirmation', ['class' => 'form-required input-sm', 'placeholder' => 'Xác nhận mật khẩu']) }}
+        <span class="fa fa-exclamation"></span>
+    </div>
 </div>
 
 <div class="form-group">
-    {{ Form::email('email', null, ['class' => 'form-control input-sm', 'placeholder' => 'Địa chỉ email (*)']) }}
+    <div class="required-wrapper">
+        {{ Form::email('email', null, ['class' => 'form-required input-sm', 'placeholder' => 'Địa chỉ email']) }}
+        <span class="fa fa-exclamation"></span>
+    </div>
 </div>
 
 <div class="form-group">
@@ -64,6 +79,8 @@
         </div>
         <div class="col-sm-8">
             {{ Form::select('branch_id', $listBrands, null, ['class' => 'form-control input-sm']) }}
+            <br>
+            {{ Form::select('room_id', $listRooms, null, ['class' => 'form-control input-sm']) }}
             <br>
             {{ Form::select('room_id', $listRooms, null, ['class' => 'form-control input-sm']) }}
         </div>
