@@ -12,7 +12,6 @@
 */
 
 Route::group(['middlewareGroups' => ['web']], function () {
-
     Route::get('image/{path}', ['as' => 'image', 'uses' => 'Backend\DashboardController@getReponseImage'])->where('path', '(.*?)');
     
     Route::group(['namespace' => 'Auth'], function () {
@@ -27,13 +26,17 @@ Route::group(['middlewareGroups' => ['web']], function () {
 
     });
 
-    Route::group(['prefix' => '/', 'namespace' => 'Backend','middleware' => ['auth']], function () {
+
+    Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth']], function () {
         Route::get('/', 'DashboardController@index');
         Route::post('summernote/image', ['as' => 'summernote.image', 'uses' => 'DashboardController@summernoteImage']);
         Route::PATCH('notification/{notification}', array('as' => 'notification.read', 'uses' => 'DashboardController@readNotification'));
         
         Route::get('user/data', ['as' => 'user.data', 'uses' => 'UserController@getData']);
         Route::resource('user', 'UserController', ['except' => ['create']]);
+        Route::resource('products', 'ProductsController');
+        Route::resource('customers', 'CustomersController');
+        Route::resource('providers', 'ProvidersController');
     });
 });
 

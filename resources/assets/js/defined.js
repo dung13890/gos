@@ -82,6 +82,7 @@ function renderTable(route, columns, options, callback, selector) {
 // show menu top
 function makeEventHeaderMenu() {
     $('header .menu > ul > li').click(function() {
+        $(this).attr('clicked', 1);
         var op = $(this).children().eq(1).css('opacity');
 
         if (op == 0) {
@@ -181,6 +182,32 @@ function toggleContent(className, seconds) {
             element.slideDown(seconds);
             $(this).attr('display', 1);
             $(this).html('<i class="fa fa-angle-down"></i>');
+        }
+    });
+}
+
+// add sort icon to table columns
+function addTableSortIcon() {
+    var columnTitle = '<a href="javascript:;" class="column-title" type="asc">' +
+                        'label' +
+                        '<span class="sort-icon">' +
+                            '<i class="fa fa-angle-down"></i>' +
+                        '</span>' +
+                    '</a>';
+    $('.table tr:first-child th').each(function() {
+        var html = columnTitle.replace('label', $(this).html());
+        $(this).html(html);
+    });
+
+    $('.column-title').click(function() {
+        var type = $(this).attr('type');
+
+        if (type == 'asc') {
+            $(this).attr('type', 'desc');
+            $(this).children().eq(0).html('<i class="fa fa-angle-down"></i>');
+        } else {
+            $(this).children().eq(0).html('<i class="fa fa-angle-up"></i>');
+            $(this).attr('type', 'asc');
         }
     });
 }

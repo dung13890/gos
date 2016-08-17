@@ -6,7 +6,8 @@ var config = {
         out: 'public/assets/css'
       },
       scripts: {
-        out: 'public/asset/js'
+        in: 'resources/assets/js',
+        out: 'public/assets/js'
       },
       img: {
         in: 'resources/assets/img',
