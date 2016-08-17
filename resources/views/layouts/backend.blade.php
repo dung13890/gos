@@ -34,11 +34,9 @@
         @include('backend._partials.header')
         @include('backend.user.modal_change_profile_password')
         <div id="content">
-            <div class="container-fluid">
-                @yield('page-content')
-            </div>
-            @include('backend._partials.footer')
+            @yield('page-content')
         </div>
+        @include('backend._partials.footer')
     </div>
         {{ HTML::script('vendor/jquery/jquery.min.js') }}
         {{ HTML::script('vendor/bootstrap/js/bootstrap.min.js') }}

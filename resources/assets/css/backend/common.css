@@ -14,6 +14,10 @@ a {
     text-decoration: none !important;
 }
 
+.form-field {
+    margin-bottom: 10px;
+}
+
 .glyphicon {
     top: 2px !important;
 }
@@ -52,7 +56,7 @@ a.user-setting {
 
 #scrollTop {
     position: fixed;
-    right: 15px;
+    right: 0px;
     bottom: 15px;
     z-index: 99999;
 }
@@ -396,6 +400,19 @@ header .menu ul.submenu > li > a:hover {
     text-align: right;
     display: inline-block;
 }
+
+.searchclear {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+
 
 /* footer ------------------------------------------------------------------*/
 footer {

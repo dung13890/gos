@@ -23,13 +23,13 @@
                                 <label for="" class="lineside">
                                     <span class="text">Nhập từ khóa</span>
                                 </label>
-                                <input type="text" class="form-control" placeholder="Tên hoặc mã khách hàng" />
+                                <input type="text" class="form-control input-sm" placeholder="Tên hoặc mã khách hàng" />
                             </div>
                             <div class="form-group">
                                 <label for="" class="lineside">
                                     <span class="text">Theo chi nhánh</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" class="form-control input-sm">
                                     <option value="">Chọn chi nhánh</option>
                                     <option value="">Chọn chi nhánh</option>
                                     <option value="">Chọn chi nhánh</option>
@@ -42,7 +42,7 @@
                                 <label for="" class="lineside">
                                     <span class="text">Theo Gara</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Chọn Gara</option>
                                 </select>
                             </div>
@@ -50,7 +50,7 @@
                                 <label for="" class="lineside">
                                     <span class="text">Theo kho hàng</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Chọn kho hàng</option>
                                 </select>
                             </div>
@@ -58,7 +58,7 @@
                                 <label for="" class="lineside">
                                     <span class="text">Theo nhân viên kinh doanh</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Chọn nhân viên kinh doanh</option>
                                 </select>
                             </div>
@@ -66,7 +66,7 @@
                                 <label for="" class="lineside">
                                     <span class="text">Theo sự kiện khuyến mãi</span>
                                 </label>
-                                <select name="" id="" class="form-control">
+                                <select name="" id="" class="form-control input-sm">
                                     <option value="">Chọn sự kiện</option>
                                 </select>
                             </div>
@@ -101,7 +101,7 @@
                                         <form action="" class="form-inline">
                                             <div class="form-group">
                                                 <select name="rows" table-name="test" class="form-control input-sm">
-                                                    <option value="---">----</option>
+                                                    <option value="">Xem</option>
                                                     <option value="5">5</option>
                                                     <option value="10">10</option>
                                                     <option value="15">15</option>
@@ -174,8 +174,8 @@
                                                     <td>0977.936.507</td>
                                                     <td>ngquynh@gmail.com</td>
                                                     <td class="text-center">
-                                                        <a href="{{ route('customers.show', ['id' => $i]) }}" class="btn btn-info btn-xs">
-                                                            Xem
+                                                        <a href="{{ route('customers.show', ['id' => $i]) }}" title="Xem chi tiết">
+                                                            <span class="glyphicon glyphicon-eye-open"></span>
                                                         </a>
                                                     </td>
                                                 </tr>
