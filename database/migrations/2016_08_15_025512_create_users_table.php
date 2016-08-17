@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone', 32)->nullable();
             $table->string('address', 100)->nullable();
-            $table->date('birthday');
+            $table->date('birthday')->nullable();
             $table->string('image')->nullable();
             $table->unsignedTinyInteger('gender')->nullable();
             $table->unsignedInteger('branch_id')->nullable();

@@ -1,17 +1,19 @@
 <?php 
 
 return [
-    'object.index' => 'Danh sách :object',
+    'object.list' => 'Danh sách :object',
+    'object.index' => 'Quản lý :object',
     'object.create' => 'Thêm mới :object',
     'object.store' => 'Thêm mới :object',
-    'object.edit' => 'Cập nhật :object',
+    'object.edit' => 'Sửa thông tin :object',
     'object.update' => 'Cập nhật :object',
     'object.delete' => 'Xóa :object',
     'object.show' => 'Thông tin :object',
 
-    'index' => "danh sách",
-    'create' => "thêm",
-    'edit'  => "sửa",
+    'list' => "Danh sách",
+    'index' => "Quản lý",
+    'create' => "thêm mới",
+    'edit'  => "cập nhật",
     'delete' => "xóa",
     'show'  => "xem",
 

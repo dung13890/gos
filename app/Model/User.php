@@ -4,15 +4,16 @@ namespace App\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\Eloquent\GetImageTrait;
+use App\Traits\Eloquent\DateAMTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use GetImageTrait;
-    use SoftDeletes;
+    use GetImageTrait, SoftDeletes, DateAMTrait;
 
     protected $fillable = [
         'code',
+        'fullname',
         'username',
         'password',
         'email',
@@ -54,5 +55,15 @@ class User extends Authenticatable
     public function position()
     {
         return $this->belongsTo(Position::class);
+    }
+
+    public function setBirthdayAttribute($value)
+    {
+        $this->attributes['birthday'] = ($value) ? $this->setDate($value) : null;
+    }
+
+    public function getBirthdayAttribute ($value)
+    {
+        return ($value) ? $this->getDate($value) : null;
     }
 }
