@@ -76,6 +76,14 @@ var plugins = {
       in: 'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
       out: 'datepicker/js/bootstrap-datepicker.min.js'
     },
+    {
+      in: 'bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css',
+      out: 'bootstrap-switch/css/bootstrap-switch.min.css'
+    },
+    {
+      in: 'bootstrap-switch/dist/js/bootstrap-switch.min.js',
+      out: 'bootstrap-switch/js/bootstrap-switch.min.js'
+    },
   ],
   vue: [
     {

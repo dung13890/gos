@@ -28,6 +28,7 @@
     "jqTree": "jqtree#^1.3.3",
     "summernote": "^0.8.2",
     "select2": "^4.0.3",
-    "bootstrap-datepicker": "^1.6.4"
+    "bootstrap-datepicker": "^1.6.4",
+    "bootstrap-switch": "git@github.com:Data-Web/bootstrap-switch.git"
   }
 }

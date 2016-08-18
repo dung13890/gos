@@ -58,8 +58,8 @@
                     <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Đơn vị tính</a>
                 </li>
                 <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Chuyển kho nội bộ</a>
+                    <a href="/roles"  title="Hóa đơn mua hàng">
+                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quản lý nhóm quyền</a>
                 </li>
 
                 <li>

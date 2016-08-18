@@ -41,6 +41,7 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::resource('providers', 'ProvidersController');
         Route::resource('rooms', 'RoomsController');
         Route::resource('units', 'UnitsController');
+        Route::resource('roles', 'RolesController');
     });
 });
 
