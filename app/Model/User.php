@@ -25,6 +25,8 @@ class User extends Authenticatable
         'birthday',
     ];
 
+    protected $appends = ['image_thumbnail'];
+
     protected $hidden = [
         'password',
         'remember_token',

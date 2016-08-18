@@ -15,38 +15,6 @@
     {{ HTML::script('vendor/jasny-bootstrap/js/jasny-bootstrap.min.js') }}
 
     <script>
-        function renderTable(route, columns, options, callback, selector) {
-            var route = route || null;
-            var columns = columns || [];
-            var options = options || {};
-            var selector = selector || "#table-index";
-
-            var defaultOptions = {
-                processing: true,
-                serverSide: true,
-                ajax: route,
-                sorting: [0, 'desc'],
-                columns: columns,
-                bLengthChange: false,
-                pageLength: 15,
-                language: {
-                    search:"_INPUT_",
-                    lengthMenu: "_MENU_",
-                }
-            };
-
-            options = $.extend(defaultOptions, options);
-
-            if (typeof callback === 'function') setTimeout(callback, 500);
-            if (route) {
-                $(selector).DataTable(options);
-                $('.dataTables_filter input').remove();
-                $("#filter").append($(".dataTables_length")).append($(".dataTables_filter"));
-            } else {
-                return;
-            }
-        }
-
         var flash_message = '{!! session("flash_message") !!}';
         var datatableRoute = '{!! isset($room->id) ? route('user.data.room', $room->id) : route('user.data') !!}';
 
@@ -86,6 +54,11 @@
                     e.preventDefault();
                     alertDestroy($(this).attr('href'));
                 });
+                $('.searchinput').keyup(function() {
+                        $('#table-index').DataTable().search($(this).val()).draw() ;
+                    });
+            
+                $('#table-index_wrapper .row:first').remove();
             });
 
             $(".input-datepicker").datepicker({
@@ -95,12 +68,6 @@
                 language: "vi",
                 endDate: 'd'
             });
-
-            $('.searchinput').keyup(function() {
-                $('#table-index').DataTable().search($(this).val()).draw() ;
-            });
-            
-            $('#table-index_wrapper .row:first').remove();
         });
     </script>
 @endpush
@@ -147,7 +114,7 @@
                                         <div class="form-group" id="user-search">
                                             <div class="btn-group">
                                                 <input type="search" aria-controls="table-index" class="form-control input-sm searchinput" 
-                                                    placeholder="Tìm theo mã, tên, email hoặc phòng ban" size="50px" />
+                                                    placeholder="Tìm theo mã, tên, email hoặc phòng ban" size="40px" />
                                                 <span class="glyphicon glyphicon-remove-circle searchclear"></span>
                                             </div>
 

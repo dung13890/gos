@@ -26,11 +26,19 @@ Route::group(['middlewareGroups' => ['web']], function () {
 
     });
 
+    Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
+        Route::group(['prefix' => 'v1'], function () { 
+            Route::get('user/profile', ['as' => 'api.user.profile', 'uses'=>'UserController@profile']);
+        });
+    });
+
     Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth']], function () {
         Route::get('/', 'DashboardController@index');
         Route::post('summernote/image', ['as' => 'summernote.image', 'uses' => 'DashboardController@summernoteImage']);
         Route::PATCH('notification/{notification}', array('as' => 'notification.read', 'uses' => 'DashboardController@readNotification'));
         
+        Route::get('user/ajax/profile', ['as' => 'user.ajax.profile', 'uses' => 'UserController@ajaxProfile']);
+        Route::post('user/store/profile', ['as' => 'user.store.profile', 'uses' => 'UserController@storeProfile']);
         Route::get('user/data/room/{room}', ['as' => 'user.data.room', 'uses' => 'UserController@getDataWithRoom']);
         Route::get('user/data', ['as' => 'user.data', 'uses' => 'UserController@getData']);
         Route::get('user/room/{room}', ['as' => 'user.room', 'uses' => 'UserController@room']);

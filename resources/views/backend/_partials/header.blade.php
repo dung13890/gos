@@ -21,9 +21,9 @@
                 <li><a href="#">Garas <i class="glyphicon glyphicon-sound-dolby"></i></a></li>
                 <li><a href="#">Thiết lập <span class="glyphicon glyphicon-cog"></span></a></li>
                 <li>
-                    <a href="javascript:void(0)" class="user-setting">{{ $me->username }}<span class="caret"></span></a>
+                    <a href="javascript:void(0)" class="user-setting">{{ $me->fullname }}<span class="caret"></span></a>
                     <ul class="submenu">
-                        <li><a data-toggle="modal" href="javascript:void(0)" class="#profile"><i class="fa fa-wrench"> </i> Cài đặt</a></li>
+                        <li><a data-toggle="modal" href="#profile"><i class="fa fa-wrench"> </i> Cài đặt</a></li>
                         <li><a data-toggle="modal" href='#reset-password'><i class="fa fa-unlock"> </i> Đổi mật khẩu</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out"> </i> Đăng xuất</a></li>
                     </ul>
