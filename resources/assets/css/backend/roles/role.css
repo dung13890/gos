@@ -1,0 +1,29 @@
+.permission-onoff {
+    background: #eee;
+    line-height: 25px;
+    padding-left: 5px;
+    display: block;
+    width: 99%;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+div.permission-onoff:hover{
+    background: #ddd;
+}
+
+.title-permission {
+    margin-bottom: 15px;
+}
+
+.list-permission {
+    padding: 0px;
+}
+
+.bootstrap-switch {
+    float: right;
+    margin-top: 3px;
+}
