@@ -27,7 +27,14 @@ class UserController extends BackendController
 
     public function storeProfile(ProfileRequest $request, UserService $service)
     {
-        dd($request->all());
+        $data = $request->only('fullname', 'image', 'phone', 'address');
+        if (!$data['image']) {
+            unset($data['image']);
+        }
+        $entity = $this->user;
+
+        return $this->updateData($data, $service, $entity);
+
     }
 
     public function getData($items = null)

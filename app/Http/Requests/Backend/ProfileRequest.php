@@ -25,7 +25,6 @@ class ProfileRequest extends Request
     {
         return [
             'fullname' => 'required|min:2|max:40',
-            'gender' => 'required',
             'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200'
         ];
     }

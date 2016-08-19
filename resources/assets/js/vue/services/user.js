@@ -16,10 +16,11 @@ export default {
       });
     })
   },
-  updateProfile: function (value) {
+
+  updateProfile: function (formData) {
     var self = this;
     return new Promise( function(resolve, reject) {
-      self.http({url: self.router.route('user.store.profile'), body:value, method: 'POST'}).then(function (response) {
+      self.http.post(self.router.route('user.store.profile'), formData).then(function (response) {
         resolve(response.data);
       }, function (response) {
         reject(response.data);
