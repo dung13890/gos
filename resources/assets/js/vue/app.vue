@@ -1,10 +1,12 @@
 <template>
     <div>
         <modal-profile :item="item"></modal-profile>
+        <modal-password></modal-password>
     </div>
 </template>
 <script>
     import ModalProfile from './components/partials/profile.vue';
+    import ModalPassword from './components/partials/password.vue';
     import UserService from './services/user';
     export default {
         data: function () {
@@ -28,7 +30,7 @@
         ready: function () {
             this.profile();
         },
-        components: { ModalProfile }
+        components: { ModalProfile, ModalPassword }
 
     }
 </script>

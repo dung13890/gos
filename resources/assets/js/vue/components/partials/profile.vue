@@ -133,7 +133,6 @@
             },
             postForm: function () {
                 var self = this;
-
                 var formData = new FormData();
                 formData.append('_token', token);
                 this.$validate(true, function () {

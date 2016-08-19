@@ -10,20 +10,31 @@ export default {
     var self = this;
     return new Promise( function(resolve, reject) {
       self.http({url: self.router.route('user.ajax.profile'), method: 'GET'}).then(function (response) {
-          resolve(response.data);
+          resolve(response.data)
       }, function (response) {
-          reject(response.data);
-      });
+          reject(response.data)
+      })
     })
   },
 
   updateProfile: function (formData) {
     var self = this;
     return new Promise( function(resolve, reject) {
-      self.http.post(self.router.route('user.store.profile'), formData).then(function (response) {
-        resolve(response.data);
+      self.http.post(self.router.route('user.update.profile'), formData).then(function (response) {
+        resolve(response.data)
       }, function (response) {
-        reject(response.data);
+        reject(response.data)
+      })
+    })
+  },
+
+  updatePassword: function (formData) {
+    var self = this;
+    return new Promise( function(resolve, reject) {
+      self.http.post(self.router.route('user.update.password'), formData).then(function (response) {
+        resolve(response.data)
+      }, function (response) {
+        reject(response.data)
       })
     })
   }

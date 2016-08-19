@@ -34,4 +34,7 @@ return [
     'object_created_unsuccessfully'  => 'Lỗi thêm :object',
     'object_updated_unsuccessfully'  => 'Lỗi cập nhật :object',
     'object_deleted_unsuccessfully'  => 'Lỗi xóa :object',
+
+    'updated_unsuccessfully'  => 'Lỗi cập nhật.',
+    'updated_successfully'  => 'Cập nhật thành công.',
 ];
