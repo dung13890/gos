@@ -40,7 +40,7 @@
                 <li>
                     <a href="#" class="active">
                     <i class='glyphicon glyphicon-retweet'></i>
-                    Nghiệp vụ thường dùng
+                    Nghiệp vụ
                     <i class='glyphicon glyphicon-random'></i></a>
                 </li>
 
@@ -75,20 +75,6 @@
                 <li>
                     <a href="#"  title="Hóa đơn mua hàng">
                     <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Phiếu hủy hàng hóa</a>
-                </li>
-
-                <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quảng lý mã vạch</a>
-                </li>
-
-                <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quản lý chứng từ</a>
-                </li>
-                <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Báo cáo & Thống kế</a>
                 </li>
             </ul>
         </nav>

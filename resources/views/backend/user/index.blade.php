@@ -31,19 +31,22 @@
             createdRow: function (row, data, index) {
                 $('td', row).eq(0).css('display', 'none');
                 if (data.actions.show) {
-                    $('td', row).eq(1).html('<a title="'+data.actions.show.label+'" href="'+data.actions.show.uri+'">'+data.username+'</a>');
+                    $('td', row).eq(1).html('<a title="' + data.actions.show.label + '" href="' + data.actions.show.uri + '">' + data.username + '</a>');
                 }
                 var actions = data.actions;
-                if (!actions || actions.length < 1) { return; }
+                
+                return ! actions || actions.length < 1;
+
                 var actionHtml = $('td', row).eq(5);
+
                 actionHtml.html('');
 
                 if (actions.edit) { 
-                    actionHtml.append('<a title ="'+actions.edit.label+'" class="btn btn-default btn-xs" href="'+actions.edit.uri+'"><i class="fa fa-pencil"></i></a>');
+                    actionHtml.append('<a title ="' + actions.edit.label + '" class="btn btn-default btn-xs" href="' + actions.edit.uri + '"><i class="fa fa-pencil"></i></a>');
                 }
 
                 if (actions.delete) { 
-                    actionHtml.append('<a title ="'+actions.delete.label+'" class="btn btn-danger btn-xs handle-delete" href="'+actions.delete.uri+'"><i class="fa fa-times"></i></a>');
+                    actionHtml.append('<a title ="' + actions.delete.label + '" class="btn btn-danger btn-xs handle-delete" href="' + actions.delete.uri + '"><i class="fa fa-times"></i></a>');
                 }
             }
         };
@@ -54,11 +57,12 @@
                     e.preventDefault();
                     alertDestroy($(this).attr('href'));
                 });
-                $('.searchinput').keyup(function() {
-                        $('#table-index').DataTable().search($(this).val()).draw() ;
-                    });
-            
+
                 $('#table-index_wrapper .row:first').remove();
+
+                $('.searchinput').keyup(function() {
+                    $('#table-index').DataTable().search($(this).val()).draw() ;
+                });
             });
 
             $(".input-datepicker").datepicker({
