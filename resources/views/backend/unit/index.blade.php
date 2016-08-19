@@ -1,5 +1,68 @@
 @extends('layouts.backend')
 
+@section('title', isset($heading) ? $heading : 'Index')
+
+@push('prestyles')
+    {{ HTML::style('vendor/datatables-bs/css/dataTables.bootstrap.min.css') }}
+@endpush
+
+@push('prescripts')
+    {{ HTML::script("vendor/datatables/js/jquery.dataTables.min.js") }}
+    {{ HTML::script("vendor/datatables-bs/js/dataTables.bootstrap.min.js") }}
+
+    <script>
+        var flash_message = '{!! session("flash_message") !!}';
+        var datatableRoute = '/units/data';
+
+        var datatableColumns = [
+            {data: 'id', name: 'id', searchable: false},
+            {data: 'name', name: 'name'},
+            {data: 'short_name', name: 'short_name'},
+            {data: 'description', name: 'description'},
+            {data: 'actions', name: 'actions', orderable: false, searchable: false, sClass: "text-center"}
+        ];
+
+        var datatableOptions = {
+            createdRow: function (row, data, index) {
+                $('td', row).eq(0).css('display', 'none');
+                if (data.actions.show) {
+                    $('td', row).eq(1).html('<a title="' + data.actions.show.label + '" href="' + data.actions.show.uri + '">' + data.name + '</a>');
+                }
+                var actions = data.actions;
+                
+                return ! actions || actions.length < 1;
+
+                var actionHtml = $('td', row).eq(5);
+                actionHtml.html('');
+
+                if (actions.edit) { 
+                    actionHtml.append('<a title ="' + actions.edit.label + '" class="btn btn-default btn-xs" href="' + actions.edit.uri + '"><i class="fa fa-pencil"></i></a>');
+                }
+
+                if (actions.delete) { 
+                    actionHtml.append('<a title ="' + actions.delete.label + '" class="btn btn-danger btn-xs handle-delete" href="' + actions.delete.uri + '"><i class="fa fa-times"></i></a>');
+                }
+            }
+        };
+
+        $(function() {
+            renderTable(datatableRoute, datatableColumns, datatableOptions, function () {
+                $('.handle-delete').click(function (e) {
+                    e.preventDefault();
+                    alertDestroy($(this).attr('href'));
+                });
+
+                $('#table-index_wrapper .row:first').remove();
+
+                $('.searchinput').keyup(function() {
+                    $('#table-index').DataTable().search($(this).val()).draw() ;
+                });
+            
+            });
+        });
+    </script>
+@endpush
+
 @section('page-content')
     <div id="newUnit" class="modal fade">
         <div class="modal-dialog">
@@ -137,39 +200,16 @@
                             <!-- widget-content -->
                             <div class="widget-content">
                                 <div class="table-responsive">
-                                    <table class="table table-condensed table-default table-bordered table-hover" name="test">
+                                    <table class="table table-condensed table-default table-bordered table-hover" id="table-index">
                                         <thead>
                                             <tr class="active">
-                                                <th class="text-center">STT</th>
-                                                <th class="text-center">Mã</th>
-                                                <th>Tên Đơn vị</th>
-                                                <th class="text-center">Ký hiệu</th>
+                                                <th>Tên</th>
+                                                <th>Ký hiệu</th>
                                                 <th>Mô tả</th>
+                                                <th width='100'>Thao tác</th>
                                             </tr>
                                         </thead>
-
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">DV001</td>
-                                                <td>Ki-lo-met</td>
-                                                <td class="text-center">km</td>
-                                                <td>...</td>
-                                            </tr>
-                                        </tbody>
                                     </table>
-                                </div>
-                            </div>
-
-                            <div class="widget-footer">
-                                <div class="text-right">
-                                    <ul class="pagination">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>

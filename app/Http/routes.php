@@ -47,7 +47,10 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::resource('products', 'ProductsController');
         Route::resource('customers', 'CustomersController');
         Route::resource('providers', 'ProvidersController');
+        
         Route::resource('rooms', 'RoomsController');
+        Route::get('rooms/data', ['as' => 'rooms.data', 'uses' => 'UnitsController@getData']);
+
         Route::resource('units', 'UnitsController');
         Route::resource('roles', 'RolesController');
     });
