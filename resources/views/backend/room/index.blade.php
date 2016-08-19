@@ -4,64 +4,12 @@
     {{ HTML::style('assets/css/backend/providers/provider.css') }}
 @endpush
 
+@push('prescripts')
+    {{ HTML::script("assets/vue/room.js") }}
+@endpush    
 @section('page-content')
-    <div id="newProvider" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Thêm mới phòng ban</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="" class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <div class="required-wrapper provider-field">
-                                    <input type="text" class="form-required input-sm" placeholder="Tên phòng ban" />
-                                    <span class="fa fa-exclamation"></span>
-                                </div>
-
-                                <div class="required-wrapper provider-field">
-                                    <input type="text" class="form-required input-sm" placeholder="Tên trưởng phòng" />
-                                    <span class="fa fa-exclamation"></span>
-                                </div>
-
-                                <div class="required-wrapper provider-field">
-                                    <input type="number" class="form-control input-sm" placeholder="Số nhân viên" />
-                                </div>
-
-                                <div class="required-wrapper provider-field">
-                                    <input type="date" class="form-control input-sm" placeholder="Ngày thành lập"/>
-                                </div>
-
-                                <div class="required-wrapper provider-field">
-                                    <select class="form-control input-sm">
-                                        <option value="">Thuộc chi nhánh</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <textarea class='form-control input-sm' placeholder="Thông tin giới thiệu" rows='10'></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group text-center">
-                            <button class="btn btn-success" type="submit">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
-                            </button>
-
-                            <button class="btn btn-info" type="submit">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu và thêm mới
-                            </button>
-
-                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    @include('backend.room._form')
 
     <!-- #content -->
     <div id="content">
@@ -77,7 +25,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         </div>
-
+                        
                         <div id="providerList">
                             <!-- widget-tools -->
                             <div class="widget-tools">

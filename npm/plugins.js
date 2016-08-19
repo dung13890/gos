@@ -89,6 +89,10 @@ var plugins = {
     {
       in: 'app.js',
       out: 'app.js'
+    },
+    {
+      in: 'room.js',
+      out: 'room.js'
     }
   ]
 }

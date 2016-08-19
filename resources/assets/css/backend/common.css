@@ -430,3 +430,8 @@ footer p {
 .content-wrapper {
     min-height: 785px;
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+}

@@ -35,20 +35,20 @@ elixir(function(mix) {
 
     .scripts([
         'laroute.js',
-	    'common.js',
+        'common.js',
         'defined.js',
-	    'server.js',
+        'server.js',
         'laroute.js',
-	    '../bower/jquery-slimscroll/jquery.slimscroll.min.js',
+        '../bower/jquery-slimscroll/jquery.slimscroll.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
         '../bower/toastr/toastr.min.js',
         '../bower/bootstrap-toggle/js/bootstrap-toggle.min.js',
-	  ],'public/assets/js/backend/app.js')
+      ],'public/assets/js/backend/app.js')
     .version([
         'assets/css/backend/app.css',
         'assets/js/backend/app.js',
         'assets/vue/app.js'
-    	])
+        ])
     .browserSync({
         proxy: 'gos.dev'
       });
