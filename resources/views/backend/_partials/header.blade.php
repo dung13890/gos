@@ -24,7 +24,7 @@
                     <a href="javascript:void(0)" class="user-setting">{{ $me->fullname }}<span class="caret"></span></a>
                     <ul class="submenu">
                         <li><a data-toggle="modal" href="#profile"><i class="fa fa-wrench"> </i> Cài đặt</a></li>
-                        <li><a data-toggle="modal" href='#reset-password'><i class="fa fa-unlock"> </i> Đổi mật khẩu</a></li>
+                        <li><a data-toggle="modal" href='#password'><i class="fa fa-unlock"> </i> Đổi mật khẩu</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out"> </i> Đăng xuất</a></li>
                     </ul>
                 </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\UserRequest;
 use App\Http\Requests\Backend\ProfileRequest;
+use App\Http\Requests\Backend\PasswordRequest;
 use App\Contracts\Repositories\UserRepository;
 use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Services\UserService;
@@ -25,7 +26,7 @@ class UserController extends BackendController
         return $this->user;
     }
 
-    public function storeProfile(ProfileRequest $request, UserService $service)
+    public function updateProfile(ProfileRequest $request, UserService $service)
     {
         $data = $request->only('fullname', 'image', 'phone', 'address');
         if (!$data['image']) {
@@ -34,7 +35,18 @@ class UserController extends BackendController
         $entity = $this->user;
 
         return $this->updateData($data, $service, $entity);
+    }
 
+    public function updatePassword(PasswordRequest $request, UserService $service)
+    {
+        $data = $request->only('old_password', 'password', 'password_confirmation');
+        $entity = $this->user;
+        if (\Hash::check($data['old_password'], $this->user->password)) {
+
+            return $this->updateData($data, $service, $entity);
+        }
+
+        return response()->json(['code' => '401', 'message' => 'Mật khẩu không đúng' ]);
     }
 
     public function getData($items = null)
@@ -109,7 +121,7 @@ class UserController extends BackendController
     public function store(UserRequest $request, UserService $service)
     {
         $this->before(__FUNCTION__);
-        $data = $request->only($this->repository->getFillable());
+        $data = $request->all();
 
         return $this->storeData($data, $service);
     }
@@ -123,7 +135,7 @@ class UserController extends BackendController
 
     public function update(UserRequest $request, UserService $service, $id)
     {
-        $data = $request->only($this->repository->getFillable());
+        $data = $request->all();
         $entity = $this->repository->findOrFail($id);
         $this->before(__FUNCTION__, $entity);
 

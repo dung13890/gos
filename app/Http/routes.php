@@ -38,7 +38,8 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::PATCH('notification/{notification}', array('as' => 'notification.read', 'uses' => 'DashboardController@readNotification'));
         
         Route::get('user/ajax/profile', ['as' => 'user.ajax.profile', 'uses' => 'UserController@ajaxProfile']);
-        Route::post('user/store/profile', ['as' => 'user.store.profile', 'uses' => 'UserController@storeProfile']);
+        Route::post('user/update/profile', ['as' => 'user.update.profile', 'uses' => 'UserController@updateProfile']);
+        Route::post('user/update/password', ['as' => 'user.update.password', 'uses' => 'UserController@updatePassword']);
         Route::get('user/data/room/{room}', ['as' => 'user.data.room', 'uses' => 'UserController@getDataWithRoom']);
         Route::get('user/data', ['as' => 'user.data', 'uses' => 'UserController@getData']);
         Route::get('user/room/{room}', ['as' => 'user.room', 'uses' => 'UserController@room']);
