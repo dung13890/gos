@@ -31,7 +31,7 @@
                             <label for="name" class="col-sm-3">Họ tên</label>
                             <div class="col-sm-9">
                                 <input type="text" v-validate:fullname="rules" v-model="value.fullname" :value="item.fullname" class="form-control">
-                                <span v-if="$validation.fullname.errors">{{ $validation.fullname.errors[0].message  }}</span>
+                                <span class="error" v-if="$validation.fullname.errors">{{ $validation.fullname.errors[0].message  }}</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -45,14 +45,14 @@
                             <label for="phone" class="col-sm-3">Điện thoại</label>
                             <div class="col-sm-9">
                                 <input type="text" v-validate:phone="rules" v-model="value.phone" :value="item.phone" class="form-control"/>
-                                <span v-if="$validation.phone.errors">{{ $validation.phone.errors[0].message  }}</span>
+                                <span class="error" v-if="$validation.phone.errors">{{ $validation.phone.errors[0].message  }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address" class="col-sm-3">Địa chỉ</label>
                             <div class="col-sm-9">
                                 <input type="text" v-validate:address="rules" v-model="value.address" :value="item.address" class="form-control"/>
-                                <span v-if="$validation.address.errors">{{ $validation.address.errors[0].message  }}</span>
+                                <span class="error" v-if="$validation.address.errors">{{ $validation.address.errors[0].message  }}</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -97,11 +97,16 @@
                         message: 'Nhập từ 2 ký tự trở lên.'
                     },
                     maxlength: {
-                        rule: 40,
+                        rule: 50,
                         message: 'Không được nhiều hơn 40 ký tự.'
                     }
                 },
-                value: {},
+                value: {
+                    fullname: '',
+                    gender: '',
+                    phone: '',
+                    address: '',
+                },
                 errors: {},
                 fileImage: {},
                 image: '',
@@ -146,11 +151,16 @@
 
                     formData.append('fullname', self.value.fullname);
                     formData.append('phone', self.value.phone);
+                    formData.append('gender', self.value.gender);
                     formData.append('address', self.value.address);
                     
                     self.$parent.UserService.updateProfile(formData).then((response) => {
-                        toastr.success(response.message);
-                        $('#profile').modal('hide');
+                        if (response.code === 0) {
+                            toastr.success(response.message)
+                            $('#profile').modal('hide');
+                        } else {
+                            toastr.error(response.message)
+                        }
                     }, (errors) => {
                         if (errors.errors) {
                             self.isError = true;

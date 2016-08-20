@@ -32,7 +32,7 @@
                                 <label for="" class="col-sm-3">Xác nhận MK</label>
                                 <div class="col-sm-9">
                                     <input type="password" v-validate:password_confirmation="rules" v-model="value.password_confirmation" class="form-control"/>
-                                    <span v-if="$validation.password_confirmation.errors">{{ $validation.password_confirmation.errors[0].message  }}</span>
+                                    <span class="error" v-if="$validation.password_confirmation.errors">{{ $validation.password_confirmation.errors[0].message  }}</span>
                                 </div>
                             </div>
                         </form>

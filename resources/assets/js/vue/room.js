@@ -14,7 +14,7 @@ new Vue({
         return {
             room: {
                 name: '',
-                description: ''
+                description: '',
                 organizational: '',
                 manager: '',
                 member: '',

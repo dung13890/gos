@@ -2,15 +2,29 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Backend\RoleRequest;
+use App\Model\Role;
+use App\Model\Permission;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-class RolesController extends Controller
+class RolesController extends BackendController
 {
+    protected $dataSelect = ['name', 'description'];
+
+    public function __construct(Role $role)
+    {
+        parent::__construct($role);
+    }
+
+    public function ajaxPermission()
+    {
+        return app(Permission::class)->all()->chunk(2);
+    }
+
     public function index()
     {
-        return view('backend.role.index');
+        parent::index();
+        $this->compacts['items'] = $this->repository->paginate(10);
+        
+        return $this->viewRender();
     }
 }
