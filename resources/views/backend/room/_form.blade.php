@@ -22,6 +22,7 @@
                                         />
                                         <span class="fa fa-exclamation"></span>
                                         <span class="error" v-if="$validation.name.errors">@{{ $validation.name.errors[0].message  }}</span>
+                                        <span class="error">@{{ errors.name }}</span>
                                     </div>
 
                                     <div class="required-wrapper form-field">
@@ -35,6 +36,7 @@
                                         />
                                         <span class="fa fa-exclamation"></span>
                                         <span class="error" v-if="$validation.manager.errors">@{{ $validation.manager.errors[0].message  }}</span>
+                                        <span class="error">@{{ errors.manager }}</span>
                                     </div>
 
                                     <div class="required-wrapper form-field">
@@ -49,10 +51,12 @@
                                         />
 
                                         <span class="error" v-if="$validation.member.errors">@{{ $validation.member.errors[0].message }}</span>
+                                        <span class="error">@{{ errors.member }}</span>
                                     </div>
 
                                     <div class="required-wrapper form-field">
-                                        <input v-model='room.founding' type="date" class="form-control input-sm" placeholder="Ngày thành lập" value="" />
+                                        <input v-model='room.founding' type="date" class="form-control input-sm" placeholder="Ngày thành lập" />
+                                        <span class="error">@{{ errors.founding }}</span>
                                     </div>
 
                                     <div class="required-wrapper form-field">
@@ -67,6 +71,7 @@
                                             <option value=1"">HCM</option>
                                         </select>
                                         <span class="error" v-if="$validation.branch_id.errors">@{{ $validation.branch_id.errors[0].message }}</span>
+                                        <span class="error">@{{ errors.branch_id }}</span>
                                     </div>
                                 </div>
 
@@ -74,8 +79,14 @@
                                     <textarea v-model='room.description' 
                                         class='form-control input-sm'
                                         placeholder="Thông tin giới thiệu"
-                                        rows='10'>    
+                                        rows='10'
+                                        v-validate:description="{
+                                            maxlength: {rule: 200, message: 'Không được vượt quá 200 ký tự'}
+                                        }"
+                                    >    
                                     </textarea>
+                                    <span class="error" v-if="$validation.description.errors">@{{ $validation.description.errors[0].message }}</span>
+                                    <span class="error">@{{ errors.description }}</span>
                                 </div>
                             </div>
 

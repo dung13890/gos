@@ -33,9 +33,8 @@ new Vue({
             formData.append('_token', token);
 
             this.$validate(true, function () {
-                if (self.$validation.invalid) {
-                    return;
-                }
+
+                if (self.$validation.invalid){ return; }
 
                 formData.append('name', self.room.name);
                 formData.append('description', self.room.description);
@@ -45,11 +44,13 @@ new Vue({
                 formData.append('branch_id', self.room.branch_id);
 
                 RoomService.storeRoom(formData).then((response) => {
+                    console.log(response);
+
                     toastr.success(response.message);
-                }, (errors) => {
-                    if (errors.errors) {
+                }, (response) => {
+                    if (response.errors) {
                         self.isError = true;
-                        self.errors = errors.errors;
+                        self.errors = response.errors;
                     }
                 });
             })

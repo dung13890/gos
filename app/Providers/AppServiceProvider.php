@@ -94,6 +94,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Services\PositionServiceJob::class
         );
 
+        $this->app->bind(
+            \App\Contracts\Services\RoomService::class,
+            \App\Services\RoomServiceJob::class
+        );
+
         $this->composers();
     }
 

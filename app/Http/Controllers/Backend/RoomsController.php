@@ -9,11 +9,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\RoomRequest;
 use App\Contracts\Services\RoomService;
 
-class RoomsController extends Controller
+class RoomsController extends BackendController
 {
     public function index()
     {
-        return view('backend.room.index');
+        parent::index();
+        return $this->viewRender([], 'room.index');
     }
 
     public function store(RoomRequest $request, RoomService $service)
