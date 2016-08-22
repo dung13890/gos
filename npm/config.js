@@ -7,7 +7,7 @@ var config = {
       },
       scripts: {
         in: 'resources/assets/js/app',
-        out: 'public/assets/js'
+        out: 'public/assets/js/backend'
       },
       img: {
         in: 'resources/assets/img',

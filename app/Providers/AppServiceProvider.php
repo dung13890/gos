@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (env('APP_ENV') == 'local' || env('APP_ENV') == 'dev') {
+        if (env('APP_ENV') === 'local' || env('APP_ENV') === 'dev') {
             $this->app->register(\Lord\Laroute\LarouteServiceProvider::class);
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
         }
@@ -98,7 +98,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Contracts\Services\RoomService::class,
             \App\Services\RoomServiceJob::class
         );
-
+        
         $this->composers();
     }
 

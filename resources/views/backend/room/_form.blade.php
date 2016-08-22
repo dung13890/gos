@@ -3,13 +3,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Thêm mới phòng ban @{{ test }}</h4>
+                    <h4 class="modal-title">@{{ modalTitle }}</h4>
                 </div>
                 <div class="modal-body">
                     <validator name="validation" :classes="{ touched: 'touched-validator', dirty: 'dirty-validator' }">
                         <form action="" class="form-horizontal">
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="required-wrapper form-field">
                                         <input type='text' v-model='room.name' 
                                             class='form-required input-sm'
@@ -65,28 +65,30 @@
                                             v-validate:branch_id="{
                                                 required: {rule: true, message: 'Vui lòng chọn chi nhánh'}
                                             }">
-                                            <option value="">Thuộc chi nhánh</option>
-                                            <option value="1">Hà Nội</option>
-                                            <option value=2"">Hải Phòng</option>
-                                            <option value=1"">HCM</option>
+                                            @if (isset($branches) && $branches != null)
+                                                <option value=''>--- Chi nhánh ---</option>
+                                                @foreach($branches as $branch)
+                                                    <option value="{{ $branch['id'] }}"> {!! $branch['name'] !!} </option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                         <span class="error" v-if="$validation.branch_id.errors">@{{ $validation.branch_id.errors[0].message }}</span>
                                         <span class="error">@{{ errors.branch_id }}</span>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <textarea v-model='room.description' 
-                                        class='form-control input-sm'
-                                        placeholder="Thông tin giới thiệu"
-                                        rows='10'
-                                        v-validate:description="{
-                                            maxlength: {rule: 200, message: 'Không được vượt quá 200 ký tự'}
-                                        }"
-                                    >    
-                                    </textarea>
-                                    <span class="error" v-if="$validation.description.errors">@{{ $validation.description.errors[0].message }}</span>
-                                    <span class="error">@{{ errors.description }}</span>
+                                    <div class="required-wrapper form-field">
+                                        <textarea v-model='room.description'
+                                            class='form-control input-sm'
+                                            placeholder="Thông tin giới thiệu"
+                                            rows='10'
+                                            v-validate:description="{
+                                                maxlength: {rule: 200, message: 'Không được vượt quá 200 ký tự'}
+                                            }"
+                                        >    
+                                        </textarea>
+                                        <span class="error" v-if="$validation.description.errors">@{{ $validation.description.errors[0].message }}</span>
+                                        <span class="error">@{{ errors.description }}</span>
+                                    </div>
                                 </div>
                             </div>
 

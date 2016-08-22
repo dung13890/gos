@@ -20,6 +20,15 @@ class Branch extends Model
         'status',
     ];
 
+    public static function all($columns = [])
+    {
+        if ($columns != null) {
+            return self::select($columns)->get();
+        } else {
+            return self::all();
+        }
+    }
+
     public function locations()
     {
         return $this->belongsToMany(Location::class);
