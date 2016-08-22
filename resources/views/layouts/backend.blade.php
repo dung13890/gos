@@ -41,7 +41,7 @@
         {{ HTML::script('vendor/jquery/jquery.min.js') }}
         {{ HTML::script('vendor/bootstrap/js/bootstrap.min.js') }}
         {{ HTML::script(elixir('assets/js/backend/app.js')) }}
-        {{ HTML::script(elixir('assets/vue/app.js')) }}
         @stack('prescripts')
+        {{ HTML::script(elixir('assets/vue/app.js')) }}
     </body>
 </html>

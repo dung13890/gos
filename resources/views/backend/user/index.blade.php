@@ -35,7 +35,9 @@
                 }
                 var actions = data.actions;
                 
-                return ! actions || actions.length < 1;
+                if (! actions || actions.length < 1) {
+                    return ;
+                }
 
                 var actionHtml = $('td', row).eq(5);
 

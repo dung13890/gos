@@ -49,10 +49,13 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::resource('customers', 'CustomersController');
         Route::resource('providers', 'ProvidersController');
         
-        Route::resource('rooms', 'RoomsController', ['except' => ['create', 'edit']]);
         Route::get('rooms/data', ['as' => 'rooms.data', 'uses' => 'UnitsController@getData']);
+        Route::resource('rooms', 'RoomsController', ['except' => ['create', 'edit']]);
 
         Route::resource('units', 'UnitsController');
+
+        Route::get('roles/ajax/permission', ['as' => 'roles.ajax.permission', 'uses' => 'RolesController@ajaxPermission']);
+        Route::get('roles/data', ['as' => 'roles.data', 'uses' => 'RolesController@getData']);
         Route::resource('roles', 'RolesController');
     });
 });

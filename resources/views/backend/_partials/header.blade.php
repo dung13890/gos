@@ -80,3 +80,5 @@
         </nav>
     </div>
 </div>
+<modal-profile :item="itemProfile"></modal-profile>
+<modal-password></modal-password>

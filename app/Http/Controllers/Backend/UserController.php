@@ -28,7 +28,7 @@ class UserController extends BackendController
 
     public function updateProfile(ProfileRequest $request, UserService $service)
     {
-        $data = $request->only('fullname', 'image', 'phone', 'address');
+        $data = $request->only('fullname', 'image', 'gender', 'phone', 'address');
         if (!$data['image']) {
             unset($data['image']);
         }
@@ -46,7 +46,7 @@ class UserController extends BackendController
             return $this->updateData($data, $service, $entity);
         }
 
-        return response()->json(['code' => '401', 'message' => 'Mật khẩu không đúng' ]);
+        return response()->json(['code' => '401', 'message' => 'Mật khẩu không đúng']);
     }
 
     public function getData($items = null)
