@@ -3,12 +3,14 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import RoomService from './services/room';
+
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
 var token = $('meta[name="csrf-token"]').attr('content')
+
 new Vue({
-    el: '#newProvider',
+    el: '#RoomsController',
 
     data: function () {
         return {
@@ -21,19 +23,20 @@ new Vue({
                 founding: '',
                 branch_id: '',
             },
+            modalTitle: '',
             errors: {},
             isError: false,
+            form: '',
         }
     },
 
     methods: {
-        submitForm: function () {
+        submitForm: function() {
             var self = this;
             var formData = new FormData();
             formData.append('_token', token);
 
             this.$validate(true, function () {
-
                 if (self.$validation.invalid){ return; }
 
                 formData.append('name', self.room.name);
@@ -43,9 +46,7 @@ new Vue({
                 formData.append('founding', self.room.founding);
                 formData.append('branch_id', self.room.branch_id);
 
-                RoomService.storeRoom(formData).then((response) => {
-                    console.log(response);
-
+                RoomService.store(formData).then((response) => {
                     toastr.success(response.message);
                 }, (response) => {
                     if (response.errors) {
@@ -54,6 +55,25 @@ new Vue({
                     }
                 });
             })
+        },
+
+        create: function() {
+            var self = this;
+            self.modalTitle = 'Thêm mới phòng ban';
+        },
+
+        edit: function(id) {
+            var self = this;
+            self.modalTitle = 'Sửa thông tin phòng ban';
+
+            RoomService.edit(id).then((response) => {
+                self.room = response.room;
+            }, (response) => {
+                if (response.errors) {
+                    self.isError = true;
+                    self.errors = response.errors;
+                }
+            });
         }
     },
 
@@ -61,4 +81,12 @@ new Vue({
         RoomService.setRouter(window.laroute);
         RoomService.setHttp(this.$http);
     },
+
+    ready: function () {
+        var self = this;
+        $(document).on('click', '.edit-room', function() {
+            var id = parseInt($(this).attr('id'));
+            self.edit(id);
+        });
+    }
 });

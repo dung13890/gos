@@ -53,7 +53,7 @@ abstract class BackendController extends AbstractController
             $this->e['code'] = 100;
             $this->e['message'] = $this->trans('object_created_unsuccessfully');
         }
-        $redirect = $redirect ? $redirect : route($this->repositoryName . '.index');
+        $redirect = $redirect ? $redirect : route($this->repositoryName . 's' . '.index');
         if (is_callable($callback)) {
             call_user_func_array($callback, [$item]);
         }

@@ -49,8 +49,8 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::resource('customers', 'CustomersController');
         Route::resource('providers', 'ProvidersController');
         
-        Route::get('rooms/data', ['as' => 'rooms.data', 'uses' => 'UnitsController@getData']);
-        Route::resource('rooms', 'RoomsController', ['except' => ['create', 'edit']]);
+        Route::get('rooms/data', ['as' => 'rooms.data', 'uses' => 'RoomsController@getData']);
+        Route::resource('rooms', 'RoomsController', ['except' => ['create']]);
 
         Route::resource('units', 'UnitsController');
 
