@@ -13,7 +13,7 @@ class RoleRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,19 @@ class RoleRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        if (isset($this->roles))
+        {
+            return [
+                'name' => 'required|min:2|max:50|unique:roles,name,' . $this->roles,
+                'description' => 'max:200',
+                'perms' => "required",
+            ];
+        } else {
+            return [
+                'name' => 'required|min:2|max:50|unique:roles',
+                'description' => 'max:200',
+                'perms' => "required",
+            ];
+        }
     }
 }

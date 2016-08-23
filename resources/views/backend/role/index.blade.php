@@ -101,7 +101,7 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->description }}</td>
                                             <td>
-                                                <a title ="xem" class="btn btn-default btn-xs" href="{{ route('roles.edit', $item->id) }}"><i class="fa fa-pencil"></i></a>
+                                                <a title ="xem" class="btn btn-default btn-xs" href="#new-role" data-id="{{ $item->id }}" data-toggle="modal"><i class="fa fa-pencil"></i></a>
                                                 <a title ="xóa" class="btn btn-danger btn-xs handle-delete" href="{{ route('roles.destroy', $item->id) }}"><i class="fa fa-times"></i></a>
                                             </td>
                                         </tr>

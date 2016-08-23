@@ -54,7 +54,9 @@ Route::group(['middlewareGroups' => ['web']], function () {
 
         Route::resource('units', 'UnitsController');
 
+        Route::post('roles/ajax/update/{roles}', ['as' => 'roles.ajax.update', 'uses' => 'RolesController@ajaxUpdate']);
         Route::get('roles/ajax/permission', ['as' => 'roles.ajax.permission', 'uses' => 'RolesController@ajaxPermission']);
+        Route::get('roles/ajax/{roles}', ['as' => 'roles.ajax.role', 'uses' => 'RolesController@ajaxRole']);
         Route::get('roles/data', ['as' => 'roles.data', 'uses' => 'RolesController@getData']);
         Route::resource('roles', 'RolesController');
     });
