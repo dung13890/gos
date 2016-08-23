@@ -3,7 +3,7 @@
         <!-- .logo -->
         <div class="logo pull-left">
             <a href="/" title="">
-                <img src="/assets/img/logo.png" class="img-responsive" alt="">
+                <!-- <img src="/assets/img/logo.png" class="img-responsive" alt=""> -->
             </a>
         </div>
         <!-- .menu-toggle -->
@@ -14,18 +14,31 @@
         <!-- .menu -->
         <nav class="menu pull-right" references="menu-system">
             <ul>
-                <li><a href="#">Quản lý kho <i class='glyphicon glyphicon-th'></i></a></li>
-                <li><a href="{{ route('products.index') }}">Vật tư hàng hóa <i class='glyphicon glyphicon-shopping-cart'></i></a></li>
-                <li><a href="{{ route('customers.index') }}">Quản lý khách hàng <i class="glyphicon glyphicon-user"></i></a></li>
-                <li><a href="#">Chi nhánh <i class="glyphicon glyphicon-object-align-left"></i></a></li>
-                <li><a href="#">Garas <i class="glyphicon glyphicon-sound-dolby"></i></a></li>
-                <li><a href="#">Thiết lập <span class="glyphicon glyphicon-cog"></span></a></li>
+                <li><a href="#">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
+                <li><a href="javascript:void(0)">Báo cáo tổng hợp <i class='glyphicon glyphicon-chevron-down'></i></a>
+                    <ul class="submenu">
+                        <li><a href="/user"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo hàng hóa</a></li>
+                        <li><a href="/roles"><i class="glyphicon glyphicon-ok-circle"> </i> Báo cáo khách hàng</a></li>
+                        <li><a href="/logout"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo doanh thu</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ route('customers.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+                <li><a href="#">Phiếu thu <i class="glyphicon glyphicon-equalizer"></i></a></li>
+                <li><a href="#">Phiếu chi <i class="glyphicon glyphicon-equalizer"></i></a></li>
+                <li>
+                    <a href="javascript:void(0)">Cài đặt <span class="glyphicon glyphicon-cog"></span></a>
+                    <ul class="submenu">
+                        <li><a href="/user"><i class="glyphicon glyphicon-user"></i> Quản lý người dùng</a></li>
+                        <li><a href="/roles"><i class="glyphicon glyphicon-lock"> </i> Quản lý nhóm quyền</a></li>
+                        <li><a href="/logout"><i class="glyphicon glyphicon-wrench"></i> Cấu hình hệ thống</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript:void(0)" class="user-setting">{{ $me->fullname }}<span class="caret"></span></a>
                     <ul class="submenu">
                         <li><a data-toggle="modal" href="#profile"><i class="fa fa-wrench"> </i> Cài đặt</a></li>
                         <li><a data-toggle="modal" href='#password'><i class="fa fa-unlock"> </i> Đổi mật khẩu</a></li>
-                        <li><a href="/logout"><i class="fa fa-sign-out"> </i> Đăng xuất</a></li>
+                        <li><a href="/logout"><i class="glyphicon glyphicon-off"> </i> Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
@@ -37,44 +50,116 @@
     <div class="container-fluid">
         <nav class="menu" references="menu-tasks">
             <ul>
-                <li>
-                    <a href="#" class="active">
-                    <i class='glyphicon glyphicon-retweet'></i>
-                    Nghiệp vụ
-                    <i class='glyphicon glyphicon-random'></i></a>
+                <li class="node-system">
+                    <a href="javascript:void(0)" class="active">
+                        Danh mục hệ thống
+                        <i class='glyphicon glyphicon-random'></i></a>
+                    <ul class="sub-node-system">
+                        <li>
+                            <a href="{{ route('products.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý hàng hóa vật tư
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm hàng hóa
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm khách hàng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('units.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý đơn vị tính
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý mã vạch
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý hãng sản xuất
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý đối tác
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('providers.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhà cung cấp
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý kho
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý chi nhánh
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý chức vụ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('rooms.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý phòng ban
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
                     <a href="/providers"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quản lý nhà cung cấp</a>
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Hóa đơn bán hàng</a>
                 </li>
+
+                <li>
+                    <a href="/providers"  title="Hóa đơn mua hàng">
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Bán buôn - Bán sỉ</a>
+                </li>
+
                 <li>
                     <a href="/rooms"  title="Phòng ban">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quản lý phòng ban</a>
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Hóa đơn mua hàng</a>
                 </li>
 
                 <li>
                     <a href="/units"  title="Đơn vị tính">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Đơn vị tính</a>
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Chuyển kho nội bộ</a>
                 </li>
                 <li>
                     <a href="/roles"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Quản lý nhóm quyền</a>
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Phiếu hủy hàng</a>
                 </li>
 
                 <li>
                     <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Nhập hàng trả lại</a>
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Nhập hàng trả lại</a>
                 </li>
 
                 <li>
                     <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Xuất hàng trả lại</a>
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Xuất hàng trả lại</a>
                 </li>
 
                 <li>
                     <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-ok-circle"></i>&nbsp; Phiếu hủy hàng hóa</a>
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Cân đối hàng tồn</a>
+                </li>
+
+                <li>
+                    <a href="{{ route('customers.index') }}"  title="Hóa đơn mua hàng">
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Khách hàng</a>
                 </li>
             </ul>
         </nav>
