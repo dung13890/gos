@@ -70,15 +70,21 @@
                                     <option value="">Chọn sự kiện</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Theo công nợ</span>
-                                </label>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 60%;">
-                                        <span class="sr-only"></span>
-                                    </div>
-                                </div>
+                                Từ ngày
+                                <input type="date" class="form-control input-sm" />
+                                <br/>
+                                Đến ngày
+                                <input type="date" class="form-control input-sm" />
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button class="btn btn-info" type="button">
+                                    <span class="glyphicon glyphicon-road"></span> Tìm kiếm
+                                </button>
+
+                                <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
                             </div>
                         </div>
                         <div class="sb-footer"></div>
@@ -165,7 +171,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @for($i = 1; $i <= 10; $i++)
+                                            @for($i = 1; $i <= 15; $i++)
                                                 <tr>
                                                     <td class="text-center">1</td>
                                                     <td class="text-center">KH001</td>

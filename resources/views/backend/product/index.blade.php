@@ -5,98 +5,7 @@
 @endpush
 
 @section('page-content')
-    <div id="newProduct" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Thêm mới vật tư hàng hóa</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="" class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Mã sản phẩm">
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" value="Model">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Tên sản phẩm">
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <select name="" id="" class="form-control input-sm">
-                                    <option value="">Đơn vị tính</option>
-                                </select>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm " placeholder="Nhóm sản phẩm">
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Chủng loại">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Xuất xứ">
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <select name="" id="" class="form-control input-sm">
-                                    <option value="">Đơn vị sản xuất</option>
-                                </select>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Năm sản xuất">
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Kích thước, trọng lượng">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Hạn sử dụng">
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Thông tin báo cáo">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Thông số kỹ thuật">
-                            </div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Tồn tối thiểu">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 form-field">
-                                <input type="text" class="form-control input-sm" placeholder="Tồn tối đa">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkbox">
-                                    <label><input type="checkbox"> Đề nghị thanh toán</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group text-center">
-                            <button class="btn btn-success" type="submit">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
-                            </button>
-
-                            <button class="btn btn-info" type="submit">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu và thêm mới
-                            </button>
-
-                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- <div class="modal-footer"></div> -->
-            </div>
-        </div>
-    </div>
-
-        <!-- #content -->
+    @include('backend.product._form')
     <div id="content">
         <div class="container-fluid">
             <h3>Quản hàng hóa vật tư</h3>
@@ -141,6 +50,16 @@
                                     <option value="">Chọn kho hàng</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="" class="lineside">
+                                    <span class="text">Theo nhóm hàng</span>
+                                </label>
+                                <select name="" id="" class="form-control input-sm">
+                                    <option value="">Chọn nhóm hàng</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="" class="lineside">
                                     <span class="text">Theo hàng hóa</span>
@@ -165,21 +84,14 @@
                                         <input type="radio" name="test"> Đang hết hạn sử dụng
                                     </label>
                                 </div>
-                                <div class="radio">
-                                    <label for="">
-                                        <input type="radio" name="test"> Chưa hết hạn
-                                    </label>
-                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Theo khoảng giá</span>
-                                </label>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 60%;">
-                                        <span class="sr-only"></span>
-                                    </div>
-                                </div>
+                            
+                            <div class="form-group text-center">
+                                <button class="btn btn-info" type="button">
+                                    <span class="glyphicon glyphicon-road"></span> Tìm kiếm
+                                </button>
+
+                                <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
                             </div>
                         </div>
                         <div class="sb-footer"></div>
@@ -203,9 +115,8 @@
                                     <div class="col-sm-6">
                                         <form action="" class="form-inline">
                                             <div class="form-group">
-                                                <!-- <input type="text" class="form-control input-sm" placeholder="Mã hoặc tên..." /> -->
                                                 <select name="rows" table-name="test" class="form-control input-sm">
-                                                    <option value="---">----</option>
+                                                    <option value="---">Xem</option>
                                                     <option value="5">5</option>
                                                     <option value="10">10</option>
                                                     <option value="15">15</option>
@@ -236,20 +147,6 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="tool">
-                                            <div class="btn-group">
-                                                <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">
-                                                    <span class="fa fa-bars"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -274,198 +171,20 @@
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">SP0123</td>
-                                                <td>Samsung Galaxy S3</td>
-                                                <td class="text-center">Cái</td>
-                                                <td>2,000,000</td>
-                                                <td>100</td>
-                                                <td>5%</td>
-                                                <td>190,000,000</td>
-                                                <td class="text-center">01/12/2019</td>
-                                                <td class="text-center"> ... </td>
-                                            </tr>
+                                            @for ($i = 1; $i <= 15; $i++)
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">SP0123</td>
+                                                    <td>Samsung Galaxy S3</td>
+                                                    <td class="text-center">Cái</td>
+                                                    <td>2,000,000</td>
+                                                    <td>100</td>
+                                                    <td>5%</td>
+                                                    <td>190,000,000</td>
+                                                    <td class="text-center">01/12/2019</td>
+                                                    <td class="text-center"> ... </td>
+                                                </tr>
+                                            @endfor
                                         </tbody>
                                     </table>
                                 </div>

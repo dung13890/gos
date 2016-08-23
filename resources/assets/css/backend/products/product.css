@@ -24,3 +24,12 @@
 @media (max-width: 320px) {
 
 }
+
+.image-product-preview {
+	border: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.image-product-preview:hover {
+	cursor: pointer;
+}
