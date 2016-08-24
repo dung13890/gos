@@ -61,12 +61,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('groupproducts.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm hàng hóa
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('groupcustomers.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm khách hàng
                             </a>
                         </li>
@@ -81,13 +81,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('manufacturers.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý hãng sản xuất
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý đối tác
                             </a>
                         </li>
                         <li>
@@ -96,17 +91,17 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('warehouses.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý kho
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('branches.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý chi nhánh
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('positions.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý chức vụ
                             </a>
                         </li>
@@ -119,7 +114,7 @@
                 </li>
 
                 <li>
-                    <a href="/providers"  title="Hóa đơn mua hàng">
+                    <a href="{{ url('bills/sale') }}"  title="Hóa đơn mua hàng">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Hóa đơn bán hàng</a>
                 </li>
 

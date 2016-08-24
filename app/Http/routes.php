@@ -57,6 +57,14 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::get('roles/ajax/permission', ['as' => 'roles.ajax.permission', 'uses' => 'RolesController@ajaxPermission']);
         Route::get('roles/data', ['as' => 'roles.data', 'uses' => 'RolesController@getData']);
         Route::resource('roles', 'RolesController');
+
+        Route::resource('groupproducts', 'GroupProductsController');
+        Route::resource('groupcustomers', 'GroupCustomersController');
+        Route::resource('manufacturers', 'ManufacturersController');
+        Route::resource('warehouses', 'WarehousesController');
+        Route::resource('branches', 'BranchesController');
+        Route::resource('positions', 'PositionsController');
+
+        Route::get('bills/sale', 'BillsController@sale');
     });
 });
-

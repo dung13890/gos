@@ -17,21 +17,21 @@
                             <div class="form-group">
                                 <label for="" class="col-sm-3">Mật khẩu cũ</label>
                                 <div class="col-sm-9">
-                                    <input type="password" v-validate:old_password="rules" v-model="value.old_password" class="form-control"/>
+                                    <input type="password" v-validate:old_password="rules" v-model="value.old_password" class="form-control input-sm"/>
                                     <span class="error" v-if="$validation.old_password.errors">{{ $validation.old_password.errors[0].message  }}</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-sm-3">Mật khẩu mới</label>
                                 <div class="col-sm-9">
-                                    <input type="password" v-validate:password="rules" v-model="value.password" class="form-control"/>
+                                    <input type="password" v-validate:password="rules" v-model="value.password" class="form-control input-sm"/>
                                     <span class="error" v-if="$validation.password.errors">{{ $validation.password.errors[0].message  }}</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-sm-3">Xác nhận MK</label>
                                 <div class="col-sm-9">
-                                    <input type="password" v-validate:password_confirmation="rules" v-model="value.password_confirmation" class="form-control"/>
+                                    <input type="password" v-validate:password_confirmation="rules" v-model="value.password_confirmation" class="form-control input-sm"/>
                                     <span class="error" v-if="$validation.password_confirmation.errors">{{ $validation.password_confirmation.errors[0].message  }}</span>
                                 </div>
                             </div>
