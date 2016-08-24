@@ -18,19 +18,19 @@
                         <div class="form-group">
                             <label for="username" class="col-sm-3">Tài khoản</label>
                             <div class="col-sm-9">
-                                <input type="text" disabled="true" value="{{ item.username }}" class="form-control">
+                                <input type="text" disabled="true" value="{{ item.username }}" class="form-control input-sm" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="username" class="col-sm-3">Email</label>
                             <div class="col-sm-9">
-                                <input type="text" disabled="true" value="{{ item.email }}" class="form-control">
+                                <input type="text" disabled="true" value="{{ item.email }}" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name" class="col-sm-3">Họ tên</label>
                             <div class="col-sm-9">
-                                <input type="text" v-validate:fullname="rules" v-model="value.fullname" :value="item.fullname" class="form-control">
+                                <input type="text" v-validate:fullname="rules" v-model="value.fullname" :value="item.fullname" class="form-control input-sm">
                                 <span class="error" v-if="$validation.fullname.errors">{{ $validation.fullname.errors[0].message  }}</span>
                             </div>
                         </div>
@@ -44,14 +44,14 @@
                         <div class="form-group">
                             <label for="phone" class="col-sm-3">Điện thoại</label>
                             <div class="col-sm-9">
-                                <input type="text" v-validate:phone="rules" v-model="value.phone" :value="item.phone" class="form-control"/>
+                                <input type="text" v-validate:phone="rules" v-model="value.phone" :value="item.phone" class="form-control input-sm"/>
                                 <span class="error" v-if="$validation.phone.errors">{{ $validation.phone.errors[0].message  }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address" class="col-sm-3">Địa chỉ</label>
                             <div class="col-sm-9">
-                                <input type="text" v-validate:address="rules" v-model="value.address" :value="item.address" class="form-control"/>
+                                <input type="text" v-validate:address="rules" v-model="value.address" :value="item.address" class="form-control input-sm"/>
                                 <span class="error" v-if="$validation.address.errors">{{ $validation.address.errors[0].message  }}</span>
                             </div>
                         </div>
