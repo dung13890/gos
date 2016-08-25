@@ -55,10 +55,11 @@
 .cus-info > li {
     float: left;
     width: 100%;
-    padding: 5px 3px;
-    border: 1px dashed #cccccc;
+    padding: 5px 0px;
+    border-bottom: 1px dashed #cccccc;
     margin-bottom: 5px;
 }
+
 
 .cus-info > li > strong {
     float: left;
@@ -164,4 +165,23 @@
 
 @media (max-width: 320px) {
 
+}
+
+#newProduct {
+    margin-top: 35px;
+}
+
+#newProduct .modal-dialog {
+    width: 60%;
+}
+
+#newProduct .modal-body form input,
+#newProduct .modal-body form select {
+    margin-bottom: 3px;
+}
+
+@media (max-width: 767px) {
+    #newProduct .modal-dialog {
+        width: 95%;
+    }
 }

@@ -66,7 +66,7 @@
                                                 <th class="text-center" width="100">Khuyễn mãi</th>
                                                 <th class="text-right">Thành tiền</th>
                                                 <th class="text-center">HSD</th>
-                                                <th width="100px">Thao tác</th>
+                                                <th width="50"></th>
                                             </tr>
                                         </thead>
 
@@ -85,8 +85,8 @@
                                                     <td class="text-right">190,000,000</td>
                                                     <td class="text-center">01/12/2019</td>
                                                     <td class="text-center">
-                                                        <a title="Delete" data-toggle="tooltip" data-placement="right" class="btn btn-danger">
-                                                            <i class="glyphicon glyphicon-remove"></i> 
+                                                        <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span>
                                                         </a>
                                                     </td>
                                                 </tr>

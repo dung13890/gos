@@ -64,7 +64,7 @@
                                                 <th class="text-center" width="100">Tồn LT</th>
                                                 <th class="text-center" width="100">Chênh lệch</th>
                                                 <th class="text-center" width="100">Đơn giá</th>
-                                                <th width="100px">Thao tác</th>
+                                                <th width="50"></th>
                                             </tr>
                                         </thead>
 
@@ -80,8 +80,8 @@
                                                     <th class="text-center" width="100">Chênh lệch</th>
                                                     <th class="text-center" width="100">Đơn giá</th>
                                                     <td class="text-center">
-                                                        <a title="Delete" data-toggle="tooltip" data-placement="right" class="btn btn-danger handle-delete">
-                                                            <i class="glyphicon glyphicon-remove"></i> 
+                                                        <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span>
                                                         </a>
                                                     </td>
                                                 </tr>
