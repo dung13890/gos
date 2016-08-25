@@ -66,5 +66,11 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::resource('positions', 'PositionsController');
 
         Route::get('bills/sale', 'BillsController@sale');
+        Route::get('bills/wholesale', 'BillsController@wholesale');
+        Route::get('bills/buy', 'BillsController@buy');
+        Route::get('bills/warehousetransfer', 'BillsController@warehouseTransfer');
+        Route::get('bills/destroystock', 'BillsController@destroyStock');
+        Route::get('bills/exportstock', 'BillsController@exportStock');
+        Route::get('bills/importstock', 'BillsController@importstock');
     });
 });

@@ -9,43 +9,45 @@
 
         <div class="sb-content">
             <div class="form-group">
-                <input type="text" class="form-control input-sm" placeholder="Nhân viên kinh doanh"/>
+                <small>Ngày chứng từ</small>
+                <input class="form-control input-sm" type="date" />
             </div>
 
             <div class="form-group">
-                <select name="" id="" class="form-control input-sm">
-                    <option value="">Chọn nhà cung cấp</option>
+                <small>Số chứng từ</small>
+                <input type="text" class="form-control input-sm" />
+            </div>
+
+            <div class="form-group">
+                <small class="center-block">Khách hàng</small>
+                <select name="" id="" class="form-control input-sm pull-left" style="width: 300px">
+                    <option value="">Vui lòng chọn khách hàng</option>
                 </select>
+                <input type="text" class="form-control input-sm text-right" placeholder="Tổng nợ cũ" style="width: 115px" />
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control input-sm" placeholder="Mã số thuế"/>
+                <small>Địa chỉ</small>
+                <input type="text" class="form-control input-sm" />
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control input-sm" placeholder="Địa chỉ"/>
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control input-sm" placeholder="Người bán"/>
-            </div>
-
-            <div class="form-group">
+                <small>Kho hàng</small>
                 <select name="" id="" class="form-control input-sm">
                     <option value="">Chọn kho hàng</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <textarea name="" id="" rows="5" class="form-control input-sm" placeholder="Ghi chú"></textarea>
+                <small>Nhân viên kho</small>
+                <select name="" id="" class="form-control input-sm">
+                    <option value="">Chọn nhân viên kho</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control input-sm" placeholder="Công nợ"/>
-            </div>
-
-            <div class="form-group">
-                <input placeholder="Chọn ngày chứng từ" class="form-control input-sm" type="text" onfocus="(this.type='date')" />
+                <small>Ghi chú</small>
+                <textarea name="" id="" rows="3" class="form-control input-sm"></textarea>
             </div>
 
             <div class="form-group">
