@@ -13,12 +13,16 @@
 
         <nav class="menu pull-right" references="menu-system">
             <ul>
+                <li>
+                    <a href="{{ route('customers.index') }}"  title="Khách hàng">
+                    <i class="glyphicon glyphicon-user"></i>&nbsp; Khách hàng</a>
+                </li>
                 <li><a href="#">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
                 <li><a href="javascript:void(0)">Báo cáo tổng hợp <i class='glyphicon glyphicon-chevron-down'></i></a>
                     <ul class="submenu">
-                        <li><a href="/user"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo hàng hóa</a></li>
-                        <li><a href="/roles"><i class="glyphicon glyphicon-ok-circle"> </i> Báo cáo khách hàng</a></li>
-                        <li><a href="/logout"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo doanh thu</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo hàng hóa</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-ok-circle"> </i> Báo cáo khách hàng</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo doanh thu</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('customers.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
@@ -147,13 +151,8 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('bills/symmetrical') }}"  title="Hóa đơn mua hàng">
+                    <a href="{{ url('bills/symmetrical') }}"  title="Cân đối hàng tồn">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Cân đối hàng tồn</a>
-                </li>
-
-                <li>
-                    <a href="{{ route('customers.index') }}"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Khách hàng</a>
                 </li>
             </ul>
         </nav>

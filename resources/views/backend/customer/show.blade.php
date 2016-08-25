@@ -11,7 +11,7 @@
                 <div class="cus-heading">
                     <h1>THÔNG TIN KHÁCH HÀNG</h1>
                     <input type="text" class="input-sm" value="Trần Đức Liêm" size="50px" />
-                    <a href="" class="btn btn-default btn-sm">Back</a>
+                    <a href="{{ route('customers.index') }}" class="btn btn-default btn-sm">Back</a>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
@@ -97,7 +97,7 @@
                                             <li>
                                                 <strong>Ảnh đại diện: </strong>
                                                 <div style="float: left; width: 100px; height: 100px;">
-                                                    <img src="assets/img/noavatar.png" alt="AVATAR" class="img-responsive"/>
+                                                    <img src="/assets/img/noavatar.png" alt="Avatar" class="img-responsive"/>
                                                 </div>
                                             </li>
                                         </ul>

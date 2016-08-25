@@ -39,7 +39,7 @@
                                                 <th>Khuyễn mãi</th>
                                                 <th>Thành tiền</th>
                                                 <th class="text-center">HSD</th>
-                                                <th>Thao tác</th>
+                                                <th width="80">Thao tác</th>
                                             </tr>
                                         </thead>
 
@@ -55,7 +55,15 @@
                                                     <td>5%</td>
                                                     <td>190,000,000</td>
                                                     <td class="text-center">01/12/2019</td>
-                                                    <td class="text-center"> ... </td>
+                                                    <td class="text-center">
+                                                        <a href="#newProduct" title="Sửa thông tin" class="btn-icon label-edit" data-toggle="modal">
+                                                            <span class="glyphicon glyphicon-edit"></span>
+                                                        </a>
+
+                                                        <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endfor
                                         </tbody>

@@ -62,7 +62,7 @@
                                                 <th>Tên sản phẩm</th>
                                                 <th class="text-center" width="100">ĐVT</th>
                                                 <th class="text-center" width="100">Số lượng</th>
-                                                <th width="100px">Thao tác</th>
+                                                <th width="50"></th>
                                             </tr>
                                         </thead>
 
@@ -75,8 +75,8 @@
                                                     <td class="text-center">Cái</td>
                                                     <td><input type="number" class="form-control input-sm text-right" value="{{ $i }}" /></td>
                                                     <td class="text-center">
-                                                        <a title="Delete" data-toggle="tooltip" data-placement="right" class="btn btn-danger">
-                                                            <i class="glyphicon glyphicon-remove"></i> 
+                                                        <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span>
                                                         </a>
                                                     </td>
                                                 </tr>

@@ -40,7 +40,7 @@
                                                 <th>Địa chỉ email</th>
                                                 <th>Tên công ty</th>
                                                 <th>Mã số thuế</th>
-                                                <th>Thao tác</th>
+                                                <th width="80">Thao tác</th>
                                             </tr>
                                         </thead>
 
@@ -58,8 +58,12 @@
                                                     <td>190,000,000</td>
                                                     <td class="text-center">01/12/2019</td>
                                                     <td class="text-center">
-                                                        <a href="#newProvider" role="button" class="btn btn-sm" data-toggle="modal">
-                                                            Sửa
+                                                        <a href="#newProduct" title="Sửa thông tin" class="btn-icon label-edit" data-toggle="modal">
+                                                            <span class="glyphicon glyphicon-edit"></span>
+                                                        </a>
+
+                                                        <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span>
                                                         </a>
                                                     </td>
                                                 </tr>

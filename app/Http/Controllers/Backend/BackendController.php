@@ -37,7 +37,7 @@ abstract class BackendController extends AbstractController
     public function edit($id)
     {
         $this->view = $this->repositoryName . '.edit';
-        $this->compacts['item'] = $this->repository->findOrFail($id);
+        // $this->compacts['item'] = $this->repository->findOrFail($id);
         $this->compacts['heading'] = $this->trans('object.edit');
         $this->compacts['resource'] = $this->repositoryName;
     }

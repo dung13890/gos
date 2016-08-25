@@ -27,7 +27,7 @@
                                                     <th style="display:none">ID</th>
                                                     <th width="100">Mã</th>
                                                     <th>Tên chức vụ</th>
-                                                    <th width="100" class="text-center">Thao tác</th>
+                                                    <th width="80" class="text-center">Thao tác</th>
                                                 </tr>
                                             </thead>
 
@@ -37,9 +37,13 @@
                                                         <td>CUPA {{ $i }}</td>
                                                         <td>MANA {{ $i }}</td>
                                                         <td class="text-center">
-                                                            <a href="" title="Sửa"><i class="glyphicon glyphicon-pencil"></i></a>
-                                                            <a href="" title="Xem"><i class="glyphicon glyphicon-eye-open"></i></a>
-                                                            <a href="" title="Xóa"><i class="glyphicon glyphicon-remove"></i></a>
+                                                            <a href="#newProduct" title="Sửa thông tin" class="btn-icon label-edit" data-toggle="modal">
+                                                                <span class="glyphicon glyphicon-edit"></span>
+                                                            </a>
+
+                                                            <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @endfor

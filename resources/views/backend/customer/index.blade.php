@@ -5,157 +5,26 @@
 @endpush
 
 @section('page-content')
+    @include('backend.customer._form')
     <div id="content">
         <div class="container-fluid">
-            <h3>Quản lý khách hàng</h3>
+            <h3>Quản khách hàng</h3>
             <div class="row">
-                <div class="col-md-3">
-                    <div id="sidebar">
-                        <div class="sb-heading">
-                            <h3 class="title text-uppercase">Tìm kiếm khách hàng</h3>
-                            <a href="javascript:;" class="toggle-content" references="#sidebar .sb-content" display="1">
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="sb-content">
-                            <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Nhập từ khóa</span>
-                                </label>
-                                <input type="text" class="form-control input-sm" placeholder="Tên hoặc mã khách hàng" />
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Theo chi nhánh</span>
-                                </label>
-                                <select name="" class="form-control input-sm">
-                                    <option value="">Chọn chi nhánh</option>
-                                    <option value="">Chọn chi nhánh</option>
-                                    <option value="">Chọn chi nhánh</option>
-                                    <option value="">Chọn chi nhánh</option>
-                                    <option value="">Chọn chi nhánh</option>
-                                    <option value="">Chọn chi nhánh</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Theo Gara</span>
-                                </label>
-                                <select name="" id="" class="form-control input-sm">
-                                    <option value="">Chọn Gara</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Theo kho hàng</span>
-                                </label>
-                                <select name="" id="" class="form-control input-sm">
-                                    <option value="">Chọn kho hàng</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Theo nhân viên kinh doanh</span>
-                                </label>
-                                <select name="" id="" class="form-control input-sm">
-                                    <option value="">Chọn nhân viên kinh doanh</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="lineside">
-                                    <span class="text">Theo sự kiện khuyến mãi</span>
-                                </label>
-                                <select name="" id="" class="form-control input-sm">
-                                    <option value="">Chọn sự kiện</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                Từ ngày
-                                <input type="date" class="form-control input-sm" />
-                                <br/>
-                                Đến ngày
-                                <input type="date" class="form-control input-sm" />
-                            </div>
-
-                            <div class="form-group text-center">
-                                <button class="btn btn-info" type="button">
-                                    <span class="glyphicon glyphicon-road"></span> Tìm kiếm
-                                </button>
-
-                                <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
-                            </div>
-                        </div>
-                        <div class="sb-footer"></div>
-                    </div>
-                </div>
-
+            @include('backend.customer._filter')
                 <div class="col-md-9">
                     <div class="widget">
+                        <!-- widget-heading -->
                         <div class="widget-heading">
-                            <h1 class="title text-uppercase">Danh sách khách hàng</h1>
-                            <a href="javascript:;" class="toggle-content" references="#customerList" display="1">
+                            <h1 class="title text-uppercase">Danh sách hàng hóa</h1>
+                            <a href="javascript:;" class="toggle-content" references="#productList" display="1">
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         </div>
 
-                        <div id="customerList">
-                            <div class="widget-tools">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <form action="" class="form-inline">
-                                            <div class="form-group">
-                                                <select name="rows" table-name="test" class="form-control input-sm">
-                                                    <option value="">Xem</option>
-                                                    <option value="5">5</option>
-                                                    <option value="10">10</option>
-                                                    <option value="15">15</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm-6 text-right">
-                                        <div class="tool">
-                                            <a href="javascript:;" class="btn btn-sm">
-                                                <i class="fa fa-plus"></i> Thêm mới
-                                            </a>
-                                        </div>
-                                        <div class="tool">
-                                            <a href="javascript:;" class="btn btn-sm">
-                                                <i class="fa fa-sign-out"></i> Import
-                                            </a>
-                                        </div>
-                                        <div class="tool">
-                                            <div class="btn-group">
-                                                <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">
-                                                    <span class="fa fa-sign-out"></span>
-                                                    Export
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Excel</a></li>
-                                                    <li><a href="#">PDF</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="tool">
-                                            <div class="btn-group">
-                                                <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">
-                                                    <span class="fa fa-bars"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                    <li><a href="#">Item selected</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div id="productList">
+                            <!-- widget-tools -->
+                            @include('backend.customer._tool')
+                            <!-- widget-content -->
                             <div class="widget-content">
                                 <div class="table-responsive">
                                     <table class="table table-condensed table-default table-bordered table-hover" name="test">
@@ -163,25 +32,40 @@
                                             <tr class="active">
                                                 <th class="text-center">STT</th>
                                                 <th class="text-center">Mã</th>
-                                                <th>Họ tên</th>
-                                                <th>Địa chỉ</th>
+                                                <th>Tên khách hàng</th>
                                                 <th>Điện thoại</th>
                                                 <th>Email</th>
-                                                <th class="text-center">Thao tác</th>
+                                                <th>Địa chỉ</th>
+                                                <th>Nhóm khách hàng</th>
+                                                <th>Vùng áp dụng</th>
+                                                <th class="text-center">Chi nhánh</th>
+                                                <th width="90" class="text-center">Thao tác</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
-                                            @for($i = 1; $i <= 15; $i++)
+                                            @for ($i = 1; $i <= 15; $i++)
                                                 <tr>
                                                     <td class="text-center">1</td>
-                                                    <td class="text-center">KH001</td>
-                                                    <td>Nguyễn Văn Quỳnh</td>
-                                                    <td>Hưng Yên</td>
-                                                    <td>0977.936.507</td>
-                                                    <td>ngquynh@gmail.com</td>
-                                                    <td class="text-center">
+                                                    <td class="text-center">SP0123</td>
+                                                    <td>
                                                         <a href="{{ route('customers.show', ['id' => $i]) }}" title="Xem chi tiết">
-                                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                                            Samsung Galaxy S3
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">Cái</td>
+                                                    <td>2,000,000</td>
+                                                    <td>100</td>
+                                                    <td>5%</td>
+                                                    <td>190,000,000</td>
+                                                    <td class="text-center">01/12/2019</td>
+                                                    <td class="text-center">
+                                                        <a href="#newProduct" title="Sửa thông tin" class="btn-icon label-edit" data-toggle="modal">
+                                                            <span class="glyphicon glyphicon-edit"></span>
+                                                        </a>
+
+                                                        <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -191,6 +75,7 @@
                                 </div>
                             </div>
 
+                            <!-- widget-footer -->
                             <div class="widget-footer">
                                 <div class="text-right">
                                     <ul class="pagination">

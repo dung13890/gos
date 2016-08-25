@@ -19,12 +19,6 @@ $(document).ready(function() {
         }
         e.code == 0 ? toastr.success(e.message) : toastr.error(e.message);
     }
-    
-    makeEventHeaderMenu();
-    makeMenuMobile();
-    scrollTop();
-    showTableData('test');
-    toggleContent('toggle-content', 300);
 
     $.ajaxSetup({
         headers: {

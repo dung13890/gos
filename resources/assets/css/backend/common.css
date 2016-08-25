@@ -471,3 +471,26 @@ ul.sub-node-system li a {
 ul.sub-node-system li a:hover i {
     color: #ccc;
 }
+
+a.btn-icon {
+    text-align: center;
+    width: 23px;
+    height: 23px;
+    line-height: 14px;
+    display: inline-block;
+    color: #FFF;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+a.label-delete {
+    background: #d9534f;
+}
+
+a.label-show {
+    background: #5bc0de;
+}
+
+a.label-edit {
+    background: #337ab7;   
+}
