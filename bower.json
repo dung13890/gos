@@ -1,12 +1,16 @@
 {
   "name": "gos",
-  "description": "",
+  "description": "Tan phat gos",
   "main": "",
   "authors": [
     "Mr Dung <dung13890@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/dung13890/gos",
+  "keywords": [
+    "Tan",
+    "phat"
+  ],
+  "homepage": "",
   "private": true,
   "ignore": [
     "**/.*",
@@ -25,10 +29,11 @@
     "toastr": "^2.1.2",
     "bootstrap-toggle": "^2.2.2",
     "jasny-bootstrap": "^3.1.3",
-    "jqTree": "jqtree#^1.3.3",
     "summernote": "^0.8.2",
     "select2": "^4.0.3",
     "bootstrap-datepicker": "^1.6.4",
-    "bootstrap-switch": "git@github.com:Data-Web/bootstrap-switch.git"
+    "bootstrap-switch": "git@github.com:Data-Web/bootstrap-switch.git",
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7"
   }
 }

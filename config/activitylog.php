@@ -56,5 +56,5 @@ return [
     | from Laravel's auth configuration.
     |
     */
-    'userModel' => \App\Model\User::class,
+    'userModel' => null,
 ];

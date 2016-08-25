@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\Eloquent\GetImageTrait;
 use App\Traits\Eloquent\DateAMTrait;

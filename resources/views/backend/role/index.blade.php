@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @push('prestyles')
-    {{ HTML::style('vendor/bootstrap-switch/css/bootstrap-switch.min.css') }}
+    {{ HTML::style('vendor/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css') }}
     {{ HTML::style('assets/css/backend/roles/role.css') }}
 @endpush
 

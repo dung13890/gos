@@ -40,7 +40,7 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\RoomRepositoryEloquent::class,
         ],
     ];
-    
+
     public function boot()
     {
         //

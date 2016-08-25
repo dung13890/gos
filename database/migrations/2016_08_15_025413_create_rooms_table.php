@@ -23,7 +23,7 @@ class CreateRoomsTable extends Migration
             $table->string('manager', 50)->nullable();
             $table->unsignedSmallInteger('member')->nullable();
             $table->date('founding');
-            $table->unsignedInteger('branch_id')->nullable();
+            $table->unsignedInteger('branch_id');
             $table->timestamps();
 
             // Indexes or unique

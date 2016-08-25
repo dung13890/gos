@@ -23,7 +23,7 @@ class UserController extends BackendController
 
     public function ajaxProfile()
     {
-        return $this->user;
+        return \Auth::user();
     }
 
     public function updateProfile(ProfileRequest $request, UserService $service)

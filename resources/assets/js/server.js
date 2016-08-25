@@ -19,7 +19,7 @@ $(document).ready(function() {
         }
         e.code == 0 ? toastr.success(e.message) : toastr.error(e.message);
     }
-    
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

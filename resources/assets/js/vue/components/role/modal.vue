@@ -96,7 +96,7 @@
             getPermission: function () {
                 var self = this;
                 this.$parent.RoleService.getPermission().then((permissions) => self.permissions = permissions).then(() => {
-                    //bootstrapSwitch($('.on-off'));
+                    bootstrapSwitch($('.on-off'));
                 });
             },
             getRole: function (id) {
