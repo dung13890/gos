@@ -7,9 +7,9 @@
 @section('page-content')
     <div id="content">
         <div class="container-fluid">
-            <h3 class="page-title">Hóa đơn bán hàng</h3>
+            <h3 class="page-title">Chuyển kho nội bộ</h3>
             <div class="row">
-                @include('backend.bill._info')
+                @include('backend.bill._info_warehouse_transfer')
                 <div class="col-md-9">
                     <div class="widget">
                         <div class="widget-heading">
@@ -57,15 +57,11 @@
                                     <table class="table table-condensed table-default table-bordered table-hover" name="test">
                                         <thead>
                                             <tr class="active">
-                                                <th class="text-center">STT</th>
-                                                <th class="text-center">Mã</th>
+                                                <th class="text-center" width="50">STT</th>
+                                                <th class="text-center" width="100">Mã</th>
                                                 <th>Tên sản phẩm</th>
-                                                <th class="text-center">ĐVT</th>
-                                                <th class="text-center" width="150">Đơn giá</th>
+                                                <th class="text-center" width="100">ĐVT</th>
                                                 <th class="text-center" width="100">Số lượng</th>
-                                                <th class="text-center" width="100">Khuyễn mãi</th>
-                                                <th class="text-right">Thành tiền</th>
-                                                <th class="text-center">HSD</th>
                                                 <th width="100px">Thao tác</th>
                                             </tr>
                                         </thead>
@@ -77,13 +73,7 @@
                                                     <td class="text-center">SP0123</td>
                                                     <td>Samsung Galaxy S3</td>
                                                     <td class="text-center">Cái</td>
-                                                    <td>
-                                                        <input type="text" class="form-control input-sm text-right" value="2.000.000" />
-                                                    </td>
                                                     <td><input type="number" class="form-control input-sm text-right" value="{{ $i }}" /></td>
-                                                    <td><input type="text" class="form-control input-sm text-right" value="5%" /></td>
-                                                    <td class="text-right">190,000,000</td>
-                                                    <td class="text-center">01/12/2019</td>
                                                     <td class="text-center">
                                                         <a title="Delete" data-toggle="tooltip" data-placement="right" class="btn btn-danger">
                                                             <i class="glyphicon glyphicon-remove"></i> 

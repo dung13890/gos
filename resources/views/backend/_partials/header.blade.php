@@ -6,12 +6,11 @@
                 <!-- <img src="/assets/img/logo.png" class="img-responsive" alt=""> -->
             </a>
         </div>
-        <!-- .menu-toggle -->
+
         <div id="menuMobileToggle" data-display="0" class="pull-right">
             <button class="fa fa-bars"></button>
         </div>
 
-        <!-- .menu -->
         <nav class="menu pull-right" references="menu-system">
             <ul>
                 <li><a href="#">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
@@ -114,37 +113,37 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('bills/sale') }}"  title="Hóa đơn mua hàng">
+                    <a href="{{ url('bills/sale') }}"  title="Hóa đơn bán hàng">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Hóa đơn bán hàng</a>
                 </li>
 
                 <li>
-                    <a href="/providers"  title="Hóa đơn mua hàng">
+                    <a href="{{ url('bills/wholesale') }}"  title="Bán buôn - Bán sỉ">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Bán buôn - Bán sỉ</a>
                 </li>
 
                 <li>
-                    <a href="/rooms"  title="Phòng ban">
+                    <a href="{{ url('bills/buy') }}"  title="Hóa đơn mua hàng">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Hóa đơn mua hàng</a>
                 </li>
 
                 <li>
-                    <a href="/units"  title="Đơn vị tính">
+                    <a href="{{ url('bills/warehousetransfer') }}"  title="Chuyển kho nội bộ">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Chuyển kho nội bộ</a>
                 </li>
                 <li>
-                    <a href="/roles"  title="Hóa đơn mua hàng">
+                    <a href="{{ url('bills/destroystock') }}"  title="Phiếu hủy hàng">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Phiếu hủy hàng</a>
                 </li>
 
                 <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
-                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Nhập hàng trả lại</a>
-                </li>
-
-                <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
+                    <a href="{{ url('bills/exportstock') }}"  title="Xuất hàng trả lại">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Xuất hàng trả lại</a>
+                </li>
+                
+                <li>
+                    <a href="{{ url('bills/importstock') }}"  title="Nhập hàng trả lại">
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Nhập hàng trả lại</a>
                 </li>
 
                 <li>

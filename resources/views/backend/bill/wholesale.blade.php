@@ -7,7 +7,7 @@
 @section('page-content')
     <div id="content">
         <div class="container-fluid">
-            <h3 class="page-title">Hóa đơn bán hàng</h3>
+            <h3 class="page-title">Hóa đơn bán buôn - bán sỉ</h3>
             <div class="row">
                 @include('backend.bill._info')
                 <div class="col-md-9">

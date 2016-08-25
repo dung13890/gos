@@ -7,9 +7,9 @@
 @section('page-content')
     <div id="content">
         <div class="container-fluid">
-            <h3 class="page-title">Hóa đơn bán hàng</h3>
+            <h3 class="page-title">Nhập hàng trả lại từ khách hàng</h3>
             <div class="row">
-                @include('backend.bill._info')
+                @include('backend.bill._info_import_stock')
                 <div class="col-md-9">
                     <div class="widget">
                         <div class="widget-heading">
@@ -71,7 +71,7 @@
                                         </thead>
 
                                         <tbody>
-                                            @for($i = 1; $i <= 10; $i++)
+                                            @for($i = 1; $i <= 11; $i++)
                                                 <tr>
                                                     <td class="text-center">{{ $i }}</td>
                                                     <td class="text-center">SP0123</td>
