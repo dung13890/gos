@@ -68,6 +68,7 @@ abstract class BackendController extends AbstractController
             $this->activityLog('edit', $entity);
             $this->e['message'] = $this->trans('object_updated_successfully');
         } catch (\Exception $e) {
+            dd($e);
             $this->e['code'] = 100;
             $this->e['message'] = $this->trans('object_updated_unsuccessfully');
         }

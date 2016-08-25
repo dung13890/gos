@@ -13,7 +13,7 @@ class UserController extends BackendController
 {
     protected $dataSelect = ['id', 'username', 'email', 'phone'];
 
-    protected $branchRepository; 
+    protected $branchRepository;
 
     public function __construct(UserRepository $user, BranchRepository $branch)
     {
@@ -32,7 +32,7 @@ class UserController extends BackendController
         if (!$data['image']) {
             unset($data['image']);
         }
-        $entity = $this->user;
+        $entity = \Auth::user();
 
         return $this->updateData($data, $service, $entity);
     }
@@ -40,8 +40,8 @@ class UserController extends BackendController
     public function updatePassword(PasswordRequest $request, UserService $service)
     {
         $data = $request->only('old_password', 'password', 'password_confirmation');
-        $entity = $this->user;
-        if (\Hash::check($data['old_password'], $this->user->password)) {
+        $entity = \Auth::user();
+        if (\Hash::check($data['old_password'], \Auth::user()->password)) {
 
             return $this->updateData($data, $service, $entity);
         }
@@ -96,8 +96,8 @@ class UserController extends BackendController
         $this->compacts['action'] = $this->trans("object.{$action}");
         $this->compacts['listHeading'] = $this->trans("object.list");
         $this->compacts['button'] = $this->trans($action);
-        $this->compacts['listBrands'] = $this->branchRepository->all()->lists('name', 'id')->prepend('Thuộc chi nhánh');
-        $this->compacts['listRooms'] = app(\App\Model\Room::class)->all()->lists('name', 'id')->prepend('Vị trí hiện tại');
+        $this->compacts['listBrands'] = $this->branchRepository->all()->pluck('name', 'id')->prepend('Thuộc chi nhánh');
+        $this->compacts['listRooms'] = app(\App\Model\Room::class)->all()->pluck('name', 'id')->prepend('Vị trí hiện tại');
         $this->view = $this->repositoryName . '.index';
 
         return $this->viewRender();
