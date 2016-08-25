@@ -147,7 +147,7 @@
                 </li>
 
                 <li>
-                    <a href="#"  title="Hóa đơn mua hàng">
+                    <a href="{{ url('bills/symmetrical') }}"  title="Hóa đơn mua hàng">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Cân đối hàng tồn</a>
                 </li>
 

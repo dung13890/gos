@@ -64,4 +64,12 @@ class BillsController extends Controller
     {
         return view('backend.bill.import_stock');
     }
+
+    /**
+     * Bảng cân đối hàng tồn
+     */
+    public function symmetrical()
+    {
+        return view('backend.bill.symmetrical');
+    }
 }

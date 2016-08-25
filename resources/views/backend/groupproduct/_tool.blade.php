@@ -3,15 +3,15 @@
         <div class="col-sm-6">
             <form action="" class="form-inline">
                 <div class="form-group">
+                    <select name="rows" table-name="test" class="form-control input-sm">
+                        <option value="">Xem</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                    
                     <div class="btn-group">
-                        <select name="rows" table-name="test" class="form-control input-sm">
-                            <option value="">Xem</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                        </select>
-                        
-                        <input type="text" class="form-control input-sm searchinput" placeholder="Tìm theo mã hoặc tên phòng ban" size="50px" />
+                        <input type="text" class="form-control input-sm searchinput" placeholder="Tìm theo mã hoặc tên" size="50px" />
                         <span class="glyphicon glyphicon-remove-circle searchclear"></span>
                     </div>
                 </div>
