@@ -66,7 +66,8 @@ abstract class AbstractController extends Controller
     }
 
     public function activityLog($actions, $item = null, $message = null)
-    {
+    {   
+        $this->user = Auth::guard($this->getGuard())->user();
         $userName = $this->user->name;
         $itemName = ($item && isset($item->name) )  ? $item->name : '';
         Activity::log( $message ? $message : $userName . ' đã ' . $this->trans('object.' . $actions) . ' ' . $itemName );
