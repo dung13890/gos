@@ -72,5 +72,6 @@ Route::group(['middlewareGroups' => ['web']], function () {
         Route::get('bills/destroystock', 'BillsController@destroyStock');
         Route::get('bills/exportstock', 'BillsController@exportStock');
         Route::get('bills/importstock', 'BillsController@importstock');
+        Route::get('bills/symmetrical', 'BillsController@symmetrical');
     });
 });

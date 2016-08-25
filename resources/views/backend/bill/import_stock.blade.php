@@ -100,9 +100,21 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="text-right">
-                                            <a href="#" class="btn btn-default">Lưu lại</a>
-                                            <a href="#" class="btn btn-default">Lưu xem trước</a>
-                                            <a href="#" class="btn btn-default">Hủy bỏ</a>
+                                            <button class="btn btn-success" type="submit">
+                                                <i class="glyphicon glyphicon-floppy-disk"></i> Lưu
+                                            </button>
+
+                                            <button class="btn btn-info" type="submit">
+                                                <i class="glyphicon glyphicon-floppy-disk"></i> Lưu và thêm mới
+                                            </button>
+
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="glyphicon glyphicon-print"></i> Xem in
+                                            </button>
+
+                                            <button class="btn btn-warning" type="reset">
+                                                <i class="glyphicon glyphicon-ban-circle"></i> Clear
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

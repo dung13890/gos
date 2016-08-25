@@ -7,9 +7,9 @@
 @section('page-content')
     <div id="content">
         <div class="container-fluid">
-            <h3 class="page-title">Phiếu hủy hàng hóa</h3>
+            <h3 class="page-title">Bảng cân đối hàng tồn kho</h3>
             <div class="row">
-                @include('backend.bill._info_destroy_stock')
+                @include('backend.bill._info_symmetrical')
                 <div class="col-md-9">
                     <div class="widget">
                         <div class="widget-heading">
@@ -20,7 +20,6 @@
                         </div>
 
                         <div id="nhapkhomua">
-                            <!-- widget-tools -->
                             <div class="widget-tools">
                                 <div class="row">
                                     <div class="col-xs-6">
@@ -61,7 +60,10 @@
                                                 <th class="text-center" width="100">Mã</th>
                                                 <th>Tên sản phẩm</th>
                                                 <th class="text-center" width="100">ĐVT</th>
-                                                <th class="text-center" width="100">Số lượng</th>
+                                                <th class="text-center" width="100">Tồn TT</th>
+                                                <th class="text-center" width="100">Tồn LT</th>
+                                                <th class="text-center" width="100">Chênh lệch</th>
+                                                <th class="text-center" width="100">Đơn giá</th>
                                                 <th width="100px">Thao tác</th>
                                             </tr>
                                         </thead>
@@ -69,13 +71,16 @@
                                         <tbody>
                                             @for($i = 1; $i <= 10; $i++)
                                                 <tr>
-                                                    <td class="text-center">{{ $i }}</td>
-                                                    <td class="text-center">SP0123</td>
-                                                    <td>Samsung Galaxy S3</td>
-                                                    <td class="text-center">Cái</td>
-                                                    <td><input type="number" class="form-control input-sm text-right" value="{{ $i }}" /></td>
+                                                    <th class="text-center" width="50">STT</th>
+                                                    <th class="text-center" width="100">Mã</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th class="text-center" width="100">ĐVT</th>
+                                                    <th class="text-center" width="100">Tồn TT</th>
+                                                    <th class="text-center" width="100">Tồn LT</th>
+                                                    <th class="text-center" width="100">Chênh lệch</th>
+                                                    <th class="text-center" width="100">Đơn giá</th>
                                                     <td class="text-center">
-                                                        <a title="Delete" data-toggle="tooltip" data-placement="right" class="btn btn-danger">
+                                                        <a title="Delete" data-toggle="tooltip" data-placement="right" class="btn btn-danger handle-delete">
                                                             <i class="glyphicon glyphicon-remove"></i> 
                                                         </a>
                                                     </td>
