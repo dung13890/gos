@@ -48,6 +48,10 @@ var plugins = {
       in: 'bootstrap-switch/dist',
       out: 'bootstrap-switch'
     },
+    {
+      in: 'jQueryAutocomplete/dist',
+      out: 'jQueryAutocomplete'
+    }
   ],
   vue: [
     {
@@ -59,6 +63,16 @@ var plugins = {
       name: 'room.js',
       in: '',
       out: ''
+    },
+    {
+      name: 'bill.js',
+      in: '',
+      out: ''
+    },
+    {
+      name: 'positions/position.js',
+      in: '',
+      out: 'positions'
     }
   ]
 }

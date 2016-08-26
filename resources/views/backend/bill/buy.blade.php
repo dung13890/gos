@@ -1,10 +1,58 @@
 @extends('layouts.backend')
 
 @push('prestyles')
-    {{ HTML::style('assets/css/backend/bills/bill.css') }}
+    {{ HTML::style("assets/css/backend/bills/bill.css") }}
+@endpush
+
+@push('prescripts')
+    {{ HTML::script("vendor/jQueryAutocomplete/jquery.autocomplete.min.js") }}
+    <script type="text/javascript">
+        
+
+        $(document).ready(function() {
+            var countries = [
+               { value: 'Product 1', data: '1',  label: '<span class="hl_results">MySQL</span> in a Nutshell' },
+               { value: 'Product 2', data: '2' },
+               { value: 'Product 3', data: '3' },
+               { value: 'Product 4', data: '4' },
+               { value: 'Product 5', data: '5' },
+               { value: 'Product 6', data: '6' },
+               { value: 'Product 7', data: '7' },
+               { value: 'Product 8', data: '8' },
+               { value: 'Product 9', data: '9' },
+               { value: 'Product 10', data: '10' },
+            ];
+
+            $('#autocomplete').autocomplete({
+                lookup: countries,
+                onSelect: function (result) {
+                    var html = '<tr>';
+                    html += '<td class="text-center">1</td>';
+                    html += '<td class="text-center">' + result.data + '</td>';
+                    html += '<td>' + result.value + '</td>';
+                    html += '<td class="text-center">Cái</td>';
+                    html += '<td>'
+                    html += '<input type="text" class="form-control input-sm text-right" value="0" />';
+                    html += '</td>';
+                    html += '<td><input type="number" class="form-control input-sm text-right" value="" /></td>';
+                    html += '<td><input type="text" class="form-control input-sm text-right" value="5%" /></td>';
+                    html += '<td class="text-right">0</td>';
+                    html += '<td class="text-center"></td>';
+                    html += '<td class="text-center">';
+                    html += '<a href="#" title="Xóa" class="btn-icon label-delete">';
+                    html += '<span class="glyphicon glyphicon-remove-circle"></span>';
+                    html += '</a>';
+                    html += '</td>';
+                    html += '</tr>';
+                    $('tbody').append(html);
+                }
+            });
+        })
+    </script>
 @endpush
 
 @section('page-content')
+<div id="BillsController">
     <div id="content">
         <div class="container-fluid">
             <h3 class="page-title">Hóa đơn mua hàng</h3>
@@ -20,21 +68,18 @@
                         </div>
 
                         <div id="nhapkhomua">
-                            <!-- widget-tools -->
                             <div class="widget-tools">
                                 <div class="row">
-                                    <div class="col-xs-6">
-                                        <form action="" class="form-inline">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control input-sm input-suggest" placeholder="Mã hoặc tên hàng hóa" size="60px" />
-                                                <a title="Thêm mới hàng hóa" class="btn btn-success">
-                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                                </a>
-                                            </div>
-                                        </form>
+                                    <div class="col-xs-5">
+                                        <input type="text" 
+                                            class="form-control input-sm input-suggest" 
+                                            placeholder="Mã hoặc tên hàng hóa" 
+                                            size="60px" 
+                                            id="autocomplete"
+                                        />
                                     </div>
 
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-7">
                                         <div class="text-right number-product">
                                            <span>
                                                 <strong>Mặt hàng: </strong>
@@ -71,26 +116,6 @@
                                         </thead>
 
                                         <tbody>
-                                            @for($i = 1; $i <= 12; $i++)
-                                                <tr>
-                                                    <td class="text-center">{{ $i }}</td>
-                                                    <td class="text-center">SP0123</td>
-                                                    <td>Samsung Galaxy S3</td>
-                                                    <td class="text-center">Cái</td>
-                                                    <td>
-                                                        <input type="text" class="form-control input-sm text-right" value="2.000.000" />
-                                                    </td>
-                                                    <td><input type="number" class="form-control input-sm text-right" value="{{ $i }}" /></td>
-                                                    <td><input type="text" class="form-control input-sm text-right" value="5%" /></td>
-                                                    <td class="text-right">190,000,000</td>
-                                                    <td class="text-center">01/12/2019</td>
-                                                    <td class="text-center">
-                                                        <a href="#" title="Xóa" class="btn-icon label-delete">
-                                                            <span class="glyphicon glyphicon-remove-circle"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endfor
                                         </tbody>
                                     </table>
                                 </div>
@@ -125,4 +150,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

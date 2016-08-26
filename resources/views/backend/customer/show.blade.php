@@ -10,8 +10,8 @@
             <div id="customer">
                 <div class="cus-heading">
                     <h1>THÔNG TIN KHÁCH HÀNG</h1>
-                    <input type="text" class="input-sm" value="Trần Đức Liêm" size="50px" />
-                    <a href="{{ route('customers.index') }}" class="btn btn-default btn-sm">Back</a>
+                    <input type="text" class="input-sm" value="Trần Đức Liêm"/>
+                    <a href="javascript:;" class="btn btn-default btn-sm">Back</a>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
@@ -20,18 +20,346 @@
                             <div class="widget-content">
                                 <div class="cus-tabs">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#">Lịch sử mua hàng</a></li>
-                                        <li><a href="#">Chi nhánh</a></li>
-                                        <li><a href="#">Nhân viên kinh doanh</a></li>
-                                        <li><a href="#">Công nợ</a></li>
+                                        <li class="active" references="customerInfo">
+                                            <a href="javascript:;">Lịch sử mua hàng</a>
+                                        </li>
+                                        <li references="customerChinhanh">
+                                            <a href="javascript:;">Chi nhánh</a>
+                                        </li>
+                                        <li references="customerNvkd">
+                                            <a href="javascript:;">Nhân viên kinh doanh</a>
+                                        </li>
+                                        <li references="customerCongno">
+                                            <a href="javascript:;">Công nợ</a>
+                                        </li>
                                     </ul>
                                 </div>
-                                @include('backend.customer._liability')
+
+                                <div class="cus-data">
+                                    <!-- #customerInfo -->
+                                    <div name="customerInfo">
+                                        <div class="cus-form" name="customerInfo">
+                                            <form action="" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo nhân viên kinh doanh</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo chi nhánh</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo kho</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Chương trình khuyến mãi</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo mã hoặc tên sản phẩm</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo hãng sản xuất</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+
+                                                    <div class="col-sm-4">
+                                                        <input type="date" class="form-control input-sm"/>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="date" class="form-control input-sm"/>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo nhà cung nhấp</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+
+                                                    <div class="col-sm-4">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo Gara</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <input type="submit" class="btn btn-info btn-sm" value="Tìm kiếm"/>
+                                                        <input type="reset" class="btn btn-default btn-sm" value="Hủy bỏ"/>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-condensed table-default table-bordered table-hover">
+                                                <thead>
+                                                    <tr class="active">
+                                                        <th class="text-center">STT</th>
+                                                        <th class="text-center">Ngày mua</th>
+                                                        <th class="text-center">Mã hàng hóa</th>
+                                                        <th>Tên hàng hóa</th>
+                                                        <th class="text-center">Số lượng</th>
+                                                        <th>Đơn giá</th>
+                                                        <th>Thành tiền</th>
+                                                        <th>Mua tại kho</th>
+                                                        <th>Nhân viên kinh doanh</th>
+                                                        <th>Mã hóa đơn</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">1</td>
+                                                        <td class="text-center">11/11/2015</td>
+                                                        <td class="text-center">PRO001</td>
+                                                        <td>Laptop Dell 001</td>
+                                                        <td class="text-center">10</td>
+                                                        <td>1,000,000</td>
+                                                        <td>10,000,000</td>
+                                                        <td>...</td>
+                                                        <td>...</td>
+                                                        <td>BILL001</td>
+                                                    </tr>
+                                                    <script type="text/javascript">
+                                                        for (var i = 0; i < 20; i++) {
+                                                            document.write('<tr><td class="text-center">1</td><td class="text-center">11/11/2015</td><td class="text-center">PRO001</td><td>Laptop Dell 001</td><td class="text-center">10</td><td>1,000,000</td><td>10,000,000</td><td>...</td><td>...</td><td>BILL001</td></tr>');
+                                                        }
+                                                    </script>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- #customerChinhanh -->
+                                    <div name="customerChinhanh" class="table-responsive">
+                                        <table class="table table-condensed table-default table-bordered table-hover">
+                                            <thead>
+                                                <tr class="active">
+                                                    <th class="text-center">STT</th>
+                                                    <th class="text-center">Ngày mua</th>
+                                                    <th class="text-center">Mã hàng hóa</th>
+                                                    <th>Tên hàng hóa</th>
+                                                    <th class="text-center">Số lượng</th>
+                                                    <th>Đơn giá</th>
+                                                    <th>Thành tiền</th>
+                                                    <th>Mua tại kho</th>
+                                                    <th>Nhân viên kinh doanh</th>
+                                                    <th>Mã hóa đơn</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">11/11/2015</td>
+                                                    <td class="text-center">PRO001</td>
+                                                    <td>Laptop Dell 001</td>
+                                                    <td class="text-center">10</td>
+                                                    <td>1,000,000</td>
+                                                    <td>10,000,000</td>
+                                                    <td>...</td>
+                                                    <td>...</td>
+                                                    <td>BILL001</td>
+                                                </tr>
+                                                <script type="text/javascript">
+                                                    for (var i = 0; i < 20; i++) {
+                                                        document.write('<tr><td class="text-center">1</td><td class="text-center">11/11/2015</td><td class="text-center">PRO001</td><td>Laptop Dell 001</td><td class="text-center">10</td><td>1,000,000</td><td>10,000,000</td><td>...</td><td>...</td><td>BILL001</td></tr>');
+                                                    }
+                                                </script>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- #customerNvkd -->
+                                    <div name="customerNvkd" class="table-responsive">
+                                        <table class="table table-condensed table-default table-bordered table-hover">
+                                            <thead>
+                                                <tr class="active">
+                                                    <th class="text-center">STT</th>
+                                                    <th class="text-center">Ngày mua</th>
+                                                    <th class="text-center">Mã hàng hóa</th>
+                                                    <th>Tên hàng hóa</th>
+                                                    <th class="text-center">Số lượng</th>
+                                                    <th>Đơn giá</th>
+                                                    <th>Thành tiền</th>
+                                                    <th>Mua tại kho</th>
+                                                    <th>Nhân viên kinh doanh</th>
+                                                    <th>Mã hóa đơn</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">11/11/2015</td>
+                                                    <td class="text-center">PRO001</td>
+                                                    <td>Laptop Dell 001</td>
+                                                    <td class="text-center">10</td>
+                                                    <td>1,000,000</td>
+                                                    <td>10,000,000</td>
+                                                    <td>...</td>
+                                                    <td>...</td>
+                                                    <td>BILL001</td>
+                                                </tr>
+                                                <script type="text/javascript">
+                                                    for (var i = 0; i < 20; i++) {
+                                                        document.write('<tr><td class="text-center">1</td><td class="text-center">11/11/2015</td><td class="text-center">PRO001</td><td>Laptop Dell 001</td><td class="text-center">10</td><td>1,000,000</td><td>10,000,000</td><td>...</td><td>...</td><td>BILL001</td></tr>');
+                                                    }
+                                                </script>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- #customerCongno -->
+                                    <div name="customerCongno">
+                                        <div class="cus-modal">
+                                            <!-- Modal HTML -->
+                                            <div id="vouchers" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="modal-title">
+                                                                <span>Danh sách chứng từ</span> |
+                                                                <span><small>Khách hàng:</small> Nguyễn Xuân Quỳnh</span> |
+                                                                <span><small>Chi nhánh:</small> Hà Nội</span>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="" class="form-inline">
+                                                                <div class="form-group">
+                                                                    <span>Từ</span>
+                                                                    <input type="date" class="form-control input-sm">
+                                                                    <span>Đến</span>
+                                                                    <input type="date" class="form-control input-sm">
+                                                                    <input type="submit" class="btn btn-info btn-sm" value="Xem"/>
+                                                                    <input type="reset" class="btn btn-default btn-sm" value="Hủy"/>
+                                                                </div>
+                                                            </form>
+
+                                                            <div class="table-responsive">
+                                                                <table class="table table-condensed table-default table-bordered table-hover">
+                                                                    <thead>
+                                                                        <tr class="active">
+                                                                            <th class="text-center">STT</th>
+                                                                            <th class="text-center">Ngày</th>
+                                                                            <th>Chứng từ</th>
+                                                                            <th class="text-center">Mã</th>
+                                                                            <th>Diễn giải</th>
+                                                                            <th>Đầu ký</th>
+                                                                            <th>Tăng</th>
+                                                                            <th>Giảm</th>
+                                                                            <th>Cuối kỳ</th>
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="text-center">1</td>
+                                                                            <td class="text-center">01/01/2016</td>
+                                                                            <td>AB/AB/AB/01/01/01</td>
+                                                                            <td>DEF</td>
+                                                                            <td>...</td>
+                                                                            <td>25</td>
+                                                                            <td>7</td>
+                                                                            <td>15</td>
+                                                                            <td>17</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <div class="text-center">
+                                                                <ul class="pagination">
+                                                                    <li class="active"><a href="#">1</a></li>
+                                                                    <li><a href="#">2</a></li>
+                                                                    <li><a href="#">3</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cus-form">
+                                            <form action="" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-sm-4 col-md-3">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo chi nhánh</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-3">
+                                                        <select name="" id="" class="form-control input-sm">
+                                                            <option value="">Theo Gara</option>
+                                                            <option value="">Theo Gara</option>
+                                                            <option value="">Theo Gara</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-6">
+                                                        <input type="submit" class="btn btn-info btn-sm" value="Tìm kiếm"/>
+                                                        <input type="reset" class="btn btn-default btm-sm" value="Hủy bỏ"/>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-condensed table-default table-bordered table-hover">
+                                                <thead>
+                                                    <tr class="active">
+                                                        <th class="text-center">STT</th>
+                                                        <th class="text-center">Ngày mua</th>
+                                                        <th class="text-center">Mã hàng hóa</th>
+                                                        <th>Tên hàng hóa</th>
+                                                        <th class="text-center">Số lượng</th>
+                                                        <th>Đơn giá</th>
+                                                        <th>Thành tiền</th>
+                                                        <th>Mua tại kho</th>
+                                                        <th>Nhân viên kinh doanh</th>
+                                                        <th>Mã hóa đơn</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">1</td>
+                                                        <td class="text-center">11/11/2015</td>
+                                                        <td class="text-center">PRO001</td>
+                                                        <td>Laptop Dell 001</td>
+                                                        <td class="text-center">10</td>
+                                                        <td>1,000,000</td>
+                                                        <td>10,000,000</td>
+                                                        <td>...</td>
+                                                        <td>...</td>
+                                                        <td>
+                                                            <a href="javascript:;" references="#vouchers" role="button" data-toggle="modal">
+                                                                Xem chứng từ
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- widget-footer -->
                             <div class="widget-footer">
-                                <div class="text-right">
+                                <div class="text-center">
                                     <ul class="pagination">
                                         <li class="active"><a href="#">1</a></li>
                                         <li><a href="#">2</a></li>
@@ -97,7 +425,7 @@
                                             <li>
                                                 <strong>Ảnh đại diện: </strong>
                                                 <div style="float: left; width: 100px; height: 100px;">
-                                                    <img src="/assets/img/noavatar.png" alt="Avatar" class="img-responsive"/>
+                                                    <img src="assets/img/noavatar.png" alt="AVATAR" class="img-responsive"/>
                                                 </div>
                                             </li>
                                         </ul>
@@ -167,4 +495,5 @@
             </div>
         </div>
     </div>
+    <!-- /#content -->
 @endsection

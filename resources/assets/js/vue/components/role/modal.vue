@@ -61,6 +61,7 @@
         </div>
     </div>
 </template>
+
 <script>
     var token = $('meta[name="csrf-token"]').attr('content')
     export default {

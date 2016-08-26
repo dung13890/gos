@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1'], function () {
+    Route::resource('positions', 'PositionsController');
+});
+

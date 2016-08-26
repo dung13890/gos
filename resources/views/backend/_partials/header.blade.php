@@ -17,7 +17,7 @@
                     <a href="{{ route('customers.index') }}"  title="Khách hàng">
                     <i class="glyphicon glyphicon-user"></i>&nbsp; Khách hàng</a>
                 </li>
-                <li><a href="#">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
+                <li><a href="{{ route('quotations.create') }}">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
                 <li><a href="javascript:void(0)">Báo cáo tổng hợp <i class='glyphicon glyphicon-chevron-down'></i></a>
                     <ul class="submenu">
                         <li><a href="#"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo hàng hóa</a></li>
@@ -28,14 +28,15 @@
                 <li><a href="{{ route('customers.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
                 <li><a href="#">Phiếu thu <i class="glyphicon glyphicon-equalizer"></i></a></li>
                 <li><a href="#">Phiếu chi <i class="glyphicon glyphicon-equalizer"></i></a></li>
-                <li>
-                    <a href="javascript:void(0)">Cài đặt <span class="glyphicon glyphicon-cog"></span></a>
-                    <ul class="submenu">
+                <li class="dropdown">
+                    <a href="javascript::void(0)" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">Cài đặt <span class="glyphicon glyphicon-cog"></span></a>
+                    <ul class="dropdown-menu submenu">
                         <li><a href="/user"><i class="glyphicon glyphicon-user"></i> Quản lý người dùng</a></li>
                         <li><a href="/roles"><i class="glyphicon glyphicon-lock"> </i> Quản lý nhóm quyền</a></li>
                         <li><a href="/logout"><i class="glyphicon glyphicon-wrench"></i> Cấu hình hệ thống</a></li>
                     </ul>
                 </li>
+                
                 <li>
                     <a href="javascript:void(0)" class="user-setting">{{ $me->fullname }}<span class="caret"></span></a>
                     <ul class="submenu">
