@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Thêm mới chức vụ</h4>
+                <h4 class="modal-title">@{{ modalTitle }}</h4>
             </div>
             <div class="modal-body">
                 <validator name="validation" :classes="{ touched: 'touched-validator', dirty: 'dirty-validator' }">
@@ -11,33 +11,24 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="required-wrapper form-field">
-                                    <input type='text'
-                                        class='form-required input-sm'
-                                        placeholder='Mã chức vụ'
+                                    <small>Mã chức vụ</small>
+                                    <input type='text' v-model='position.code'
+                                        class='form-control input-sm'
                                         value='' />
-                                    <span class="fa fa-exclamation"></span>
-                                    <span class="error" v-if="$validation.name.errors">@{{ $validation.code.errors[0].message  }}</span>
-                                    <span class="error">@{{ errors.code }}</span>
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    <input type='text' v-model='room.manager'
-                                        class='form-required input-sm'
-                                        placeholder='Tên chức vụ' value=''
-                                        v-validate:name="{
-                                            required: {rule: true, message: 'Tên chi nhánh không được bỏ trống'},
-                                            maxlength: {rule: 50, message: 'Không được quá 50 ký tự'}
-                                        }" />
-                                    <span class="fa fa-exclamation"></span>
-                                    <span class="error" v-if="$validation.manager.errors">@{{ $validation.manager.errors[0].message  }}</span>
-                                    <span class="error">@{{ errors.manager }}</span>
+                                    <small>Tên chức vụ</small>
+                                    <input type='text' v-model='position.name'
+                                        class='form-control input-sm'
+                                        value=''
+                                    />
                                 </div>
-
                             </div>
                         </div>
-
+                        
                         <div class="form-group text-center">
-                            <button class="btn btn-success" type="button" v-on:click="submitForm">
+                            <button class="btn btn-success" type="button">
                                 <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
                             </button>
 

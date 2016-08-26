@@ -14,14 +14,14 @@
 Route::get('image/{path}', ['as' => 'image', 'uses' => 'Backend\DashboardController@getReponseImage'])->where('path', '(.*?)');
 
 Route::group(['namespace' => 'Auth'], function () {
-	Route::group(['namespace' => 'Backend'], function () {
-		Route::get('login', 'LoginController@showLoginForm');
+    Route::group(['namespace' => 'Backend'], function () {
+        Route::get('login', 'LoginController@showLoginForm');
         Route::post('login', ['as' => 'login', 'uses' => 'LoginController@login']);
         Route::get('logout', 'LoginController@logout');
         Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
         Route::post('password/reset', 'ResetPasswordController@reset');
         Route::get('password/reset/{token?}', 'ResetPasswordController@showResetForm');
-	});
+    });
 });
 
 
@@ -68,4 +68,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::get('bills/exportstock', 'BillsController@exportStock');
     Route::get('bills/importstock', 'BillsController@importstock');
     Route::get('bills/symmetrical', 'BillsController@symmetrical');
+
+    Route::resource('quotations', 'QuotationsController', ['only' => ['create', 'store']]);
 });

@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    toggleHeaderSubmenu();
-
     toggleMenuMobile();
 
     keepModalWhenSubmit();

@@ -1,29 +1,13 @@
-function toggleHeaderSubmenu() {
-    $('header .menu > ul > li').click(function() {
-        $(this).attr('clicked', 1);
-        var op = $(this).children().eq(1).css('opacity');
 
-        if (op == 0) {
-            $(this).children().eq(1).css('display', 'block');
-            $(this).children().eq(1).animate({
-                "opacity": 1,
-                "margin-top": 0
-            }, 300);
-        } else {
-            $(this).children().eq(1).css({
-                "opacity": 0,
-                "margin-top": "20px",
-                "display": "none"
-            });
-
-        }
-    });
-}
-
+/**
+ * Keep modal to display when submit form
+ *
+ * @return void
+ */
 function keepModalWhenSubmit() {
     var modal = getCookie('modal');
 
-    if (modal !== undefined || modal == null) {
+    if (modal != undefined || modal == null) {
         $(modal).modal({show: true, backdrop: 'static', keyboard: false});
     }
 
@@ -38,6 +22,11 @@ function keepModalWhenSubmit() {
     });
 }
 
+/**
+ * Scroll to top of page
+ *
+ * @return void
+ */
 function scrollTop() {
     $('#scrollTop').click(function() {
         $(this).css('text-decoration', 'none');
@@ -45,6 +34,11 @@ function scrollTop() {
     });
 }
 
+/**
+ * Make input that must be required
+ *
+ * return void
+ */
 function makeInputRequired() {
     $('.form-required, .form-required-sm').focus(function(){
         $(this).parent().children().eq(1).show();
@@ -55,6 +49,13 @@ function makeInputRequired() {
     });
 }
 
+/**
+ * Toggle content of widget
+ *
+ * @param string className Class name of button toggle
+ * @param number ms the miniseconds of event
+ * @return void
+ */
 function toggleContent(className, ms) {
     if (className === undefined) {
         className = 'toggle-content';
@@ -81,6 +82,11 @@ function toggleContent(className, ms) {
     });
 }
 
+/**
+ * Get cookie value by cookie name
+ *
+ * @return mixed
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -96,6 +102,7 @@ function getCookie(cname) {
     return "";
 }
 
+// Toggle menu mobile when display on mobile
 function toggleMenuMobile() {
     var menuSystem = $('header nav.menu[references="menu-system"]').html();
     $('#menuMobile > nav[references="menu-system"]').html(menuSystem);
