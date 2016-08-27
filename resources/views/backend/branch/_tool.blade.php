@@ -3,13 +3,6 @@
         <div class="col-sm-6">
             <form action="" class="form-inline">
                 <div class="form-group">
-                    <select name="rows" table-name="test" class="form-control input-sm">
-                        <option value="">Xem</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                    </select>
-                    
                     <div class="btn-group">
                         <input type="text" class="form-control input-sm searchinput" placeholder="Tìm theo mã hoặc tên" size="50px" />
                         <span class="glyphicon glyphicon-remove-circle searchclear"></span>
@@ -19,7 +12,7 @@
         </div>
         <div class="col-sm-6 text-right">
             <div class="tool">
-                <a href="#newProvider" id="btnAddUnit" role="button" class="btn btn-sm" data-toggle="modal">
+                <a href="#newBranch" role="button" class="btn btn-sm" data-toggle="modal" v-on:click="create">
                     <i class="fa fa-plus"></i> Thêm mới
                 </a>
             </div>

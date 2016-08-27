@@ -45,7 +45,7 @@
                                 <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                             </button>
 
-                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Làm lại</button>
+                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Xóa dữ liệu</button>
                         </div>
                     </form>
                 </validator>
