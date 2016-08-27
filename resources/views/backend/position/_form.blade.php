@@ -14,7 +14,13 @@
                                     <small>Mã chức vụ</small>
                                     <input type='text' v-model='position.code'
                                         class='form-control input-sm'
-                                        value='' />
+                                        value=''
+                                        v-validate:code="{
+                                            required: {rule: true, message: 'Mã chức vụ không được bỏ trống'},
+                                            maxlength: {rule: 5, message: 'Không được quá 5 ký tự'}
+                                        }"
+                                    />
+                                    <span class="error" v-if="$validation.code.errors">@{{ $validation.code.errors[0].message  }}</span>
                                 </div>
 
                                 <div class="required-wrapper form-field">
@@ -22,13 +28,19 @@
                                     <input type='text' v-model='position.name'
                                         class='form-control input-sm'
                                         value=''
+                                        v-validate:name="{
+                                            required: {rule: true, message: 'Tên chức vụ không được bỏ trống'},
+                                            maxlength: {rule: 200, message: 'Không được quá 200 ký tự'},
+                                            minlength: {rule: 2, message: 'Không được quá 2 ký tự'},
+                                        }"
                                     />
+                                    <span class="error" v-if="$validation.name.errors">@{{ $validation.name.errors[0].message  }}</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group text-center">
-                            <button class="btn btn-success" type="button">
+                            <button class="btn btn-success" type="button" v-on:click="validate">
                                 <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
                             </button>
 
