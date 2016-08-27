@@ -17,7 +17,8 @@
                                         value=''
                                         v-validate:code="{
                                             required: {rule: true, message: 'Mã chức vụ không được bỏ trống'},
-                                            maxlength: {rule: 5, message: 'Không được quá 5 ký tự'}
+                                            maxlength: {rule: 11, message: 'Không được quá 11 ký tự'},
+                                            minlength: {rule: 5, message: 'Không được nhỏ hơn 5 ký tự'}
                                         }"
                                     />
                                     <span class="error" v-if="$validation.code.errors">@{{ $validation.code.errors[0].message  }}</span>
@@ -41,14 +42,10 @@
                         
                         <div class="form-group text-center">
                             <button class="btn btn-success" type="button" v-on:click="validate">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                             </button>
 
-                            <button class="btn btn-info" type="button">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu và thêm mới
-                            </button>
-
-                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
+                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Làm lại</button>
                         </div>
                     </form>
                 </validator>

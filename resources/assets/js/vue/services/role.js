@@ -2,6 +2,7 @@ export default {
   setHttp (http) {
     this.http = http;
   },
+  
   setRouter (router) {
     this.router = router;
   },
@@ -16,6 +17,7 @@ export default {
       })
     })
   },
+  
   getRole: function (id) {
     var self = this;
     return new Promise( function(resolve, reject) {
@@ -26,6 +28,7 @@ export default {
       })
     })
   },
+  
   store: function (formData) {
     var self = this;
     return new Promise( function(resolve, reject) {
@@ -36,9 +39,9 @@ export default {
       })
     })
   },
+
   update: function (formData, id) {
     var self = this;
-    console.log(formData.get('name'));
     return new Promise( function(resolve, reject) {
       self.http.post(self.router.route('roles.ajax.update', {roles: id}), formData).then(function (response) {
         resolve(response.data)

@@ -23,7 +23,7 @@ $factory->define(App\Model\Unit::class, function (Faker\Generator $faker) {
 // Rooms
 $factory->define(App\Model\Room::class, function (Faker\Generator $faker) {
     return [
-        'code' => $faker->name,
+        'code' => str_random(5),
         'name' => Str::slug($faker->name, '.'),
         'description' => $faker->text(120),
         'organizational' => $faker->text(120),

@@ -17,7 +17,7 @@ class CreateUnitsTable extends Migration
 
             // Main unit information
             $table->string('name', 32)->nullable();
-            $table->string('short_name', 10)->nullable();
+            $table->string('short_name', 32)->nullable();
             $table->string('description', 200)->nullable();
             $table->timestamps();
 
