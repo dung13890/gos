@@ -18,8 +18,8 @@ class CreateBranchesTable extends Migration
             // Main branches (Thông tin chi nhánh)
             $table->string('code', 11)->nullable();
             $table->string('name', 50)->nullable();
-            $table->string('phone', 15)->nullable();
-            $table->string('address', 32)->nullable();
+            $table->string('phone', 32)->nullable();
+            $table->string('address', 200)->nullable();
             $table->string('fax', 200)->nullable();
             $table->string('website', 200)->nullable();
             $table->string('image', 255)->nullable();

@@ -49,10 +49,10 @@
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                     </a>
                                                     
-                                                    <a href="#" 
+                                                    <a href="javascript:void(0)" 
                                                         title="Xóa"
-                                                        class="btn-icon label-delete"
-                                                        v-on:click="destroy(position.id)">
+                                                        class="btn-icon label-delete btn-xs handle-delete"
+                                                        v-on:click="destroy(position.id, position)">
                                                         <span class="glyphicon glyphicon-remove-circle"></span>
                                                     </a>
                                                 </td>

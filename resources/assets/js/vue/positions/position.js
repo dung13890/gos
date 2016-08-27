@@ -18,13 +18,9 @@ new Vue({
                 code: '',
                 name: '',
             },
-            
             positions: {},
-
             modalTitle: '',
-
             errors: {},
-
             isError: false,
         }
     },
@@ -37,15 +33,35 @@ new Vue({
     methods: {
         create: function() {
             var self = this;
+            self.position = {};
+            
             self.modalTitle = 'Thêm mới chức vụ';
         },
 
         store: function(params) {
+            var self = this;
             PositionService.store(params).then((response) => {
                 toastr.success(response.message);
 
                 if (response.code === 200) {
-                    window.location.reload();
+                    self.reload();
+                }
+
+            }, (response) => {
+                if (response.errors) {
+                    self.isError = true;
+                    self.errors = response.errors;
+                }
+            });
+        },
+
+        update: function (params, id) {
+            var self = this;
+            PositionService.update(params, id).then((response) => {
+                toastr.success(response.message);
+
+                if (response.code === 200) {
+                    self.reload();
                 }
 
             }, (response) => {
@@ -59,30 +75,56 @@ new Vue({
         edit: function(id) {
             var self = this;
             self.modalTitle = 'Sửa thông tin chức vụ';
-
+            
             PositionService.edit(id).then(function(response) {
-                self.positions = response.positions;
+                self.position = response.position;
             });
         },
 
-        destroy: function(id) {
-            alert(id);
+        destroy: function(id, position) {
+            var self = this;
+
+            swal({
+                title: "Bạn có chắc chắn không?",
+                text: "Bản ghi có mã "+ position.name + " sẽ bị xóa",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Đồng ý!",
+                cancelButtonText: 'Hủy',
+                closeOnConfirm: false
+            }, function(isConfirm) {
+                if (isConfirm) {
+                    self.positions.$remove(position);
+                    PositionService.destroy(id).then(function(response) {
+                        self.position = response.position;
+                    });
+
+                    swal("Đã xóa!", "Bản ghi có mã " + position.code, "success");
+                }
+            });
         },
 
         validate: function()
         {
             var self = this;
-            var params = new FormData();
-            params.append('_token', token);
 
             this.$validate(true, function () {
+                
                 if (self.$validation.invalid) { return; }
 
-                params.append('code', self.position.code);
-                params.append('name', self.position.name);
-
-                self.store(params);
+                if (self.position.id) {
+                    self.update(self.position, self.position.id);
+                } else {
+                    self.store(self.position);
+                }
             });
+        },
+
+        reload: function() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000);
         }
     },
 
