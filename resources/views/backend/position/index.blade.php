@@ -30,6 +30,7 @@
                                                 <th style="display:none">ID</th>
                                                 <th width="100">Mã</th>
                                                 <th>Tên chức vụ</th>
+                                                <th width="150">Ngày tạo</th>
                                                 <th width="80" class="text-center">Thao tác</th>
                                             </tr>
                                         </thead>
@@ -38,30 +39,26 @@
                                             <tr v-for="position in positions">
                                                 <td>@{{ position.code }}</td>
                                                 <td>@{{ position.name }}</td>
+                                                <td>@{{ position.created_at }}</td>
                                                 <td class="text-center">
-                                                    <a href="#newProduct" title="Sửa thông tin" class="btn-icon label-edit" data-toggle="modal">
+                                                    <a href="#newProvider" 
+                                                       title="Sửa thông tin" 
+                                                       class="btn-icon label-edit" 
+                                                       data-toggle="modal" 
+                                                       v-on:click="edit(position.id)">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                     </a>
                                                     
-                                                    <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                    <a href="#" 
+                                                        title="Xóa"
+                                                        class="btn-icon label-delete"
+                                                        v-on:click="destroy(position.id)">
                                                         <span class="glyphicon glyphicon-remove-circle"></span>
                                                     </a>
                                                 </td>
                                             </tr>
-                                            
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                            <div class="widget-footer">
-                                <div class="text-right">
-                                    <ul class="pagination">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>

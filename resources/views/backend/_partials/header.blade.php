@@ -56,7 +56,7 @@
             <ul>
                 <li class="node-system">
                     <a href="javascript:void(0)" class="active">
-                        Danh mục hệ thống
+                        Danh mục
                         <i class='glyphicon glyphicon-random'></i></a>
                     <ul class="sub-node-system">
                         <li>
