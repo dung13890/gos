@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
-import BranchService from '../services/branch';
+import BranchService from '../services/branch'
+import Multiselect from 'vue-multiselect'
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
@@ -10,9 +11,14 @@ var token = $('meta[name="csrf-token"]').attr('content');
 
 new Vue({
     el: '#BranchesController',
+    
+    components: {
+        'multiselect': Multiselect
+    },
 
     data: function () {
         return {
+            branches: {},
             branch: {
                 id: '',
                 code: '',
@@ -21,13 +27,14 @@ new Vue({
                 phone: '',
                 fax: '',
                 status: '',
+                locations_selected: []
             },
-            branches: {},
-            locations: {},
+
+            locations: [],
+
             modalTitle: '',
             errors: {},
             isError: false,
-            options: ['list', 'of', 'options'],
         }
     },
 
@@ -40,6 +47,8 @@ new Vue({
         create: function() {
             var self = this;
             self.branch = {};
+            self.branch.locations_selected = [];
+
             self.modalTitle = 'Thêm mới chi nhánh';
         },
 
@@ -80,9 +89,10 @@ new Vue({
         edit: function(id) {
             var self = this;
             self.modalTitle = 'Sửa thông tin chi nhánh';
-            
+
             BranchService.edit(id).then(function(response) {
                 self.branch = response.branch;
+                self.branch.locations_selected = response.branch.locations;
             });
         },
 
@@ -109,8 +119,7 @@ new Vue({
             });
         },
 
-        validate: function()
-        {
+        validate: function() {
             var self = this;
             this.$validate(true, function () {
                 if (self.$validation.invalid) { return; }
@@ -127,9 +136,15 @@ new Vue({
             setTimeout(function() {
                 window.location.reload();
             }, 1000);
+        },
+
+        locationSelected: function(selected) {
+            var self = this;
+            this.selected = selected
+            self.branch.locations_selected = this.selected;
         }
     },
-
+    
     ready: function () {
         var self = this;
         BranchService.index().then(function(response) {
