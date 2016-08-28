@@ -73,6 +73,16 @@ var plugins = {
       name: 'positions/position.js',
       in: '',
       out: 'positions'
+    },
+    {
+      name: 'branches/branch.js',
+      in: '',
+      out: 'branches'
+    },
+    {
+      name: 'units/unit.js',
+      in: '',
+      out: 'units'
     }
   ]
 }
