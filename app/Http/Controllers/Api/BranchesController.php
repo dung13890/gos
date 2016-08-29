@@ -24,7 +24,15 @@ class BranchesController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $branch = Branch::create($request->all());
+        $params = $request->all();
+        $locationIds = [];
+        
+        $branch = Branch::create($params);
+
+        if (isset($params['locations_selected']) && $params['locations_selected'] != null) {
+            $locationIds = array_pluck($params['locations_selected'], 'id');
+            $branch->locations()->attach($locationIds);
+        }
 
         return response()->json([
             'code' => 200,
@@ -35,17 +43,28 @@ class BranchesController extends Controller
 
     public function edit($id)
     {
+        $branch = Branch::findOrFail($id);
+        $branch->locations = $branch->locations()->get(['id', 'name']);
+
         return response()->json([
             'code' => 200,
             'message' => 'Đã lấy được thông tin!',
-            'branch' => Branch::findOrFail($id),
+            'branch' => $branch,
         ]);
     }
 
     public function update(Request $request, $id)
     {
+        $params = $request->all();
+        $locationIds = [];
+
         $branch = Branch::findOrFail($id);
-        $branch->update($request->all());
+        $branch->update($params);
+
+        if (isset($params['locations_selected']) && $params['locations_selected'] != null) {
+            $locationIds = array_pluck($params['locations_selected'], 'id');
+            $branch->locations()->sync($locationIds);
+        }
 
         return response()->json([
             'code' => 200,

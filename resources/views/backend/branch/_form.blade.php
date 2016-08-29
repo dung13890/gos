@@ -11,10 +11,30 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="required-wrapper form-field">
-                                    <small>Mã chi nhánh</small>
+                                    <multiselect
+                                        :options="locations"
+                                        :type="json"
+                                        :selected.sync="branch.locations_selected"
+                                        :multiple="true"
+                                        :searchable="true"
+                                        :local-search="true",
+                                        :allow-empty="true"
+                                        @update="locationSelected"
+                                        :hide-selected="true",
+                                        :close-on-select="false",
+                                        deselect-label="Bỏ chọn"
+                                        select-label="Enter để chọn"
+                                        label="name"
+                                        key="id"
+                                        placeholder="Vùng kinh doanh">
+                                    </multiselect>
+                                </div>
+
+                                <div class="required-wrapper form-field">
                                     <input type='text' v-model='branch.code'
                                         class='form-control input-sm'
                                         value=''
+                                        placeholder='Mã chi nhánh'
                                         v-validate:code="{
                                             required: {rule: true, message: 'Mã chi nhánh không được để trống'},
                                             maxlength: {rule: 11, message: 'Không được quá 11 ký tự'},
@@ -24,9 +44,9 @@
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    <small>Tên chi nhánh</small>
                                     <input type='text' v-model='branch.name'
                                         class='form-control input-sm'
+                                        placeholder='Tên chi nhánh'
                                         v-validate:name="{
                                             required: {rule: true, message: 'Tên chi nhánh không được bỏ trống'},
                                             maxlength: {rule: 50, message: 'Không được quá 50 ký tự'},
@@ -37,9 +57,9 @@
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    <small>Địa chỉ</small>
                                     <input type='text' v-model='branch.address'
                                         class='form-control input-sm'
+                                        placeholder='Địa chỉ'
                                         v-validate:address="{
                                             required: {rule: true, message: 'Địa chỉ chi nhánh không được bỏ trống'}
                                         }"
@@ -48,22 +68,22 @@
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    <small>Điện thoại</small>
                                     <input type='text' v-model='branch.phone'
+                                        placeholder='Điện thoại'
                                         class='form-control input-sm'
                                     />
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    <small>Số Fax</small>
                                     <input type='text' v-model='branch.fax'
+                                        placeholder='Số Fax'
                                         class='form-control input-sm'
                                     />
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    <small>Website</small>
                                     <input type='text' v-model='branch.website'
+                                        placeholder='Website'
                                         class='form-control input-sm'
                                     />
                                 </div>
@@ -72,23 +92,6 @@
                                     Đang hoạt động <input type='checkbox' v-model='branch.status' class='input-sm'/>
                                 </div>
 
-                                <div class="required-wrapper form-field">
-                                    <small>Vùng áp dụng kinh doanh</small>
-                                    <select class='form-control input-sm'>
-                                        <option value='' >Vùng áp dụng</option>
-                                        <option v-for="location in locations" :value="location.id">@{{location.name}}</option>
-                                    </select>
-                                </div>
-
-                                <template>
-                                  <div>
-                                    <multiselect
-                                      :selected="selected"
-                                      :options="options"
-                                      @update="updateSelected">
-                                    </multiselect>
-                                  </div>
-                                </template>
                             </div>
                         </div>
 
