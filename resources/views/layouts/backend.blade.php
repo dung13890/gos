@@ -42,6 +42,5 @@
         {{ HTML::script('vendor/bootstrap/js/bootstrap.min.js') }}
         {{ HTML::script(elixir('assets/js/backend/app.js')) }}
         @stack('prescripts')
-        {{ HTML::script(elixir('assets/vue/app.js')) }}
     </body>
 </html>

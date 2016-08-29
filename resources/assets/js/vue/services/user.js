@@ -27,7 +27,7 @@ export default {
       })
     })
   },
-
+  
   updatePassword: function (formData) {
     var self = this;
     return new Promise( function(resolve, reject) {
