@@ -50,15 +50,13 @@
                                                         title="Sửa"
                                                         class="btn-icon label-edit"
                                                         data-toggle="modal"
-                                                        v-on:click="edit(branch.id)"
-                                                    >
+                                                        v-on:click="edit(unit.id)">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                     </a>
 
                                                     <a href="javascript:void(0);" title="Xóa" 
                                                         class="btn-icon label-delete"
-                                                        v-on:click="destroy(unit.id, unit)"
-                                                    >
+                                                        v-on:click="destroy(unit.id, unit)">
                                                         <span class="glyphicon glyphicon-remove-circle"></span>
                                                     </a>
                                                 </td>

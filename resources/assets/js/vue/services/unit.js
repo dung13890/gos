@@ -22,7 +22,7 @@ export default {
     store: function(params) {
         var self = this;
         return new Promise(function(resolve, reject) {
-            self.http.post(self.router.route('api.v1.branches.store'), params).then(function (response) {
+            self.http.post(self.router.route('api.v1.units.store'), params).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);
@@ -33,7 +33,7 @@ export default {
     edit: function(id) {
         var self = this;
         return new Promise(function(resolve, reject) {
-            self.http.get(self.router.route('api.v1.branches.edit', {branch: id})).then(function (response) {
+            self.http.get(self.router.route('api.v1.units.edit', {unit: id})).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);
@@ -45,7 +45,7 @@ export default {
         var self = this;
         return new Promise(function(resolve, reject) {
             try {
-                self.http.patch(self.router.route('api.v1.branches.update', {branch: id}), params).then(function (response) {
+                self.http.patch(self.router.route('api.v1.units.update', {unit: id}), params).then(function (response) {
                     resolve(response.data);
                 }, function (response) {
                     reject(response.data);
@@ -60,7 +60,7 @@ export default {
         var self = this;
         return new Promise(function(resolve, reject) {
             try {
-                self.http.delete(self.router.route('api.v1.branches.destroy', {branch: id})).then(function (response) {
+                self.http.delete(self.router.route('api.v1.units.destroy', {unit: id})).then(function (response) {
                     resolve(response.data);
                 }, function (response) {
                     reject(response.data);

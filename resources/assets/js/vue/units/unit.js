@@ -15,7 +15,6 @@ new Vue({
         return {
             unit: {
                 id: '',
-                code: '',
                 name: '',
                 short_name: '',
                 description: '',
@@ -44,7 +43,7 @@ new Vue({
         store: function(params) {
             var self = this;
 
-            BranchService.store(params).then((response) => {
+            UnitService.store(params).then((response) => {
                 toastr.success(response.message);
                 if (response.code === 200) {
                     self.reload();
@@ -60,7 +59,7 @@ new Vue({
 
         update: function (params, id) {
             var self = this;
-            BranchService.update(params, id).then((response) => {
+            UnitService.update(params, id).then((response) => {
                 toastr.success(response.message);
 
                 if (response.code === 200) {
@@ -78,9 +77,9 @@ new Vue({
         edit: function(id) {
             var self = this;
             self.modalTitle = 'Sửa thông tin đơn vị tính';
-            
-            BranchService.edit(id).then(function(response) {
-                self.branch = response.branch;
+
+            UnitService.edit(id).then(function(response) {
+                self.unit = response.unit;
             });
         },
 
@@ -88,7 +87,7 @@ new Vue({
             var self = this;
             swal({
                 title: "Bạn có chắc chắn không?",
-                text: "Bản ghi có mã "+ unit.code + " sẽ bị xóa",
+                text: "Bản ghi có tên "+ unit.name + " sẽ bị xóa",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -99,10 +98,10 @@ new Vue({
                 if (isConfirm) {
                     self.units.$remove(unit);
                     UnitService.destroy(id).then(function(response) {
-                        self.unit = response.branch;
+                        self.unit = response.unit;
                     });
 
-                    swal("Đã xóa!", "Bản ghi có mã " + unit.code, "success");
+                    swal("Đã xóa!", "Bản ghi có tên " + unit.name, "success");
                 }
             });
         },
@@ -113,10 +112,10 @@ new Vue({
             this.$validate(true, function () {
                 if (self.$validation.invalid) { return; }
 
-                if (self.branch.id) {
-                    self.update(self.branch, self.branch.id);
+                if (self.unit.id) {
+                    self.update(self.unit, self.unit.id);
                 } else {
-                    self.store(self.branch);
+                    self.store(self.unit);
                 }
             });
         },
