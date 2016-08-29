@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Backend;
+namespace App\Http\Requests\Backend\Rooms;
 
-use App\Http\Requests\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UnitRequest extends Request
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,8 @@ class UnitRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:32',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name.required' => 'Đơn vị tính không được bỏ trống',
+            'code' => 'required',
+            'name' => 'required',
         ];
     }
 }

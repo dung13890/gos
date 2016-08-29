@@ -7,36 +7,69 @@ export default {
         this.router = router;
     },
 
-    store: function(formData) {
+    index: function() {
         var self = this;
+        
         return new Promise(function(resolve, reject) {
-            self.http.post(self.router.route('rooms.store'), formData).then(function (response) {
+            self.http.get(self.router.route('api.v1.rooms.index')).then(function (response) {
+                resolve(response.data);
+            }, function (response) {
+                reject(response.data);
+            });
+        });
+    },
+
+    store: function(params) {
+        var self = this;
+        console.log(params);
+
+        return new Promise(function(resolve, reject) {
+            self.http.post(self.router.route('api.v1.rooms.store'), params).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);
             })
-        })
+        });
     },
 
     edit: function(id) {
         var self = this;
         return new Promise(function(resolve, reject) {
-            self.http.get(self.router.route('rooms.edit', {rooms: id})).then(function (response) {
+            self.http.get(self.router.route('api.v1.rooms.edit', {room: id})).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);
             })
-        })
+        });
     },
 
-    update: function(formData) {
+    update: function(params, id) {
         var self = this;
         return new Promise(function(resolve, reject) {
-            self.http.post(self.router.route('rooms.update'), formData).then(function () {
-                resolve(response.data);
-            }, function(response) {
-                reject(response.data);
-            });
+            try {
+                self.http.patch(self.router.route('api.v1.rooms.update', {room: id}), params).then(function (response) {
+                    resolve(response.data);
+                }, function (response) {
+                    reject(response.data);
+                });
+            } catch(e) {
+                console.log(e);
+            }
+        });
+    },
+
+    destroy: function(id) {
+        var self = this;
+        return new Promise(function(resolve, reject) {
+            try {
+                self.http.delete(self.router.route('api.v1.rooms.destroy', {room: id})).then(function (response) {
+                    resolve(response.data);
+                }, function (response) {
+                    reject(response.data);
+                });
+            } catch(e) {
+                console.log(e);
+            }
         });
     }
 }
