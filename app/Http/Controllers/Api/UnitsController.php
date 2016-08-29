@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Model\Unit;
+use App\Http\Requests\Backend\Units\StoreRequest;
+use App\Http\Requests\Backend\Units\UpdateRequest;
 
 class UnitsController extends Controller
 {
@@ -21,12 +23,12 @@ class UnitsController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $position = Position::create($request->all());
+        $unit = Unit::create($request->all());
         
         return response()->json([
             'code' => 200,
             'message' => 'Thêm thành công!',
-            'position' => $position,
+            'unit' => $unit,
         ]);
     }
 
@@ -35,25 +37,25 @@ class UnitsController extends Controller
         return response()->json([
             'code' => 200,
             'message' => 'Đã lấy được thông tin!',
-            'position' => Position::findOrFail($id),
+            'unit' => Unit::findOrFail($id),
         ]);
     }
 
     public function update(UpdateRequest $request, $id)
     {
-        $position = Position::findOrFail($id);
-        $position->update($request->all());
+        $unit = Unit::findOrFail($id);
+        $unit->update($request->all());
 
         return response()->json([
             'code' => 200,
             'message' => 'Sửa thành công!',
-            'position' => $position,
+            'unit' => $unit,
         ]);
     }
 
     public function destroy($id)
     {
-        Position::findOrFail($id)->delete();
+        Unit::findOrFail($id)->delete();
         return response()->json([
             'code' => 200,
             'message' => 'Xóa thành công!',

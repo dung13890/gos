@@ -30,12 +30,12 @@
 
                         <div class="required-wrapper">
                             <small>Thông tin mô tả</small>
-                            <textarea class="form-control input-sm" rows="3" name="description" cols="50"></textarea>
+                            <textarea class="form-control input-sm" rows="3" v-model='unit.description' cols="50"></textarea>
                         </div>
                     </div>
                 
                     <div class="form-group text-center">
-                        <button class="btn btn-success" type="submit">
+                        <button class="btn btn-success" type="submit" v-on:click="validate()">
                             <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                         </button>
                         <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Xóa dữ liệu</button>

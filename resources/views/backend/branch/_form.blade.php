@@ -89,7 +89,10 @@
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    Đang hoạt động <input type='checkbox' v-model='branch.status' class='input-sm'/>
+                                    <div class="checkbox checkbox-success checkbox-inline">
+                                        <input type="checkbox" id="inlineCheckbox2" v-model='branch.status'>
+                                        <label for="inlineCheckbox2">Đang hoạt động</label>
+                                    </div>
                                 </div>
 
                             </div>

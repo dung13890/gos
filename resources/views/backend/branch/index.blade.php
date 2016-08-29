@@ -1,5 +1,9 @@
 @extends('layouts.backend')
 
+@push('prestyles')
+    {{ HTML::style("assets/css/backend/checkbox-radiobox.css") }}
+@endpush
+
 @push('prescripts')
     {{ HTML::script("assets/vue/branches/branch.js") }}
 @endpush
