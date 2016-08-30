@@ -49,14 +49,23 @@ class RoomsController extends Controller
 
     public function update(UpdateRequest $request, $id)
     {
-        $room = Room::findOrFail($id);
-        $room->update($request->all());
+        try {
+            $room = Room::findOrFail($id);
+            $room->update($request->all());
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'Sửa thành công!',
-            'room' => $room,
-        ]);
+            return response()->json([
+                'code' => 200,
+                'message' => 'Sửa thành công!',
+                'room' => $room,
+            ]);
+        }
+        
+        catch(Exception $e) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $e->getMessage(),
+            ], 300);
+        }
     }
 
     public function destroy($id)

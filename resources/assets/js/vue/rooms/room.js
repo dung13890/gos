@@ -23,7 +23,7 @@ new Vue({
                 organizational: '',
                 manager: '',
                 member: '',
-                founding: '',
+                founding: null,
                 branch_id: '',
             },
 
@@ -58,8 +58,7 @@ new Vue({
 
             }, (response) => {
                 if (response.errors) {
-                    self.isError = true;
-                    self.errors = response.errors;
+                    self.errors = response.messages;
                 }
             });
         },
@@ -75,8 +74,8 @@ new Vue({
 
             }, (response) => {
                 if (response.errors) {
-                    self.isError = true;
-                    self.errors = response.errors;
+                    alert(errors);
+                    self.errors = response.messages;
                 }
             });
         },
@@ -137,9 +136,7 @@ new Vue({
 
         RoomService.index().then(function(response) {
             self.rooms = response.rooms;
-            console.log(response.rooms);
             self.branches = response.branches;
-            console.log(self.branches);
         });
     }
 });

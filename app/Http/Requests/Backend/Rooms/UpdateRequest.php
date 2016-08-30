@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Backend\Rooms;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Exception;
 
 class UpdateRequest extends FormRequest
 {
@@ -24,8 +25,18 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required',
-            'name' => 'required',
+            'code' => 'required|max:11|min:5|unique:rooms,code',
+            'name' => 'required|max:50|min:2|unique:rooms,name',
+            'member' => 'numeric',
+            'founding' => 'date',
         ];
+    }
+
+    public function response(array $errors)
+    {
+        return response()->json([
+            'errors' => true,
+            'messages'  => $errors,
+        ], 422);
     }
 }
