@@ -28,4 +28,12 @@ class UpdateRequest extends FormRequest
             'name' => 'required',
         ];
     }
+
+    public function response(array $errors)
+    {
+        return response()->json([
+            'errors' => true,
+            'messages'  => $errors,
+        ], 422);
+    }
 }

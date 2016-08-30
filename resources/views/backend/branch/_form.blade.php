@@ -95,6 +95,8 @@
                                     </div>
                                 </div>
 
+                                @include('errors.validate')
+                                
                             </div>
                         </div>
 

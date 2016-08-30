@@ -51,8 +51,8 @@ new Vue({
 
             }, (response) => {
                 if (response.errors) {
-                    self.isError = true;
-                    self.errors = response.errors;
+                    self.errors = response.messages;
+                    self.isError = response.errors
                 }
             });
         },
@@ -68,8 +68,8 @@ new Vue({
 
             }, (response) => {
                 if (response.errors) {
-                    self.isError = true;
-                    self.errors = response.errors;
+                    self.errors = response.messages;
+                    self.isError = response.errors
                 }
             });
         },

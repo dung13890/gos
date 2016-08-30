@@ -37,6 +37,9 @@
                                     />
                                     <span class="error" v-if="$validation.name.errors">@{{ $validation.name.errors[0].message  }}</span>
                                 </div>
+
+                                @include('errors.validate')
+                                
                             </div>
                         </div>
                         
