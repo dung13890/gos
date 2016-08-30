@@ -31,6 +31,8 @@ nav.sidebar-report ul a span {
     border: 1px solid #eee;
     min-height: 120px;
     margin-bottom: 30px;
+    float: left;
+    width: 100%;
 }
 
 .header-object-report {
@@ -50,11 +52,11 @@ nav.sidebar-report ul a span {
     width: 140px;
     border: 1px solid #ccc;
     margin-top: 5px;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 .header-object-report select {
-    width: 250px;
+    width: 150px;
 }
 
 .btn-view-report {
@@ -72,4 +74,8 @@ nav.sidebar-report ul a span {
     margin-top: 10px;
     font-size: 18px;
     display: block;
+}
+
+#chart_div, #gara_branch {
+    float: left;
 }

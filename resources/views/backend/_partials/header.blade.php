@@ -19,7 +19,7 @@
                 <li><a href="{{ route('quotations.create') }}">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
 
                 <li>
-                    <a href="{{ route('reports.index') }}">Báo cáo tổng hợp 
+                    <a href="{{ route('reports.index') }}">Báo cáo - Thống kê 
                     <i class='glyphicon glyphicon-bullhorn'></i></a>
                 </li>
                 <li><a href="{{ route('promotions.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-usd"></i></a></li>
