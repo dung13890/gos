@@ -1,0 +1,75 @@
+nav.sidebar-report ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    -webkit-box-shadow: -1px 0px 11px 3px rgba(230,227,230,1);
+    -moz-box-shadow: -1px 0px 11px 3px rgba(230,227,230,1);
+    box-shadow: -1px 0px 11px 3px rgba(230,227,230,1);
+}
+
+nav.sidebar-report ul a {
+    display: block;
+    line-height: 35px;
+    background-color: #fff;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    padding-left: 8px;
+    font-size: 14px;
+}
+
+nav.sidebar-report ul a:hover, nav.sidebar-report ul a.active {
+    background: #f5f5f5;   
+    font-weight: bold;
+    border-left: 2px solid #000;
+}
+
+nav.sidebar-report ul a span {
+    padding-right: 5px;
+}
+
+.object-report {
+    border: 1px solid #eee;
+    min-height: 120px;
+    margin-bottom: 30px;
+}
+
+.header-object-report {
+    border-bottom: 1px solid #ccc;
+    min-height: 41px;
+}
+
+.header-object-report h3 {
+    font-size: 16px;
+    line-height: 40px;
+    text-indent: 10px;
+    font-weight: bold;
+}
+
+.header-object-report input, .header-object-report select {
+    height: 30px;
+    width: 140px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.header-object-report select {
+    width: 250px;
+}
+
+.btn-view-report {
+    height: 29px;
+    line-height: 15px;
+    margin-right: 5px;
+    margin-top: -3px;
+}
+
+.object-report .result-report {
+    border-right: 1px solid #ccc;
+}
+
+.object-report .result-report label {
+    margin-top: 10px;
+    font-size: 18px;
+    display: block;
+}
