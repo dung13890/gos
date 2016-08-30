@@ -21,8 +21,7 @@ export default {
 
     store: function(params) {
         var self = this;
-        console.log(params);
-
+        
         return new Promise(function(resolve, reject) {
             self.http.post(self.router.route('api.v1.rooms.store'), params).then(function (response) {
                 resolve(response.data);
