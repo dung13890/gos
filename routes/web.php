@@ -42,7 +42,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::resource('customers', 'CustomersController');
     Route::resource('providers', 'ProvidersController');
     
-    Route::get('rooms/data', ['as' => 'rooms.data', 'uses' => 'RoomsController@getData']);
     Route::resource('rooms', 'RoomsController', ['except' => ['create']]);
 
     Route::resource('units', 'UnitsController');
@@ -70,4 +69,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::get('bills/symmetrical', 'BillsController@symmetrical');
 
     Route::resource('quotations', 'QuotationsController', ['only' => ['create', 'store']]);
+
+    Route::resource('promotions', 'PromotionsController');
 });

@@ -18,14 +18,14 @@
                     <i class="glyphicon glyphicon-user"></i>&nbsp; Khách hàng</a>
                 </li>
                 <li><a href="{{ route('quotations.create') }}">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
-                <li><a href="javascript:void(0)">Báo cáo tổng hợp <i class='glyphicon glyphicon-chevron-down'></i></a>
+                <li><a href="javascript:void(0)">Báo cáo tổng hợp <i class='glyphicon glyphicon-bullhorn'></i></a>
                     <ul class="submenu">
                         <li><a href="#"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo hàng hóa</a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-ok-circle"> </i> Báo cáo khách hàng</a></li>
                         <li><a href="#"><i class="glyphicon glyphicon-ok-circle"></i> Báo cáo doanh thu</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('customers.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+                <li><a href="{{ route('promotions.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-usd"></i></a></li>
                 <li><a href="#">Phiếu thu <i class="glyphicon glyphicon-equalizer"></i></a></li>
                 <li><a href="#">Phiếu chi <i class="glyphicon glyphicon-equalizer"></i></a></li>
                 <li class="dropdown">
