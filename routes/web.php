@@ -69,6 +69,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::get('bills/symmetrical', 'BillsController@symmetrical');
 
     Route::resource('quotations', 'QuotationsController', ['only' => ['create', 'store']]);
-
+    
     Route::resource('promotions', 'PromotionsController');
+    Route::resource('reports', 'ReportsController');
 });
