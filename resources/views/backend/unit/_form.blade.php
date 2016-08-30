@@ -32,6 +32,9 @@
                             <small>Thông tin mô tả</small>
                             <textarea class="form-control input-sm" rows="3" v-model='unit.description' cols="50"></textarea>
                         </div>
+
+                        @include('errors.validate')
+                        
                     </div>
                 
                     <div class="form-group text-center">

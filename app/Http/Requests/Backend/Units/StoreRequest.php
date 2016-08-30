@@ -27,4 +27,12 @@ class StoreRequest extends FormRequest
             'name'=> 'required|min:m'
         ];
     }
+
+    public function response(array $errors)
+    {
+        return response()->json([
+            'errors' => true,
+            'messages'  => $errors,
+        ], 422);
+    }
 }

@@ -81,9 +81,8 @@
                                     <textarea class="form-control input-sm" rows="3" v-model='room.description' cols="50"></textarea>
                                 </div>
 
-                                <div class="alert alert-danger" v-if="errors">
-                                    <li v-for="error in errors"> @{{ error }} </li>
-                                </div>
+                                @include('errors.validate')
+
                             </div>
                         </div>
 

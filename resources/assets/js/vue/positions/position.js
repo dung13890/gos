@@ -19,6 +19,7 @@ new Vue({
                 name: '',
             },
             positions: {},
+            
             modalTitle: '',
             errors: {},
             isError: false,
@@ -33,8 +34,11 @@ new Vue({
     methods: {
         create: function() {
             var self = this;
-            self.position = {};
             
+            self.position = {};
+            self.errors = {};
+            self.isError = false;
+
             self.modalTitle = 'Thêm mới chức vụ';
         },
 
@@ -49,8 +53,8 @@ new Vue({
 
             }, (response) => {
                 if (response.errors) {
-                    self.isError = true;
-                    self.errors = response.errors;
+                    self.errors = response.messages;
+                    self.isError = response.errors
                 }
             });
         },
@@ -66,8 +70,8 @@ new Vue({
 
             }, (response) => {
                 if (response.errors) {
-                    self.isError = true;
-                    self.errors = response.errors;
+                    self.errors = response.messages;
+                    self.isError = response.errors
                 }
             });
         },

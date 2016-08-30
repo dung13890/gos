@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
+use Exception;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Positions\StoreRequest;
@@ -23,13 +24,22 @@ class PositionsController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $position = Position::create($request->all());
+        try {
+            $position = Position::create($request->all());
+            
+            return response()->json([
+                'code' => 200,
+                'message' => 'Thêm thành công!',
+                'position' => $position,
+            ]);
+        }
         
-        return response()->json([
-            'code' => 200,
-            'message' => 'Thêm thành công!',
-            'position' => $position,
-        ]);
+        catch(Exception $e) {
+            return response()->json([
+                'errors' => true,
+                'messages'  => $e->getMessage(),
+            ], 500);
+        }
     }
 
     public function edit($id)
@@ -43,14 +53,23 @@ class PositionsController extends Controller
 
     public function update(UpdateRequest $request, $id)
     {
-        $position = Position::findOrFail($id);
-        $position->update($request->all());
+        try {
+            $position = Position::findOrFail($id);
+            $position->update($request->all());
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'Sửa thành công!',
-            'position' => $position,
-        ]);
+            return response()->json([
+                'code' => 200,
+                'message' => 'Sửa thành công!',
+                'position' => $position,
+            ]);
+        }
+
+        catch(Exception $e) {
+            return response()->json([
+                'errors' => true,
+                'messages'  => $e->getMessage(),
+            ], 500);
+        }
     }
 
     public function destroy($id)
