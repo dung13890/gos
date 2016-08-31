@@ -20,10 +20,10 @@
 
             <div class="form-group">
                 <small class="center-block">Khách hàng</small>
-                <select name="" id="" class="form-control input-sm pull-left" style="width: 300px">
+                <select name="" id="" class="form-control input-sm pull-left" style="width: 60%;">
                     <option value="">Vui lòng chọn khách hàng</option>
                 </select>
-                <input type="text" class="form-control input-sm text-right" placeholder="Tổng nợ cũ" style="width: 115px" />
+                <input type="text" class="form-control input-sm text-right" placeholder="Tổng nợ cũ" style="width: 40%" />
             </div>
 
             <div class="form-group">
