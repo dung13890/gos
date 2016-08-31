@@ -4,13 +4,17 @@
     {{ HTML::style('/assets/css/backend/customers/customer.css') }}
 @endpush
 
+@push('prescripts')
+    {{ HTML::script("assets/js/backend/customers/customer.js") }}
+@endpush
+
 @section('page-content')
     <div id="content">
         <div class="container-fluid">
             <div id="customer">
                 <div class="cus-heading">
                     <h1>THÔNG TIN KHÁCH HÀNG</h1>
-                    <input type="text" class="input-sm" value="Trần Đức Liêm"/>
+                    <input type="text" class="input-sm" value="Phạm Kỳ Khôi"/>
                     <a href="javascript:;" class="btn btn-default btn-sm">Back</a>
                 </div>
                 <div class="row">
@@ -32,11 +36,13 @@
                                         <li references="customerCongno">
                                             <a href="javascript:;">Công nợ</a>
                                         </li>
+                                        <li references="customerCongno">
+                                            <a href="javascript:;">Bảo hành</a>
+                                        </li>
                                     </ul>
                                 </div>
 
                                 <div class="cus-data">
-                                    <!-- #customerInfo -->
                                     <div name="customerInfo">
                                         <div class="cus-form" name="customerInfo">
                                             <form action="" class="form-horizontal">
@@ -98,13 +104,13 @@
                                                 <div class="form-group">
                                                     <div class="col-xs-12">
                                                         <input type="submit" class="btn btn-info btn-sm" value="Tìm kiếm"/>
-                                                        <input type="reset" class="btn btn-default btn-sm" value="Hủy bỏ"/>
+                                                        <input type="button" class="btn btn-danger btn-sm" value="Reset"/>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="table-responsive">
-                                            <table class="table table-condensed table-default table-bordered table-hover">
+                                            <table style="width: 100%;" class="table table-condensed table-default table-bordered table-hover">
                                                 <thead>
                                                     <tr class="active">
                                                         <th class="text-center">STT</th>
@@ -143,9 +149,8 @@
                                         </div>
                                     </div>
 
-                                    <!-- #customerChinhanh -->
-                                    <div name="customerChinhanh" class="table-responsive">
-                                        <table class="table table-condensed table-default table-bordered table-hover">
+                                    <div name="customerChinhanh" class="table-responsive" style="display: none;">
+                                        <table style="width: 100%;" class="table table-condensed table-default table-bordered table-hover">
                                             <thead>
                                                 <tr class="active">
                                                     <th class="text-center">STT</th>
@@ -184,8 +189,8 @@
                                     </div>
 
                                     <!-- #customerNvkd -->
-                                    <div name="customerNvkd" class="table-responsive">
-                                        <table class="table table-condensed table-default table-bordered table-hover">
+                                    <div name="customerNvkd" class="table-responsive" style="display: none;">
+                                        <table style="width: 100%;" class="table table-condensed table-default table-bordered table-hover">
                                             <thead>
                                                 <tr class="active">
                                                     <th class="text-center">STT</th>
@@ -224,7 +229,7 @@
                                     </div>
 
                                     <!-- #customerCongno -->
-                                    <div name="customerCongno">
+                                    <div name="customerCongno" style="display: none;">
                                         <div class="cus-modal">
                                             <!-- Modal HTML -->
                                             <div id="vouchers" class="modal fade">
@@ -234,7 +239,7 @@
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                             <h4 class="modal-title">
                                                                 <span>Danh sách chứng từ</span> |
-                                                                <span><small>Khách hàng:</small> Nguyễn Xuân Quỳnh</span> |
+                                                                <span><small>Khách hàng:</small> Phạm Kỳ Khôi</span> |
                                                                 <span><small>Chi nhánh:</small> Hà Nội</span>
                                                             </h4>
                                                         </div>
@@ -267,17 +272,19 @@
                                                                     </thead>
 
                                                                     <tbody>
-                                                                        <tr>
-                                                                            <td class="text-center">1</td>
-                                                                            <td class="text-center">01/01/2016</td>
-                                                                            <td>AB/AB/AB/01/01/01</td>
-                                                                            <td>DEF</td>
-                                                                            <td>...</td>
-                                                                            <td>25</td>
-                                                                            <td>7</td>
-                                                                            <td>15</td>
-                                                                            <td>17</td>
-                                                                        </tr>
+                                                                        @for($i = 1; $i <= 10; $i++)
+                                                                            <tr>
+                                                                                <td class="text-center">1</td>
+                                                                                <td class="text-center">01/01/2016</td>
+                                                                                <td>AB/AB/AB/01/01/01</td>
+                                                                                <td>DEF</td>
+                                                                                <td>...</td>
+                                                                                <td>25</td>
+                                                                                <td>7</td>
+                                                                                <td>15</td>
+                                                                                <td>17</td>
+                                                                            </tr>
+                                                                        @endfor
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -311,7 +318,7 @@
                                                     </div>
                                                     <div class="col-sm-4 col-md-6">
                                                         <input type="submit" class="btn btn-info btn-sm" value="Tìm kiếm"/>
-                                                        <input type="reset" class="btn btn-default btm-sm" value="Hủy bỏ"/>
+                                                        <input type="button" class="btn btn-danger btn-sm" value="Reset"/>
                                                     </div>
                                                 </div>
                                             </form>
@@ -334,6 +341,7 @@
                                                 </thead>
 
                                                 <tbody>
+                                                    @for($i = 1; $i <= 10; $i++)
                                                     <tr>
                                                         <td class="text-center">1</td>
                                                         <td class="text-center">11/11/2015</td>
@@ -345,11 +353,12 @@
                                                         <td>...</td>
                                                         <td>...</td>
                                                         <td>
-                                                            <a href="javascript:;" references="#vouchers" role="button" data-toggle="modal">
+                                                            <a href="#vouchers" references="#vouchers" role="button" data-toggle="modal">
                                                                 Xem chứng từ
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    @endfor
                                                 </tbody>
                                             </table>
                                         </div>
@@ -392,7 +401,7 @@
                                             </li>
                                             <li>
                                                 <strong>Tên khách hàng: </strong>
-                                                <div>Nguyễn Xuân Quỳnh</div>
+                                                <div>Phạm Kỳ Khôi</div>
                                             </li>
                                             <li>
                                                 <strong>Loại khách hàng: </strong>
@@ -412,7 +421,7 @@
                                             </li>
                                             <li>
                                                 <strong>Email: </strong>
-                                                <div>nguyenxuanquynh2210vghy@gmail.com</div>
+                                                <div>phamkykhoi.info@gmail.com@gmail.com</div>
                                             </li>
                                             <li>
                                                 <strong>Điện thoại: </strong>
@@ -425,7 +434,7 @@
                                             <li>
                                                 <strong>Ảnh đại diện: </strong>
                                                 <div style="float: left; width: 100px; height: 100px;">
-                                                    {{ HTML::image('assets/img/noavatar.png', 'avatar', ["class" => "img-responsive"]) }}
+                                                    {{ HTML::image('assets/img/noavatar.png', 'Ten Khach Hang', ['class' => 'img-responsive']) }}
                                                 </div>
                                             </li>
                                         </ul>
@@ -495,5 +504,4 @@
             </div>
         </div>
     </div>
-    <!-- /#content -->
 @endsection
