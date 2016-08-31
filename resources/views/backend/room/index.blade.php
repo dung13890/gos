@@ -55,7 +55,7 @@
                                                         title="Sửa"
                                                         class="btn-icon label-edit"
                                                         data-toggle="modal"
-                                                        v-on:click="edit(room.id)">
+                                                        v-on="click: getUserProfile()">
                                                         <span class="glyphicon glyphicon-edit"></span>
                                                     </a>
 
