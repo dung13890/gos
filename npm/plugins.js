@@ -88,6 +88,11 @@ var plugins = {
       name: 'rooms/room.js',
       in: '',
       out: 'rooms'
+    },
+    {
+      name: 'users/setting.js',
+      in: '',
+      out: 'users'
     }
   ]
 }
