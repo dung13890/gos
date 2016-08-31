@@ -1,9 +1,9 @@
 .input-suggest {
-	height: 34px;
+    height: 34px;
 }
 
 .number-product {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
@@ -11,3 +11,17 @@
 .autocomplete-selected { background: #F0F0F0; }
 .autocomplete-group { padding: 2px 5px; }
 .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        width: 800px;
+        margin: 30px auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 850px;
+        margin: 30px auto;
+    }
+}
