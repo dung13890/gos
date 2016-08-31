@@ -1,14 +1,20 @@
 @extends('layouts.backend')
 
+@push('prestyles')
+    {{ HTML::style("assets/css/backend/bills/bill.css") }}
+@endpush
+
 @section('page-content')
-    @include('backend.customer._form')
+    
+    @include('backend.bill.show')
+
     <div id="content">
         <div class="container-fluid">
             <h3>Quản lý chứng từ</h3>
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget">
-                        <!-- widget-heading -->
+
                         <div class="widget-heading">
                             <h1 class="title text-uppercase">Danh sách chứng từ</h1>
                             <a href="javascript:;" class="toggle-content" references="#productList" display="1">
@@ -17,8 +23,6 @@
                         </div>
 
                         <div id="productList">
-                            <!-- widget-tools -->
-                            
                             <div class="widget-tools">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -83,7 +87,7 @@
                                                     <td class="text-center">1</td>
                                                     <td class="text-center">SP0123</td>
                                                     <td>
-                                                        <a href="{{ route('customers.show', ['id' => $i]) }}" title="Xem chi tiết">
+                                                        <a href="#show-bill" title="Xem chi tiết" data-toggle="modal">
                                                             Samsung Galaxy S3
                                                         </a>
                                                     </td>
