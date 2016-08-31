@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class BillsController extends Controller
 {
+    public function index()
+    {
+        return view('backend.bill.index');
+    }
+
     /**
      * Hóa đơn bán hàng
      */

@@ -59,6 +59,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::resource('branches', 'BranchesController');
     Route::resource('positions', 'PositionsController');
 
+    Route::resource('bills', 'BillsController', ['only' =>['index']]);
     Route::get('bills/sale', 'BillsController@sale');
     Route::get('bills/wholesale', 'BillsController@wholesale');
     Route::get('bills/buy', 'BillsController@buy');
@@ -69,7 +70,9 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::get('bills/symmetrical', 'BillsController@symmetrical');
 
     Route::resource('quotations', 'QuotationsController', ['only' => ['create', 'store']]);
-    
+
     Route::resource('promotions', 'PromotionsController');
-    Route::resource('reports', 'ReportsController');
+
+    Route::resource('reports', 'ReportsController', ['except' => ['show']]);
+    Route::get('reports/importexport', 'ReportsController@reportInportExport');
 });
