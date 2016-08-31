@@ -34,7 +34,6 @@
     "bootstrap-datepicker": "^1.6.4",
     "bootstrap-switch": "git@github.com:Data-Web/bootstrap-switch.git",
     "jQueryAutocomplete": "git@github.com:devbridge/jQuery-Autocomplete.git",
-    "vue-multiselect": "git@github.com:monterail/vue-multiselect.git",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.3.7"
   }
 }
