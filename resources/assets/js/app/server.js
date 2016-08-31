@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $(":file").filestyle({badge: false});
+
     if (typeof flash_message !== 'undefined' && flash_message) {
         var e = JSON.parse(flash_message);
         toastr.options = {

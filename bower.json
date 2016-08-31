@@ -33,7 +33,7 @@
     "select2": "^4.0.3",
     "bootstrap-datepicker": "^1.6.4",
     "bootstrap-switch": "git@github.com:Data-Web/bootstrap-switch.git",
-    "jQueryAutocomplete": "git@github.com:devbridge/jQuery-Autocomplete.git",
+    "input-file-icon": "git@github.com:markusslima/bootstrap-filestyle.git",
     "bootstrap": "^3.3.7"
   }
 }
