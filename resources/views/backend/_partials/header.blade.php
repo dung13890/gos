@@ -29,7 +29,7 @@
                 
                 <li class="dropdown">
                     <a href="javascript::void(0)" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
-                        Thiết lập <span class="glyphicon glyphicon-cog"></span>
+                        Hệ thống<span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <ul class="dropdown-menu submenu">
                         <li><a href="/user"><i class="glyphicon glyphicon-user"></i> Quản lý người dùng</a></li>
@@ -167,5 +167,8 @@
         </nav>
     </div>
 </div>
-<modal-profile :item="itemProfile"></modal-profile>
+
+@include('backend.user._profile')
+@include('backend.user._password')
 <modal-password></modal-password>
+

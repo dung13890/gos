@@ -45,6 +45,7 @@ elixir(mix => {
         '../bower/sweetalert/dist/sweetalert.min.js',
         '../bower/toastr/toastr.min.js',
         '../bower/bootstrap-toggle/js/bootstrap-toggle.min.js',
+        '../bower/input-file-icon/src/bootstrap-filestyle.js',
       ],'public/assets/js/backend/app.js')
     .version([
         'assets/css/backend/app.css',
