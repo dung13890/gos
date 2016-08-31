@@ -425,7 +425,7 @@
                                             <li>
                                                 <strong>Ảnh đại diện: </strong>
                                                 <div style="float: left; width: 100px; height: 100px;">
-                                                    <img src="assets/img/noavatar.png" alt="AVATAR" class="img-responsive"/>
+                                                    {{ HTML::image('assets/img/noavatar.png', 'avatar', ["class" => "img-responsive"]) }}
                                                 </div>
                                             </li>
                                         </ul>

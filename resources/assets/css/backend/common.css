@@ -159,10 +159,9 @@ header .menu {
     margin-top: 13px;
 }
 
-header .menu ul > li {
+header .menu > ul > li {
     float: left;
     margin-left: 3px;
-    position: relative;
 }
 
 header .menu > ul > li > a {
@@ -178,6 +177,8 @@ header .menu > ul > li > a {
 
 header .menu > ul > li > a.user-setting {
     color: #ff7920;
+    border-radius: 3px;
+    font-weight: 600 !important;
 }
 
 header .menu > ul > li.active > a,
@@ -187,44 +188,28 @@ header .menu > ul > li > a:hover {
     border-radius: 3px;
 }
 
-header .menu ul.submenu {
-    margin-top: 20px;
-    width: 165px;
-    position: absolute;
-    top: 34px;
+header ul.submenu {
+    left: auto;
     right: 0;
-    display: none;
-    z-index: 9999;
-    background: #ffffff;
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
-    opacity: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
 }
 
-header .menu ul.submenu > li {
-    width: 100%;
-    margin-left: 0;
+header ul.submenu > li {
+    padding: 3px 0;
     border-bottom: 1px dashed #cccccc;
 }
 
-header .menu ul.submenu > li:last-child {
+header ul.submenu > li:last-child {
     border-bottom: 0;
 }
 
-header .menu ul.submenu > li > a {
-    width: 100%;
-    height: 40px;
-    padding-left: 10px;
-    display: block;
-    line-height: 40px;
-    font-size: 13px;
-    color: #010101;
-}
-
-header .menu ul.submenu > li > a:hover {
+header ul.submenu > li > a:hover {
+    background: #ffffff;
     color: #ff7920;
 }
 
-/* #tasks ------------------------------------------------------------------*/
 #tasks {
     width: 100%;
     background: #1B4057;

@@ -17,26 +17,32 @@
                     <i class="glyphicon glyphicon-user"></i>&nbsp; Khách hàng</a>
                 </li>
                 <li><a href="{{ route('quotations.create') }}">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
-
+                
                 <li>
                     <a href="{{ route('reports.index') }}">Báo cáo - Thống kê 
                     <i class='glyphicon glyphicon-bullhorn'></i></a>
                 </li>
+
                 <li><a href="{{ route('promotions.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-usd"></i></a></li>
                 <li><a href="#">Phiếu thu <i class="glyphicon glyphicon-equalizer"></i></a></li>
                 <li><a href="#">Phiếu chi <i class="glyphicon glyphicon-equalizer"></i></a></li>
+                
                 <li class="dropdown">
-                    <a href="javascript::void(0)" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">Cài đặt <span class="glyphicon glyphicon-cog"></span></a>
+                    <a href="javascript::void(0)" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
+                        Thiết lập <span class="glyphicon glyphicon-cog"></span>
+                    </a>
                     <ul class="dropdown-menu submenu">
                         <li><a href="/user"><i class="glyphicon glyphicon-user"></i> Quản lý người dùng</a></li>
                         <li><a href="/roles"><i class="glyphicon glyphicon-lock"> </i> Quản lý nhóm quyền</a></li>
-                        <li><a href="/logout"><i class="glyphicon glyphicon-wrench"></i> Cấu hình hệ thống</a></li>
+                        <li><a href=""><i class="glyphicon glyphicon-wrench"></i> Cấu hình hệ thống</a></li>
                     </ul>
                 </li>
-                
-                <li>
-                    <a href="javascript:void(0)" class="user-setting">{{ $me->fullname }}<span class="caret"></span></a>
-                    <ul class="submenu">
+
+                <li class="dropdown">
+                    <a href="javascript::void(0)" data-toggle="dropdown" class="dropdown-toggle user-setting">
+                        {{ $me->fullname }}<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu submenu">
                         <li><a data-toggle="modal" href="#profile"><i class="fa fa-wrench"> </i> Cài đặt</a></li>
                         <li><a data-toggle="modal" href='#password'><i class="fa fa-unlock"> </i> Đổi mật khẩu</a></li>
                         <li><a href="/logout"><i class="glyphicon glyphicon-off"> </i> Đăng xuất</a></li>
@@ -56,6 +62,11 @@
                         Danh mục
                         <i class='glyphicon glyphicon-random'></i></a>
                     <ul class="sub-node-system">
+                        <li>
+                            <a href="{{ route('bills.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý chứng từ
+                            </a>
+                        </li>
                         <li>
                             <a href="{{ route('products.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý hàng hóa vật tư

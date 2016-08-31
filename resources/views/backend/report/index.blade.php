@@ -69,7 +69,7 @@
                                 <li><a href="#section1">
                                     <span class='glyphicon glyphicon-th'></span>Khách hàng</a>
                                 </li>
-                                <li><a href="#section3">
+                                <li><a href="{{ url('reports/importexport') }}">
                                     <span class='glyphicon glyphicon-th'></span>Xuất nhập tồn kho</a>
                                 </li>
                                 <li><a href="#section3">
@@ -94,14 +94,13 @@
                             </a>
                         </div>
                         
-                        <div id="providerList">
+                        <div>
                             <div class="widget-content">
                                 <div class="table-responsive">
                                     <div class="object-report">
                                         <div class="header-object-report">
                                             <h3 class="pull-left">Tùy chọn</h3>
                                             <div class="pull-right">
-
                                                 <select>
                                                     <option>Kinh doanh</option>
                                                 </select>
@@ -176,26 +175,13 @@
                             </a>
                         </div>
                         
-                        <div id="providerList">
+                        <div id="">
                             <div class="widget-content">
                                 <div class="table-responsive">
                                     <div class="object-report">
                                         <div class="header-object-report">
                                             <h3 class="pull-left">Tùy chọn</h3>
                                             <div class="pull-right">
-
-                                                <select>
-                                                    <option>Kinh doanh</option>
-                                                </select>
-
-                                                <select>
-                                                    <option>Chi nhánh</option>
-                                                </select>
-                                                
-                                                <select>
-                                                    <option>Gara</option>
-                                                </select>
-
                                                 <input type="date" name="">
                                                 <input type="date" name="">
                                                 <button class="btn btn-success btn-view-report">Xem</button>
@@ -204,45 +190,35 @@
                                         </div>
                                         
                                         <div class="clearfix"></div>
-                                        
-                                        <div id="col-xs-6">
-                                            <div id="chart_div"></div>
-                                        </div>
-
-                                        <div id="col-xs-6">
-                                            <div id="gara_branch"></div>
-                                        </div>
-
-                                        <div class="clearfix"></div>
 
                                         <div class="col-xs-2 result-report">
-                                            <small>Tổng số</small>
-                                            <label>1.000.000</label>
+                                            <small>Tân Phát</small>
+                                            <label>1.000.000 VNĐ</label>
                                         </div>
 
                                         <div class="col-xs-2 result-report">
-                                            <small>Khách hàng mới</small>
-                                            <label>600.000</label>
+                                            <small>Hà Nội</small>
+                                            <label>600.000 VNĐ</label>
                                         </div>
 
                                         <div class="col-xs-2 result-report">
-                                            <small>Khách hàng cũ</small>
-                                            <label>400.000</label>
+                                            <small>Hải Phòng</small>
+                                            <label>400.000 VNĐ</label>
                                         </div>
                                         
                                         <div class="col-xs-2 result-report">
-                                            <small>Chi nhánh</small>
-                                            <label>500.000</label>
+                                            <small>Vinh</small>
+                                            <label>500.000 VNĐ</label>
                                         </div>
                                         
+                                        <div class="col-xs-2 result-report">
+                                            <small>Hồ Chí Minh</small>
+                                            <label>200.000 VNĐ</label>
+                                        </div>
+
                                         <div class="col-xs-2 result-report">
                                             <small>Gara</small>
-                                            <label>200.000</label>
-                                        </div>
-
-                                        <div class="col-xs-2 result-report">
-                                            <small>Shop</small>
-                                            <label>300.000</label>
+                                            <label>300.000 VNĐ</label>
                                         </div>
                                     </div>
                                 </div>
