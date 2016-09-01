@@ -1,4 +1,4 @@
-<div v-if="isError">
+<div v-if="isErrorServer">
     <div class="alert alert-danger" v-if="typeof errors === 'string'">
         <strong>Lỗi!</strong>
         @{{ errors }}

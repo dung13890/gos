@@ -9,19 +9,16 @@ Vue.use(VueValidator)
 var token = $('meta[name="csrf-token"]').attr('content');
 
 new Vue({
-    el: '#profile',
+    el: '#passwordReset',
 
     data: function () {
         return {
-            userProfile: {
+            user: {
                 _token: '',
                 id: '',
-                fullname: '',
-                phone: '',
-                address: '',
-                image: '',
-                gender: '',
-                birthday: ''
+                old_password: '',
+                password: '',
+                password_confirmation: ''
             },
 
             errors: {},
@@ -36,9 +33,10 @@ new Vue({
     },
 
     methods: {
-        updateProfile: function (params, id) {
+        changePassword: function (params) {
             var self = this;
-            UserService.update(params, id).then((response) => {
+
+            UserService.changePassword(params).then((response) => {
                 toastr.success(response.message);
 
                 if (response.code === 200) {
@@ -59,8 +57,8 @@ new Vue({
                 if (self.$validation.invalid) {
                     self.isError = true;
                 } else {
-                    self.userProfile._token = token;
-                    self.updateProfile(self.userProfile, self.userProfile.id);
+                    self.user._token = token;
+                    self.changePassword(self.user);
                 }
             });
         },

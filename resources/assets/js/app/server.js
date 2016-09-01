@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    $(":file").filestyle({badge: false});
-
+    $('.datepicker').datepicker();
+    
     if (typeof flash_message !== 'undefined' && flash_message) {
         var e = JSON.parse(flash_message);
         toastr.options = {

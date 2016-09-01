@@ -105,7 +105,7 @@ class AppServiceProvider extends ServiceProvider
     public function composers()
     {
         view()->composer('backend.*', function ($view) {
-            $view->with('me', \Auth::user());
+            $view->with('currentUser', \Auth::user());
         });
     }
 }
