@@ -17,18 +17,21 @@ export default {
                 reject(response.data)
             })
         })
-  },
+    },
 
-    updateProfile: function (formData) {
+    update: function(params, id) {
         var self = this;
-        
-        return new Promise( function(resolve, reject) {
-            self.http.post(self.router.route('user.update.profile'), formData).then(function (response) {
-                resolve(response.data)
-            }, function (response) {
-                reject(response.data)
-            })
-        })
+        return new Promise(function(resolve, reject) {
+            try {
+                self.http.patch(self.router.route('api.v1.users.update', {user: id}), params).then(function (response) {
+                    resolve(response.data);
+                }, function (response) {
+                    reject(response.data);
+                });
+            } catch(e) {
+                console.log(e);
+            }
+        });
     },
   
     updatePassword: function (formData) {

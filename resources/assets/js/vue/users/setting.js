@@ -39,11 +39,15 @@ new Vue({
             self.userProfile = user;
         },
 
-        updateProfile: function(params) {
+        updateProfile: function (params, id) {
             var self = this;
-            
-            UserService.updateProfile(params).then((response) => {
+            UserService.update(params, id).then((response) => {
                 toastr.success(response.message);
+
+                if (response.code === 200) {
+                    self.reload();
+                }
+
             }, (response) => {
                 if (response.errors) {
                     self.errors = response.messages;
@@ -60,7 +64,7 @@ new Vue({
                     self.isError = true;
                 } else {
                     self.userProfile._token = token;
-                    self.updateProfile(self.userProfile);
+                    self.updateProfile(self.userProfile, self.userProfile.id);
                 }
             });
         }
