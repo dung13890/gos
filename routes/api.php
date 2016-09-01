@@ -18,4 +18,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
     Route::resource('branches', 'BranchesController');
     Route::resource('units', 'UnitsController');
     Route::resource('rooms', 'RoomsController');
+    Route::resource('users', 'UsersController');
 });
