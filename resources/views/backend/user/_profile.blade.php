@@ -6,14 +6,21 @@
                 <h4 class="modal-title">Thông tin tài khoản</h4>
             </div>
 
-            <form class="form-horizontal" novalidate @submit.prevent="validate">
+            <form class="form-horizontal" novalidate @submit.prevent="validate" method="post">
                 <div class="modal-body">
                     <validator name="validation">
+                        <input type="hidden" v-model='userProfile.id'
+                            value="{{ $currentUser->id }}" 
+                            disabled="true"
+                            class="form-control input-sm"
+                        />
+
                         <div class="form-group">
                             <label for="username" class="col-sm-3">Tài khoản</label>
                             <div class="col-sm-9">
                                 <input type="text" v-model='userProfile.username'
-                                    disabled="true" 
+                                    value="{{ $currentUser->username }}" 
+                                    disabled="true"
                                     class="form-control input-sm" />
                             </div>
                         </div>
@@ -21,7 +28,9 @@
                         <div class="form-group">
                             <label for="email" class="col-sm-3">Email</label>
                             <div class="col-sm-9">
-                                <input type="text" v-model='userProfile.email'
+                                <input type="text"
+                                    v-model='userProfile.email'
+                                    value="{{ $currentUser->email }}"
                                     disabled="true" 
                                     class="form-control input-sm" />
                             </div>
@@ -32,6 +41,7 @@
                             <div class="col-sm-9">
                                 <input type="text" v-model='userProfile.fullname'
                                     class="form-control input-sm"
+                                    value="{{ $currentUser->fullname }}"
                                     v-validate:fullname="{
                                         required: {rule: true, message: 'Họ và tên không được để trống'},
                                     }"
@@ -49,12 +59,16 @@
                                     <input type="radio" v-model='userProfile.gender'
                                         value='1'
                                         name="gender"
+                                        {{ $currentUser->gender == 1 ? "checked" : "" }}
                                     />  Nam
                                 </label>
+
                                 <label class="radio-inline">
                                     <input type="radio" v-model='userProfile.gender'
                                         value='2'
-                                        name="gender" /> Nữ
+                                        name="gender"
+                                        {{ $currentUser->gender == 2 ? "checked" : "" }}
+                                    /> Nữ
                                 </label>
                             </div>
                         </div>
@@ -62,13 +76,14 @@
                         <div class="form-group">
                             <label for="phone" class="col-sm-3">Điện thoại</label>
                             <div class="col-sm-9">
-                                <input type="text" v-model='userProfile.phone'
+                                <input type="text"
+                                    v-model='userProfile.phone'
                                     class="form-control input-sm"
+                                    value="{{ $currentUser->phone }}"
                                     v-validate:phone="{
                                         required: {rule: true, message: 'Số điện thoại không được để trống'},
                                     }"
                                 />
-
                                 <span class="error" v-if="$validation.phone.errors && isError">
                                     @{{ $validation.phone.errors[0].message }}
                                 </span>
@@ -78,8 +93,10 @@
                         <div class="form-group">
                             <label for="address" class="col-sm-3">Địa chỉ</label>
                             <div class="col-sm-9">
-                                <input type="text" v-model='userProfile.address'
+                                <input type="text"
+                                    v-model='userProfile.address'
                                     class="form-control input-sm"
+                                    value="{{ $currentUser->address }}"
                                     v-validate:address="{
                                         required: {rule: true, message: 'Địa chỉ không được để trống'},
                                     }"
@@ -91,10 +108,23 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="birthday" class="col-sm-3">Ngày sinh</label>
+                            <div class="col-sm-9">
+                                <input class="datepicker form-control input-sm"
+                                    value="{{ $currentUser->birthday }}" 
+                                    v-model='userProfile.birthday'
+                                    data-date-format="dd/mm/yyyy"
+                                    style="width: 200px;"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="avatar" class="col-sm-3">Ảnh đại diện</label>
                             <div class="col-sm-9">
-                                <input type="file" class="filestyle" data-badge="false" data-size="sm" />
-                                
+                                <input type="file" class="filestyle" />
+                                <br/>
+                                @include('errors/validate')
                             </div>
                         </div>
                     </validator>

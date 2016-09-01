@@ -30,6 +30,7 @@ elixir(mix => {
         '../bower/animate.css/animate.min.css',
         '../bower/toastr/toastr.min.css',
         '../bower/bootstrap-toggle/css/bootstrap-toggle.min.css',
+        '../bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
         ], 'public/assets/css/backend/plugins.css')
     .styles([
         'backend/common-responsive.css',
@@ -38,14 +39,15 @@ elixir(mix => {
         ], 'public/assets/css/backend/development.css')
     .scripts([
         'laroute.js',
-        'common.js',
-        'defined.js',
-        'server.js',
+        'app/common.js',
+        'app/defined.js',
+        'app/server.js',
         '../bower/jquery-slimscroll/jquery.slimscroll.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
         '../bower/toastr/toastr.min.js',
         '../bower/bootstrap-toggle/js/bootstrap-toggle.min.js',
         '../bower/input-file-icon/src/bootstrap-filestyle.js',
+        '../bower/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
       ],'public/assets/js/backend/app.js')
     .version([
         'assets/css/backend/app.css',

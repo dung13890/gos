@@ -41,10 +41,6 @@ var plugins = {
       out: 'select2'
     },
     {
-      in: 'bootstrap-datepicker/dist',
-      out: 'datepicker'
-    },
-    {
       in: 'bootstrap-switch/dist',
       out: 'bootstrap-switch'
     },
@@ -91,6 +87,11 @@ var plugins = {
     },
     {
       name: 'users/setting.js',
+      in: '',
+      out: 'users'
+    },
+    {
+      name: 'users/resset_password.js',
       in: '',
       out: 'users'
     }
