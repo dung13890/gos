@@ -23,4 +23,9 @@ class ReportsController extends Controller
     {
     	return view('backend.report.report_overall');
     }
+
+    public function overallDetail()
+    {
+        return view('backend.report.report_overall_detail');
+    }
 }
