@@ -62,3 +62,8 @@ small{
     -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
     transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
 }
+
+.toolbar {
+    border-top: 1px solid #ccc;
+    padding-top: 25px;
+}
