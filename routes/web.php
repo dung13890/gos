@@ -75,6 +75,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::resource('reports', 'ReportsController', ['except' => ['show']]);
     Route::get('reports/importexport', 'ReportsController@reportInportExport');
     Route::get('reports/overall', 'ReportsController@overall');
+    Route::get('reports/overalldetail', 'ReportsController@overallDetail');
 
     Route::resource('permissions', 'PermissionsController', ['only' => 'index']);
 });

@@ -55,7 +55,7 @@
                 <div class="col-xs-10">
                     <div class="widget">
                         <div class="widget-heading">
-                            <h1 class="title text-uppercase">Báo cáo tồn tổng thế</h1>
+                            <h1 class="title text-uppercase">Báo cáo tồn tổng thể hàng hóa Samsung Galaxy S1</h1>
                             <a href="javascript:;" class="toggle-content" references="#providerList" display="1">
                                 <i class="fa fa-angle-down"></i>
                             </a>
@@ -64,32 +64,7 @@
                         <div>
                             <div class="widget-content">
                                 <div class="table-responsive">
-                                    <div class="object-report">
-                                        <div class="header-object-report">
-                                            <div class="pull-right">
-                                                <input type="" name=""  placeholder="Tên hoặc mã sản phẩm" style="width:120px" />
-                                                <select>
-                                                    <option>Nhóm hàng</option>
-                                                </select>
-                                                
-                                                <select>
-                                                    <option>Kho hàng</option>
-                                                </select>
-
-                                                <select>
-                                                    <option>Hãng sản xuất</option>
-                                                </select>
-                                                <select>
-                                                    <option>Chi nhánh</option>
-                                                </select>
-                                                <input type="date" name="">
-                                                <input type="date" name="">
-                                                <button class="btn btn-success btn-view-report">Xem</button>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-
+                                    
                                     <table class="table table-condensed table-default table-bordered table-hover" name="test">
                                         <thead>
                                             <tr class="merged-col">
@@ -101,33 +76,32 @@
 
                                                 <th class="text-center">Giá buôn</th>
                                                 <th class="text-center">Giá lẻ</th>
-                                                <th class="text-center">Kho hàng</th>
                                                 <th class="text-center">Tổng tồn</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">SP0123</td>
+                                                <td>Samsung Galaxy S1</td>
+                                                <td class="text-center">Cái</td>
+                                                <td class="text-center">
+                                                    
+                                                </td>
+                                                <td class="text-center">43</td>
+                                                <td class="text-center">2</td>
+                                                <td class="text-center in-qty">5</td>
+                                            </tr>
+                                            <tr class="in-qty">
+                                                <td class="text-left" colspan="2"><b>Tên kho</b></td>
+                                                <td class="text-left" colspan="7"><b>Số lượng tồn</b></td>
+                                            </tr>
                                             @for ($i = 1; $i <= 15; $i++)
-                                                <tr>
-                                                    <td class="text-center">{{ $i }}</td>
-                                                    <td class="text-center">SP0123</td>
-                                                    <td><a href="{{ url('reports/overalldetail') }}">Samsung Galaxy S{{ $i }}</a></td>
-                                                    <td class="text-center">Cái</td>
-                                                    <td class="text-center">
-                                                        
-                                                    </td>
-                                                    <td class="text-center">43</td>
-                                                    <td class="text-center">2</td>
-                                                    <td class="text-center">
-                                                        <select class="form-control">
-                                                            <option>Tất cả các kho</option>
-                                                            @for ($j = 1; $j <= 15; $j++)
-                                                                <option>Kho hàng 0{{ $j }}</option>
-                                                            @endfor
-                                                        </select>
-                                                    </td>
-                                                    <td class="text-center in-qty">5</td>
-                                                </tr>
+                                            <tr>
+                                                <td class="text-left" colspan="2">Kho hàng số {{ $i }}</td>
+                                                <td class="text-left" colspan="7">{{ $i }}</td>
+                                            </tr>
                                             @endfor
                                         </tbody>
                                     </table>
