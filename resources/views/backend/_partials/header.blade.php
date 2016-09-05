@@ -17,6 +17,12 @@
                     <a href="{{ route('customers.index') }}"  title="Khách hàng">
                     <i class="glyphicon glyphicon-user"></i>&nbsp; Khách hàng</a>
                 </li>
+                
+                <li>
+                    <a href="#"  title="Kinh doanh">
+                    <i class="glyphicon glyphicon-bullhorn"></i>&nbsp; Kinh doanh</a>
+                </li>
+
                 <li><a href="{{ route('quotations.create') }}">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
                 
                 <li>
