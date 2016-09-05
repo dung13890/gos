@@ -20,8 +20,6 @@
                                                 maxlength: {rule: 11, message: 'Không được quá 11 ký tự'}
                                             }" />
                                         <span class="fa fa-exclamation"></span>
-                                        <span class="error" v-if="$validation.name.errors">@{{ $validation.code.errors[0].message  }}</span>
-                                        <span class="error">@{{ errors.code }}</span>
                                     </div>
 
                                     <div class="required-wrapper form-field">
@@ -33,8 +31,6 @@
                                                 maxlength: {rule: 50, message: 'Không được quá 50 ký tự'}
                                             }" />
                                         <span class="fa fa-exclamation"></span>
-                                        <span class="error" v-if="$validation.manager.errors">@{{ $validation.manager.errors[0].message  }}</span>
-                                        <span class="error">@{{ errors.manager }}</span>
                                     </div>
                                 </div>
                             </div>

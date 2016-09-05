@@ -19,4 +19,8 @@ class ReportsController extends Controller
         return view('backend.report.report_import_export');
     }
 
+    public function overall()
+    {
+    	return view('backend.report.report_overall');
+    }
 }
