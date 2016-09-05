@@ -4,31 +4,29 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
-use Exception;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Model\Permission;
-use Illuminate\Support\Str;
+use App\Model\Role;
 
-class PermissionsController extends Controller
+class RolesController extends Controller
 {
-	protected $dataSelect = ['id', 'name', 'slug', 'description', 'model'];
+    protected $dataSelect = ['id', 'name', 'description'];
 
     public function index()
     {
         try {
-            $permissions = Permission::select($this->dataSelect)->orderBy('id', 'desc')->get();
+            $roles = Role::select($this->dataSelect)->orderBy('id', 'desc')->get();
             return response()->json([
                 'code' => 200,
                 'message' => 'Load thành công',
-                'permissions' => $permissions,
+                'roles' => $roles,
             ]);
          }
-
+         
          catch(Exception $e) {
             return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
+                'errors' => false,
+                'messages'  => $e->getMessage(),
             ], 500);
         }
     }
@@ -36,42 +34,47 @@ class PermissionsController extends Controller
     public function store(Request $request)
     {
         try {
-            $params = $request->all();
-            $params['slug'] = Str::slug($params['name'], '-');
-            $permission = Permission::create($params);
-
+            $role = Role::create($request->all());
+            
             return response()->json([
                 'code' => 200,
                 'message' => 'Thêm thành công!',
-                'permission' => $permission,
+                'role' => $role,
             ]);
         }
         
         catch(Exception $e) {
             return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
+                'errors' => true,
+                'messages'  => $e->getMessage(),
             ], 500);
         }
-
     }
 
     public function edit($id)
     {
         try {
-            $permission = Permission::findOrFail($id);
+            $role = Role::findOrFail($id);
+            $permissions = $role->permissions()->get(['permission_id'])->pluck('permission_id');
+            
+            if ($permissions != null) {
+                foreach ($permissions as $key => $value) {
+                    $permissions[$key] = '"'. $value .'"';
+                }
+            }
 
             return response()->json([
                 'code' => 200,
-                'message' => 'Load thành công',
-                'permission' => $permission,
+                'message' => 'Đã lấy được thông tin!',
+                'role' => $role,
+                'permissions' => $permissions,
             ]);
         }
 
         catch(Exception $e) {
             return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
+                'errors' => true,
+                'messages'  => $e->getMessage(),
             ], 500);
         }
     }
@@ -80,14 +83,17 @@ class PermissionsController extends Controller
     {
         try {
             $params = $request->all();
-            $params['slug'] = Str::slug($params['name'], '-');
-            $permission = Permission::findOrFail($id);
-            $permission->update($params);
+            $role = Role::findOrFail($id);
+            $role->update($params);
+
+            if (isset($params['permissions_checked']) && $params['permissions_checked'] != null) {
+                $role->permissions()->sync($params['permissions_checked']);
+            }
 
             return response()->json([
                 'code' => 200,
                 'message' => 'Sửa thành công!',
-                'permission' => $permission,
+                'role' => $role,
             ]);
         }
 
@@ -102,7 +108,7 @@ class PermissionsController extends Controller
     public function destroy($id)
     {
         try {
-            Permission::findOrFail($id)->delete();
+            Role::findOrFail($id)->delete();
 
             return response()->json([
                 'code' => 200,

@@ -167,7 +167,6 @@ return [
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
         //
 
@@ -232,8 +231,6 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Activity' => Spatie\Activitylog\ActivitylogFacade::class,
-        'Datatables' => yajra\Datatables\Datatables::class,
-
     ],
 
 ];

@@ -24,7 +24,6 @@ Route::group(['namespace' => 'Auth'], function () {
     });
 });
 
-
 Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index');
     Route::post('summernote/image', ['as' => 'summernote.image', 'uses' => 'DashboardController@summernoteImage']);
@@ -75,4 +74,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
 
     Route::resource('reports', 'ReportsController', ['except' => ['show']]);
     Route::get('reports/importexport', 'ReportsController@reportInportExport');
+
+    Route::resource('permissions', 'PermissionsController', ['only' => 'index']);
 });

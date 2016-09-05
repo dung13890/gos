@@ -21,14 +21,6 @@
             <nav class="menu" references="menu-tasks"></nav>
         </div>
 
-        <div id="scrollTop">
-            <button class="fa fa-angle-up"></button>
-        </div>
-
-        <!-- #scrollTop -->
-        <div id="scrollTop">
-            <button class="fa fa-angle-up"></button>
-        </div>
         <!-- /#scrollTop -->
         <div class="wrapper">
             @include('backend._partials.header')

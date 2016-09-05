@@ -1,0 +1,33 @@
+#newUser .modal-dialog {
+    width: 60%;
+}
+
+#newUser .modal-content {
+    float: left;
+}
+
+#newUser .toolbar {
+	clear: left;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+}
+
+#newUser .modal-body form input,
+#newUser .modal-body form select {
+    margin-bottom: 3px;
+}
+
+.btn-filter {
+    width: 100px;
+    margin-bottom: 3px;
+}
+
+small {
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    #newUser .modal-dialog {
+        width: 95%;
+    }
+}

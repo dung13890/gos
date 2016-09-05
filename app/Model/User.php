@@ -24,6 +24,7 @@ class User extends Authenticatable
         'gender',
         'branch_id',
         'birthday',
+        'position_id',
     ];
 
     protected $appends = ['image_thumbnail'];
