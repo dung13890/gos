@@ -18,14 +18,14 @@
     <div id="content">
         <div class="container-fluid">
             <h3>
-                Quản lý nhóm quyền
+                {{ trans('roles.role.page_title') }}
                 <a href="#new-role"
                     role="button"
                     class="btn btn-success pull-right"
                     data-toggle="modal"
                     v-on:click="create()"
                 >
-                    <i class="fa fa-plus"></i> Thêm mới nhóm quyền
+                    <i class="fa fa-plus"></i> Thông tin form
                 </a>
             </h3>
             <div class="row">
@@ -48,31 +48,16 @@
                                                 <th width="10" class="text-center">ID</th>
                                                 <th width="200">Tên nhóm quyền</th>
                                                 <th width="150">Mô tả</th>
-                                                <th width="20" class="text-right">Thao tác</th>
+                                                <th style="width:50px;" class="text-center">Thao tác</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <tr style=" background: #e3eff1;">
-                                                <td></td>
-                                                <td><input type="" name="" class="form-control input-sm" /></td>
-                                                <td><input type="" name="" class="form-control input-sm" /></td>
-                                                <td class="text-right">
-                                                    <button type="button" class="btn btn-info btn-filter">
-                                                        <span class="glyphicon glyphicon-search"></span> Tìm kiếm
-                                                    </button>
-
-                                                    <button type="button" class="btn btn-danger btn-filter">
-                                                        <span class="glyphicon glyphicon glyphicon-ban-circle"></span> Reset
-                                                    </button>
-                                                </td>
-                                            </tr>
-
                                             <tr v-for='role in roles'>
                                                 <td class="text-center">@{{ role.id }}</td>
                                                 <td>@{{ role.name }}</td>
                                                 <td>@{{ role.description }}</td>
-                                                <td class="text-right">
+                                                <td class="text-center">
                                                     <a href="#new-role"
                                                         title="Sửa" 
                                                         v-on:click="edit(role.id)"
@@ -96,13 +81,7 @@
                         </div>
                         <div class="widget-footer">
                             <div class="text-right">
-                                <ul class="pagination">
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                </ul>
+                                <!--  Pagination  -->
                             </div>
                         </div>
                     </div>

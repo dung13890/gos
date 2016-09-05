@@ -20,7 +20,11 @@ new Vue({
                 description: '',
             },
             roles: {},
-                
+            
+            formFilter: {
+                name: '',
+            },
+
             permissions: {},
             permissions_checked: [],
 
@@ -36,10 +40,19 @@ new Vue({
     },
 
     methods: {
+        filter: function() {
+            var self = this;
+            
+            RoleService.filter(self.formFilter).then(function(response) {
+                self.roles = response.roles;
+            });
+        },
+
         create: function() {
             var self = this;
             self.errors = {};
             self.role = {};
+            self.permissions_checked = [];
         },
 
         store: function(params) {

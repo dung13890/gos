@@ -34,8 +34,13 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         try {
-            $role = Role::create($request->all());
+            $params = $request->all();
+            $role = Role::create($request->all($params));
             
+            if (isset($params['permissions_checked']) && $params['permissions_checked'] != null) {
+                $role->permissions()->attach($params['permissions_checked']);
+            }
+
             return response()->json([
                 'code' => 200,
                 'message' => 'Thêm thành công!',
@@ -56,12 +61,6 @@ class RolesController extends Controller
         try {
             $role = Role::findOrFail($id);
             $permissions = $role->permissions()->get(['permission_id'])->pluck('permission_id');
-            
-            if ($permissions != null) {
-                foreach ($permissions as $key => $value) {
-                    $permissions[$key] = '"'. $value .'"';
-                }
-            }
 
             return response()->json([
                 'code' => 200,
