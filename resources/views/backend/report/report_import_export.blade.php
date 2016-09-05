@@ -66,9 +66,8 @@
                                 <div class="table-responsive">
                                     <div class="object-report">
                                         <div class="header-object-report">
-                                            <h3 class="pull-left">Tùy chọn</h3>
                                             <div class="pull-right">
-                                                <input type="" name=""  placeholder="Tên hoặc mã sản phẩm" style="width:250px" />
+                                                <input type="" name=""  placeholder="Tên hoặc mã sản phẩm" style="width:150px" />
                                                 <select>
                                                     <option>Chi nhánh</option>
                                                 </select>
@@ -84,7 +83,6 @@
                                                 <input type="date" name="">
                                                 <input type="date" name="">
                                                 <button class="btn btn-success btn-view-report">Xem</button>
-                                                <button class="btn btn-danger btn-view-report">Clear</button>
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
