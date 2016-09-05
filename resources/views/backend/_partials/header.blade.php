@@ -129,6 +129,10 @@
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý phòng ban
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ url('bills/symmetrical') }}"  title="Cân đối hàng tồn">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Cân đối hàng tồn</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -166,10 +170,6 @@
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Nhập hàng trả lại</a>
                 </li>
 
-                <li>
-                    <a href="{{ url('bills/symmetrical') }}"  title="Cân đối hàng tồn">
-                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Cân đối hàng tồn</a>
-                </li>
             </ul>
         </nav>
     </div>

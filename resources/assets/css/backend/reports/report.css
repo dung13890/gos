@@ -47,14 +47,14 @@ nav.sidebar-report ul a span {
 
 .header-object-report input, .header-object-report select {
     height: 30px;
-    width: 140px;
+    width: 120px;
     border: 1px solid #ccc;
     margin-top: 5px;
     margin-left: 5px;
 }
 
 .header-object-report select {
-    width: 150px;
+    width: 120px;
 }
 
 .btn-view-report {

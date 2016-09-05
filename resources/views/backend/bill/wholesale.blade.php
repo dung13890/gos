@@ -27,7 +27,7 @@
                                     <div class="col-xs-6">
                                         <form action="" class="form-inline">
                                             <div class="form-group">
-                                                <input type="text" class="form-control input-sm input-suggest" placeholder="Mã hoặc tên hàng hóa" size="60px" />
+                                                <input type="text" class="form-control input-sm input-suggest" placeholder="Mã hoặc tên hàng hóa" size="50px" />
                                                 <a title="Thêm mới hàng hóa" class="btn btn-success">
                                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                                 </a>
