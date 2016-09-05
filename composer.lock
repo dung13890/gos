@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1426195b668fe18fbc672592fb5299b1",
-    "content-hash": "3cadab7edecd883c852c6f88b5e102d1",
+    "hash": "c2be37409d94029fc0fba379192fdf7d",
+    "content-hash": "b7a96750f47700273e46072d53c1280e",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -216,67 +216,6 @@
             "time": "2015-11-06 14:35:42"
         },
         {
-            "name": "dompdf/dompdf",
-            "version": "v0.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "5c98652b1a5beb7e3cc8ec35419b2828dd63ab14"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/5c98652b1a5beb7e3cc8ec35419b2828dd63ab14",
-                "reference": "5c98652b1a5beb7e3cc8ec35419b2828dd63ab14",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-gd": "*",
-                "ext-mbstring": "*",
-                "phenx/php-font-lib": "0.4.*",
-                "phenx/php-svg-lib": "0.1.*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "0.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dompdf\\": "src/"
-                },
-                "classmap": [
-                    "lib/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Ménager",
-                    "email": "fabien.menager@gmail.com"
-                },
-                {
-                    "name": "Brian Sweeney",
-                    "email": "eclecticgeek@gmail.com"
-                },
-                {
-                    "name": "Gabriel Bull",
-                    "email": "me@gabrielbull.com"
-                }
-            ],
-            "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
-            "homepage": "https://github.com/dompdf/dompdf",
-            "time": "2016-05-11 00:36:29"
-        },
-        {
             "name": "guzzlehttp/guzzle",
             "version": "6.2.1",
             "source": {
@@ -449,16 +388,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.3.7",
+            "version": "2.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "22088b04728a039bd1fc32f7e79a89a118b78698"
+                "reference": "4064a980324f6c3bfa2bd981dfb247afa705ec3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/22088b04728a039bd1fc32f7e79a89a118b78698",
-                "reference": "22088b04728a039bd1fc32f7e79a89a118b78698",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/4064a980324f6c3bfa2bd981dfb247afa705ec3c",
+                "reference": "4064a980324f6c3bfa2bd981dfb247afa705ec3c",
                 "shasum": ""
             },
             "require": {
@@ -507,7 +446,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2016-04-26 14:08:40"
+            "time": "2016-09-01 17:04:03"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -656,16 +595,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.2",
+            "version": "v5.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "2213ca11f6fa849ca7c96308934cc6881ab434e8"
+                "reference": "c63a7fb7066fea2bce91ace5c830c01d503abe6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/2213ca11f6fa849ca7c96308934cc6881ab434e8",
-                "reference": "2213ca11f6fa849ca7c96308934cc6881ab434e8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c63a7fb7066fea2bce91ace5c830c01d503abe6c",
+                "reference": "c63a7fb7066fea2bce91ace5c830c01d503abe6c",
                 "shasum": ""
             },
             "require": {
@@ -779,7 +718,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-24 23:23:29"
+            "time": "2016-09-01 14:06:47"
         },
         {
             "name": "laravelcollective/html",
@@ -922,69 +861,6 @@
                 "storage"
             ],
             "time": "2016-08-10 08:55:11"
-        },
-        {
-            "name": "league/fractal",
-            "version": "0.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/fractal.git",
-                "reference": "3caeefbad51bce7a06947321938128512f42346c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/3caeefbad51bce7a06947321938128512f42346c",
-                "reference": "3caeefbad51bce7a06947321938128512f42346c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "illuminate/contracts": "~5.0",
-                "mockery/mockery": "~0.9",
-                "pagerfanta/pagerfanta": "~1.0.0",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~1.5",
-                "zendframework/zend-paginator": "~2.3"
-            },
-            "suggest": {
-                "illuminate/pagination": "The Illuminate Pagination component.",
-                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
-                "zendframework/zend-paginator": "Zend Framework Paginator"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.13-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\Fractal\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Phil Sturgeon",
-                    "email": "me@philsturgeon.uk",
-                    "homepage": "http://philsturgeon.uk/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Handle the output of complex data structures ready for API output.",
-            "homepage": "http://fractal.thephpleague.com/",
-            "keywords": [
-                "api",
-                "json",
-                "league",
-                "rest"
-            ],
-            "time": "2015-10-07 14:48:58"
         },
         {
             "name": "league/glide",
@@ -1182,73 +1058,6 @@
                 "routing"
             ],
             "time": "2016-08-12 13:38:39"
-        },
-        {
-            "name": "maatwebsite/excel",
-            "version": "v2.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "bd9428da19fb3de9bbdd80f18f31b744485dc250"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/bd9428da19fb3de9bbdd80f18f31b744485dc250",
-                "reference": "bd9428da19fb3de9bbdd80f18f31b744485dc250",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/cache": "~5.0|~5.1",
-                "illuminate/config": "~5.0|~5.1",
-                "illuminate/filesystem": "~5.0|~5.1",
-                "illuminate/support": "~5.0|~5.1",
-                "nesbot/carbon": "~1.0",
-                "php": ">=5.3.0",
-                "phpoffice/phpexcel": "~1.8.0",
-                "tijsverkoyen/css-to-inline-styles": "~1.5"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "orchestra/testbench": "~3.0.0",
-                "phpseclib/phpseclib": ">=0.3.7",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "illuminate/http": "~5.0|~5.1",
-                "illuminate/routing": "~5.0|~5.1",
-                "illuminate/view": "~5.0|~5.1"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/Maatwebsite/Excel",
-                    "tests/TestCase.php"
-                ],
-                "psr-0": {
-                    "Maatwebsite\\Excel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Maatwebsite.nl",
-                    "email": "patrick@maatwebsite.nl"
-                }
-            ],
-            "description": "An eloquent way of importing and exporting Excel and CSV in Laravel 4 with the power of PHPExcel",
-            "keywords": [
-                "PHPExcel",
-                "batch",
-                "csv",
-                "excel",
-                "export",
-                "import",
-                "laravel"
-            ],
-            "time": "2015-10-26 10:15:37"
         },
         {
             "name": "maximebf/debugbar",
@@ -1578,131 +1387,6 @@
                 "random"
             ],
             "time": "2016-04-03 06:00:07"
-        },
-        {
-            "name": "phenx/php-font-lib",
-            "version": "0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PhenX/php-font-lib.git",
-                "reference": "b8af0cacdc3cbf1e41a586fcb78f506f4121a088"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/b8af0cacdc3cbf1e41a586fcb78f506f4121a088",
-                "reference": "b8af0cacdc3cbf1e41a586fcb78f506f4121a088",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "FontLib\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Ménager",
-                    "email": "fabien.menager@gmail.com"
-                }
-            ],
-            "description": "A library to read, parse, export and make subsets of different types of font files.",
-            "homepage": "https://github.com/PhenX/php-font-lib",
-            "time": "2015-05-06 20:02:39"
-        },
-        {
-            "name": "phenx/php-svg-lib",
-            "version": "0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PhenX/php-svg-lib.git",
-                "reference": "b419766515b3426c6da74b0e29e93d71c4f17099"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PhenX/php-svg-lib/zipball/b419766515b3426c6da74b0e29e93d71c4f17099",
-                "reference": "b419766515b3426c6da74b0e29e93d71c4f17099",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Svg\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Ménager",
-                    "email": "fabien.menager@gmail.com"
-                }
-            ],
-            "description": "A library to read, parse and export to PDF SVG files.",
-            "homepage": "https://github.com/PhenX/php-svg-lib",
-            "time": "2015-05-06 18:49:49"
-        },
-        {
-            "name": "phpoffice/phpexcel",
-            "version": "1.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPOffice/PHPExcel.git",
-                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
-                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
-                "shasum": ""
-            },
-            "require": {
-                "ext-xml": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PHPExcel": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Maarten Balliauw",
-                    "homepage": "http://blog.maartenballiauw.be"
-                },
-                {
-                    "name": "Mark Baker"
-                },
-                {
-                    "name": "Franck Lefevre",
-                    "homepage": "http://blog.rootslabs.net"
-                },
-                {
-                    "name": "Erik Tilt"
-                }
-            ],
-            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
-            "homepage": "http://phpexcel.codeplex.com",
-            "keywords": [
-                "OpenXML",
-                "excel",
-                "php",
-                "spreadsheet",
-                "xls",
-                "xlsx"
-            ],
-            "time": "2015-05-01 07:00:55"
         },
         {
             "name": "psr/http-message",
@@ -2108,59 +1792,6 @@
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
             "time": "2016-07-26 08:04:17"
-        },
-        {
-            "name": "symfony/css-selector",
-            "version": "v3.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/css-selector.git",
-                "reference": "2851e1932d77ce727776154d659b232d061e816a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/2851e1932d77ce727776154d659b232d061e816a",
-                "reference": "2851e1932d77ce727776154d659b232d061e816a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\CssSelector\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jean-François Simon",
-                    "email": "jeanfrancois.simon@sensiolabs.com"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony CssSelector Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:41:56"
         },
         {
             "name": "symfony/debug",
@@ -2882,64 +2513,17 @@
             "time": "2016-07-26 08:04:17"
         },
         {
-            "name": "tijsverkoyen/css-to-inline-styles",
-            "version": "1.5.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-                "reference": "9753fc340726e327e4d48b7c0604f85475ae0bc3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/9753fc340726e327e4d48b7c0604f85475ae0bc3",
-                "reference": "9753fc340726e327e4d48b7c0604f85475ae0bc3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "symfony/css-selector": "~2.1|~3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TijsVerkoyen\\CssToInlineStyles\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Tijs Verkoyen",
-                    "email": "css_to_inline_styles@verkoyen.eu",
-                    "role": "Developer"
-                }
-            ],
-            "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
-            "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
-            "time": "2015-12-08 16:14:14"
-        },
-        {
             "name": "vlucas/phpdotenv",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a"
+                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/9ca5644c536654e9509b9d257f53c58630eb2a6a",
-                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
+                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
                 "shasum": ""
             },
             "require": {
@@ -2951,7 +2535,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -2976,67 +2560,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-06-14 14:14:52"
-        },
-        {
-            "name": "yajra/laravel-datatables-oracle",
-            "version": "v6.17.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "ebf51c74bbc0efcb5904fa146da6a5a4d6b82a01"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/ebf51c74bbc0efcb5904fa146da6a5a4d6b82a01",
-                "reference": "ebf51c74bbc0efcb5904fa146da6a5a4d6b82a01",
-                "shasum": ""
-            },
-            "require": {
-                "dompdf/dompdf": "^0.7",
-                "illuminate/database": "~5.0",
-                "illuminate/filesystem": "~5.0",
-                "illuminate/http": "~5.0",
-                "illuminate/support": "~5.0",
-                "illuminate/view": "~5.0",
-                "laravelcollective/html": "~5.0",
-                "league/fractal": "~0.12",
-                "maatwebsite/excel": "^2.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "barryvdh/laravel-snappy": "Allows exporting of dataTable to PDF using the print view."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Yajra\\Datatables\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arjay Angeles",
-                    "email": "aqangeles@gmail.com"
-                }
-            ],
-            "description": "jQuery DataTables API for Laravel 4|5",
-            "keywords": [
-                "datatable",
-                "datatables",
-                "datatables jquery plugin",
-                "laravel",
-                "laravel4",
-                "laravel5"
-            ],
-            "time": "2016-08-23 05:51:56"
+            "time": "2016-09-01 10:05:43"
         }
     ],
     "packages-dev": [
@@ -3748,16 +3272,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.5.2",
+            "version": "5.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "46ec2d1522ae8c9a12aca6b7650e0be78bbb0502"
+                "reference": "3e6e88e56c912133de6e99b87728cca7ed70c5f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/46ec2d1522ae8c9a12aca6b7650e0be78bbb0502",
-                "reference": "46ec2d1522ae8c9a12aca6b7650e0be78bbb0502",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3e6e88e56c912133de6e99b87728cca7ed70c5f5",
+                "reference": "3e6e88e56c912133de6e99b87728cca7ed70c5f5",
                 "shasum": ""
             },
             "require": {
@@ -3822,20 +3346,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-08-18 11:10:44"
+            "time": "2016-08-26 07:11:44"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.2.4",
+            "version": "3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "4e83390f64e7ce04fcaec2ce95cd72823b431d19"
+                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/4e83390f64e7ce04fcaec2ce95cd72823b431d19",
-                "reference": "4e83390f64e7ce04fcaec2ce95cd72823b431d19",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
+                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
                 "shasum": ""
             },
             "require": {
@@ -3881,7 +3405,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-08-17 09:33:51"
+            "time": "2016-08-26 05:51:59"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -4395,6 +3919,59 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-02-04 12:56:52"
+        },
+        {
+            "name": "symfony/css-selector",
+            "version": "v3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "2851e1932d77ce727776154d659b232d061e816a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/2851e1932d77ce727776154d659b232d061e816a",
+                "reference": "2851e1932d77ce727776154d659b232d061e816a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\CssSelector\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jean-François Simon",
+                    "email": "jeanfrancois.simon@sensiolabs.com"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony CssSelector Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:41:56"
         },
         {
             "name": "symfony/dom-crawler",

@@ -34,7 +34,8 @@
                     </a>
                     <ul class="dropdown-menu submenu">
                         <li><a href="/user"><i class="glyphicon glyphicon-user"></i> Quản lý người dùng</a></li>
-                        <li><a href="/roles"><i class="glyphicon glyphicon-lock"> </i> Quản lý nhóm quyền</a></li>
+                        <li><a href="{{ route('roles.index') }}"><i class="glyphicon glyphicon-lock"> </i> Quản lý nhóm quyền</a></li>
+                        <li><a href="{{ route('permissions.index') }}"><i class="glyphicon glyphicon-lock"> </i> Quản lý quyền</a></li>
                         <li><a href=""><i class="glyphicon glyphicon-wrench"></i> Cấu hình hệ thống</a></li>
                     </ul>
                 </li>

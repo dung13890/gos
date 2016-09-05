@@ -25,7 +25,7 @@
                                 <div class="pull-left">
                                     <div class="has-feedback">
                                         <small>Ngày bắt đầu</small>
-                                        <input type="text" class="form-control input-sm date-picker" style="width: 280px; z-index: 1;" />
+                                        <input type="text" class="form-control input-sm date-picker" style="width: 100%; z-index: 1;" />
                                         <i class="fa fa-calendar form-control-feedback"></i>
                                         <span class="error">Vui lòng chọn ngày bắt đầu</span>
                                     </div>
@@ -34,7 +34,7 @@
                                 <div class="pull-right">
                                     <div class="has-feedback">
                                         <small>Ngày kết thúc</small>
-                                        <input type="text" class="form-control date-picker input-sm" style="width: 280px; z-index: 1;" />
+                                        <input type="text" class="form-control date-picker input-sm" style="width: 100%; z-index: 1;" />
                                         <i class="fa fa-calendar form-control-feedback"></i>
                                         <span class="error">Vui lòng chọn ngày kết thúc</span>
                                     </div>

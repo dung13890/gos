@@ -94,6 +94,21 @@ var plugins = {
       name: 'users/resset_password.js',
       in: '',
       out: 'users'
+    },
+    {
+      name: 'users/user.js',
+      in: '',
+      out: 'users'
+    },
+    {
+      name: 'permissions/permission.js',
+      in: '',
+      out: 'permissions'
+    },
+    {
+      name: 'roles/role.js',
+      in: '',
+      out: 'roles'
     }
   ]
 }
