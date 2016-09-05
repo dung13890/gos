@@ -106,7 +106,8 @@
                                                 <th class="text-center">Mã</th>
                                                 <th>Tên sản phẩm</th>
                                                 <th class="text-center">ĐVT</th>
-                                                <th class="text-center" width="150">Đơn giá</th>
+                                                <th class="text-center" width="150">Giá mua</th>
+                                                <th class="text-center" width="150">Giá bán</th>
                                                 <th class="text-center" width="100">Số lượng</th>
                                                 <th class="text-center" width="100">Khuyễn mãi</th>
                                                 <th class="text-right">Thành tiền</th>
@@ -114,8 +115,28 @@
                                                 <th width="50"></th>
                                             </tr>
                                         </thead>
-
-                                        <tbody>
+                                            <tbody>
+                                                @for($i = 1; $i <= 10; $i++)
+                                                    <tr>
+                                                        <td class="text-center">{{ $i }}</td>
+                                                        <td class="text-center">SP0123</td>
+                                                        <td>Samsung Galaxy S3</td>
+                                                        <td class="text-center">Cái</td>
+                                                        <td>
+                                                            <input type="text" class="form-control input-sm text-right" value="2.000.000" />
+                                                        </td>
+                                                        <td><input type="number" class="form-control input-sm text-right" value="{{ $i }}" /></td>
+                                                        <td><input type="text" class="form-control input-sm text-right" value="5%" /></td>
+                                                        <td class="text-right">190,000,000</td>
+                                                        <td class="text-center">01/12/2019</td>
+                                                        <td class="text-center">
+                                                            <a href="#" title="Xóa" class="btn-icon label-delete">
+                                                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endfor
+                                            <tbody>
                                         </tbody>
                                     </table>
                                 </div>

@@ -62,7 +62,7 @@
                                                 <th class="text-center">Mã</th>
                                                 <th>Tên sản phẩm</th>
                                                 <th class="text-center">ĐVT</th>
-                                                <th class="text-center" width="150">Đơn giá</th>
+                                                <th class="text-center" width="150">Giá bán</th>
                                                 <th class="text-center" width="100">Số lượng</th>
                                                 <th class="text-center" width="100">Khuyễn mãi</th>
                                                 <th class="text-right">Thành tiền</th>
