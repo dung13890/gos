@@ -19,6 +19,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
     Route::resource('units', 'UnitsController');
     Route::resource('rooms', 'RoomsController');
     
+    Route::get('users/data', ['as' => 'users.data', 'uses' => 'UsersController@getData']);    
     Route::resource('users', 'UsersController');
     Route::post('users/update/password', ['as' => 'users.update.password', 'uses' => 'UsersController@changePassword']);
     Route::resource('permissions', 'PermissionsController');

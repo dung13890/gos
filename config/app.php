@@ -168,6 +168,7 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
         //
 
         /*
@@ -231,6 +232,7 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Activity' => Spatie\Activitylog\ActivitylogFacade::class,
+        'Datatables' => yajra\Datatables\Datatables::class,
     ],
 
 ];
