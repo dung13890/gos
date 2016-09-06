@@ -62,6 +62,7 @@ function renderTable(route, columns, options, callback, selector) {
         sorting: [0, 'desc'],
         columns: columns,
         bLengthChange: false,
+        bSortCellsTop: true,
         pageLength: 15,
         language: {
             search:"_INPUT_",
@@ -73,9 +74,10 @@ function renderTable(route, columns, options, callback, selector) {
 
     if (typeof callback === 'function') setTimeout(callback, 500);
     if (route) {
-        $(selector).DataTable(options);
+        var oTable = $(selector).DataTable(options);
+        $("#length_paginate").append($(".dataTables_length"));
         $('.dataTables_filter input').remove();
-        $("#filter").append($(".dataTables_length")).append($(".dataTables_filter"));
+        return oTable;
     } else {
         return;
     }
