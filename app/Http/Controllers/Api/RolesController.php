@@ -7,28 +7,50 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Model\Role;
+use Illuminate\Support\Str;
 
-class RolesController extends Controller
+class RolesController extends ApiController
 {
     protected $dataSelect = ['id', 'name', 'description'];
 
+    public function __construct(Role $role)
+    {
+        parent::__construct($role);
+    }
+
+    public function getData(Request $request)
+    {
+        return \Datatables::of(app(Role::class)->all($this->dataSelect))
+        ->filter(function ($instance) use ($request) {
+            if ($request->has('name')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['name'], $request->name) ? true : false;
+                });
+            }
+
+            if ($request->has('description')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['description'], $request->description) ? true : false;
+                });
+            }
+
+        })
+        ->addColumn('actions', function ($item) {
+            $actions = [];
+                if ($this->before('edit',$item, false)) {
+                    $actions['edit'] = true;
+                }
+                if ($this->before('delete',$item, false)) {
+                    $actions['delete'] = true;
+                }
+
+            return $actions;
+        })->make(true);
+    }
+
     public function index()
     {
-        try {
-            $roles = Role::select($this->dataSelect)->orderBy('id', 'desc')->get();
-            return response()->json([
-                'code' => 200,
-                'message' => 'Load thành công',
-                'roles' => $roles,
-            ]);
-         }
-         
-         catch(Exception $e) {
-            return response()->json([
-                'errors' => false,
-                'messages'  => $e->getMessage(),
-            ], 500);
-        }
+        return;
     }
 
     public function store(Request $request)

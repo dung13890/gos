@@ -1,4 +1,4 @@
-<div id="new-role" class="modal fade">
+<div id="newRole" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,6 +12,7 @@
                         <div class="col-xs-12">
                             <div class="required-wrapper">
                                 <small>Tên nhóm quyền</small>
+                                
                                 <input type="text"
                                     class="form-control input-sm"
                                     v-model="role.name"
