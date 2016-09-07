@@ -50,23 +50,25 @@
                                         <input v-model="permissions_checked"
                                             type="checkbox"
                                             id="inlineCheckbox@{{ permission.id }}"
-                                            value="@{{ permission.id }}"
+                                            :value="permission.id"
                                         />
                                         <label for="inlineCheckbox@{{ permission.id }}">@{{ permission.name }}</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <span>Checked names: @{{ permissions_checked | json }}</span>
+
                         </div>
                     </div>
 
-                    <div class="form-group text-center">
+                    @include('errors/validate')
+                    
+                    <div class="form-group text-center toolbar">
                         <button class="btn btn-success" type="submit">
                             <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                         </button>
 
-                        <button class="btn btn-warning" type="reset">
+                        <button class="btn btn-warning" type="button" data-dismiss="modal" aria-hidden="true">
                             <i class="glyphicon glyphicon-ban-circle"></i> Hủy
                         </button>
                     </div>

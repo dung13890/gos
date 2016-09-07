@@ -65,6 +65,7 @@
                                         <div class="header-object-report">
                                             <h3 class="pull-left">Tùy chọn</h3>
                                             <div class="pull-right">
+                                                <input type="" name=""  placeholder="Tên hoặc mã sản phẩm" style="width:250px" />
                                                 <select>
                                                     <option>Chi nhánh</option>
                                                 </select>
