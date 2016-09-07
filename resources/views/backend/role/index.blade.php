@@ -21,14 +21,14 @@
     <div id="content">
         <div class="container-fluid">
             <h3>
-                Quản lý nhóm quyền
+                {{ trans('roles.role.page_title') }}
                 <a href="#new-role"
                     role="button"
                     class="btn btn-success pull-right"
                     data-toggle="modal"
                     v-on:click="create()"
                 >
-                    <i class="fa fa-plus"></i> Thêm mới nhóm quyền
+                    <i class="fa fa-plus"></i> Thông tin form
                 </a>
             </h3>
             <div class="row">
