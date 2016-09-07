@@ -2,10 +2,13 @@
 
 @push('prestyles')
     {{ HTML::style("assets/css/backend/checkbox-radiobox.css") }}
+    {{ HTML::style('vendor/datatables-bs/css/dataTables.bootstrap.min.css') }}
     {{ HTML::style('assets/css/backend/roles/role.css') }}
 @endpush
 
 @push('prescripts')
+    {{ HTML::script("vendor/datatables/js/jquery.dataTables.min.js") }}
+    {{ HTML::script("vendor/datatables-bs/js/dataTables.bootstrap.min.js") }}
     {{ HTML::script("assets/vue/roles/role.js") }}
 @endpush
 
@@ -39,50 +42,7 @@
                         </div>
                         
                         <div id="providerList">
-                        
-                            <div class="widget-content">
-                                <div class="table-responsive">
-                                    <table class="table table-condensed table-default table-bordered table-hover" id="table-index">
-                                        <thead>
-                                            <tr class="active">
-                                                <th width="10" class="text-center">ID</th>
-                                                <th width="200">Tên nhóm quyền</th>
-                                                <th width="150">Mô tả</th>
-                                                <th style="width:50px;" class="text-center">Thao tác</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr v-for='role in roles'>
-                                                <td class="text-center">@{{ role.id }}</td>
-                                                <td>@{{ role.name }}</td>
-                                                <td>@{{ role.description }}</td>
-                                                <td class="text-center">
-                                                    <a href="#new-role"
-                                                        title="Sửa" 
-                                                        v-on:click="edit(role.id)"
-                                                        class="btn-icon label-edit" data-toggle="modal">
-                                                        <span class="glyphicon glyphicon-edit"></span>
-                                                    </a>
-
-                                                    <a href="javascript:void(0)" 
-                                                        title="Xóa"
-                                                        class="btn-icon label-delete btn-xs handle-delete"
-                                                        v-on:click="destroy(role.id, role)"
-                                                    >
-                                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget-footer">
-                            <div class="text-right">
-                                <!--  Pagination  -->
-                            </div>
+                            <data-table></data-table>                        
                         </div>
                     </div>
                 </div>

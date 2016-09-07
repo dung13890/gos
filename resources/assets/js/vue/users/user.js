@@ -4,6 +4,8 @@ import VueValidator from 'vue-validator'
 import UserService from '../services/user'
 import Multiselect from 'vue-multiselect'
 
+import DataTable from './components/datatable.vue';
+
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
@@ -12,13 +14,10 @@ var token = $('meta[name="csrf-token"]').attr('content');
 new Vue({
     el: '#UsersController',
 
-    components: {
-        'multiselect': Multiselect
-    },
+    components: { Multiselect, DataTable },
 
     data: function () {
         return {
-            users: {},
             user: {
                 _token: '',
                 id: '',
@@ -43,9 +42,13 @@ new Vue({
             permissions: [],
             roles: [],
 
+
             createAction: true,
             errors: {},
             isError: false,
+            oTable: {
+                type: Object
+            }
         }
     },
 
@@ -55,8 +58,10 @@ new Vue({
     },
 
     methods: {
+
         create: function() {
             var self = this;
+            self.user = {};
             self.room = {};
             self.createAction = true;
         },
@@ -67,7 +72,8 @@ new Vue({
             UserService.store(params).then((response) => {
                 toastr.success(response.message);
                 if (response.code === 200) {
-                    self.reload();
+                    $('#newUser').modal('hide');
+                    self.oTable.draw();
                 }
 
             }, (response) => {
@@ -84,7 +90,8 @@ new Vue({
                 toastr.success(response.message);
 
                 if (response.code === 200) {
-                    self.reload();
+                    $('#newUser').modal('hide');
+                    self.oTable.draw();
                 }
 
             }, (response) => {
@@ -107,25 +114,24 @@ new Vue({
             });
         },
 
-        destroy: function(id, user) {
+        destroy: function(id, name) {
             var self = this;
             swal({
-                title: "Bạn có chắc chắn không?",
-                text: "Bản ghi có tên "+ user.fullname + " sẽ bị xóa",
+                title: "Bạn có chắc chắn không ?",
+                text: "Bản ghi có tên "+ name + " sẽ bị xóa",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Đồng ý!",
                 cancelButtonText: 'Hủy',
-                closeOnConfirm: false
+                closeOnConfirm: true
             }, function(isConfirm) {
                 if (isConfirm) {
-                    self.users.$remove(user);
                     UserService.destroy(id).then(function(response) {
-                        self.fullname = response.user;
+                        self.oTable.draw();
                     });
 
-                    swal("Đã xóa!", "Bản ghi có tên " + user.fullname, "success");
+                    swal("Đã xóa!", "Bản ghi có tên " + name, "success");
                 }
             });
         },
@@ -162,23 +168,17 @@ new Vue({
             var self = this;
             self.user.roles_selected = selected;
         },
-
-        reload: function() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 1000);
-        },
     },
 
     ready: function () {
         var self = this;
 
         UserService.index().then(function(response) {
-            self.users = response.users;
             self.positions = response.positions;
             self.rooms = response.rooms;
             self.permissions = response.permissions;
             self.roles = response.roles;
         });
-    }
+    },
+
 });

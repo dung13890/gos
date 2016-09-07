@@ -67,7 +67,7 @@
                                     <div class="object-report">
                                         <div class="header-object-report">
                                             <div class="pull-right">
-                                                <input type="" name=""  placeholder="Tên hoặc mã sản phẩm" style="width:150px" />
+                                                <input type="" name=""  placeholder="Tên hoặc mã sản phẩm" style="width:250px" />
                                                 <select>
                                                     <option>Chi nhánh</option>
                                                 </select>
