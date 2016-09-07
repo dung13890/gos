@@ -3,6 +3,8 @@ import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import RoleService from '../services/role';
 
+import DataTable from './components/datatable.vue';
+
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
@@ -10,6 +12,8 @@ var token = $('meta[name="csrf-token"]').attr('content')
 
 new Vue({
     el: '#RolesController',
+
+    components: { DataTable },
 
     data: function () {
         return {
@@ -19,7 +23,6 @@ new Vue({
                 name: '',
                 description: '',
             },
-            roles: {},
                 
             permissions: {},
             permissions_checked: [],
@@ -27,6 +30,9 @@ new Vue({
             createAction: true,
             errors: {},
             isError: false,
+            oTable: {
+                type: Object
+            }
         }
     },
 
@@ -48,7 +54,8 @@ new Vue({
                 toastr.success(response.message);
 
                 if (response.code === 200) {
-                    self.reload();
+                    $('#newRole').modal('hide');
+                    self.oTable.draw();
                 }
 
             }, (response) => {
@@ -65,7 +72,8 @@ new Vue({
                 toastr.success(response.message);
 
                 if (response.code === 200) {
-                    self.reload();
+                    $('#newRole').modal('hide');
+                    self.oTable.draw();
                 }
 
             }, (response) => {
@@ -85,12 +93,12 @@ new Vue({
             });
         },
 
-        destroy: function(id, role) {
+        destroy: function(id, name) {
             var self = this;
 
             swal({
                 title: "Bạn có chắc chắn không?",
-                text: "Bản ghi có tên "+ role.name + " sẽ bị xóa",
+                text: "Bản ghi có tên "+ name + " sẽ bị xóa",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -101,10 +109,10 @@ new Vue({
                 if (isConfirm) {
                     self.roles.$remove(role);
                     RoleService.destroy(id).then(function(response) {
-                        self.role = response.role;
+                        self.oTable.draw();
                     });
 
-                    swal("Đã xóa!", "Bản ghi có tên " + role.code, "success");
+                    swal("Đã xóa!", "Bản ghi có tên " + name, "success");
                 }
             });
         },
@@ -129,20 +137,10 @@ new Vue({
                 }
             });
         },
-
-        reload: function() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 1000);
-        }
     },
 
     ready: function () {
         var self = this;
-
-        RoleService.index().then(function(response) {
-            self.roles = response.roles;
-        });
 
         RoleService.permissions().then(function(response) {
             self.permissions = response.permissions;
