@@ -5,13 +5,15 @@
             <thead>
                 <tr>
                     <th style="display:none">ID</th>
-                    <th>Tên nhóm quyền</th>
-                    <th>Mô tả</th>
+                    <th>Tên quyền</th>
+                    <th>Từ khóa </th>
+                    <th>Mô tả </th>
                     <th class="text-center">Thao tác</th>
                 </tr>
                 <tr style="background: #e3eff1;">
                     <td style="display:none"></td>
                     <td><input v-model="name" type="text" class="form-control input-sm" ></td>
+                    <td><input v-model="slug" type="text" class="form-control input-sm" ></td>
                     <td><input v-model="description" type="text" class="form-control input-sm"> </td>
                     <td>
                         <a v-on:click.prevent="search" class="btn btn-info input-sm"><span class="glyphicon glyphicon-search"></span> Tìm kiếm</a>
@@ -30,19 +32,22 @@
             var self = this;
             return {
                 route: {
-                    url: window.laroute.route('api.v1.roles.data'),
+                    url: window.laroute.route('api.v1.permissions.data'),
                     data: function (d) {
                         d.name = self.name;
+                        d.slug = self.slug;
                         d.description = self.description;
                     }
                 },
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
+                    {data: 'slug', name: 'slug'},
                     {data: 'description', name: 'description'},
                     {data: 'actions', name: 'actions', orderable: false, searchable: false, sClass: "text-center"}
                 ],
                 name: '',
+                slug: '',
                 description: '',
             }
         },
@@ -59,12 +64,12 @@
                             return ;
                         }
 
-                        var actionHtml = $('td', row).eq(3);
+                        var actionHtml = $('td', row).eq(4);
 
                         actionHtml.html('');
 
                         if (actions.edit) { 
-                            var edit = actionHtml.append('<a href="#newRole" v-on:click="edit('+data.id+')" title="Sửa" class="btn-icon label-edit" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span></a>');
+                            var edit = actionHtml.append('<a href="#newPermission" v-on:click="edit('+data.id+')" title="Sửa" class="btn-icon label-edit" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span></a>');
                             self.$compile(edit.get(0));
                         }
 
@@ -89,6 +94,7 @@
 
             reset: function () {
                 this.$set('name', '');
+                this.$set('slug', '');
                 this.$set('description', '');
                 this.$parent.oTable.draw();
             },

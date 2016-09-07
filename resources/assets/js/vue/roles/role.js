@@ -121,7 +121,6 @@ new Vue({
                 closeOnConfirm: false
             }, function(isConfirm) {
                 if (isConfirm) {
-                    self.roles.$remove(role);
                     RoleService.destroy(id).then(function(response) {
                         self.oTable.draw();
                     });
