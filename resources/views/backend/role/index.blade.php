@@ -16,7 +16,7 @@
 
 <div id="RolesController">
     
-    @include('backend.role._form')
+    <modal-form :role="role" :permissions="permissions" :modal-title="modalTitle" :errors="errors"></modal-form>
 
     <div id="content">
         <div class="container-fluid">

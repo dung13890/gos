@@ -4,6 +4,7 @@ import VueValidator from 'vue-validator'
 import RoleService from '../services/role';
 
 import DataTable from './components/datatable.vue';
+import ModalForm from './components/modal-form.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
@@ -13,7 +14,7 @@ var token = $('meta[name="csrf-token"]').attr('content')
 new Vue({
     el: '#RolesController',
 
-    components: { DataTable },
+    components: { DataTable, ModalForm },
 
     data: function () {
         return {
@@ -23,18 +24,17 @@ new Vue({
                 name: '',
                 description: '',
             },
-            roles: {},
             
-            formFilter: {
-                name: '',
-            },
-
-            permissions: {},
+            permissions: [],
             permissions_checked: [],
 
+            modalTitle: '',
             createAction: true,
-            errors: {},
-            isError: false,
+            errors: {
+                errors: false,
+                messages: {}
+            },
+            formRole: {},
             oTable: {
                 type: Object
             }
@@ -47,19 +47,11 @@ new Vue({
     },
 
     methods: {
-        filter: function() {
-            var self = this;
-            
-            RoleService.filter(self.formFilter).then(function(response) {
-                self.roles = response.roles;
-            });
-        },
-
         create: function() {
-            var self = this;
-            self.errors = {};
-            self.role = {};
+            this.formRole.modal('show');
+            this.role = {};
             self.permissions_checked = [];
+            this.modalTitle = 'Thêm mới nhóm quyền';
         },
 
         store: function(params) {
@@ -155,7 +147,7 @@ new Vue({
     ready: function () {
         var self = this;
 
-        RoleService.permissions().then(function(response) {
+        RoleService.index().then(function(response) {
             self.permissions = response.permissions;
         });
     }

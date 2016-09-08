@@ -18,31 +18,7 @@ export default {
             });
         });
     },
-
-    filter: function(params) {
-        var self = this;
-
-        return new Promise(function(resolve, reject) {
-            self.http.get(self.router.route('api.v1.roles.index'), {name: 'ok'}).then(function (response) {
-                resolve(response.data);
-            }, function (response) {
-                reject(response.data);
-            });
-        });
-    },
-
-    permissions: function () {
-        var self = this;
-        
-        return new Promise( function(resolve, reject) {
-            self.http.get(self.router.route('api.v1.permissions.index')).then(function (response) {
-                resolve(response.data);
-            }, function (response) {
-                reject(response.data);
-            })
-        })
-    },
-  
+      
     getRole: function (id) {
         var self = this;
         return new Promise( function(resolve, reject) {
