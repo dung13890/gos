@@ -7,114 +7,88 @@ use Illuminate\Http\Request;
 use Exception;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Contracts\Services\PermissionService;
+use App\Http\Requests\Backend\Permissions\StoreRequest;
+use App\Http\Requests\Backend\Permissions\UpdateRequest;
 use App\Model\Permission;
 use Illuminate\Support\Str;
 
-class PermissionsController extends Controller
+class PermissionsController extends ApiController
 {
 	protected $dataSelect = ['id', 'name', 'slug', 'description', 'model'];
 
-    public function index()
+    public function __construct(Permission $permission)
     {
-        try {
-            $permissions = Permission::select($this->dataSelect)->orderBy('id', 'desc')->get();
-            return response()->json([
-                'code' => 200,
-                'message' => 'Load thành công',
-                'permissions' => $permissions,
-            ]);
-         }
-
-         catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+        parent::__construct($permission);
     }
 
-    public function store(Request $request)
+    public function getData(Request $request)
     {
-        try {
-            $params = $request->all();
-            $params['slug'] = Str::slug($params['name'], '-');
-            $permission = Permission::create($params);
+        return \Datatables::of(app(Permission::class)->all($this->dataSelect))
+        ->filter(function ($instance) use ($request) {
+            if ($request->has('name')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['name'], $request->name) ? true : false;
+                });
+            }
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Thêm thành công!',
-                'permission' => $permission,
-            ]);
-        }
-        
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+            if ($request->has('slug')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['slug'], $request->slug) ? true : false;
+                });
+            }
 
+            if ($request->has('description')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['description'], $request->description) ? true : false;
+                });
+            }
+
+        })
+        ->addColumn('actions', function ($item) {
+            $actions = [];
+                if ($this->before('edit',$item, false)) {
+                    $actions['edit'] = true;
+                }
+                if ($this->before('delete',$item, false)) {
+                    $actions['delete'] = true;
+                }
+
+            return $actions;
+        })->make(true);
+    }
+
+    public function index()
+    {
+        return;
+    }
+
+    public function store(StoreRequest $request, PermissionService $service)
+    {
+        $data = $request->all();
+
+        return $this->storeData($data, $service);
     }
 
     public function edit($id)
     {
-        try {
-            $permission = Permission::findOrFail($id);
+        parent::edit($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Load thành công',
-                'permission' => $permission,
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->jsonRender(200);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, PermissionService $service,  $id)
     {
-        try {
-            $params = $request->all();
-            $params['slug'] = Str::slug($params['name'], '-');
-            $permission = Permission::findOrFail($id);
-            $permission->update($params);
+        $data = $request->all();
+        $entity = $this->repository->findOrFail($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Sửa thành công!',
-                'permission' => $permission,
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'errors' => true,
-                'messages'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->updateData($data, $service, $entity);
     }
 
-    public function destroy($id)
+    public function destroy($id, PermissionService $service)
     {
-        try {
-            Permission::findOrFail($id)->delete();
+        $entity = $this->repository->findOrFail($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Xóa thành công!',
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->deleteData($service, $entity);
     }
 }

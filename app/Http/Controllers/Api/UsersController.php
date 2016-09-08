@@ -116,7 +116,6 @@ class UsersController extends ApiController
         }
 
         return $this->jsonRender();
-
     }
 
     public function store(Request $request)

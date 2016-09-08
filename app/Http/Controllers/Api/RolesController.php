@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\Backend\Roles\StoreRequest;
+use App\Http\Requests\Backend\Roles\UpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Model\Role;
+use App\Model\Permission;
 use Illuminate\Support\Str;
 
 class RolesController extends ApiController
@@ -50,54 +53,23 @@ class RolesController extends ApiController
 
     public function index()
     {
-        return;
+        $this->compacts['permissions'] = app(Permission::class)->all();
+
+        return $this->jsonRender(200);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request, RoleService $service)
     {
-        try {
-            $params = $request->all();
-            $role = Role::create($request->all($params));
-            
-            if (isset($params['permissions_checked']) && $params['permissions_checked'] != null) {
-                $role->permissions()->attach($params['permissions_checked']);
-            }
+        $data = $request->all();
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Thêm thành công!',
-                'role' => $role,
-            ]);
-        }
-        
-        catch(Exception $e) {
-            return response()->json([
-                'errors' => true,
-                'messages'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->storeData($data, $service);
     }
 
     public function edit($id)
     {
-        try {
-            $role = Role::findOrFail($id);
-            $permissions = $role->permissions()->get(['permission_id'])->pluck('permission_id');
+        parent::edit($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Đã lấy được thông tin!',
-                'role' => $role,
-                'permissions' => $permissions,
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'errors' => true,
-                'messages'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->jsonRender(200);
     }
 
     public function update(Request $request, $id)
