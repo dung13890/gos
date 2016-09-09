@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Services\UserService;
+use App\Http\Requests\Backend\Users\StoreRequest;
 use App\Http\Requests\Backend\Users\UpdateRequest;
 use App\Http\Requests\Backend\Users\ChangePasswordRequest;
-use App\Contracts\Repositories\UserRepository;
-use App\Model\User;
 use App\Model\Position;
 use App\Model\Room;
 use App\Model\Permission;
@@ -118,43 +118,11 @@ class UsersController extends ApiController
         return $this->jsonRender();
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request, UserService $service)
     {
-        try {
-            $params = $request->all();
-            $params['code'] = strtoupper(str_random(6));
+        $data = $request->all();
 
-            $user = User::create($params);
-
-            if (isset($params['rooms_selected']) && $params['rooms_selected'] != null) {
-                $roomIds = array_pluck($params['rooms_selected'], 'id');
-                $user->rooms()->attach($roomIds);
-            }
-
-            if (isset($params['permissions_selected']) && $params['permissions_selected'] != null) {
-                $permissionIds = array_pluck($params['permissions_selected'], 'id');
-                $user->permissions()->attach($permissionIds);
-            }
-
-            if (isset($params['roles_selected']) && $params['roles_selected'] != null) {
-                $rolesIds = array_pluck($params['roles_selected'], 'id');
-                $user->roles()->attach($rolesIds);
-            }
-
-            return response()->json([
-                'code' => 200,
-                'message' => 'Thêm thành công!',
-                'user' => $user,
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
-
+        return $this->storeData($data, $service);
     }
 
     public function edit($id)

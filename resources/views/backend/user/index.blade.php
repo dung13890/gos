@@ -15,12 +15,12 @@
 
 @section('page-content')
 <div id="UsersController">
-    @include('backend.user._form')
+    <modal-form :item="item" :positions="positions" :rooms="rooms" :permissions="permissions" :roles="roles" :modal-title="modalTitle" :errors="errors"></modal-form>
     <div id="content">
         <div class="container-fluid">
             <h3>
                 Quản lý người dùng
-                <a href="#newUser" role="button" class="btn btn-success pull-right" data-toggle="modal">
+                <a href="#" role="button" class="btn btn-success pull-right" v-on:click="create">
                     <i class="fa fa-plus"></i> Thêm mới người dùng
                 </a>
             </h3>

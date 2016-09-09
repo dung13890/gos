@@ -59,7 +59,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{ permissions_checked }}
 
                         <div v-show="errors.errors" class="alert alert-danger animated jello">
                             <ul>

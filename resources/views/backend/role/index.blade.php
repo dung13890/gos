@@ -22,12 +22,7 @@
         <div class="container-fluid">
             <h3>
                 {{ trans('roles.role.page_title') }}
-                <a href="#new-role"
-                    role="button"
-                    class="btn btn-success pull-right"
-                    data-toggle="modal"
-                    v-on:click="create()"
-                >
+                <a role="button" class="btn btn-success pull-right" v-on:click="create">
                     <i class="fa fa-plus"></i> Thông tin form
                 </a>
             </h3>
