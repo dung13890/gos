@@ -3,7 +3,6 @@
 namespace App\Jobs\Permission;
 
 use App\Jobs\Job;
-use App\Traits\Jobs\UploadableTrait;
 use App\Model\Permission;
 
 class StorePermission extends Job

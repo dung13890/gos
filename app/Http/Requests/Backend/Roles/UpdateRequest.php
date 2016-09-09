@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend\Roles;
 
 use App\Http\Requests\Request;
 
-class StoreRequest extends Request
+class UpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:50|unique:roles',
+            'name' => 'required|min:2|max:50|unique:roles,name,' . $this->role,
             'permissions_checked' => 'required',
             'description' => 'max:200',
         ];

@@ -48,19 +48,18 @@
                                 <div class="col-xs-6 list-permission pull-left" v-for="permission in permissions">
                                     <div class="permission-onoff">
                                         <div class="checkbox checkbox-success checkbox-inline">
-                                            <input v-model="permissions_checked"
+                                            <input value="{{ permission.id }}"
+                                                v-model="permissions_checked"
                                                 type="checkbox"
-                                                id="inlineCheckbox{{ permission.id }}"
-                                                :value="permission.id"
+                                                id="inlineCheckbox-{{ permission.id }}"
                                             />
-                                            <label for="inlineCheckbox{{ permission.id }}">{{ permission.name }}</label>
+                                            <label for="inlineCheckbox-{{ permission.id }}">{{ permission.name }}</label>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
+                        {{ permissions_checked }}
 
                         <div v-show="errors.errors" class="alert alert-danger animated jello">
                             <ul>
@@ -93,6 +92,22 @@
             modalTitle: '',
         },
 
+        watch: {
+            'role' : function (val, oldVal) {
+                if (typeof val.permissions != 'undefined') {
+                    this.permissions_checked = val.permissions.map(function (permission) {
+                        return permission.id.toString();
+                    });
+                }
+            }
+        },
+
+        data: function () {
+            return {
+                permissions_checked: [],
+            }
+        },
+
         methods: {
             postForm: function () {
                 var self = this;
@@ -101,7 +116,9 @@
                         return;
                     } else {
                         self.role._token = token;
-                        if (self.permission.id) {
+                        self.role.permissions_checked = self.permissions_checked;
+
+                        if (self.role.id) {
                             self.$parent.update(self.role, self.role.id);
                         } else {
                             self.$parent.store(self.role);
@@ -110,6 +127,7 @@
                 });
             }
         },
+
         ready: function () {
             this.$parent.formRole = $('#newRole');
         }

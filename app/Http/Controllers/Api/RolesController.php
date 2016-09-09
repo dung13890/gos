@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\Backend\Roles\StoreRequest;
 use App\Http\Requests\Backend\Roles\UpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Contracts\Services\RoleService;
 use App\Model\Role;
 use App\Model\Permission;
 use Illuminate\Support\Str;
@@ -68,52 +69,23 @@ class RolesController extends ApiController
     public function edit($id)
     {
         parent::edit($id);
+        $this->compacts['item']->load('permissions');
 
         return $this->jsonRender(200);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, RoleService $service,  $id)
     {
-        try {
-            $params = $request->all();
-            $role = Role::findOrFail($id);
-            $role->update($params);
+        $data = $request->all();
+        $entity = $this->repository->findOrFail($id);
 
-            if (isset($params['permissions_checked']) && $params['permissions_checked'] != null) {
-                $role->permissions()->sync($params['permissions_checked']);
-            }
-
-            return response()->json([
-                'code' => 200,
-                'message' => 'Sửa thành công!',
-                'role' => $role,
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'errors' => true,
-                'messages'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->updateData($data, $service, $entity);
     }
 
-    public function destroy($id)
+    public function destroy($id, RoleService $service)
     {
-        try {
-            Role::findOrFail($id)->delete();
+        $entity = $this->repository->findOrFail($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Xóa thành công!',
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->deleteData($service, $entity);
     }
 }
