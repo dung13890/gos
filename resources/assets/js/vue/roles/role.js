@@ -26,8 +26,6 @@ new Vue({
             },
             
             permissions: [],
-            permissions_checked: [],
-
             modalTitle: '',
             createAction: true,
             errors: {
@@ -50,52 +48,54 @@ new Vue({
         create: function() {
             this.formRole.modal('show');
             this.role = {};
-            self.permissions_checked = [];
             this.modalTitle = 'Thêm mới nhóm quyền';
         },
 
         store: function(params) {
             var self = this;
+
             RoleService.store(params).then((response) => {
-                toastr.success(response.message);
 
                 if (response.code === 200) {
-                    $('#newRole').modal('hide');
+                    toastr.success(response.message);
+                    this.formRole.modal('hide');
                     self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
-                }
-            });
-        },
-
-        update: function (params, id) {
-            var self = this;
-            RoleService.update(params, id).then((response) => {
-                toastr.success(response.message);
-
-                if (response.code === 200) {
-                    $('#newRole').modal('hide');
-                    self.oTable.draw();
-                }
-
-            }, (response) => {
-                if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
             });
         },
 
         edit: function(id) {
             var self = this;
+            this.formRole.modal('show');
+            this.modalTitle = 'Cập nhật quyền';
 
             RoleService.edit(id).then(function(response) {
-                self.role = response.role;
-                self.permissions_checked = response.permissions;
+                self.role = response.item;
+            });
+        },
+
+        update: function (params, id) {
+            var self = this;
+            RoleService.update(params, id).then((response) => {
+                if (response.code === 200) {
+                    toastr.success(response.message);
+                    this.formRole.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
+                }
+
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
+                }
             });
         },
 
@@ -110,7 +110,7 @@ new Vue({
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Đồng ý!",
                 cancelButtonText: 'Hủy',
-                closeOnConfirm: false
+                closeOnConfirm: true
             }, function(isConfirm) {
                 if (isConfirm) {
                     RoleService.destroy(id).then(function(response) {
@@ -118,27 +118,6 @@ new Vue({
                     });
 
                     swal("Đã xóa!", "Bản ghi có tên " + name, "success");
-                }
-            });
-        },
-
-        validate: function()
-        {
-            var self = this;
-            
-            this.$validate(true, function () {
-                if (self.$validation.invalid) {
-                    self.isError = true;
-                } else {
-                    self.role._token = token;
-                    self.role.permissions_checked = self.permissions_checked;
-
-                    if (self.role.id) {
-
-                        self.update(self.role, self.role.id);
-                    } else {
-                        self.store(self.role);
-                    }
                 }
             });
         },

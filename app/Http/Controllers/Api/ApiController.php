@@ -44,6 +44,10 @@ abstract class ApiController extends AbstractController
             $this->compacts['errors'] = $e->getMessage();
         }
 
+        if (is_callable($callback)) {
+            call_user_func_array($callback, [$item]);
+        }
+
         return $this->jsonRender($code);
     }
 
@@ -55,6 +59,10 @@ abstract class ApiController extends AbstractController
         } catch (\Exception $e) {
             $code = 500;
             $this->compacts['errors'] = $e->getMessage();
+        }
+
+        if (is_callable($callback)) {
+            call_user_func_array($callback, [$newEntity]);
         }
 
         return $this->jsonRender($code);
