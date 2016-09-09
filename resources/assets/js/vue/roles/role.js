@@ -9,8 +9,6 @@ import ModalForm from './components/modal-form.vue';
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
-var token = $('meta[name="csrf-token"]').attr('content')
-
 new Vue({
     el: '#RolesController',
 

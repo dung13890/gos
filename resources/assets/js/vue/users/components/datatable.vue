@@ -104,7 +104,7 @@
                         actionHtml.html('');
 
                         if (actions.edit) { 
-                            var edit = actionHtml.append('<a href="#newUser" v-on:click="edit('+data.id+')" title="Sửa" class="btn-icon label-edit" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span></a>');
+                            var edit = actionHtml.append('<a href="#" v-on:click="edit('+data.id+')" title="Sửa" class="btn-icon label-edit" data-toggle="modal"><span class="glyphicon glyphicon-edit"></span></a>');
                             self.$compile(edit.get(0));
                         }
 

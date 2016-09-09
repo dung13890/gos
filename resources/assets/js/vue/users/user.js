@@ -2,23 +2,21 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import UserService from '../services/user'
-import Multiselect from 'vue-multiselect'
 
 import DataTable from './components/datatable.vue';
+import ModalForm from './components/modal-form.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
-var token = $('meta[name="csrf-token"]').attr('content');
-
 new Vue({
     el: '#UsersController',
 
-    components: { Multiselect, DataTable },
+    components: { DataTable, ModalForm },
 
     data: function () {
         return {
-            user: {
+            item: {
                 _token: '',
                 id: '',
                 code: '',
@@ -31,10 +29,7 @@ new Vue({
                 birthday: null,
                 image: '',
                 gender: 1,
-                position_id: '',
-                rooms_selected: [],
-                permissions_selected: [],
-                roles_selected: [],
+                position_id: ''
             },
 
             positions: [],
@@ -42,10 +37,8 @@ new Vue({
             permissions: [],
             roles: [],
 
-
-            createAction: true,
+            formElement: {},
             errors: {},
-            isError: false,
             oTable: {
                 type: Object
             }
@@ -60,27 +53,39 @@ new Vue({
     methods: {
 
         create: function() {
-            var self = this;
-            self.user = {};
-            self.room = {};
-            self.createAction = true;
+            this.formElement.modal('show');
+            this.item = {};
+            this.modalTitle = 'Thêm mới người dùng';
         },
 
         store: function(params) {
             var self = this;
 
             UserService.store(params).then((response) => {
-                toastr.success(response.message);
                 if (response.code === 200) {
+                    toastr.success(response.message);
                     $('#newUser').modal('hide');
                     self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
+            });
+        },
+
+        edit: function(id) {
+            var self = this;
+            self.createAction = false;
+
+            UserService.edit(id).then(function(response) {
+                self.user = response.user;
+                self.user.rooms_selected = response.user.rooms;
+                self.user.permissions_selected = response.user.permissions;
+                self.user.roles_selected = response.user.roles;
             });
         },
 
@@ -99,18 +104,6 @@ new Vue({
                     self.errors = response.messages;
                     self.isError = response.errors
                 }
-            });
-        },
-
-        edit: function(id) {
-            var self = this;
-            self.createAction = false;
-
-            UserService.edit(id).then(function(response) {
-                self.user = response.user;
-                self.user.rooms_selected = response.user.rooms;
-                self.user.permissions_selected = response.user.permissions;
-                self.user.roles_selected = response.user.roles;
             });
         },
 
@@ -134,39 +127,6 @@ new Vue({
                     swal("Đã xóa!", "Bản ghi có tên " + name, "success");
                 }
             });
-        },
-
-        validate: function() {
-            var self = this;
-            
-            this.$validate(true, function () {
-                if (self.$validation.invalid) {
-                    self.isError = true;
-                } else {
-                    self.user._token = token;
-                    
-                    if (self.user.id) {
-                        self.update(self.user, self.user.id);
-                    } else {
-                        self.store(self.user);
-                    }
-                }
-            });
-        },
-
-        roomsSelected: function(selected) {
-            var self = this;
-            self.user.rooms_selected = selected;
-        },
-
-        permissionsSelected: function(selected) {
-            var self = this;
-            self.user.permissions_selected = selected;
-        },
-
-        rolesSelected: function(selected) {
-            var self = this;
-            self.user.roles_selected = selected;
         },
     },
 
