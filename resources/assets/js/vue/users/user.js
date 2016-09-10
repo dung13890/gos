@@ -9,6 +9,8 @@ import ModalForm from './components/modal-form.vue';
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
+Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#UsersController',
 
@@ -79,30 +81,28 @@ new Vue({
 
         edit: function(id) {
             var self = this;
-            self.createAction = false;
+            this.formElement.modal('show');
+            this.modalTitle = 'Cập nhật người dùng';
 
             UserService.edit(id).then(function(response) {
-                self.user = response.user;
-                self.user.rooms_selected = response.user.rooms;
-                self.user.permissions_selected = response.user.permissions;
-                self.user.roles_selected = response.user.roles;
+                self.item = response.item;
             });
         },
 
         update: function (params, id) {
             var self = this;
             UserService.update(params, id).then((response) => {
-                toastr.success(response.message);
-
                 if (response.code === 200) {
+                    toastr.success(response.message);
                     $('#newUser').modal('hide');
                     self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
             });
         },

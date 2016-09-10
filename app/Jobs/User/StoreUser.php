@@ -18,15 +18,21 @@ class StoreUser extends Job
     }
 
     public function handle(UserRepository $repository)
-    {
-        dd($this->attributes);
+    {   
         $path = strtolower(class_basename($repository->getModel()));
-        if (isset($this->attributes['image'])) {
+        if (isset($this->attributes['image']) && $this->attributes['image']) {
             $this->attributes['image'] = $this->uploadFile($this->attributes['image'], $path);
         }
 
+        $this->attributes['image'] = '';
         $this->attributes['password'] = bcrypt($this->attributes['password']);
+        $this->attributes['code'] = str_random(11);
         
-        $repository->create($this->attributes);
+        $user = $repository->create($this->attributes);
+
+        $user->permissions()->sync($this->attributes['permission_ids']);
+        $user->rooms()->sync($this->attributes['room_ids']);
+        $user->roles()->sync($this->attributes['role_ids']);
+
     }
 }

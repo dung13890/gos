@@ -28,6 +28,7 @@ class DeleteUser extends Job
         if (!empty($this->entity->image)) {
             $this->destroyFile($this->entity->image);
         }
+        
         $repository->delete($this->entity);
     }
 }

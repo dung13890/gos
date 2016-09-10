@@ -127,81 +127,25 @@ class UsersController extends ApiController
 
     public function edit($id)
     {
-        try {
-            $user = User::findOrFail($id);
-            $user->rooms = $user->rooms()->get(['id', 'name']);
-            $user->permissions = $user->permissions()->get(['permissions.id', 'permissions.name']);
-            $user->roles = $user->roles()->get(['id', 'name']);
-            
-            return response()->json([
-                'code' => 200,
-                'message' => 'Load thành công',
-                'user' => $user,
-            ]);
-        }
+        parent::edit($id);
+        $this->compacts['item']->load('permissions', 'roles', 'rooms');
 
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->jsonRender(200);
     }
 
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, UserService $service, $id)
     {
-        try {
-            $params = $request->all();
-            $user = User::findOrFail($id);
-            $user->update($params);
+        $data = $request->all();
+        $entity = $this->repository->findOrFail($id);
 
-            if (isset($params['rooms_selected']) && $params['rooms_selected'] != null) {
-                $roomIds = array_pluck($params['rooms_selected'], 'id');
-                $user->rooms()->sync($roomIds);
-            }
-
-            if (isset($params['permissions_selected']) && $params['permissions_selected'] != null) {
-                $permissionIds = array_pluck($params['permissions_selected'], 'id');
-                $user->permissions()->sync($permissionIds);
-            }
-
-            if (isset($params['roles_selected']) && $params['roles_selected'] != null) {
-                $rolesIds = array_pluck($params['roles_selected'], 'id');
-                $user->roles()->sync($rolesIds);
-            }
-
-            return response()->json([
-                'code' => 200,
-                'message' => 'Sửa thành công!',
-                'user' => $user,
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->updateData($data, $service, $entity);
     }
 
-    public function destroy($id)
+    public function destroy($id, UserService $service)
     {
-        try {
-            User::findOrFail($id)->delete();
+        $entity = $this->repository->findOrFail($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Xóa thành công!',
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->deleteData($service, $entity);
     }
 
     public function changePassword(ChangePasswordRequest $request)

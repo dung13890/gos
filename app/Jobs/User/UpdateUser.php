@@ -23,16 +23,30 @@ class UpdateUser extends Job
 
     public function handle(UserRepository $repository)
     {
+
         $path = strtolower(class_basename($repository->getModel()));
         if (isset($this->attributes['password'])) {
             $this->attributes['password'] = bcrypt($this->attributes['password']);
         }
-        if (isset($this->attributes['image'])) {
+        if (isset($this->attributes['image']) && $this->attributes['image']) {
             if (!empty($this->entity->image)) {
                 $this->destroyFile($this->entity->image);
             }
             $this->attributes['image'] = $this->uploadFile($this->attributes['image'], $path);
         }
-        $repository->update($this->entity, $this->attributes);
+        $this->attributes['image'] = '';
+
+
+        if (isset($this->attributes['role_ids'])) {
+            $this->entity->roles()->sync($this->attributes['role_ids']);
+        }
+
+        if (isset($this->attributes['permission_ids'])) {
+            $this->entity->permissions()->sync($this->attributes['permission_ids']);
+        }
+
+        if (isset($this->attributes['room_ids'])) {
+            $this->entity->rooms()->sync($this->attributes['room_ids']);
+        }
     }
 }

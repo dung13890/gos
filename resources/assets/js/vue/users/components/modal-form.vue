@@ -42,7 +42,16 @@
                                         </span>
                                     </div>
 
-                                    <div class="required-wrapper form-field">
+                                    <div v-if="item.id" class="required-wrapper form-field">
+                                        <small>Mật khẩu</small>
+                                        
+                                        <input type="password" 
+                                            v-model='item.password'
+                                            class="form-control input-sm"
+                                        />
+                                    </div>
+
+                                    <div v-else class="required-wrapper form-field">
                                         <small>Mật khẩu</small>
                                         
                                         <input type="password" 
@@ -273,6 +282,20 @@
             }
         },
 
+        watch: {
+            'item' : function (val, oldVal) {
+                if (typeof val.permissions != 'undefined') {
+                    this.permission_ids = val.permissions;
+                }
+                if (typeof val.rooms != 'undefined') {
+                    this.room_ids = val.rooms;
+                }
+                if (typeof val.roles != 'undefined') {
+                    this.role_ids = val.roles;
+                }
+            }
+        },
+
         methods: {
             permissionsSelected: function (selected) {
                 this.permission_ids = selected;
@@ -297,6 +320,7 @@
                 console.log(this.fileImage);
                 this.createImage(files[0]);
             },
+
             createImage: function (file) {
                 var self = this;
                 var image = new Image();
@@ -306,6 +330,7 @@
                 };
                 reader.readAsDataURL(file);
             },
+
             renderImage: function(src) {
                 return window.laroute.route('image', {'path':src});
             },
@@ -317,14 +342,17 @@
                         return;
                     } else {
                         self.item._token = token;
-                        self.item.permission_ids = self.permission_ids;
-                        self.item.role_ids = self.role_ids;
-                        self.item.room_ids = self.room_ids;
+                        self.item.permission_ids = $.map(self.permission_ids, function (val) {
+                            return val.id;
+                        });
+                        self.item.role_ids = $.map(self.role_ids, function (val) {
+                            return val.id;
+                        });
+                        self.item.room_ids = $.map(self.room_ids, function (val) {
+                            return val.id;
+                        });
                         if (typeof self.fileImage != 'undefined') {
-                            var formData = new FormData();
-                            formData.append('image', self.fileImage);
-                            console.log(formData);
-                            self.item.image = formData.get('image');
+                            self.item.image = self.fileImage;
                         }
 
                         if (self.item.id) {
