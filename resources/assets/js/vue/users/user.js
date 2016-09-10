@@ -55,9 +55,9 @@ new Vue({
     methods: {
 
         create: function() {
-            this.formElement.modal('show');
             this.item = {};
             this.modalTitle = 'Thêm mới người dùng';
+            this.formElement.modal('show');
         },
 
         store: function(params) {
@@ -81,12 +81,12 @@ new Vue({
 
         edit: function(id) {
             var self = this;
-            this.formElement.modal('show');
             this.modalTitle = 'Cập nhật người dùng';
 
             UserService.edit(id).then(function(response) {
                 self.item = response.item;
             });
+            this.formElement.modal('show');
         },
 
         update: function (params, id) {

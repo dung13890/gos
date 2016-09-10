@@ -1,6 +1,8 @@
 
 <header>
-    <div class="container-fluid">
+    <div class="container-fluid" id="headerApp">
+    <modal-profile :user-profile="userProfile" :errors="errors"></modal-profile>
+    <modal-password :errors="errors"></modal-password>
         <div class="logo pull-left">
             <a href="/" title="">
                 <img src="/assets/img/logo.png" class="img-responsive" alt="">
@@ -52,10 +54,10 @@
                     </a>
                     <ul class="dropdown-menu submenu">
                         <li>
-                            <a data-toggle="modal" href="#profile">
+                            <a  href="#" v-on:click="profile">
                             <i class="fa fa-wrench"> </i> Thông tin tài khoản</a>
                         </li>
-                        <li><a data-toggle="modal" href='#passwordReset'>
+                        <li><a href="#" v-on:click="password">
                             <i class="fa fa-unlock"> </i> Đổi mật khẩu</a>
                         </li>
                         <li><a href="/logout"><i class="glyphicon glyphicon-off"> </i> Đăng xuất</a></li>
@@ -181,5 +183,4 @@
     </div>
 </div>
 
-@include('backend.user._profile')
-@include('backend.user._password')
+

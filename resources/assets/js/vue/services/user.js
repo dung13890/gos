@@ -69,11 +69,35 @@ export default {
         });
     },
 
+    profile: function () {
+        var self = this;
+        
+        return new Promise(function(resolve, reject) {
+            self.http.get(self.router.route('user.ajax.profile')).then(function (response) {
+                resolve(response.data);
+            }, function (response) {
+                reject(response.data);
+            });
+        });
+    },
+
+    updateProfile: function (params) {
+        var self = this;
+
+        return new Promise(function(resolve, reject) {
+            self.http.post(self.router.route('user.update.profile'), params).then(function (response) {
+                resolve(response.data);
+            }, function (response) {
+                reject(response.data);
+            });
+        });
+    },
+
     changePassword: function (params) {
         var self = this;
         
         return new Promise( function(resolve, reject) {
-            self.http.patch(self.router.route('api.v1.users.update.password'), params).then(function (response) {
+            self.http.post(self.router.route('user.update.password'), params).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);

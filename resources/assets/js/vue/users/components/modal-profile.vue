@@ -1,5 +1,6 @@
 <template>
     <div id="newProfile" class="modal fade">
+    {{ userProfile }}
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,6 +137,7 @@
         </div>
     </div>
 </template>
+
 <script>
     var token = $('meta[name="csrf-token"]').attr('content');
     export default {
@@ -160,7 +162,6 @@
 
         ready: function () {
             this.$parent.formElement = $('#newProfile');
-            console.log('tien');
         }
     }
 </script>
