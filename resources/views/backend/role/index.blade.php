@@ -23,7 +23,7 @@
             <h3>
                 {{ trans('roles.role.page_title') }}
                 <a role="button" class="btn btn-success pull-right" v-on:click="create">
-                    <i class="fa fa-plus"></i> Thông tin form
+                    <i class="fa fa-plus"></i> Thêm mới nhóm quyền
                 </a>
             </h3>
             <div class="row">
