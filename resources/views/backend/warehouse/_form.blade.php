@@ -65,14 +65,10 @@
 
                         <div class="form-group text-center">
                             <button class="btn btn-success" type="button" v-on:click="submitForm">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                             </button>
 
-                            <button class="btn btn-info" type="button">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Lưu và thêm mới
-                            </button>
-
-                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Clear</button>
+                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Hủy</button>
                         </div>
                     </form>
                 </validator>
