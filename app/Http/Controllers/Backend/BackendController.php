@@ -66,13 +66,18 @@ abstract class BackendController extends AbstractController
         try {
             $newEntity = $service->update($entity, $data);
             $this->activityLog('edit', $entity);
+            $code = 200;
             $this->e['message'] = $this->trans('object_updated_successfully');
         } catch (\Exception $e) {
             $this->e['code'] = 100;
+            $code = 401;
             $this->e['message'] = $this->trans('object_updated_unsuccessfully');
         }
         if (\Request::ajax() || \Request::wantsJson()) {
-            return $this->e;
+            return [
+                'code' => $code,
+                'message' => $this->e['message']
+            ];
         }
         $redirect = $redirect ? $redirect : route($this->repositoryName . '.index');
         if (is_callable($callback)) {

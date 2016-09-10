@@ -25,7 +25,9 @@ class ProfileRequest extends Request
     {
         return [
             'fullname' => 'required|min:2|max:40',
-            'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200'
+            'gender' => 'required',
+            'birthday' => 'date_format:d/m/Y|before:tomorrow',
+            //'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200'
         ];
     }
 }

@@ -3,13 +3,18 @@ import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import UserService from '../services/user'
 
+import ModalProfile from './components/modal-profile.vue'
+import ModalPassword from './components/modal-password.vue'
+
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
-var token = $('meta[name="csrf-token"]').attr('content');
+Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
 
 new Vue({
-    el: '#profile',
+    el: '#headerApp',
+
+    components: { ModalProfile, ModalPassword },
 
     data: function () {
         return {
@@ -23,10 +28,9 @@ new Vue({
                 gender: '',
                 birthday: ''
             },
-
+            formElement: {},
+            formPassword: {},
             errors: {},
-            isError: false,
-            isErrorServer: false
         }
     },
 
@@ -36,31 +40,50 @@ new Vue({
     },
 
     methods: {
-        updateProfile: function (params, id) {
+        profile: function () {
             var self = this;
-            UserService.update(params, id).then((response) => {
-                toastr.success(response.message);
 
+            self.formElement.modal('show');
+            UserService.profile().then(function (response) {
+                self.userProfile = response;
+            });
+
+        },
+
+        password: function () {
+            var self = this;
+
+            self.formPassword.modal('show');
+        },
+
+        updateProfile: function (params) {
+            var self = this;
+            UserService.updateProfile(params).then((response) => {
                 if (response.code === 200) {
+                    toastr.success(response.message);
                     self.reload();
+                } else {
+                    toastr.error(response.message);
                 }
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isErrorServer = response.errors;
+                    self.errors = response;
                 }
             });
         },
 
-        validate: function() {
+        changePassword: function (params) {
             var self = this;
-
-            this.$validate(true, function () {
-                if (self.$validation.invalid) {
-                    self.isError = true;
+            UserService.changePassword(params).then((response) => {
+                if (response.code === 200) {
+                    toastr.success(response.message);
+                    self.reload();
                 } else {
-                    self.userProfile._token = token;
-                    self.updateProfile(self.userProfile, self.userProfile.id);
+                    toastr.error(response.message);
+                }
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
                 }
             });
         },
@@ -70,5 +93,6 @@ new Vue({
                 window.location.reload();
             }, 1000);
         }
-    }
+    },
+
 });

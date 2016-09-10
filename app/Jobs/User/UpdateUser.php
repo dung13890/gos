@@ -28,13 +28,14 @@ class UpdateUser extends Job
         if (isset($this->attributes['password'])) {
             $this->attributes['password'] = bcrypt($this->attributes['password']);
         }
+        
+        $this->attributes['image'] = '';
         if (isset($this->attributes['image']) && $this->attributes['image']) {
             if (!empty($this->entity->image)) {
                 $this->destroyFile($this->entity->image);
             }
             $this->attributes['image'] = $this->uploadFile($this->attributes['image'], $path);
         }
-        $this->attributes['image'] = '';
 
 
         if (isset($this->attributes['role_ids'])) {
