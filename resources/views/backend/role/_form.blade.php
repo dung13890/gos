@@ -70,8 +70,10 @@
                         </button>
 
                         <button class="btn btn-warning" type="button" data-dismiss="modal" aria-hidden="true">
-                            <i class="glyphicon glyphicon-ban-circle"></i> Hủy
+                            <i class="glyphicon glyphicon-ban-circle"></i> Xóa
                         </button>
+
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" >Hủy bỏ</button>
                     </div>
                     </validator>
                 </form>

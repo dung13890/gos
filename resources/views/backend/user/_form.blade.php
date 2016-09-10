@@ -225,8 +225,10 @@
                             </button>
 
                             <button class="btn btn-warning" type="reset">
-                                <span class="glyphicon glyphicon-ban-circle"></span> Hủy
+                                <span class="glyphicon glyphicon-ban-circle"></span> Xóa
                             </button>
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" >Hủy bỏ</button>
                         </div>
                     </validator> 
                 </form>
