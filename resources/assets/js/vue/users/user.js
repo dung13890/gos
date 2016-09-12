@@ -10,6 +10,7 @@ Vue.use(VueResource)
 Vue.use(VueValidator)
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+//Vue.http.headers.common['Content-Type'] = 'multipart/form-data';
 Vue.http.options.emulateJSON = true;
 new Vue({
     el: '#UsersController',
@@ -31,6 +32,7 @@ new Vue({
                 birthday: null,
                 image: '',
                 gender: 1,
+                image_thumbnail: '',
                 position_id: ''
             },
 
@@ -39,6 +41,7 @@ new Vue({
             permissions: [],
             roles: [],
 
+            modalTitle: '',
             formElement: {},
             errors: {},
             oTable: {
@@ -56,8 +59,12 @@ new Vue({
 
         create: function() {
             this.item = {};
+            this.errors = {},
             this.modalTitle = 'Thêm mới người dùng';
-            this.formElement.modal('show');
+            this.formElement.modal({
+                backdrop: 'static',
+                show: true
+            });
         },
 
         store: function(params) {

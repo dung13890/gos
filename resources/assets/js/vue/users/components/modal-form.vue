@@ -1,4 +1,4 @@
-<template>
+    <template>
     <div id="newUser" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" novalidate>
                         <validator name="validation">
                             <div class="form-group">
                                 <div class="col-md-4 form-field">
@@ -22,7 +22,7 @@
                                                 minlength: {rule: 2, message: 'Không được nhỏ hơn 2 ký tự'},
                                             }"
                                         />
-                                        <span class="error" v-if="$validation.fullname.errors">
+                                        <span class="error" v-if="$validation.fullname.errors && isError">
                                             {{ $validation.fullname.errors[0].message }}
                                         </span>
                                     </div>
@@ -37,7 +37,7 @@
                                                 minlength: {rule: 3, message: 'Không được nhỏ hơn 3 ký tự'},
                                             }"
                                         />
-                                        <span class="error" v-if="$validation.username.errors">
+                                        <span class="error" v-if="$validation.username.errors && isError">
                                             {{ $validation.username.errors[0].message }}
                                         </span>
                                     </div>
@@ -64,7 +64,7 @@
                                             }"
                                         />
                                         
-                                        <span class="error" v-if="$validation.password.errors">
+                                        <span class="error" v-if="$validation.password.errors && isError">
                                             {{ $validation.password.errors[0].message }}
                                         </span>
                                     </div>
@@ -78,7 +78,7 @@
                                                 maxlength: {rule: 50, message: 'Không được quá 50 ký tự'}
                                             }"
                                         />
-                                        <span class="error" v-if="$validation.email.errors">
+                                        <span class="error" v-if="$validation.email.errors && isError">
                                             {{ $validation.email.errors[0].message }}
                                         </span>
                                     </div>
@@ -92,7 +92,7 @@
                                                 minlength: {rule: 6, message: 'Không được nhỏ hơn 6 ký tự'},
                                             }"
                                         />
-                                        <span class="error" v-if="$validation.phone.errors">
+                                        <span class="error" v-if="$validation.phone.errors && isError">
                                             {{ $validation.phone.errors[0].message }}
                                         </span>
                                     </div>
@@ -118,7 +118,7 @@
                                                 required: {rule: true, message: 'Không được để trống'}
                                             }"
                                         />
-                                        <span class="error" v-if="$validation.address.errors">
+                                        <span class="error" v-if="$validation.address.errors && isError">
                                             {{ $validation.address.errors[0].message }}
                                         </span>
                                     </div>
@@ -132,7 +132,7 @@
                                                 required: {rule: true, message: 'Không được để trống'}
                                             }"
                                         />
-                                        <span class="error" v-if="$validation.birthday.errors">
+                                        <span class="error" v-if="$validation.birthday.errors && isError">
                                             {{ $validation.birthday.errors[0].message }}
                                         </span>
                                     </div>
@@ -173,7 +173,7 @@
                                             </option>
                                         </select>
 
-                                        <span class="error" v-if="$validation.position_id.errors">
+                                        <span class="error" v-if="$validation.position_id.errors && isError">
                                             {{ $validation.position_id.errors[0].message }}
                                         </span>
                                     </div>
@@ -223,14 +223,14 @@
                                     </div>
 
                                     <div class="required-wrapper form-field">
-                                        <div v-if="item.image_thumbnail && !image">
+                                        <div v-if="item.image_thumbnail">
                                             <img class="img-responsive" :src="renderImage(item.image_thumbnail)">
                                         </div>
                                         <div v-else>
                                             <img class="img-responsive" :src="image">
                                         </div>
                                         <br>
-                                        <input type="file" class="filestyle" v-on:change="onFileChange">
+                                        <input type="file" class="filestyle" accept="image/*" v-on:change="onFileChange">
                                         <small>Ảnh đại diện</small>
                                     </div>
                                 </div>
@@ -248,8 +248,10 @@
                                 </a>
 
                                 <button class="btn btn-warning" type="reset">
-                                    <span class="glyphicon glyphicon-ban-circle"></span> Hủy
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Xóa
                                 </button>
+
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" >Hủy bỏ</button>
                             </div>
                         </validator> 
                     </form>
@@ -274,6 +276,8 @@
 
         data: function () {
             return {
+                fileInput2: '',
+                isError: false,
                 permission_ids: [],
                 role_ids: [],
                 room_ids: [],
@@ -284,15 +288,10 @@
 
         watch: {
             'item' : function (val, oldVal) {
-                if (typeof val.permissions != 'undefined') {
-                    this.permission_ids = val.permissions;
-                }
-                if (typeof val.rooms != 'undefined') {
-                    this.room_ids = val.rooms;
-                }
-                if (typeof val.roles != 'undefined') {
-                    this.role_ids = val.roles;
-                }
+                this.permission_ids = val.permissions || [];
+                this.room_ids = val.rooms || [];
+                this.role_ids = val.roles || [];
+                this.image = '/assets/img/noproduct.png';
             }
         },
 
@@ -339,8 +338,9 @@
                 var self = this;
                 this.$validate(true, function () {
                     if (self.$validation.invalid) {
-                        return;
+                        self.isError = true;
                     } else {
+                        var formData = new FormData();
                         self.item._token = token;
                         self.item.permission_ids = $.map(self.permission_ids, function (val) {
                             return val.id;
@@ -351,14 +351,30 @@
                         self.item.room_ids = $.map(self.room_ids, function (val) {
                             return val.id;
                         });
-                        if (typeof self.fileImage != 'undefined') {
-                            self.item.image = self.fileImage;
+
+                        if (typeof self.fileImage.name != 'undefined') {
+                            formData.append('image', self.fileImage);
                         }
+                        
+                        // create form data
+                        formData.append('_token', self.item._token);
+                        formData.append('fullname', self.item.fullname);
+                        formData.append('username', self.item.username);
+                        formData.append('password', self.item.password);
+                        formData.append('email', self.item.email);
+                        formData.append('phone', self.item.phone);
+                        formData.append('gender', self.item.gender);
+                        formData.append('address', self.item.address);
+                        formData.append('position_id', self.item.position_id);
+                        formData.append('birthday', self.item.birthday);
+                        formData.append('role_ids', JSON.stringify(self.item.role_ids));
+                        formData.append('room_ids', JSON.stringify(self.item.room_ids));
+                        formData.append('permission_ids', JSON.stringify(self.item.permission_ids));
 
                         if (self.item.id) {
                             self.$parent.update(self.item, self.item.id);
                         } else {
-                            self.$parent.store(self.item);
+                            self.$parent.store(formData);
                         }
                     }
                 });

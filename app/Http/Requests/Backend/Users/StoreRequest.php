@@ -29,6 +29,7 @@ class StoreRequest extends Request
             'gender' => 'required',
             'room_ids' => 'required',
             'permission_ids' => 'required',
+            'role_ids' => 'required',
             'position_id' => 'required',
             'email' => 'required|email|max:255|unique:users',
             'birthday' => 'date_format:d/m/Y|before:tomorrow',

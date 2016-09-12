@@ -67,6 +67,15 @@ function renderTable(route, columns, options, callback, selector) {
         language: {
             search:"_INPUT_",
             lengthMenu: "_MENU_",
+            infoFiltered: " - lọc từ _MAX_ kết quả",
+            infoEmpty: "Không có bản ghi nào để hiển thị",
+            info: "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+            zeroRecords: "Không có kết quả nào",
+            processing: "Đang xử lý",
+            "paginate": {
+                "next": "Trang sau",
+                "previous": "Trang trước"
+            }
         }
     };
 
