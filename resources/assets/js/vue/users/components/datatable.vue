@@ -16,7 +16,7 @@
                 </tr>
                 <tr style="background: #e3eff1;">
                     <td style="display:none"></td>
-                    <td><input v-model="code" type="text" class="form-control input-sm" ></td>
+                    <td><input v-model="code" type="text" class="form-control input-sm"></td>
                     <td><input v-model="fullname" type="text" class="form-control input-sm"> </td>
                     <td><input v-model="username" type="text" class="form-control input-sm"> </td>
                     <td><input v-model="email" type="text" class="form-control input-sm"></td>
