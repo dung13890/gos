@@ -93,7 +93,11 @@ new Vue({
             UserService.edit(id).then(function(response) {
                 self.item = response.item;
             });
-            this.formElement.modal('show');
+            this.errors = {},
+            this.formElement.modal({
+                backdrop: 'static',
+                show: true
+            });
         },
 
         update: function (params, id) {
