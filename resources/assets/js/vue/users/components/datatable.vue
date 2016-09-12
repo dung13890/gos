@@ -12,7 +12,7 @@
                     <th>Điện thoại</th>
                     <th>Chức vụ</th>
                     <th>Phòng ban</th>
-                    <th class="text-center">Thao tác</th>
+                    <th width="165" class="text-center">Thao tác</th>
                 </tr>
                 <tr style="background: #e3eff1;">
                     <td style="display:none"></td>
