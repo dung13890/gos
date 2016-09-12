@@ -1,11 +1,11 @@
 export default {
-  setHttp (http) {
-    this.http = http;
-  },
-  
-  setRouter (router) {
-    this.router = router;
-  },
+    setHttp (http) {
+        this.http = http;
+    },
+
+    setRouter (router) {
+        this.router = router;
+    },
 
     index: function() {
         var self = this;
@@ -18,7 +18,7 @@ export default {
             });
         });
     },
-      
+
     getRole: function (id) {
         var self = this;
         return new Promise( function(resolve, reject) {

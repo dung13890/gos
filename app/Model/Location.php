@@ -10,6 +10,7 @@ class Location extends Model
     protected $fillable = [
         'code',
         'name',
+        'description',
     ];
 
     public function branches()

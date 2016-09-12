@@ -109,7 +109,12 @@ var plugins = {
       name: 'roles/role.js',
       in: '',
       out: 'roles'
-    }
+    },
+    {
+      name: 'locations/location.js',
+      in: '',
+      out: 'locations'
+    },
   ]
 }
 module.exports = plugins;
