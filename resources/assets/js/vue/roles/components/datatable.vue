@@ -54,7 +54,7 @@
                     createdRow: function (row, data, index) {
                         $('td', row).eq(0).css('display', 'none');
                         var actions = data.actions;
-                        
+
                         if (! actions || actions.length < 1) {
                             return ;
                         }
@@ -63,12 +63,12 @@
 
                         actionHtml.html('');
 
-                        if (actions.edit) { 
+                        if (actions.edit) {
                             var edit = actionHtml.append('<a href="#" v-on:click="edit('+data.id+')" title="Sửa" class="btn-icon label-edit"><span class="glyphicon glyphicon-edit"></span></a>');
                             self.$compile(edit.get(0));
                         }
 
-                        if (actions.delete) {   
+                        if (actions.delete) {
                             var destroy = actionHtml.append('<a href="#" title="Xóa" class="btn-icon label-delete btn-xs" v-on:click="destroy(' + data.id + ', \'' + data.name + '\')" ><span class="glyphicon glyphicon-remove-circle"></span></a>');
                             self.$compile(destroy.get(0));
                         }

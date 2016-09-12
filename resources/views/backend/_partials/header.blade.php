@@ -19,23 +19,23 @@
                     <a href="{{ route('customers.index') }}"  title="Khách hàng">
                     <i class="glyphicon glyphicon-user"></i>&nbsp; Khách hàng</a>
                 </li>
-                
+
                 <li>
                     <a href="#"  title="Kinh doanh">
                     <i class="glyphicon glyphicon-bullhorn"></i>&nbsp; Kinh doanh</a>
                 </li>
 
                 <li><a href="{{ route('quotations.create') }}">Lập báo giá <i class='glyphicon glyphicon-list-alt'></i></a></li>
-                
+
                 <li>
-                    <a href="{{ route('reports.index') }}">Báo cáo - Thống kê 
+                    <a href="{{ route('reports.index') }}">Báo cáo - Thống kê
                     <i class='glyphicon glyphicon-bullhorn'></i></a>
                 </li>
 
                 <li><a href="{{ route('promotions.index') }}">Khuyến mãi - Tích điểm <i class="glyphicon glyphicon-usd"></i></a></li>
                 <li><a href="#">Phiếu thu <i class="glyphicon glyphicon-equalizer"></i></a></li>
                 <li><a href="#">Phiếu chi <i class="glyphicon glyphicon-equalizer"></i></a></li>
-                
+
                 <li class="dropdown">
                     <a href="javascript::void(0)" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
                         Hệ thống<span class="glyphicon glyphicon-cog"></span>
@@ -138,6 +138,10 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('locations.index') }}"  title="Quản lý khu vực">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Quản lý địa điểm</a>
+                        </li>
+                        <li>
                             <a href="{{ url('bills/symmetrical') }}"  title="Cân đối hàng tồn">
                             <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Cân đối hàng tồn</a>
                         </li>
@@ -172,7 +176,7 @@
                     <a href="{{ url('bills/exportstock') }}"  title="Xuất hàng trả lại">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Xuất hàng trả lại</a>
                 </li>
-                
+
                 <li>
                     <a href="{{ url('bills/importstock') }}"  title="Nhập hàng trả lại">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Nhập hàng trả lại</a>
