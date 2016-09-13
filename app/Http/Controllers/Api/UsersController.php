@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 
 class UsersController extends ApiController
 {
-    protected $dataSelect = ['id', 'code', 'fullname', 'username', 'email', 'phone'];
+    protected $dataSelect = ['id', 'code', 'fullname', 'username', 'email', 'phone', 'position_id'];
 
     protected $roleSelect = ['id', 'name'];
 
@@ -42,7 +42,7 @@ class UsersController extends ApiController
             })->implode(' ');
         })
         ->addColumn('position', function ($item) {
-            return ($item->position) ? $item->position->name : null;
+            return ($item->position_id) ? $item->position->name : null;
         })
         ->filter(function ($instance) use ($request) {
             if ($request->has('code')) {
@@ -77,7 +77,7 @@ class UsersController extends ApiController
 
             if ($request->has('position_id')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return $row->position_id === $request->position_id;
+                    return $row->position_id == $request->position_id;
                 });
             }
 

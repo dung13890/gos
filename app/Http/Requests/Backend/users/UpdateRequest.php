@@ -38,6 +38,7 @@ class UpdateRequest extends Request
             'gender' => 'required',
             'email' => 'required|email|max:255|unique:users,email,' . $this->user,
             'birthday' => 'date_format:d/m/Y|before:tomorrow',
+            'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200',
         ];
         
         return $rules;

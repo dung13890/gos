@@ -24,7 +24,7 @@ new Vue({
                 fullname: '',
                 phone: '',
                 address: '',
-                image: '',
+                image_thumbnail: '',
                 gender: '',
                 birthday: ''
             },
@@ -43,9 +43,12 @@ new Vue({
         profile: function () {
             var self = this;
 
-            self.formElement.modal('show');
             UserService.profile().then(function (response) {
                 self.userProfile = response;
+            });
+            self.formElement.modal({
+                backdrop: 'static',
+                show: true
             });
 
         },
@@ -53,7 +56,10 @@ new Vue({
         password: function () {
             var self = this;
 
-            self.formPassword.modal('show');
+            self.formPassword.modal({
+                backdrop: 'static',
+                show: true
+            });
         },
 
         updateProfile: function (params) {

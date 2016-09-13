@@ -1,6 +1,5 @@
 <template>
     <div id="newProfile" class="modal fade">
-    {{ userProfile }}
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -44,7 +43,7 @@
                                             required: {rule: true, message: 'Họ và tên không được để trống'},
                                         }"
                                     />
-                                    <span class="error" v-if="$validation.fullname.errors">
+                                    <span class="error" v-if="$validation.fullname.errors && isError">
                                         {{ $validation.fullname.errors[0].message }}
                                     </span>
                                 </div>
@@ -79,7 +78,7 @@
                                             required: {rule: true, message: 'Số điện thoại không được để trống'},
                                         }"
                                     />
-                                    <span class="error" v-if="$validation.phone.errorsor">
+                                    <span class="error" v-if="$validation.phone.errors && isError">
                                         {{ $validation.phone.errors[0].message }}
                                     </span>
                                 </div>
@@ -95,7 +94,7 @@
                                             required: {rule: true, message: 'Địa chỉ không được để trống'},
                                         }"
                                     />
-                                    <span class="error" v-if="$validation.address.errors">
+                                    <span class="error" v-if="$validation.address.errors && isError">
                                         {{ $validation.address.errors[0].message }}
                                     </span>
                                 </div>
@@ -113,20 +112,27 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="avatar" class="col-sm-3">Ảnh đại diện</label>
+                                <label for="avatar" class="col-sm-3">Ảnh đại diện {{ isFileChange }}</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="filestyle" />
+                                    <div v-if="userProfile.image_thumbnail && !isFileChange">
+                                        <img class="img-responsive" :src="renderImage(userProfile.image_thumbnail)">
+                                    </div>
+                                    <div v-else>
+                                        <img class="img-responsive" :src="image">
+                                    </div>
+                                    <br>
+                                    <input type="file" class="filestyle" accept="image/*" v-on:change="onFileChange" />
                                     <br/>
                                 </div>
                             </div>
                         </validator>
+                        <div v-show="errors.errors" class="alert alert-danger animated jello">
+                            <ul>
+                                <li v-for="error in errors.messages">{{ error }}</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div v-show="errors.errors" class="alert alert-danger animated jello">
-                        <ul>
-                            <li v-for="error in errors.messages">{{ error }}</li>
-                        </ul>
-                    </div>
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success" v-on:click.prevent="postForm">Xác nhận</button>
@@ -146,18 +152,64 @@
             errors: {}
         },
 
+        data: function () {
+            return {
+                isError: false,
+                isFileChange: false,
+                fileImage: {},
+                image: '/assets/img/noproduct.png',
+            }
+        },
+
         methods: {
             postForm: function () {
                 var self = this;
+                var formData = new FormData();
                 this.$validate(true, function () {
                     if (self.$validation.invalid) {
-                        return;
+                        self.isError = true;
                     } else {
-                        self.userProfile._token = token;
-                        self.$parent.updateProfile(self.userProfile);
+                        formData.append('_token', token);
+                        formData.append('fullname', self.userProfile.fullname);
+                        formData.append('gender', self.userProfile.gender);
+                        formData.append('phone', self.userProfile.phone);
+                        formData.append('address', self.userProfile.address);
+                        formData.append('birthday', self.userProfile.birthday);
+
+                        if (typeof self.fileImage.name != 'undefined') {
+                            formData.append('image', self.fileImage);
+                        }
+
+                        self.$parent.updateProfile(formData);
                     }
                 });
-            }
+            },
+
+            onFileChange: function (e) {
+                this.isFileChange = true;
+                var files = e.target.files || e.dataTransfer.files;
+
+                if (!files.length) {
+                    return;
+                }
+
+                this.fileImage = files[0];
+                this.createImage(files[0]);
+            },
+
+            createImage: function (file) {
+                var self = this;
+                var image = new Image();
+                var reader = new FileReader();
+                reader.onload = (e) => {
+                    self.image = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
+
+            renderImage: function(src) {
+                return window.laroute.route('image', {'path':src});
+            },
         },
 
         ready: function () {

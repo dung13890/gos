@@ -12,7 +12,7 @@
                     <th>Điện thoại</th>
                     <th>Chức vụ</th>
                     <th>Phòng ban</th>
-                    <th class="text-center">Thao tác</th>
+                    <th width="18%" class="text-center">Thao tác</th>
                 </tr>
                 <tr style="background: #e3eff1;">
                     <td style="display:none"></td>
@@ -33,7 +33,7 @@
                             <option v-for="room in rooms" :value="room.id">{{ room.name }}</option>
                         </select>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <a v-on:click.prevent="search" class="btn btn-info input-sm"><span class="glyphicon glyphicon-search"></span> Tìm kiếm</a>
                         <a v-on:click.prevent="reset" class="btn btn-danger input-sm"><span class="glyphicon glyphicon glyphicon-ban-circle"></span> Reset</a>
                     </td>
