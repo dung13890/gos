@@ -42,7 +42,7 @@ new Vue({
     methods: {
         profile: function () {
             var self = this;
-
+            this.errors = {},
             UserService.profile().then(function (response) {
                 self.userProfile = response;
             });
@@ -55,7 +55,7 @@ new Vue({
 
         password: function () {
             var self = this;
-
+            this.errors = {},
             self.formPassword.modal({
                 backdrop: 'static',
                 show: true
