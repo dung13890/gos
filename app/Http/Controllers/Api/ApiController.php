@@ -24,11 +24,6 @@ abstract class ApiController extends AbstractController
     	}
     }
 
-    public function index()
-    {
-    	
-    }
-
     public function edit($id)
     {
         $this->compacts['item'] = $this->repository->findOrFail($id);

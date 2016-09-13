@@ -37,4 +37,7 @@ return [
 
     'updated_unsuccessfully'  => 'Lỗi cập nhật.',
     'updated_successfully'  => 'Cập nhật thành công.',
+
+    'successfully' => 'Thành công.',
+    'unsuccessfully' => 'Thất bại.'
 ];

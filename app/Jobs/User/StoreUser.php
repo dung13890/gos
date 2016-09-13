@@ -19,7 +19,6 @@ class StoreUser extends Job
 
     public function handle(UserRepository $repository)
     {   
-        //dd($this->attributes);
         $path = strtolower(class_basename($repository->getModel()));
         if (isset($this->attributes['image']) && $this->attributes['image']) {
             $this->attributes['image'] = $this->uploadFile($this->attributes['image'], $path);
