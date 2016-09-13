@@ -28,7 +28,7 @@ class UserController extends BackendController
 
     public function updateProfile(ProfileRequest $request, UserService $service)
     {
-        $data = $request->only('fullname', 'image', 'gender', 'phone', 'address');
+        $data = $request->only('fullname', 'image', 'gender', 'phone', 'address', 'birthday');
         if (!$data['image']) {
             unset($data['image']);
         }

@@ -279,7 +279,6 @@
                 room_ids: [],
                 isFileChange: false,
                 fileImage: {},
-
                 image: '/assets/img/noproduct.png',
             }
         },

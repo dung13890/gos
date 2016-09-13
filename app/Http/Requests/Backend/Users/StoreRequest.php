@@ -34,7 +34,7 @@ class StoreRequest extends Request
             'email' => 'required|email|max:255|unique:users',
             'birthday' => 'date_format:d/m/Y|before:tomorrow',
             'password' => 'required|alpha_dash|min:6',
-            //'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200',
+            'image'=> 'image|mimes:jpeg,jpg,gif,bmp,png|max:1200',
         ];
     }
 }
