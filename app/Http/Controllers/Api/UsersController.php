@@ -103,7 +103,6 @@ class UsersController extends ApiController
 
     public function index()
     {
-        parent::index();
         try {
             $this->compacts['roles'] = app(Role::class)->get($this->roleSelect);
             $this->compacts['positions'] = app(Position::class)->get($this->positionSelect);

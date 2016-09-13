@@ -223,7 +223,7 @@
                                     </div>
 
                                     <div class="required-wrapper form-field">
-                                        <div v-if="item.image_thumbnail">
+                                        <div v-if="item.image_thumbnail && !isFileChange">
                                             <img class="img-responsive" :src="renderImage(item.image_thumbnail)">
                                         </div>
                                         <div v-else>
@@ -246,10 +246,6 @@
                                 <a class="btn btn-success" v-on:click.prevent="postForm">
                                     <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                                 </a>
-
-                                <button class="btn btn-warning" type="reset">
-                                    <span class="glyphicon glyphicon-ban-circle"></span> Xóa
-                                </button>
 
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" >Hủy bỏ</button>
                             </div>
@@ -281,17 +277,24 @@
                 permission_ids: [],
                 role_ids: [],
                 room_ids: [],
+                isFileChange: false,
                 fileImage: {},
+
                 image: '/assets/img/noproduct.png',
             }
         },
 
         watch: {
             'item' : function (val, oldVal) {
-                this.permission_ids = val.permissions || [];
-                this.room_ids = val.rooms || [];
-                this.role_ids = val.roles || [];
-                this.image = '/assets/img/noproduct.png';
+                if (val.id != oldVal.id) {
+                    this.permission_ids = val.permissions || [];
+                    this.room_ids = val.rooms || [];
+                    this.role_ids = val.roles || [];
+                    this.image = '/assets/img/noproduct.png';
+                    this.isFileChange = false;
+                    this.isError = false;
+                    this.fileImage = {};
+                }
             }
         },
 
@@ -309,6 +312,7 @@
             },
 
             onFileChange: function (e) {
+                this.isFileChange = true;
                 var files = e.target.files || e.dataTransfer.files;
 
                 if (!files.length) {
@@ -355,12 +359,15 @@
                         if (typeof self.fileImage.name != 'undefined') {
                             formData.append('image', self.fileImage);
                         }
+
+                        if (typeof self.item.password != 'undefined') {
+                            formData.append('password', self.item.password);
+                        }
                         
                         // create form data
                         formData.append('_token', self.item._token);
                         formData.append('fullname', self.item.fullname);
                         formData.append('username', self.item.username);
-                        formData.append('password', self.item.password);
                         formData.append('email', self.item.email);
                         formData.append('phone', self.item.phone);
                         formData.append('gender', self.item.gender);
@@ -372,7 +379,7 @@
                         formData.append('permission_ids', JSON.stringify(self.item.permission_ids));
 
                         if (self.item.id) {
-                            self.$parent.update(self.item, self.item.id);
+                            self.$parent.update(formData, self.item.id);
                         } else {
                             self.$parent.store(formData);
                         }
