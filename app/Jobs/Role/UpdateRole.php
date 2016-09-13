@@ -26,8 +26,8 @@ class UpdateRole extends Job
     {
         $this->entity->update($this->attributes);
 
-        if (isset($this->attributes['permissions_checked']) && count($this->attributes['permissions_checked'])) {
-            $this->entity->permissions()->sync($this->attributes['permissions_checked']);
+        if (isset($this->attributes['permission_ids']) && count($this->attributes['permission_ids'])) {
+            $this->entity->permissions()->sync($this->attributes['permission_ids']);
         }
     }
 }

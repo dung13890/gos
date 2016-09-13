@@ -13,7 +13,7 @@
                     <td style="display:none"></td>
                     <td><input v-model="name" type="text" class="form-control input-sm" ></td>
                     <td><input v-model="description" type="text" class="form-control input-sm"> </td>
-                    <td>
+                    <td class="text-center">
                         <a v-on:click.prevent="search" class="btn btn-info input-sm"><span class="glyphicon glyphicon-search"></span> Tìm kiếm</a>
                         <a v-on:click.prevent="reset" class="btn btn-danger input-sm"><span class="glyphicon glyphicon glyphicon-ban-circle"></span> Reset</a>
                     </td>

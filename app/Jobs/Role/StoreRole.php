@@ -24,8 +24,8 @@ class StoreRole extends Job
     {
         $role = $repository->create($this->attributes);
 
-        if (isset($this->attributes['permissions_checked']) && count($this->attributes['permissions_checked'])) {
-            $role->permissions()->sync($this->attributes['permissions_checked']);
+        if (isset($this->attributes['permission_ids']) && count($this->attributes['permission_ids'])) {
+            $role->permissions()->sync($this->attributes['permission_ids']);
         }
     }
 }

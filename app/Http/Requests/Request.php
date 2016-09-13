@@ -27,13 +27,15 @@ abstract class Request extends FormRequest
             'fullname.min' => 'Họ và tên phải từ 2 ký tự trở lên',
             'fullname.max' => 'Họ và tên không vượt quá 50 kí tự',
 
-            'permission_ids.required' => 'Nhóm quyền quản trị không được bỏ trống',
+            'permission_ids.required' => 'Quyền quản trị không được bỏ trống',
             'room_ids.required' => 'Phòng ban không được bỏ trống',
-            'role_ids.required' => 'Quyền quản trị không được bỏ trống',
+            'role_ids.required' => 'Nhóm quyền quản trị không được bỏ trống',
 
             'phone.numeric' => 'Điện thoại phải là định dạng số',
             
             'gender.required' => 'Vui lòng chọn giới tính',
+
+            'phone.unique' => 'Điện thoại đã tồn tại.',
 
             'email.required' => 'Email không được bỏ trống',
             'email.email' => 'Email không đúng định dạng',
