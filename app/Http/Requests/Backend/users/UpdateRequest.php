@@ -32,6 +32,7 @@ class UpdateRequest extends Request
             'username' => 'required|alpha_dash|min:3|max:50|unique:users,username,' . $this->user,
             'fullname' => 'required|min:2|max:50',
             'room_ids' => 'required',
+            'role_ids' => 'required',
             'permission_ids' => 'required',
             'position_id' => 'required',
             'password' => 'alpha_dash|min:6',

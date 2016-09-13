@@ -170,11 +170,25 @@
                         self.isError = true;
                     } else {
                         formData.append('_token', token);
-                        formData.append('fullname', self.userProfile.fullname);
-                        formData.append('gender', self.userProfile.gender);
-                        formData.append('phone', self.userProfile.phone);
-                        formData.append('address', self.userProfile.address);
-                        formData.append('birthday', self.userProfile.birthday);
+                        if (typeof self.updateProfile.fullname != 'undefined') {
+                            formData.append('fullname', self.userProfile.fullname);
+                        }
+
+                        if (typeof self.updateProfile.gender != 'undefined') {
+                            formData.append('gender', self.userProfile.gender);
+                        }
+
+                        if (typeof self.updateProfile.phone != 'undefined') {
+                            formData.append('phone', self.userProfile.phone);
+                        }
+
+                        if (typeof self.updateProfile.address != 'undefined') {
+                            formData.append('address', self.userProfile.address);
+                        }
+
+                        if (typeof self.updateProfile.birthday != 'undefined') {
+                            formData.append('birthday', self.userProfile.birthday);
+                        }
 
                         if (typeof self.fileImage.name != 'undefined') {
                             formData.append('image', self.fileImage);
