@@ -25,18 +25,8 @@ class StoreRequest extends Request
     {
         return [
             'name' => 'required|min:2|max:50|unique:roles',
-            'permissions_checked' => 'required',
+            'permission_ids' => 'required',
             'description' => 'max:200',
-        ];
-    }
-
-    public function messages()
-    {
-        
-        return [
-            'name.max' => 'Tên không vượt quá 50 kí tự',
-            'description.max' => 'Mô tả không vượt quá 200 kí tự',
-            'permissions_checked.required' => 'Bạn chưa chọn quyền',
         ];
     }
 }

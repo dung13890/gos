@@ -22,7 +22,7 @@
                                             maxlength: {rule: 200, message: 'Không được quá 200 ký tự'}
                                         }"
                                     />
-                                    <span class="error" v-if="$validation.name.errors">
+                                    <span class="error" v-if="$validation.name.errors && isError">
                                         {{ $validation.name.errors[0].message }}
                                     </span>
                                 </div>
@@ -35,7 +35,14 @@
                                 <textarea
                                     v-model="role.description"
                                     class="form-control input-sm"
+                                    v-validate:description="{
+                                        maxlength: {rule: 200, message: 'Không được quá 200 ký tự'}
+                                    }"
                                     rows="5"></textarea>
+
+                                    <span class="error" v-if="$validation.description.errors && isError">
+                                        {{ $validation.description.errors[0].message }}
+                                    </span>
                             </div>
                         </div>
                         
@@ -49,7 +56,7 @@
                                     <div class="permission-onoff">
                                         <div class="checkbox checkbox-success checkbox-inline">
                                             <input value="{{ permission.id }}"
-                                                v-model="permissions_checked"
+                                                v-model="permission_ids"
                                                 type="checkbox"
                                                 id="inlineCheckbox-{{ permission.id }}"
                                             />
@@ -70,9 +77,6 @@
                             <a class="btn btn-success" v-on:click.prevent="postForm">
                                 <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                             </a>
-
-                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Hủy</button>
-
                             <button type="button" class="btn btn-danger" data-dismiss="modal" >Hủy bỏ</button>
                         </div>
                         </validator>
@@ -95,29 +99,35 @@
 
         watch: {
             'role' : function (val, oldVal) {
-                if (typeof val.permissions != 'undefined') {
-                    this.permissions_checked = val.permissions.map(function (permission) {
-                        return permission.id.toString();
-                    });
+                if (val.id != oldVal.id) {
+                    if (typeof val.permissions == 'undefined') {
+                        this.permission_ids = [];
+                    } else {
+                        this.permission_ids = val.permissions.map(function (permission) {
+                            return permission.id.toString();
+                        });
+                    }
                 }
             }
         },
 
         data: function () {
             return {
-                permissions_checked: [],
+                permission_ids: [],
+                isError: false,
             }
         },
 
         methods: {
             postForm: function () {
+                this.errors = {};
                 var self = this;
                 this.$validate(true, function () {
                     if (self.$validation.invalid) {
-                        return;
+                        self.isError = true;
                     } else {
                         self.role._token = token;
-                        self.role.permissions_checked = self.permissions_checked;
+                        self.role.permission_ids = self.permission_ids;
 
                         if (self.role.id) {
                             self.$parent.update(self.role, self.role.id);

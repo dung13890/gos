@@ -25,11 +25,7 @@ new Vue({
             
             permissions: [],
             modalTitle: '',
-            createAction: true,
-            errors: {
-                errors: false,
-                messages: {}
-            },
+            errors: {},
             formRole: {},
             oTable: {
                 type: Object
@@ -44,7 +40,11 @@ new Vue({
 
     methods: {
         create: function() {
-            this.formRole.modal('show');
+            this.formRole.modal({
+                backdrop: 'static',
+                show: true
+            });
+            this.errors = {},
             this.role = {};
             this.modalTitle = 'Thêm mới nhóm quyền';
         },
@@ -53,7 +53,6 @@ new Vue({
             var self = this;
 
             RoleService.store(params).then((response) => {
-
                 if (response.code === 200) {
                     toastr.success(response.message);
                     this.formRole.modal('hide');
