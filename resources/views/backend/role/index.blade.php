@@ -21,7 +21,7 @@
     <div id="content">
         <div class="container-fluid">
             <h3>
-                Quản lý nhóm quyền
+                Quản lý nhóm quyền 
                 <a role="button" class="btn btn-success pull-right" v-on:click="create">
                     <i class="fa fa-plus"></i> Thêm mới nhóm quyền
                 </a>
