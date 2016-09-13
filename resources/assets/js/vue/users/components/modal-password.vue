@@ -11,7 +11,7 @@
                     <div class="modal-body">
                         <validator name="validation">
                             <div class="form-group">
-                                <label for="currentpassword" class="col-sm-3">Mật khẩu mới</label>
+                                <label for="currentpassword" class="col-sm-3">Mật khẩu cũ</label>
                                 <div class="col-sm-9">
                                     <input type="password" v-model="item.old_password"
                                         class="form-control input-sm"
