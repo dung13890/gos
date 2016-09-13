@@ -365,17 +365,49 @@
                         
                         // create form data
                         formData.append('_token', self.item._token);
-                        formData.append('fullname', self.item.fullname);
-                        formData.append('username', self.item.username);
-                        formData.append('email', self.item.email);
-                        formData.append('phone', self.item.phone);
-                        formData.append('gender', self.item.gender);
-                        formData.append('address', self.item.address);
-                        formData.append('position_id', self.item.position_id);
-                        formData.append('birthday', self.item.birthday);
-                        formData.append('role_ids', JSON.stringify(self.item.role_ids));
-                        formData.append('room_ids', JSON.stringify(self.item.room_ids));
-                        formData.append('permission_ids', JSON.stringify(self.item.permission_ids));
+                        if (typeof self.item.username != 'undefined') {
+                            formData.append('username', self.item.username);
+                        }
+
+                        if (typeof self.item.fullname != 'undefined') {
+                            formData.append('fullname', self.item.fullname);
+                        }
+
+                        if (typeof self.item.email != 'undefined') {
+                            formData.append('email', self.item.email);
+                        }
+
+                        if (typeof self.item.phone != 'undefined') {
+                            formData.append('phone', self.item.phone);
+                        }
+
+                        if (typeof self.item.gender != 'undefined') {
+                            formData.append('gender', self.item.gender);
+                        }
+
+                        if (typeof self.item.address != 'undefined') {
+                            formData.append('address', self.item.address);
+                        }
+
+                        if (typeof self.item.position_id != 'undefined') {
+                            formData.append('position_id', self.item.position_id);
+                        }
+
+                        if (typeof self.item.birthday != 'undefined') {
+                            formData.append('birthday', self.item.birthday);
+                        }
+
+                        if (self.item.role_ids.length) {
+                            formData.append('role_ids', JSON.stringify(self.item.role_ids));
+                        }
+
+                        if (self.item.room_ids.length) {
+                            formData.append('room_ids', JSON.stringify(self.item.room_ids));
+                        }
+
+                        if (self.item.permission_ids.length) {
+                            formData.append('permission_ids', JSON.stringify(self.item.permission_ids));
+                        }
 
                         if (self.item.id) {
                             self.$parent.update(formData, self.item.id);
