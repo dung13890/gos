@@ -19,7 +19,7 @@
                                             required: {rule: true, message: 'Mật khẩu mới không được để trống'},
                                         }"
                                     />
-                                    <span class="error" v-if="$validation.old_password.errors">
+                                    <span class="error" v-if="$validation.old_password.errors && isError">
                                         {{ $validation.old_password.errors[0].message }}
                                     </span>
                                 </div>
@@ -35,7 +35,7 @@
                                             minlength: {rule: 6, message: 'Mật khẩu không được nhỏ hơn 6 ký tự'},
                                         }"
                                     />
-                                    <span class="error" v-if="$validation.password.errors">
+                                    <span class="error" v-if="$validation.password.errors && isError">
                                         {{ $validation.password.errors[0].message }}
                                     </span>
                                 </div>
@@ -51,18 +51,18 @@
                                             minlength: {rule: 6, message: 'Mật khẩu không được nhỏ hơn 6 ký tự'},
                                         }"
                                     />
-                                    <span class="error" v-if="$validation.password_confirmation.errors">
+                                    <span class="error" v-if="$validation.password_confirmation.errors && isError">
                                         {{ $validation.password_confirmation.errors[0].message }}
                                     </span>
                                 </div>
                             </div>
                         </validator>
-                    </div>
 
-                    <div v-show="errors.errors" class="alert alert-danger animated jello">
-                        <ul>
-                            <li v-for="error in errors.messages">{{ error }}</li>
-                        </ul>
+                        <div v-show="errors.errors" class="alert alert-danger animated jello">
+                            <ul>
+                                <li v-for="error in errors.messages">{{ error }}</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
@@ -85,15 +85,17 @@
         data: function () {
             return {
                 item: {},
+                isError: false
             }
         },
 
         methods: {
             postForm: function () {
                 var self = this;
+                this.errors = {};
                 this.$validate(true, function () {
                     if (self.$validation.invalid) {
-                        return;
+                        self.isError = true;
                     } else {
                         self.item._token = token;
                         self.$parent.changePassword(self.item);
