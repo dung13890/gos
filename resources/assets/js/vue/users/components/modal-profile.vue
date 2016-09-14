@@ -105,7 +105,6 @@
                                 <div class="col-sm-9">
                                     <input class="datepicker form-control input-sm"
                                         v-model='userProfile.birthday'
-                                        data-date-format="dd/mm/yyyy"
                                         style="width: 200px;"
                                     />
                                 </div>

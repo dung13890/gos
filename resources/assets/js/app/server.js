@@ -1,5 +1,9 @@
 $(document).ready(function() {
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        todayHighlight: true, 
+        format: 'dd/mm/yyyy', 
+        orientation: 'bottom auto',
+    });
     
     if (typeof flash_message !== 'undefined' && flash_message) {
         var e = JSON.parse(flash_message);
