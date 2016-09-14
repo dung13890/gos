@@ -31,7 +31,7 @@ abstract class Request extends FormRequest
 
             'name.unique' => 'Tên đã tồn tại',
             'member.numeric' => 'Làm ơn nhập định dạng số.',
-            'member.max' => 'Không được vượt quá :max ký tự.',
+            'member.max' => 'Số lượng nhân viên không được vượt quá :max ký tự.',
 
             'permission_ids.required' => 'Quyền quản trị không được bỏ trống',
             'room_ids.required' => 'Phòng ban không được bỏ trống',

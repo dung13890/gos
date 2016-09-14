@@ -28,7 +28,6 @@ class UpdateRequest extends Request
             'name' => 'required|max:50|min:2|unique:rooms,name,' . $this->room,
             'branch_id' => 'required',
             'member' => 'sometimes|max:4',
-            'founding' => 'date_format:d/m/Y',
         ];
     }
 }
