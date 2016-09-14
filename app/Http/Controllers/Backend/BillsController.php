@@ -77,4 +77,14 @@ class BillsController extends Controller
     {
         return view('backend.bill.symmetrical');
     }
+
+    public function stockRequisition()
+    {
+        return view('backend.bill.warehouse.stock_requisition');
+    }
+
+    public function createStockRequisition()
+    {
+        return view('backend.bill.warehouse.create_stock_requisition');
+    }
 }

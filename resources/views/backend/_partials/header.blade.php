@@ -205,8 +205,23 @@
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Bán hàng phải thu</a>
                     <ul class="sub-node-system">
                         <li>
-                            <a href="{{ route('quotations.create') }}"  title="Lập báo giá">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Lập báo giá</a>
+                            <a href="{{ route('quotations.create') }}"  title="Phiếu báo giá">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu báo giá</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Hóa đơn bán hàng">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Hóa đơn bán hàng</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Hàng trả lại">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Hàng trả lại</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Phiếu điều chuyển kho">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu điều chuyển kho</a>
                         </li>
                     </ul>
                 </li>
@@ -216,7 +231,7 @@
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Mua hàng phải trả</a>
                     <ul class="sub-node-system">
                         <li>
-                            <a href="{{ route('locations.index') }}"  title="Phiếu yêu cầu mua hàng">
+                            <a href="{{ route('bill.stockrequisition') }}"  title="Phiếu yêu cầu mua hàng">
                             <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu yêu cầu mua hàng</a>
                         </li>
 
@@ -247,9 +262,35 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="node-system">
                     <a href="{{ url('bills/buy') }}"  title="Quản lý kho">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Quản lý kho</a>
+                    <ul class="sub-node-system">
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Phiếu nhập kho">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu nhập kho</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Phiếu xuất kho">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu xuất kho</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Chuyển kho nội bộ">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Chuyển kho nội bộ</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Xuất kho khác">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Xuất kho khác</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('quotations.create') }}"  title="Nhập kho mua hàng">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Xuất kho bán hàng</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>

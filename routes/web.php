@@ -27,15 +27,11 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index');
     Route::post('summernote/image', ['as' => 'summernote.image', 'uses' => 'DashboardController@summernoteImage']);
-    Route::PATCH('notification/{notification}', array('as' => 'notification.read', 'uses' => 'DashboardController@readNotification'));
-
     Route::get('user/ajax/profile', ['as' => 'user.ajax.profile', 'uses' => 'UserController@ajaxProfile']);
     Route::post('user/update/profile', ['as' => 'user.update.profile', 'uses' => 'UserController@updateProfile']);
     Route::post('user/update/password', ['as' => 'user.update.password', 'uses' => 'UserController@updatePassword']);
-    Route::get('user/data/room/{room}', ['as' => 'user.data.room', 'uses' => 'UserController@getDataWithRoom']);
-    Route::get('user/data', ['as' => 'user.data', 'uses' => 'UserController@getData']);
-    Route::get('user/room/{room}', ['as' => 'user.room', 'uses' => 'UserController@room']);
-    Route::resource('user', 'UserController', ['except' => ['create']]);
+   
+    Route::resource('user', 'UserController', ['only' => ['index']]);
 
     Route::resource('products', 'ProductsController');
     Route::resource('customers', 'CustomersController');
@@ -45,18 +41,14 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
 
     Route::resource('units', 'UnitsController');
 
-    Route::post('roles/ajax/update/{roles}', ['as' => 'roles.ajax.update', 'uses' => 'RolesController@ajaxUpdate']);
-    Route::get('roles/ajax/permission', ['as' => 'roles.ajax.permission', 'uses' => 'RolesController@ajaxPermission']);
-    Route::get('roles/ajax/{roles}', ['as' => 'roles.ajax.role', 'uses' => 'RolesController@ajaxRole']);
-    Route::get('roles/data', ['as' => 'roles.data', 'uses' => 'RolesController@getData']);
-    Route::resource('roles', 'RolesController');
+    Route::resource('roles', 'RolesController', ['only' => 'index']);
 
-    Route::resource('groupproducts', 'GroupProductsController');
-    Route::resource('groupcustomers', 'GroupCustomersController');
-    Route::resource('manufacturers', 'ManufacturersController');
-    Route::resource('warehouses', 'WarehousesController');
-    Route::resource('branches', 'BranchesController');
-    Route::resource('positions', 'PositionsController');
+    Route::resource('groupproducts', 'GroupProductsController', ['only' => 'index']);
+    Route::resource('groupcustomers', 'GroupCustomersController', ['only' => 'index']);
+    Route::resource('manufacturers', 'ManufacturersController', ['only' => 'index']);
+    Route::resource('warehouses', 'WarehousesController', ['only' => 'index']);
+    Route::resource('branches', 'BranchesController', ['only' => 'index']);
+    Route::resource('positions', 'PositionsController', ['only' => 'index']);
 
     Route::resource('bills', 'BillsController', ['only' =>['index']]);
     Route::get('bills/sale', 'BillsController@sale');
@@ -67,6 +59,9 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::get('bills/exportstock', 'BillsController@exportStock');
     Route::get('bills/importstock', 'BillsController@importstock');
     Route::get('bills/symmetrical', 'BillsController@symmetrical');
+    Route::get('bills/stockrequisition', ['as' => 'bill.stockrequisition', 'uses' => 'BillsController@stockRequisition']);
+    Route::get('bills/createstockrequisition', 
+        ['as' => 'bill.createstockrequisition', 'uses' => 'BillsController@createStockRequisition']);
 
     Route::resource('quotations', 'QuotationsController', ['only' => ['create', 'store']]);
 
@@ -79,5 +74,5 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
 
     Route::resource('permissions', 'PermissionsController', ['only' => 'index']);
 
-    Route::resource('locations', 'LocationsController');
+    Route::resource('locations', 'LocationsController', ['only' => 'index']);
 });

@@ -1,0 +1,25 @@
+.data-grid-table {
+	margin-top: 10px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	background: #ddd;
+	font-weight: bold;
+}
+
+div.form-filter .datepicker {
+	width: 100px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+ div.form-filter .btn-search {
+ 	margin-left: 10px;
+    margin-top: 5px;
+    line-height: 15px;
+ }
+
+ div.form-filter label{
+ 	margin-top: 10px;
+    margin-left: 10px;
+ }
