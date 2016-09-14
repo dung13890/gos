@@ -91,7 +91,7 @@
                                 <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                             </button>
 
-                            <button class="btn btn-warning" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Xóa dữ liệu</button>
+                            <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Hủy bỏ</button>
                         </div>
                     </form>
                 </validator>
