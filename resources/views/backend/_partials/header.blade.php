@@ -116,7 +116,7 @@
         <nav class="menu" references="menu-tasks">
             <ul>
                 <li class="node-system">
-                    <a href="javascript:void(0)" class="active">
+                    <a href="javascript::void(0)" class="active">
                         <i class='glyphicon glyphicon-th-large'></i>
                         Thông tin chung
                     </a>
@@ -201,7 +201,7 @@
                 </li>
 
                 <li class="node-system">
-                    <a href="javascript:void(0)" title="Bán hàng phải thu">
+                    <a href="javascript::void(0)" title="Bán hàng phải thu">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Bán hàng phải thu</a>
                     <ul class="sub-node-system">
                         <li>
@@ -212,7 +212,7 @@
                 </li>
 
                 <li class="node-system">
-                    <a href="javascript:void(0)" title="Mua hàng phải trả">
+                    <a href="javascript::void(0)" title="Mua hàng phải trả">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Mua hàng phải trả</a>
                     <ul class="sub-node-system">
                         <li>

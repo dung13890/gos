@@ -45,15 +45,11 @@ export default {
     update: function(params, id) {
         var self = this;
         return new Promise(function(resolve, reject) {
-            try {
-                self.http.patch(self.router.route('api.v1.rooms.update', {room: id}), params).then(function (response) {
-                    resolve(response.data);
-                }, function (response) {
-                    reject(response.data);
-                });
-            } catch(e) {
-                console.log(e);
-            }
+            self.http.patch(self.router.route('api.v1.rooms.update', {room: id}), params).then(function (response) {
+                resolve(response.data);
+            }, function (response) {
+                reject(response.data);
+            });
         });
     },
 

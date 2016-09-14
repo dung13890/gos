@@ -74,7 +74,7 @@
                         actionHtml.html('');
 
                         if (actions.edit) {
-                            var edit = actionHtml.append('<a href="#" v-on:click="edit('+data.id+')" title="Sửa" class="btn-icon label-edit"><span class="glyphicon glyphicon-edit"></span></a>');
+                            var edit = actionHtml.append('<a href="#" v-on:click.prevent="edit('+data.id+')" title="Sửa" class="btn-icon label-edit"><span class="glyphicon glyphicon-edit"></span></a>');
                             self.$compile(edit.get(0));
                         }
 
@@ -85,6 +85,7 @@
                     }
                 });
             },
+
             edit: function (id) {
                 this.$parent.edit(id);
             },

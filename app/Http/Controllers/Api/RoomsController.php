@@ -87,33 +87,18 @@ class RoomsController extends ApiController
 
     public function edit($id)
     {
-        $room = Room::findOrFail($id);
-        return response()->json([
-            'code' => 200,
-            'message' => 'Thành công!',
-            'room' => $room,
-        ]);
+        parent::edit($id);
+        $this->compacts['item']->load('permissions');
+
+        return $this->jsonRender(200);
     }
 
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, RoomService $service, $id)
     {
-        try {
-            $room = Room::findOrFail($id);
-            $room->update($request->all());
+        $data = $request->all();
+        $entity = $this->repository->findOrFail($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Sửa thành công!',
-                'room' => $room,
-            ]);
-        }
-        
-        catch(Exception $e) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $e->getMessage(),
-            ], 300);
-        }
+        return $this->updateData($data, $service, $entity);
     }
 
     public function destroy($id, RoomService $service)

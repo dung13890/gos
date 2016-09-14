@@ -27,7 +27,6 @@ class StoreRequest extends Request
             'code' => 'required|max:11|min:5|unique:rooms,code',
             'name' => 'required|max:50|min:2|unique:rooms,name',
             'branch_id' => 'required',
-            'permission_ids' => 'required',
             'member' => 'numeric',
             'founding' =>  'date_format:d/m/Y',
         ];

@@ -19,6 +19,8 @@ class StoreRoom extends Job
     {
         $item = $repository->create($this->attributes);
 
-        $item->permissions()->sync($this->attributes['permission_ids']);
+        if (isset($this->attributes['permission_ids']) && count($this->attributes['permission_ids'])) {
+            $item->permissions()->sync($this->attributes['permission_ids']);
+        }
     }
 }
