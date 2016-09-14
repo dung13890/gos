@@ -25,6 +25,11 @@ class Room extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);   
+    }
+
     public function setFoundingAttribute($value)
     {
         $this->attributes['founding'] = ($value) ? $this->setDate($value) : null;

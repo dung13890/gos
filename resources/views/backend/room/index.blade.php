@@ -14,12 +14,12 @@
 
 <div id="RoomsController">
 
-    @include('backend.room._form')
+    <modal-form :item="item" :branches="branches" :permissions="permissions" :modal-title="modalTitle" :errors="errors"></modal-form>
 
     <div id="content">
         <div class="container-fluid">
             <h3>Quản lý phòng ban
-                <a href="#newRoom" v-on:click="create" role="button" data-toggle="modal" class="btn btn-success pull-right">
+                <a href="#" v-on:click="create" role="button" class="btn btn-success pull-right">
                     <i class="fa fa-plus"></i> Thêm mới phòng ban
                 </a>
             </h3>

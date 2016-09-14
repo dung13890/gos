@@ -42,6 +42,7 @@ abstract class Request extends FormRequest
             'email.unique' => 'Email đã tồn tại',
             
             'birthday.date_format' => 'Ngày sinh không đúng định dạng',
+            'founding.date_format' => 'Ngày thành lập không đúng định dạng',
             'birthday.before' => 'Ngày sinh không được lớn hơn ngày hiện tại',
         ];
     }

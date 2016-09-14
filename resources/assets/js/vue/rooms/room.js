@@ -4,6 +4,7 @@ import VueValidator from 'vue-validator'
 import RoomService from '../services/room'
 
 import DataTable from './components/datatable.vue';
+import ModalForm from './components/modal-form.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
@@ -13,12 +14,11 @@ var token = $('meta[name="csrf-token"]').attr('content');
 new Vue({
     el: '#RoomsController',
 
-    components: { DataTable },
+    components: { DataTable, ModalForm },
 
     data: function () {
         return {
-            rooms: {},
-            room: {
+            item: {
                 _token: '',
                 id: '',
                 code: '',
@@ -32,9 +32,10 @@ new Vue({
             },
 
             branches: [],
-
+            permissions: [],
             modalTitle: '',
             errors: {},
+            formElement: {},
             oTable: {
                 type: Object
             }
@@ -50,6 +51,10 @@ new Vue({
         create: function() {
             var self = this;
             self.room = {};
+            this.formElement.modal({
+                backdrop: 'static',
+                show: true
+            });
             self.modalTitle = 'Thêm mới chi nhánh';
         },
 
@@ -57,15 +62,17 @@ new Vue({
             var self = this;
 
             RoomService.store(params).then((response) => {
-                toastr.success(response.message);
                 if (response.code === 200) {
-                    self.reload();
+                    toastr.success(response.message);
+                    this.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
             });
         },
@@ -122,8 +129,8 @@ new Vue({
         var self = this;
 
         RoomService.index().then(function(response) {
-            self.rooms = response.rooms;
             self.branches = response.branches;
+            self.permissions = response.permissions;
         });
     }
 });

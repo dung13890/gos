@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Backend\Rooms;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class StoreRequest extends FormRequest
+class StoreRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,16 +26,10 @@ class StoreRequest extends FormRequest
         return [
             'code' => 'required|max:11|min:5|unique:rooms,code',
             'name' => 'required|max:50|min:2|unique:rooms,name',
+            'branch_id' => 'required',
+            'permission_ids' => 'required',
             'member' => 'numeric',
-            'founding' =>  'date',
+            'founding' =>  'date_format:d/m/Y',
         ];
-    }
-
-    public function response(array $errors)
-    {
-        return response()->json([
-            'errors' => true,
-            'messages'  => $errors,
-        ], 422);
     }
 }
