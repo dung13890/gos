@@ -13,6 +13,11 @@ class StoreRequest extends Request
      */
     public function authorize()
     {
+        $all = $this->all();
+        if (!is_numeric($all['member'])) {
+            $all['member'] = 0;
+        }
+        $this->replace($all);
         return true;
     }
 
