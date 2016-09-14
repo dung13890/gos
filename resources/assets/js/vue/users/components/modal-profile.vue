@@ -105,13 +105,13 @@
                                 <div class="col-sm-9">
                                     <input class="datepicker form-control input-sm"
                                         v-model='userProfile.birthday'
-                                        style="width: 200px;"
+                                            style="width: 200px;"
                                     />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="avatar" class="col-sm-3">Ảnh đại diện {{ isFileChange }}</label>
+                                <label for="avatar" class="col-sm-3">Ảnh đại diện</label>
                                 <div class="col-sm-9">
                                     <div v-if="userProfile.image_thumbnail && !isFileChange">
                                         <img class="img-responsive" :src="renderImage(userProfile.image_thumbnail)">
