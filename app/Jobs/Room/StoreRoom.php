@@ -3,7 +3,6 @@
 namespace App\Jobs\Room;
 
 use App\Jobs\Job;
-use App\Traits\Jobs\UploadableTrait;
 use App\Contracts\Repositories\RoomRepository;
 
 class StoreRoom extends Job
@@ -18,6 +17,8 @@ class StoreRoom extends Job
 
     public function handle(RoomRepository $repository)
     {
-        $repository->create($this->attributes);
+        $item = $repository->create($this->attributes);
+
+        $item->permissions()->sync($this->attributes['permission_ids']);
     }
 }

@@ -69,7 +69,7 @@ new Vue({
 
         store: function(params) {
             var self = this;
-
+            
             UserService.store(params).then((response) => {
                 if (response.code === 200) {
                     toastr.success(response.message);

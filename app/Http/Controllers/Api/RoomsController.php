@@ -7,17 +7,25 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Rooms\StoreRequest;
 use App\Http\Requests\Backend\Rooms\UpdateRequest;
 use App\Contracts\Repositories\RoomRepository;
+use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Services\RoomService;
 use Illuminate\Support\Str;
-use App\Model\Branch;
+use App\Model\Permission;
 
 class RoomsController extends ApiController
 {
     protected $dataSelect = ['id', 'code', 'name', 'manager', 'member', 'founding'];
 
-    public function __construct(RoomRepository $room)
+    protected $permissionSelect = ['id', 'name'];
+
+    protected $branchSelect = ['id', 'name'];
+
+    protected $branchRepository;
+
+    public function __construct(RoomRepository $room, BranchRepository $branch)
     {
         parent::__construct($room);
+        $this->branchRepository = $branch;
     }
 
     public function getData(Request $request)
@@ -58,18 +66,23 @@ class RoomsController extends ApiController
 
     public function index()
     {
+        try {
+            $this->compacts['permissions'] = app(Permission::class)->get($this->permissionSelect);
+            $this->compacts['branches'] = $this->branchRepository->all($this->branchSelect);
+            $code = 200;
+        } catch (\Exception $e) {
+            $code = 500;
+            $this->compacts['errors'] = $e->getMessage();
+        }
+
+        return $this->jsonRender();
     }
 
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request, RoomService $service)
     {
-        $params = $request->all();
-        $room = Room::create($params);
-        
-        return response()->json([
-            'code' => 200,
-            'message' => 'Thêm thành công!',
-            'room' => $room,
-        ]);
+        $data = $request->all();
+
+        return $this->storeData($data, $service);
     }
 
     public function edit($id)

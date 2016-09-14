@@ -147,21 +147,4 @@ class UsersController extends ApiController
         return $this->deleteData($service, $entity);
     }
 
-    public function profile()
-    {
-        $this->compacts['item'] = \Auth::user();
-
-        return $this->jsonRender(200);
-    }
-
-    public function changePassword(ChangePasswordRequest $request)
-    {
-        $data = $request->only(
-            'old_password',
-            'password',
-            'password_confirmation'
-        );
-        
-        //$entity = \Auth::user();
-    }
 }
