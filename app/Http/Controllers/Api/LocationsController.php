@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Str;
 
 use App\Model\Location;
+use App\Http\Requests\Backend\Location\StoreRequest;
+use App\Contracts\Services\LocationService;
 
 class LocationsController extends ApiController
 {
@@ -52,4 +53,20 @@ class LocationsController extends ApiController
                 return $actions;
             })->make(true);
     }
+
+    public function store(StoreRequest $request, LocationService $service)
+    {
+        $data = $request->all();
+
+        return $this->storeData($data, $service);
+    }
+
+    public function edit($id)
+    {
+        parent::edit($id);
+
+        return $this->jsonRender(200);
+    }
 }
+
+
