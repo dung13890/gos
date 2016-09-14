@@ -27,6 +27,10 @@ abstract class Request extends FormRequest
             'fullname.min' => 'Họ và tên phải từ 2 ký tự trở lên',
             'fullname.max' => 'Họ và tên không vượt quá 50 kí tự',
 
+            'code.unique' => 'Mã đã tồn tại',
+
+            'name.unique' => 'Tên đã tồn tại',
+
             'permission_ids.required' => 'Quyền quản trị không được bỏ trống',
             'room_ids.required' => 'Phòng ban không được bỏ trống',
             'role_ids.required' => 'Nhóm quyền quản trị không được bỏ trống',
