@@ -5,11 +5,11 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Thêm mới phòng ban</h4>
+                    <h4 class="modal-title">{{ modalTitle }}</h4>
                 </div>
 
                 <div class="modal-body">
-                    <validator name="validation" :classes="{ touched: 'touched-validator', dirty: 'dirty-validator' }">
+                    <validator name="validation">
                         <form class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -120,7 +120,7 @@
                                     <span class="glyphicon glyphicon-floppy-disk"></span> Lưu lại
                                 </button>
 
-                                <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-ban-circle"></i> Hủy bỏ</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" >Hủy bỏ</button>
                             </div>
                         </form>
                     </validator>
@@ -146,6 +146,15 @@
             return {
                 permission_ids: [],
                 isError: false,
+            }
+        },
+
+        watch: {
+            'item' : function (val, oldVal) {
+                if (val.id != oldVal.id) {
+                    this.permission_ids = val.permissions || [];
+                    this.isError = false;
+                }
             }
         },
 

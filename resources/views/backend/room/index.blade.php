@@ -29,7 +29,7 @@
 
                         <div class="widget-heading">
                             <h1 class="title text-uppercase">Danh sách phòng ban</h1>
-                            <a href="javascript:;" class="toggle-content" references="#providerList" display="1">
+                            <a href="#" class="toggle-content" references="#providerList" display="1">
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         </div>

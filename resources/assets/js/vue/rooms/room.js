@@ -9,8 +9,6 @@ import ModalForm from './components/modal-form.vue';
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
-var token = $('meta[name="csrf-token"]').attr('content');
-
 new Vue({
     el: '#RoomsController',
 
@@ -50,21 +48,20 @@ new Vue({
     methods: {
         create: function() {
             var self = this;
-            self.room = {};
+            self.item = {};
             this.formElement.modal({
                 backdrop: 'static',
                 show: true
             });
-            self.modalTitle = 'Thêm mới chi nhánh';
+            self.modalTitle = 'Thêm mới phòng ban';
         },
 
         store: function(params) {
             var self = this;
-
             RoomService.store(params).then((response) => {
                 if (response.code === 200) {
                     toastr.success(response.message);
-                    this.formElement.modal('hide');
+                    self.formElement.modal('hide');
                     self.oTable.draw();
                 } else {
                     toastr.error(response.message);
@@ -77,28 +74,34 @@ new Vue({
             });
         },
 
+        edit: function(id) {
+            var self = this;
+            self.modalTitle = 'Sửa thông tin phòng ban';
+            RoomService.edit(id).then(function(response) {
+                self.item = response.item;
+            });
+            this.errors = {};
+            this.formElement.modal({
+                backdrop: 'static',
+                show: true
+            });
+        },
+
         update: function (params, id) {
             var self = this;
             RoomService.update(params, id).then((response) => {
-                toastr.success(response.message);
-
                 if (response.code === 200) {
-                    self.reload();
+                    toastr.success(response.message);
+                    self.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
-            });
-        },
-
-        edit: function(id) {
-            var self = this;
-            self.modalTitle = 'Sửa thông tin chi nhánh';
-            RoomService.edit(id).then(function(response) {
-                self.room = response.room;
             });
         },
 
@@ -127,7 +130,6 @@ new Vue({
 
     ready: function () {
         var self = this;
-
         RoomService.index().then(function(response) {
             self.branches = response.branches;
             self.permissions = response.permissions;

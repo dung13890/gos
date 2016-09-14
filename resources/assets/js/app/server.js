@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('.datepicker').datepicker({
         todayHighlight: true, 
         format: 'dd/mm/yyyy', 
-        orientation: 'bottom auto',
+        orientation: 'bottom auto'
     });
     
     if (typeof flash_message !== 'undefined' && flash_message) {

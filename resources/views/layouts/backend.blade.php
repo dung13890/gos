@@ -34,7 +34,6 @@
         {{ HTML::script('vendor/bootstrap/js/bootstrap.min.js') }}
         {{ HTML::script(elixir('assets/js/backend/app.js')) }}
         {{ HTML::script('assets/vue/users/setting.js') }}
-        {{ HTML::script('assets/vue/users/resset_password.js') }}
         @stack('prescripts')
     </body>
 </html>

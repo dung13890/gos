@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Backend\Rooms;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Exception;
+use App\Http\Requests\Request;
 
-class UpdateRequest extends FormRequest
+class UpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,18 +24,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|max:11|min:5|unique:rooms,code',
-            'name' => 'required|max:50|min:2|unique:rooms,name',
+            'code' => 'required|max:11|min:5|unique:rooms,code,' . $this->room,
+            'name' => 'required|max:50|min:2|unique:rooms,name,' . $this->room,
+            'branch_id' => 'required',
             'member' => 'numeric',
-            'founding' => 'date',
+            'founding' => 'date_format:d/m/Y',
         ];
-    }
-
-    public function response(array $errors)
-    {
-        return response()->json([
-            'errors' => true,
-            'messages'  => $errors,
-        ], 422);
     }
 }
