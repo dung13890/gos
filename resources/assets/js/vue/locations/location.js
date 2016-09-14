@@ -4,15 +4,16 @@ import VueValidator from 'vue-validator'
 import LocationService from '../services/location';
 
 import DataTable from './components/datatable.vue';
-import ModalForm from './components/modal-form.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
+var token = $('meta[name="csrf-token"]').attr('content');
+
 new Vue({
     el: '#LocationsController',
 
-    components: {DataTable, ModalForm},
+    components: {DataTable},
 
     data: function () {
         return {
@@ -25,11 +26,12 @@ new Vue({
             },
 
             locations: [],
+            modalShow: true,
             modalTitle: '',
             createAction: true,
             errors: {
                 errors: false,
-                messages: {}
+                messages: {},
             },
             formRole: {},
             oTable: {
@@ -41,5 +43,55 @@ new Vue({
     created: function() {
         LocationService.setRouter(window.laroute);
         LocationService.setHttp(this.$http);
+    },
+
+    methods: {
+        create: function() {
+            var self = this;
+
+            self.modalTitle = 'Thêm mới địa điểm';
+        },
+
+        store: function(params) {
+            var self = this;
+            LocationService.store(params).then((response) => {
+                if (response.code === 200) {
+                    toastr.success(response.message);
+                    self.reload();
+                } else {
+                    console.log(response);
+                    toastr.error(response.message);
+                }
+
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
+                }
+            });
+        },
+
+        validate: function() {
+            var self = this;
+
+            self.location._token = token;
+
+            this.$validate(true, function () {
+                if (self.$validation.invalid) {
+                    return;
+                }
+
+                if (self.location.id) {
+                    // update location
+                } else {
+                    self.store(self.location);
+                }
+            });
+        },
+
+        reload: function() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000);
+        }
     }
 });
