@@ -4,25 +4,60 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Rooms\StoreRequest;
 use App\Http\Requests\Backend\Rooms\UpdateRequest;
-use App\Model\Room;
+use App\Contracts\Repositories\RoomRepository;
+use App\Contracts\Services\RoomService;
+use Illuminate\Support\Str;
 use App\Model\Branch;
 
-class RoomsController extends Controller
+class RoomsController extends ApiController
 {
     protected $dataSelect = ['id', 'code', 'name', 'manager', 'member', 'founding'];
 
+    public function __construct(RoomRepository $room)
+    {
+        parent::__construct($room);
+    }
+
+    public function getData(Request $request)
+    {
+        return \Datatables::of($this->repository->datatables($this->dataSelect))
+        ->filter(function ($instance) use ($request) {
+            if ($request->has('code')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['code'], $request->code) ? true : false;
+                });
+            }
+
+            if ($request->has('name')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['name'], $request->name) ? true : false;
+                });
+            }
+
+            if ($request->has('manager')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['manager'], $request->manager) ? true : false;
+                });
+            }
+
+        })
+        ->addColumn('actions', function ($item) {
+            $actions = [];
+                if ($this->before('edit',$item, false)) {
+                    $actions['edit'] = true;
+                }
+                if ($this->before('delete',$item, false)) {
+                    $actions['delete'] = true;
+                }
+
+            return $actions;
+        })->make(true);
+    }
+
     public function index()
     {
-        return response()->json([
-            'code' => 200,
-            'message' => 'Load thành công',
-            'rooms' => Room::select($this->dataSelect)->orderBy('id', 'desc')->get(),
-            'branches' => Branch::select(['id', 'name'])->get(),
-        ]);
     }
 
     public function store(StoreRequest $request)
@@ -68,12 +103,10 @@ class RoomsController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy($id, RoomService $service)
     {
-        Room::findOrFail($id)->delete();
-        return response()->json([
-            'code' => 200,
-            'message' => 'Xóa thành công!',
-        ]);
+        $entity = $this->repository->findOrFail($id);
+
+        return $this->deleteData($service, $entity);
     }
 }

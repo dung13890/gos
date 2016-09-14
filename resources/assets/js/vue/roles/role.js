@@ -107,7 +107,7 @@ new Vue({
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Đồng ý!",
                 cancelButtonText: 'Hủy',
-                closeOnConfirm: true
+                closeOnConfirm: false
             }, function(isConfirm) {
                 if (isConfirm) {
                     RoleService.destroy(id).then(function(response) {

@@ -1,6 +1,12 @@
 @extends('layouts.backend')
 
+@push('prestyles')
+    {{ HTML::style('vendor/datatables-bs/css/dataTables.bootstrap.min.css') }}
+@endpush
+
 @push('prescripts')
+    {{ HTML::script("vendor/datatables/js/jquery.dataTables.min.js") }}
+    {{ HTML::script("vendor/datatables-bs/js/dataTables.bootstrap.min.js") }}
     {{ HTML::script("assets/vue/rooms/room.js") }}
 @endpush
 
@@ -29,40 +35,7 @@
                         </div>
                         
                         <div id="providerList">
-                            <div class="widget-content">
-                                <div class="table-responsive">
-                                    <table class="table table-condensed table-default table-bordered table-hover" id="table-index">
-                                    <thead>
-                                        <tr class="active">
-                                            <th class="text-center" width="100">Mã</th>
-                                            <th>Tên phòng</th>
-                                            <th>Trưởng phòng</th>
-                                            <th>Số nhân viên</th>
-                                            <th>Ngày thành lập</th>
-                                            <th width="100">Thao tác</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr style="background: #e3eff1;">
-                                            <td><input type="" name="" class="form-control input-sm" /></td>
-                                            <td><input type="" name="" class="form-control input-sm" /></td>
-                                            <td><input type="" name="" class="form-control input-sm" /></td>
-                                            <td></td>
-                                            <td class="text-right" colspan="2">
-                                                <button type="button" class="btn btn-info btn-filter">
-                                                    <span class="glyphicon glyphicon-search"></span> Tìm kiếm
-                                                </button>
-
-                                                <button type="button" class="btn btn-danger btn-filter">
-                                                    <span class="glyphicon glyphicon glyphicon-ban-circle"></span> Reset
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                            </div>
+                            <data-table></data-table>
                         </div>
                     </div>
                 </div>

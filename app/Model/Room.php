@@ -3,10 +3,12 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\User;
+use App\Traits\Eloquent\DateAMTrait;
 
 class Room extends Model
 {
+    use DateAMTrait;
+
     protected $fillable = [
         'code',
         'name',
@@ -21,5 +23,15 @@ class Room extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function setFoundingAttribute($value)
+    {
+        $this->attributes['founding'] = ($value) ? $this->setDate($value) : null;
+    }
+
+    public function getFoundingAttribute ($value)
+    {
+        return ($value) ? $this->getDate($value) : null;
     }
 }

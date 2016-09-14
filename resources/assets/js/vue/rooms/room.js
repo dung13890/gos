@@ -3,6 +3,8 @@ import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import RoomService from '../services/room'
 
+import DataTable from './components/datatable.vue';
+
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
@@ -10,6 +12,8 @@ var token = $('meta[name="csrf-token"]').attr('content');
 
 new Vue({
     el: '#RoomsController',
+
+    components: { DataTable },
 
     data: function () {
         return {
@@ -31,7 +35,9 @@ new Vue({
 
             modalTitle: '',
             errors: {},
-            isError: false,
+            oTable: {
+                type: Object
+            }
         }
     },
 
@@ -89,11 +95,11 @@ new Vue({
             });
         },
 
-        destroy: function(id, room) {
+        destroy: function(id, name) {
             var self = this;
             swal({
                 title: "Bạn có chắc chắn không?",
-                text: "Bản ghi có mã "+ room.name + " sẽ bị xóa",
+                text: "Bản ghi có mã "+ name + " sẽ bị xóa",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -102,33 +108,13 @@ new Vue({
                 closeOnConfirm: false
             }, function(isConfirm) {
                 if (isConfirm) {
-                    self.rooms.$remove(room);
                     RoomService.destroy(id).then(function(response) {
-                        self.branch = response.branch;
+                        self.oTable.draw();
                     });
 
-                    swal("Đã xóa!", "Bản ghi có mã " + room.code, "success");
+                    swal("Đã xóa!", "Bản ghi có mã " + name, "success");
                 }
             });
-        },
-
-        validate: function() {
-            var self = this;
-            this.$validate(true, function () {
-                if (self.$validation.invalid) { return; }
-                self.room._token = token;
-                if (self.room.id) {
-                    self.update(self.room, self.room.id);
-                } else {
-                    self.store(self.room);
-                }
-            });
-        },
-
-        reload: function() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 1000);
         },
     },
 
