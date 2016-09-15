@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Backend\Positions;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class StoreRequest extends FormRequest
+class StoreRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|min:5|max:11',
+            'code' => 'required|min:5|max:11|unique:positions',
             'name'=> 'required|min:2|max:200'
         ];
-    }
-
-    public function response(array $errors)
-    {
-        return response()->json([
-            'errors' => true,
-            'messages'  => $errors,
-        ], 422);
     }
 }

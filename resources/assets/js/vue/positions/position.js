@@ -4,6 +4,7 @@ import VueValidator from 'vue-validator'
 import PositionService from '../services/position';
 
 import DataTable from './components/datatable.vue';
+import ModalForm from './components/modal-form.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
@@ -13,11 +14,11 @@ var token = $('meta[name="csrf-token"]').attr('content')
 new Vue({
     el: '#PositionsController',
 
-    components: { DataTable },
+    components: { DataTable, ModalForm },
 
     data: function () {
         return {
-            position: {
+            item: {
                 id: '',
                 code: '',
                 name: '',
@@ -25,6 +26,7 @@ new Vue({
 
             modalTitle: '',
             errors: {},
+            formElement: {},
             oTable: {
                 type: Object
             }
@@ -38,28 +40,30 @@ new Vue({
 
     methods: {
         create: function() {
-            var self = this;
-            
-            self.position = {};
-            self.errors = {};
-            self.isError = false;
-
-            self.modalTitle = 'Thêm mới chức vụ';
+            this.formElement.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+            this.position = {};
+            this.errors = {};
+            this.modalTitle = 'Thêm mới chức vụ';
         },
 
         store: function(params) {
             var self = this;
             PositionService.store(params).then((response) => {
-                toastr.success(response.message);
-
                 if (response.code === 200) {
-                    self.reload();
+                    toastr.success(response.message);
+                    this.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
             });
         },
