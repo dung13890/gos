@@ -3,7 +3,6 @@
 @push('prestyles')
     {{ HTML::style("assets/css/backend/checkbox-radiobox.css") }}
     {{ HTML::style('vendor/datatables-bs/css/dataTables.bootstrap.min.css') }}
-    {{ HTML::style("vendor/datepicker/css/bootstrap-datepicker.min.css") }}
     {{ HTML::style("assets/css/backend/users/user.css") }}
 @endpush
 

@@ -173,7 +173,7 @@
                             formData.append('fullname', self.userProfile.fullname);
                         }
 
-                        if (typeof self.userProfile.gender != 'undefined') {
+                        if (self.userProfile.gender) {
                             formData.append('gender', self.userProfile.gender);
                         }
 
