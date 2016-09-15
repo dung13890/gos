@@ -20,7 +20,7 @@
             <h3>
                 Quản lý chức vụ
                 <a role="button" class="btn btn-success pull-right" v-on:click="create">
-                    <i class="fa fa-plus"></i> Thêm mới Chức vụ
+                    <i class="fa fa-plus"></i> Thêm mới chức vụ
                 </a>
             </h3>
             <div class="row">
