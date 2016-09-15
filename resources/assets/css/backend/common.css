@@ -444,6 +444,10 @@ ul li.node-system:hover ul.sub-node-system {
     display: block;
 }
 
+ul.sub-node-system li {
+    position: relative;
+}
+
 ul.sub-node-system li, ul.sub-node-system li a {
     display: block !important;
 }
@@ -572,3 +576,19 @@ a.btnForFilter {
         border-left: 2px solid #ff7920;
     }
 /****/
+
+ul.sub-right-menu {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    position: absolute;
+    top: 0px;
+    left: 210px;
+    background: #1A9DE2;
+    width: 100%;
+    display: none;
+}
+
+ ul.sub-node-system li:hover ul.sub-right-menu {
+    display: block;
+ }

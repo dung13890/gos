@@ -79,5 +79,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
 
     Route::resource('locations', 'LocationsController', ['only' => 'index']);
 
-    Route::resource('notifications', 'NotificationsController', ['only' => 'index']);    
+    Route::resource('notifications', 'NotificationsController', ['only' => 'index']);
+
+    Route::resource('contracts', 'ContractsController', ['only' => ['index', 'create']]);
 });
