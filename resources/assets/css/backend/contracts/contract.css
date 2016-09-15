@@ -1,0 +1,27 @@
+.start-date {
+    width: 130px;
+    margin-bottom: 3px;
+}
+
+.fromto {
+    display: inline-block;
+    width: 35px;
+}
+
+.event-code {
+    width: 69px;
+}
+
+.btn-filter {
+    width: 100px;
+    margin-bottom: 3px;
+}
+
+.form-control-feedback  {
+    top: 20px;
+}
+
+.form-horizontal .has-feedback .form-control-feedback
+{
+    right: 0
+}

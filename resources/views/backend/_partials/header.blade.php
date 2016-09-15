@@ -173,6 +173,63 @@
                 </li>
 
                 <li class="node-system">
+                    <a href="javascript::void(0)" title="Mua hàng phải trả">
+                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Mua hàng phải trả</a>
+                    <ul class="sub-node-system">
+                        <li>
+                            <a href="{{ route('bill.stockrequisition') }}"  title="Phiếu yêu cầu mua hàng">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu yêu cầu mua hàng</a>
+                        </li>
+
+                        <li>
+                            <a href="javascript::void(0);"  title="Hợp đồng mua">
+                                <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Hợp đồng mua
+                                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+                            </a>
+                            <ul class="sub-right-menu">
+                                <li>
+                                    <a href="">
+                                        Danh sách mẫu hợp đồng
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('contracts.index') }}" title="Danh sách hợp đồng">
+                                        Danh sách hợp đồng
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="">
+                                        Tiến độ hợp đồng
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ route('locations.index') }}"  title="Kế hoạch mua hàng">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Kế hoạch mua hàng</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('locations.index') }}"  title="Đơn mua hàng">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Đơn mua hàng</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('locations.index') }}"  title="Hợp đồng nhà cung cấp">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Tiến độ đơn hàng, hợp đồng</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('locations.index') }}"  title="Đề nghị thanh toán">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Đề nghị thanh toán</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="node-system">
                     <a href="javascript::void(0)" title="Bán hàng phải thu">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Bán hàng phải thu</a>
                     <ul class="sub-node-system">
@@ -194,42 +251,6 @@
                         <li>
                             <a href="{{ route('quotations.create') }}"  title="Phiếu điều chuyển kho">
                             <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu điều chuyển kho</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="node-system">
-                    <a href="javascript::void(0)" title="Mua hàng phải trả">
-                    <i class="glyphicon glyphicon-th-large"></i>&nbsp; Mua hàng phải trả</a>
-                    <ul class="sub-node-system">
-                        <li>
-                            <a href="{{ route('bill.stockrequisition') }}"  title="Phiếu yêu cầu mua hàng">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Phiếu yêu cầu mua hàng</a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('locations.index') }}"  title="Kế hoạch mua hàng">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Kế hoạch mua hàng</a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('locations.index') }}"  title="Đơn mua hàng">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Đơn mua hàng</a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('locations.index') }}"  title="Hợp đồng nhà cung cấp">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Hợp đồng nhà cung cấp</a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('locations.index') }}"  title="Hợp đồng nhà cung cấp">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Tiến độ đơn hàng, hợp đồng</a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('locations.index') }}"  title="Đề nghị thanh toán">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Đề nghị thanh toán</a>
                         </li>
                     </ul>
                 </li>
