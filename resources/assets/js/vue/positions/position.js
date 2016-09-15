@@ -40,12 +40,13 @@ new Vue({
 
     methods: {
         create: function() {
+
             this.formElement.modal({
                 backdrop: 'static',
                 keyboard: false,
                 show: true
             });
-            this.position = {};
+            this.item = {};
             this.errors = {};
             this.modalTitle = 'Thêm mới chức vụ';
         },
@@ -68,29 +69,35 @@ new Vue({
             });
         },
 
+        edit: function(id) {
+            var self = this;
+            this.formElement.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+            self.modalTitle = 'Sửa thông tin chức vụ';
+            
+            PositionService.edit(id).then(function(response) {
+                self.item = response.item;
+            });
+        },
+
         update: function (params, id) {
             var self = this;
             PositionService.update(params, id).then((response) => {
-                toastr.success(response.message);
-
                 if (response.code === 200) {
-                    self.reload();
+                    toastr.success(response.message);
+                    this.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
-            });
-        },
-
-        edit: function(id) {
-            var self = this;
-            self.modalTitle = 'Sửa thông tin chức vụ';
-            
-            PositionService.edit(id).then(function(response) {
-                self.position = response.position;
             });
         },
 

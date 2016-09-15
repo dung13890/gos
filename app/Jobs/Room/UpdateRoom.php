@@ -6,7 +6,7 @@ use App\Jobs\Job;
 use App\Contracts\Repositories\RoomRepository;
 use Illuminate\Database\Eloquent\Model;
 
-class UpdateRoom
+class UpdateRoom extends Job
 {
     protected $attributes;
 

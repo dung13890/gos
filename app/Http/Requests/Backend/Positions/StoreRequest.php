@@ -25,7 +25,7 @@ class StoreRequest extends Request
     {
         return [
             'code' => 'required|min:5|max:11|unique:positions',
-            'name'=> 'required|min:2|max:200'
+            'name'=> 'required|min:2|max:200|unique:positions'
         ];
     }
 }
