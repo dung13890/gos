@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], function () {
+    Route::get('positions/data', ['as' => 'positions.data', 'uses' => 'PositionsController@getData']);
     Route::resource('positions', 'PositionsController');
     Route::resource('branches', 'BranchesController');
     Route::resource('units', 'UnitsController');

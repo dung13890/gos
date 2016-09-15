@@ -3,6 +3,8 @@ import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import PositionService from '../services/position';
 
+import DataTable from './components/datatable.vue';
+
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
@@ -11,6 +13,8 @@ var token = $('meta[name="csrf-token"]').attr('content')
 new Vue({
     el: '#PositionsController',
 
+    components: { DataTable },
+
     data: function () {
         return {
             position: {
@@ -18,11 +22,12 @@ new Vue({
                 code: '',
                 name: '',
             },
-            positions: {},
-            
+
             modalTitle: '',
             errors: {},
-            isError: false,
+            oTable: {
+                type: Object
+            }
         }
     },
 
@@ -85,12 +90,12 @@ new Vue({
             });
         },
 
-        destroy: function(id, position) {
+        destroy: function(id, code) {
             var self = this;
 
             swal({
                 title: "Bạn có chắc chắn không?",
-                text: "Bản ghi có mã "+ position.name + " sẽ bị xóa",
+                text: "Bản ghi có mã "+ code + " sẽ bị xóa",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -99,43 +104,14 @@ new Vue({
                 closeOnConfirm: false
             }, function(isConfirm) {
                 if (isConfirm) {
-                    self.positions.$remove(position);
                     PositionService.destroy(id).then(function(response) {
-                        self.position = response.position;
+                        self.oTable.draw();
                     });
 
-                    swal("Đã xóa!", "Bản ghi có mã " + position.code, "success");
+                    swal("Đã xóa!", "Bản ghi có mã " + code, "success");
                 }
             });
         },
 
-        validate: function()
-        {
-            var self = this;
-
-            this.$validate(true, function () {
-                
-                if (self.$validation.invalid) { return; }
-
-                if (self.position.id) {
-                    self.update(self.position, self.position.id);
-                } else {
-                    self.store(self.position);
-                }
-            });
-        },
-
-        reload: function() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 1000);
-        }
     },
-
-    ready: function () {
-        var self = this;
-        PositionService.index().then(function(response) {
-            self.positions = response.positions;
-        });
-    }
 });

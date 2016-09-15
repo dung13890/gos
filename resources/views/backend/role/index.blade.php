@@ -37,7 +37,7 @@
                         </div>
                         
                         <div id="providerList">
-                            <data-table></data-table>                   
+                            <data-table></data-table>                
                         </div>
                     </div>
                 </div>

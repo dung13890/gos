@@ -39,7 +39,8 @@ class CreateUsersTable extends Migration
 
             $table->foreign('branch_id')->references('id')->on('branches')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('position_id')->references('id')->on('positions');
+
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('set null');
         });
     }
 

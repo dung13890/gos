@@ -58,11 +58,6 @@ class PermissionsController extends ApiController
         })->make(true);
     }
 
-    public function index()
-    {
-        return;
-    }
-
     public function store(StoreRequest $request, PermissionService $service)
     {
         $data = $request->all();
