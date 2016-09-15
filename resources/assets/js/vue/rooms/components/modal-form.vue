@@ -78,24 +78,6 @@
                                     </div>
 
                                     <div class="required-wrapper form-field">
-                                        <small>Tên trưởng phòng</small>
-                                        <input type='text' v-model='item.manager'
-                                            class='form-control input-sm'
-                                            v-validate:manager="{
-                                                required: {rule: true, message: 'Tên trưởng phòng không được bỏ trống'}
-                                            }"
-                                        />
-                                        <span class="error" v-if="$validation.manager.errors && isError">{{ $validation.manager.errors[0].message  }}</span>
-                                    </div>
-
-                                    <div class="required-wrapper form-field">
-                                        <small>Số lượng nhân viên</small>
-                                        <input type='number' v-model='item.member'
-                                            class='form-control input-sm'
-                                        />
-                                    </div>
-
-                                    <div class="required-wrapper form-field">
                                         <small>Ngày thành lập</small>
                                         <input v-model='item.founding'
                                             class='datepicker form-control input-sm'

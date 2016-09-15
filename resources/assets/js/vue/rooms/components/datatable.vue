@@ -7,7 +7,6 @@
                     <th style="display:none">ID</th>
                     <th class="text-center" width="100">Mã</th>
                     <th>Tên phòng</th>
-                    <th>Trưởng phòng</th>
                     <th>Số nhân viên</th>
                     <th>Ngày thành lập</th>
                     <th width="100">Thao tác</th>
@@ -16,8 +15,6 @@
                     <td style="display:none"></td>
                     <td><input type="text" v-model="code" class="form-control input-sm" /></td>
                     <td><input type="text" v-model="name" class="form-control input-sm" /></td>
-                    <td><input type="text" v-model="manager" class="form-control input-sm" /></td>
-                    <td></td>
                     <td class="text-right" colspan="3">
                         <a v-on:click.prevent="search" class="btn btn-info input-sm"><span class="glyphicon glyphicon-search"></span> Tìm kiếm</a>
                         <a v-on:click.prevent="reset" class="btn btn-danger input-sm"><span class="glyphicon glyphicon glyphicon-ban-circle"></span> Reset</a>
@@ -39,21 +36,18 @@
                     data: function (d) {
                         d.code = self.code;
                         d.name = self.name;
-                        d.manager = self.manager;
                     }
                 },
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'code', name: 'code'},
                     {data: 'name', name: 'name'},
-                    {data: 'manager', name: 'manager'},
-                    {data: 'member', name: 'member'},
+                    {data: 'member', name: 'member', orderable: false},
                     {data: 'founding', name: 'founding'},
                     {data: 'actions', name: 'actions', orderable: false, searchable: false, sClass: "text-center"}
                 ],
                 code: '',
                 name: '',
-                manager: '',
             }
         },
 
@@ -69,7 +63,7 @@
                             return ;
                         }
 
-                        var actionHtml = $('td', row).eq(6);
+                        var actionHtml = $('td', row).eq(5);
 
                         actionHtml.html('');
 
@@ -101,7 +95,6 @@
             reset: function () {
                 this.$set('code', '');
                 this.$set('name', '');
-                this.$set('manager', '');
                 this.$parent.oTable.draw();
             },
         },
