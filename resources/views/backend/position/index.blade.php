@@ -12,9 +12,17 @@
 
 @section('page-content')
 <div id="PositionsController">
+    
+    <modal-form :item="item" :modal-title="modalTitle" :errors="errors"></modal-form>
+
     <div id="content">
         <div class="container-fluid">
-            <h3>Quản lý chức vụ</h3>
+            <h3>
+                Quản lý chức vụ
+                <a role="button" class="btn btn-success pull-right" v-on:click="create">
+                    <i class="fa fa-plus"></i> Thêm mới Chức vụ
+                </a>
+            </h3>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="widget">

@@ -49,24 +49,11 @@ class PositionsController extends ApiController
         })->make(true);
     }
 
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request, PositionService $service)
     {
-        try {
-            $position = Position::create($request->all());
-            
-            return response()->json([
-                'code' => 200,
-                'message' => 'Thêm thành công!',
-                'position' => $position,
-            ]);
-        }
-        
-        catch(Exception $e) {
-            return response()->json([
-                'errors' => true,
-                'messages'  => $e->getMessage(),
-            ], 500);
-        }
+        $data = $request->only(['code', 'name']);
+
+        return $this->storeData($data, $service);
     }
 
     public function edit($id)
