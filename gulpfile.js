@@ -6,6 +6,8 @@ var config = require('./npm/config');
 require('laravel-elixir-vue');
 require('./npm/elixir.extensions');
 
+elixir.config.sourcemaps = false;
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management

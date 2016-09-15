@@ -1,12 +1,17 @@
 @extends('layouts.backend')
 
+@push('prestyles')
+    {{ HTML::style('vendor/datatables-bs/css/dataTables.bootstrap.min.css') }}
+@endpush
+
 @push('prescripts')
+    {{ HTML::script("vendor/datatables/js/jquery.dataTables.min.js") }}
+    {{ HTML::script("vendor/datatables-bs/js/dataTables.bootstrap.min.js") }}
     {{ HTML::script("assets/vue/positions/position.js") }}
 @endpush
 
 @section('page-content')
 <div id="PositionsController">
-    @include('backend.position._form')
     <div id="content">
         <div class="container-fluid">
             <h3>Quản lý chức vụ</h3>
@@ -21,47 +26,7 @@
                         </div>
                         
                         <div id="providerList">
-                        @include('backend.position._tool')
-                            <div class="widget-content">
-                                <div class="table-responsive">
-                                    <table class="table table-condensed table-default table-bordered table-hover" id="table-index">
-                                        <thead>
-                                            <tr class="active">
-                                                <th style="display:none">ID</th>
-                                                <th width="100">Mã</th>
-                                                <th>Tên chức vụ</th>
-                                                <th width="150">Ngày tạo</th>
-                                                <th width="80" class="text-center">Thao tác</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr v-for="position in positions">
-                                                <td>@{{ position.code }}</td>
-                                                <td>@{{ position.name }}</td>
-                                                <td>@{{ position.created_at }}</td>
-                                                <td class="text-center">
-                                                    <a href="#newProvider" 
-                                                       title="Sửa thông tin" 
-                                                       class="btn-icon label-edit" 
-                                                       data-toggle="modal" 
-                                                       v-on:click="edit(position.id)">
-                                                        <span class="glyphicon glyphicon-edit"></span>
-                                                    </a>
-                                                    
-                                                    <a href="javascript:void(0)" 
-                                                        title="Xóa"
-                                                        class="btn-icon label-delete btn-xs handle-delete"
-                                                        v-on:click="destroy(position.id, position)"
-                                                    >
-                                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <data-table></data-table>
                         </div>
                     </div>
                 </div>
