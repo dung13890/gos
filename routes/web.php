@@ -62,6 +62,9 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::get('bills/stockrequisition', ['as' => 'bill.stockrequisition', 'uses' => 'BillsController@stockRequisition']);
     Route::get('bills/createstockrequisition', 
         ['as' => 'bill.createstockrequisition', 'uses' => 'BillsController@createStockRequisition']);
+    Route::get('bills/stockrequisitiondetail', 
+        ['as' => 'bill.stockrequisitiondetail', 'uses' => 'BillsController@stockRequisitionDetail']);
+
 
     Route::resource('quotations', 'QuotationsController', ['only' => ['create', 'store']]);
 
@@ -75,4 +78,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::resource('permissions', 'PermissionsController', ['only' => 'index']);
 
     Route::resource('locations', 'LocationsController', ['only' => 'index']);
+
+    Route::resource('notifications', 'NotificationsController', ['only' => 'index']);    
 });

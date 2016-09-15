@@ -83,6 +83,11 @@ class BillsController extends Controller
         return view('backend.bill.warehouse.stock_requisition');
     }
 
+    public function stockRequisitionDetail()
+    {
+        return view('backend.bill.warehouse.stock_requisition_detail');
+    }
+
     public function createStockRequisition()
     {
         return view('backend.bill.warehouse.create_stock_requisition');
