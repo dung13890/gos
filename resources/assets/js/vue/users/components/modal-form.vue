@@ -381,7 +381,7 @@
                             formData.append('phone', self.item.phone);
                         }
 
-                        if (typeof self.item.gender != 'undefined') {
+                        if (self.item.gender) {
                             formData.append('gender', self.item.gender);
                         }
 

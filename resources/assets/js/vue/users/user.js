@@ -10,7 +10,6 @@ Vue.use(VueResource)
 Vue.use(VueValidator)
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
-//Vue.http.options.emulateJSON = true;
 Vue.http.options.emulateHTTP = true;
 new Vue({
     el: '#UsersController',
@@ -74,7 +73,7 @@ new Vue({
             UserService.store(params).then((response) => {
                 if (response.code === 200) {
                     toastr.success(response.message);
-                    $('#newUser').modal('hide');
+                    this.formElement.modal('hide');
                     self.oTable.draw();
                 } else {
                     toastr.error(response.message);
