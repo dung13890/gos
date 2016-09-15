@@ -13,7 +13,7 @@ var token = $('meta[name="csrf-token"]').attr('content');
 new Vue({
     el: '#LocationsController',
 
-    components: {DataTable},
+    components: { DataTable },
 
     data: function () {
         return {

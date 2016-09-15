@@ -14,7 +14,13 @@
 
 <div id="RoomsController">
 
-    <modal-form :item="item" :branches="branches" :permissions="permissions" :modal-title="modalTitle" :errors="errors"></modal-form>
+    <modal-form 
+        :item="item" 
+        :branches="branches" 
+        :permissions="permissions" 
+        :modal-title="modalTitle" 
+        :errors="errors"
+    ></modal-form>
 
     <div id="content">
         <div class="container-fluid">

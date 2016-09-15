@@ -75,6 +75,7 @@ class RoomsController extends ApiController
         return $this->jsonRender();
     }
 
+
     public function store(StoreRequest $request, RoomService $service)
     {
         $data = $request->all();
