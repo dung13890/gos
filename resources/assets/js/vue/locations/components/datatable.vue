@@ -14,7 +14,7 @@
                         <td style="display:none"></td>
                         <td><input v-model="code" type="text" class="form-control input-sm" ></td>
                         <td><input v-model="name" type="text" class="form-control input-sm"> </td>
-                        <td></td>
+                        <td style="width:50%;"></td>
                         <td class="text-center">
                             <a v-on:click.prevent="search" class="btn btn-info input-sm">
                                 <span class="glyphicon glyphicon-search"></span> Tìm kiếm
