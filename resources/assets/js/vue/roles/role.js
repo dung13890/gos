@@ -42,6 +42,7 @@ new Vue({
         create: function() {
             this.formRole.modal({
                 backdrop: 'static',
+                keyboard: false,
                 show: true
             });
             this.errors = {},
@@ -70,7 +71,11 @@ new Vue({
 
         edit: function(id) {
             var self = this;
-            this.formRole.modal('show');
+            this.formRole.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
             this.modalTitle = 'Cập nhật quyền';
 
             RoleService.edit(id).then(function(response) {

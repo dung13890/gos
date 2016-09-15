@@ -13,11 +13,6 @@ class UpdateRequest extends Request
      */
     public function authorize()
     {
-        $all = $this->all();
-        if (!is_numeric($all['member'])) {
-            $all['member'] = 0;
-        }
-        $this->replace($all);
         return true;
     }
 
@@ -32,7 +27,7 @@ class UpdateRequest extends Request
             'code' => 'required|max:11|min:5|unique:rooms,code,' . $this->room,
             'name' => 'required|max:50|min:2|unique:rooms,name,' . $this->room,
             'branch_id' => 'required',
-            'member' => 'sometimes|max:4',
+            'member' => 'integer|between:0, 100000',
         ];
     }
 }

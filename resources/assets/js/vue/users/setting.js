@@ -48,6 +48,7 @@ new Vue({
             });
             self.formElement.modal({
                 backdrop: 'static',
+                keyboard: false,
                 show: true
             });
 
@@ -58,6 +59,7 @@ new Vue({
             this.errors = {},
             self.formPassword.modal({
                 backdrop: 'static',
+                keyboard: false,
                 show: true
             });
         },
