@@ -25,6 +25,11 @@ class Room extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function countUser()
+    {
+        return $this->users()->selectRaw('count(users.id) as member')->groupBy('user_id');
+    }
+
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);   

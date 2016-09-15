@@ -14,7 +14,7 @@ use App\Model\Permission;
 
 class RoomsController extends ApiController
 {
-    protected $dataSelect = ['id', 'code', 'name', 'manager', 'member', 'founding'];
+    protected $dataSelect = ['id', 'code', 'name', 'founding'];
 
     protected $permissionSelect = ['id', 'name'];
 
@@ -44,12 +44,9 @@ class RoomsController extends ApiController
                 });
             }
 
-            if ($request->has('manager')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['manager'], $request->manager) ? true : false;
-                });
-            }
-
+        })
+        ->addColumn('member', function ($item) {
+            return count($item->users);
         })
         ->addColumn('actions', function ($item) {
             $actions = [];

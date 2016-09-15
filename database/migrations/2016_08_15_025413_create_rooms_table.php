@@ -20,8 +20,6 @@ class CreateRoomsTable extends Migration
             $table->string('name', 50)->nullable();
             $table->string('description', 200)->nullable();
             $table->text('organizational')->nullable();
-            $table->string('manager', 50)->nullable();
-            $table->unsignedSmallInteger('member')->nullable();
             $table->string('founding', 255)->nullable();
             $table->unsignedInteger('branch_id');
             $table->timestamps();

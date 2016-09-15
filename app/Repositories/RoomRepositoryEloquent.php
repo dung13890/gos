@@ -11,4 +11,9 @@ class RoomRepositoryEloquent extends AbstractRepositoryEloquent implements RoomR
     {
         parent::__construct($model);
     }
+
+    public function datatables($columns = ['*'],  $with = [])
+    {
+    	return $this->model->with('users')->orderBy('id', 'desc')->get($columns);
+    }
 }
