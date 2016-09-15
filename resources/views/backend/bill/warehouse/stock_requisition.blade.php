@@ -85,7 +85,7 @@
                                                 <td>Vip</td>
                                                 <td>Kho kinh doanh</td>
                                                 <td class="text-center">
-                                                    <a href="javascript:void(0)" title="Xem yêu cầu">Xem</a> | 
+                                                    <a href="{{ route('bill.stockrequisitiondetail') }}" title="Xem yêu cầu">Xem</a> | 
                                                     <a href="javascript:void(0)" title="Duyệt yêu cầu">Duyệt</a>
                                                 </td>
                                             </tr>

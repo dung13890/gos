@@ -1,4 +1,3 @@
-
 <header>
     <div class="container-fluid" id="headerApp">
     <modal-profile :user-profile="userProfile" :errors="errors"></modal-profile>
@@ -26,11 +25,12 @@
                         Hệ thống <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <ul class="dropdown-menu submenu">
-                        <li><a href="/user"><i class="glyphicon glyphicon-user"></i> Quản lý người dùng</a></li>
-                        <li><a href="{{ route('roles.index') }}"><i class="glyphicon glyphicon-lock"> </i> Quản lý nhóm quyền</a></li>
-                        <li><a href="{{ route('permissions.index') }}"><i class="glyphicon glyphicon-lock"> </i> Quản lý quyền</a></li>
-                        <li><a href="{{ route('promotions.index') }}"><i class="glyphicon glyphicon-usd"></i> Khuyến mãi - Tích điểm</a></li>
-                        <li><a href=""><i class="glyphicon glyphicon-wrench"></i> Cấu hình hệ thống</a></li>
+                        <li><a href="{{ route('promotions.index') }}">
+                            <i class="glyphicon glyphicon-usd"></i> Khuyến mãi - Tích điểm</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="glyphicon glyphicon-wrench"></i> Cấu hình hệ thống</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -45,7 +45,7 @@
                         <div class="notification-heading">
                             <h4 class="menu-title">Thông báo</h4>
                             <h4 class="menu-title pull-right">
-                                <a href='#' title='Xem tất cả'>Xem tất cả</a>
+                                <a href='{{ route("notifications.index") }}' title='Xem tất cả'>Xem tất cả</a>
                                 <i class="glyphicon glyphicon-circle-arrow-right"></i>
                             </h4>
                         </div>
@@ -85,7 +85,7 @@
 
                         <div class="notification-footer text-center">
                             <h4 class="menu-title">
-                                <a href='#' title='Xem tất cả'>Xem tất cả</a>
+                                <a href='{{ route("notifications.index") }}' title='Xem tất cả'>Xem tất cả</a>
                             </h4>
                         </div>
                     </ul>
@@ -122,31 +122,8 @@
                     </a>
                     <ul class="sub-node-system">
                         <li>
-                            <a href="{{ route('locations.index') }}"  title="Quản lý khu vực">
-                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Quản lý địa điểm</a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('branches.index') }}">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý chi nhánh
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('rooms.index') }}">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý phòng ban
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('positions.index') }}">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý chức vụ
-                            </a>
-                        </li>
-
-                        <li>
                             <a href="{{ route('warehouses.index') }}">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý kho
+                                <i class="glyphicon glyphicon-pushpin"></i> Khai báo kho
                             </a>
                         </li>
 
@@ -157,13 +134,8 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('bills.index') }}">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý bán hàng
-                            </a>
-                        </li>
-                        <li>
                             <a href="{{ route('products.index') }}">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý mua hàng
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý hàng hóa
                             </a>
                         </li>
                         <li>
@@ -293,7 +265,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="node-system">
                     <a href="{{ url('bills/warehousetransfer') }}"  title="Chăm sóc khách hàng">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Chăm sóc khách hàng</a>
                     <ul class="sub-node-system">
@@ -303,9 +275,51 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="{{ url('bills/destroystock') }}"  title="Phiếu hủy hàng">
+                <li class="node-system">
+                    <a href="javascript::void(0);"  title="Nhân sự">
                     <i class="glyphicon glyphicon-th-large"></i>&nbsp; Nhân sự</a>
+                    <ul class="sub-node-system">
+                        <li>
+                            <a href="{{ route('locations.index') }}"  title="Quản lý khu vực">
+                            <i class="glyphicon glyphicon-pushpin"></i>&nbsp; Quản lý địa điểm</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('branches.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý chi nhánh
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('rooms.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý phòng ban
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('positions.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý chức vụ
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('permissions.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"> </i> Quản lý quyền
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('roles.index') }}">
+                                <i class="glyphicon glyphicon-pushpin"> </i> Quản lý nhóm quyền
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/user">
+                                <i class="glyphicon glyphicon-user"></i> Quản lý người dùng
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
