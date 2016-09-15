@@ -63,6 +63,7 @@ new Vue({
             this.modalTitle = 'Thêm mới người dùng';
             this.formElement.modal({
                 backdrop: 'static',
+                keyboard: false,
                 show: true
             });
         },
@@ -96,6 +97,7 @@ new Vue({
             this.errors = {},
             this.formElement.modal({
                 backdrop: 'static',
+                keyboard: false,
                 show: true
             });
         },

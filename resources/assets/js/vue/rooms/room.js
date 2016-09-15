@@ -51,6 +51,7 @@ new Vue({
             self.item = {};
             this.formElement.modal({
                 backdrop: 'static',
+                keyboard: false,
                 show: true
             });
             self.modalTitle = 'Thêm mới phòng ban';
@@ -83,6 +84,7 @@ new Vue({
             this.errors = {};
             this.formElement.modal({
                 backdrop: 'static',
+                keyboard: false,
                 show: true
             });
         },
