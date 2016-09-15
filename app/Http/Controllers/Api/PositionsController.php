@@ -58,32 +58,17 @@ class PositionsController extends ApiController
 
     public function edit($id)
     {
-        return response()->json([
-            'code' => 200,
-            'message' => 'Đã lấy được thông tin!',
-            'position' => Position::findOrFail($id),
-        ]);
+        parent::edit($id);
+
+        return $this->jsonRender(200);
     }
 
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, PositionService $service,  $id)
     {
-        try {
-            $position = Position::findOrFail($id);
-            $position->update($request->all());
+        $data = $request->only(['code', 'name']);
+        $entity = $this->repository->findOrFail($id);
 
-            return response()->json([
-                'code' => 200,
-                'message' => 'Sửa thành công!',
-                'position' => $position,
-            ]);
-        }
-
-        catch(Exception $e) {
-            return response()->json([
-                'errors' => true,
-                'messages'  => $e->getMessage(),
-            ], 500);
-        }
+        return $this->updateData($data, $service, $entity);
     }
 
     public function destroy($id, PositionService $service)
