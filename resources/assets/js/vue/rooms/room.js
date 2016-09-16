@@ -34,6 +34,7 @@ new Vue({
             modalTitle: '',
             errors: {},
             formElement: {},
+            permission_ids: [],
             oTable: {
                 type: Object
             }
@@ -49,6 +50,7 @@ new Vue({
         create: function() {
             var self = this;
             self.item = {};
+            this.permission_ids = [];
             this.formElement.modal({
                 backdrop: 'static',
                 keyboard: false,
