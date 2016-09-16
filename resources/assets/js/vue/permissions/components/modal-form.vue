@@ -91,6 +91,7 @@
                 });
             }
         },
+        
         ready: function () {
             this.$parent.formPermission = $('#newPermission');
         }
