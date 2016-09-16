@@ -122,11 +122,11 @@
             branches: [],
             permissions: [],
             modalTitle: '',
+            permission_ids: []
         },
 
         data: function () {
             return {
-                permission_ids: [],
                 isError: false,
             }
         },
@@ -152,6 +152,7 @@
                     if (self.$validation.invalid) {
                         self.isError = true;
                     } else {
+                        self.isError = false;
                         self.item._token = token;
 
                         self.item.permission_ids = $.map(self.permission_ids, function (val) {
@@ -163,6 +164,7 @@
                         } else {
                             self.$parent.store(self.item);
                         }
+
                     }
                 });
             }

@@ -17,7 +17,8 @@
     <modal-form 
         :item="item" 
         :branches="branches" 
-        :permissions="permissions" 
+        :permissions="permissions",
+        :permission_ids="permission_ids"
         :modal-title="modalTitle" 
         :errors="errors"
     ></modal-form>
