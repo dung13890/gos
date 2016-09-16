@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend\Branches;
 
 use App\Http\Requests\Request;
 
-class StoreRequest extends Request
+class UpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,8 +29,8 @@ class StoreRequest extends Request
     public function rules()
     {
         return [
-            'code' => 'required|max:11|min:5|unique:branches,code',
-            'name' => 'required|max:50|min:2|unique:branches,name',
+            'code' => 'required|max:11|min:5|unique:branches,code,' . $this->branch,
+            'name' => 'required|max:50|min:2|unique:branches,name,' . $this->branch,
         ];
     }
 }

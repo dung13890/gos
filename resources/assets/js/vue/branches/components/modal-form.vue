@@ -128,7 +128,7 @@
             errors: {},
             locations: [],
             modalTitle: '',
-            permission_ids: []
+            location_ids: []
         },
 
         data: function () {
