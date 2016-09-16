@@ -27,8 +27,6 @@ $factory->define(App\Model\Room::class, function (Faker\Generator $faker) {
         'name' => Str::slug($faker->name, '.'),
         'description' => $faker->text(120),
         'organizational' => $faker->text(120),
-        'manager' => $faker->name,
-        'member' => 10,
         'branch_id' => 1,
     ];
 });
@@ -93,5 +91,49 @@ $factory->define(App\Model\User::class, function (Faker\Generator $faker) {
         'phone' => $faker->phoneNumber,
         'address' => $faker->text(50),
         'position_id' => 1,
+    ];
+});
+
+// Customer Group
+$factory->define(App\Model\CustomerGroup::class, function (Faker\Generator $faker) {
+    return [
+        'code' => str_random(5),
+        'name' => $faker->text(50),
+        'type' => 1
+    ];
+});
+
+// Customer
+$factory->define(App\Model\Customer::class, function (Faker\Generator $faker) {
+    return [
+        'code' => str_random(5),
+        'people_id' => str_random(10),
+        'name' =>  $faker->text(50),
+        'type' => 'CUS', // 1: khách hàng; 2: Nhà cung cấp
+        'address' => $faker->text(50),
+        'phone' => $faker->phoneNumber,
+        'fax' => str_random(10),
+        'email' => $faker->email,
+        'tax' => str_random(9),
+        'user_name_contact' => $faker->text(15),
+        'user_phone_contact' => $faker->phoneNumber,
+        'user_email_contact' => $faker->email,
+        'banks' => json_encode([
+            [
+                "name" => $faker->text(50),
+                "branch" => $faker->text(50),
+                "number" => str_random(9),
+            ],
+            [
+                "name" => $faker->text(50),
+                "branch" => $faker->text(50),
+                "number" => str_random(9),
+            ],
+            [
+                "name" => $faker->text(50),
+                "branch" => $faker->text(50),
+                "number" => str_random(9),
+            ],
+        ]),
     ];
 });

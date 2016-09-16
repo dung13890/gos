@@ -34,9 +34,9 @@
                                             <tr class="active">
                                                 <th width="50" class="text-center">STT</th>
                                                 <th>Số HĐ</th>
-                                                <th>Ngày ký HĐ</th>
-                                                <th>Loại hợp đồng</th>
-                                                <th>NCC</th>
+                                                <th width="150">Ngày ký HĐ</th>
+                                                <th width="180">Loại hợp đồng</th>
+                                                <th width="200">NCC</th>
                                                 <th>Trạng thái</th>
                                                 <th width="80" class="text-center">Thao tác</th>
                                             </tr>
@@ -47,9 +47,10 @@
                                                 <td><input type="" name="" class="event-code" /></td>
                                                 <td><input type="" name="" class="form-control input-sm" /></td>
                                                 <td>
-                                                    <select class="form-control input-sm">
-                                                        <option>Chỉ chọn 1</option>
-                                                    </select>
+                                                    <span class="fromto">From </span>
+                                                    <input type="text" name="" class="datepicker input-sm start-date" />
+                                                    <span class="fromto">To</span>
+                                                    <input type="text" name="" class="datepicker input-sm start-date" />
                                                 </td>
                                                 <td>
                                                     <select class="form-control input-sm">
@@ -67,7 +68,7 @@
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    <button type="button" class="btn btn-info btn-filter">
+                                                    <button type="button" class="btn btn-info btn-filter btn-filter-search">
                                                         <span class="glyphicon glyphicon-search"></span> Tìm kiếm
                                                     </button>
 
