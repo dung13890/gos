@@ -31,30 +31,32 @@ class BranchesController extends ApiController
         ->filter(function ($instance) use ($request) {
             if ($request->has('code')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['code'], $request->code) ? true : false;
+                    return Str::contains($row['code'], $request->code);
                 });
             }
 
             if ($request->has('name')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['name'], $request->name) ? true : false;
+                    return Str::contains($row['name'], $request->name);
                 });
             }
 
             if ($request->has('address')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['name'], $request->name) ? true : false;
+                    return Str::contains($row['name'], $request->name);
                 });
             }
         })
         ->editColumn('status', function ($item) {
-            return "<span class='label " . config("gso.statusBranch.{$item->status}.label") . "'>" . config("gso.statusBranch.{$item->status}.name") ."</span>";
+            return "<span class='label " . config("gso.statusBranch.{$item->status}.label") . "'>"
+                . config("gso.statusBranch.{$item->status}.name") ."</span>";
         })
         ->addColumn('actions', function ($item) {
             $actions = [];
                 if ($this->before('edit',$item, false)) {
                     $actions['edit'] = true;
                 }
+
                 if ($this->before('delete',$item, false)) {
                     $actions['delete'] = true;
                 }

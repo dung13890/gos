@@ -83,6 +83,8 @@ function renderTable(route, columns, options, callback, selector) {
         }
     };
 
+    $("#table-index_filter").hide();
+
     options = $.extend(defaultOptions, options);
 
     if (typeof callback === 'function') setTimeout(callback, 500);
@@ -94,4 +96,5 @@ function renderTable(route, columns, options, callback, selector) {
     } else {
         return;
     }
+
 }

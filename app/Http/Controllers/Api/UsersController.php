@@ -46,44 +46,44 @@ class UsersController extends ApiController
         })
         ->filter(function ($instance) use ($request) {
             if ($request->has('code')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['code'], $request->code) ? true : false;
+                $instance->collection = $instance->collection->filter(function ($user) use ($request) {
+                    return Str::contains($user['code'], $request->code);
                 });
             }
 
             if ($request->has('fullname')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['fullname'], $request->fullname) ? true : false;
+                $instance->collection = $instance->collection->filter(function ($user) use ($request) {
+                    return Str::contains($user['fullname'], $request->fullname);
                 });
             }
 
             if ($request->has('email')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['email'], $request->email) ? true : false;
+                $instance->collection = $instance->collection->filter(function ($user) use ($request) {
+                    return Str::contains($user['email'], $request->email);
                 });
             }
 
             if ($request->has('phone')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['phone'], $request->phone) ? true : false;
+                $instance->collection = $instance->collection->filter(function ($user) use ($request) {
+                    return Str::contains($user['phone'], $request->phone);
                 });
             }
 
             if ($request->has('username')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['username'], $request->username) ? true : false;
+                $instance->collection = $instance->collection->filter(function ($user) use ($request) {
+                    return Str::contains($user['username'], $request->username);
                 });
             }
 
             if ($request->has('position_id')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return $row->position_id == $request->position_id;
+                $instance->collection = $instance->collection->filter(function ($user) use ($request) {
+                    return $user->position_id == $request->position_id;
                 });
             }
 
             if ($request->has('room_id')) {
-                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return isset($row->rooms->keyBy('id')[$request->room_id]) ? true : false ;
+                $instance->collection = $instance->collection->filter(function ($user) use ($request) {
+                    return isset($user->rooms->keyBy('id')[$request->room_id]);
                 });
             }
 

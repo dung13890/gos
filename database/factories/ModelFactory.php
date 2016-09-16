@@ -137,3 +137,15 @@ $factory->define(App\Model\Customer::class, function (Faker\Generator $faker) {
         ]),
     ];
 });
+
+// Warehouse
+$factory->define(App\Model\Warehouse::class, function (Faker\Generator $faker) {
+    return [
+        'code' => str_random(5),
+        'name' => $faker->text(50),
+        'type' => 1,
+        'note' => $faker->text(50),
+        'user_id' => 1,
+        'branch_id' => 1
+    ];
+});
