@@ -20,7 +20,7 @@
                                                 maxlength: {rule: 200, message: 'Không được quá 200 ký tự'}
                                             }"
                                         />
-                                        <span class="error" v-if="$validation.name.errors">
+                                        <span class="error" v-if="$validation.name.errors && isError">
                                             {{ $validation.name.errors[0].message }}
                                         </span>
                                     </div>
@@ -66,13 +66,21 @@
             modalTitle: '',
         },
 
+        data: function () {
+            return {
+                isError: false,
+            }
+        },
+
         methods: {
             postForm: function () {
                 var self = this;
+                this.errors = {};
                 this.$validate(true, function () {
                     if (self.$validation.invalid) {
-                        return;
+                        self.isError = true;
                     } else {
+                        self.isError = false;
                         self.permission._token = token;
                         if (self.permission.id) {
                             self.$parent.update(self.permission, self.permission.id);

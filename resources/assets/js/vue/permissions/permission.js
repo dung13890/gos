@@ -24,11 +24,7 @@ new Vue({
                 model: '',
             },
             modalTitle: '',
-            createAction: true,
-            errors: {
-                errors: false,
-                messages: {}
-            },
+            errors: {},
             formPermission: {},
             oTable: {
                 type: Object
@@ -43,7 +39,11 @@ new Vue({
 
     methods: {
         create: function() {
-            this.formPermission.modal('show');
+            this.formPermission.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
             this.permission = {};
             this.modalTitle = 'Thêm mới quyền';
         },
@@ -69,7 +69,11 @@ new Vue({
 
         edit: function(id) {
             var self = this;
-            this.formPermission.modal('show');
+            this.formPermission.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
             this.modalTitle = 'Cập nhật quyền';
 
             PermissionService.edit(id).then(function(response) {
