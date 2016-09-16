@@ -22,7 +22,7 @@ class PermissionsController extends ApiController
         parent::__construct($permission);
     }
 
-    public function getData(Request $request)
+    public function index(Request $request)
     {
         return \Datatables::of(app(Permission::class)->all($this->dataSelect))
         ->filter(function ($instance) use ($request) {

@@ -30,6 +30,8 @@ abstract class Request extends FormRequest
             'code.unique' => 'Mã đã tồn tại',
 
             'name.unique' => 'Tên đã tồn tại',
+            'name.min' => 'Tên tối thiếu từ :min ký tự',
+
             'member.integer' => 'Làm ơn nhập định dạng số.',
             'member.between' => 'Số lượng nhân viên phải lớn hơn :min và nhỏ hơn :max.',
 

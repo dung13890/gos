@@ -32,7 +32,7 @@
             var self = this;
             return {
                 route: {
-                    url: window.laroute.route('api.v1.permissions.data'),
+                    url: window.laroute.route('api.v1.permissions.index'),
                     data: function (d) {
                         d.name = self.name;
                         d.slug = self.slug;
