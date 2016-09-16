@@ -17,7 +17,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
     Route::get('positions/data', ['as' => 'positions.data', 'uses' => 'PositionsController@getData']);
     Route::resource('positions', 'PositionsController');
     
-    Route::get('branches/data', ['as' => 'branches.data', 'uses' => 'BranchesController@getData']);
     Route::resource('branches', 'BranchesController');
     Route::resource('units', 'UnitsController');
     

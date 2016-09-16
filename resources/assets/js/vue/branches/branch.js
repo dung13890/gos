@@ -3,6 +3,7 @@ import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import BranchService from '../services/branch'
 import DataTable from './components/datatable.vue';
+import ModalForm from './components/modal-form.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
@@ -12,22 +13,22 @@ var token = $('meta[name="csrf-token"]').attr('content');
 new Vue({
     el: '#BranchesController',
     
-    components: { DataTable },
+    components: { DataTable, ModalForm },
 
     data: function () {
         return {
-            branch: {
+            item: {
                 id: '',
                 code: '',
                 name: '',
                 address: '',
                 phone: '',
                 fax: '',
-                status: '',
-                locations_selected: []
+                status: ''
             },
 
             locations: [],
+            location_id: [],
 
             modalTitle: '',
             errors: {},
@@ -45,26 +46,30 @@ new Vue({
 
     methods: {
         create: function() {
-            var self = this;
-            self.branch = {};
-            self.branch.locations_selected = [];
-
-            self.modalTitle = 'Thêm mới chi nhánh';
+            this.item = {};
+            this.location_id = [],
+            this.formElement.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+            this.modalTitle = 'Thêm mới chi nhánh';
         },
 
         store: function(params) {
             var self = this;
-
             BranchService.store(params).then((response) => {
-                toastr.success(response.message);
                 if (response.code === 200) {
-                    self.reload();
+                    toastr.success(response.message);
+                    self.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.isError = true;
-                    self.errors = response.errors;
+                    self.errors = response;
                 }
             });
         },
@@ -91,8 +96,7 @@ new Vue({
             self.modalTitle = 'Sửa thông tin chi nhánh';
 
             BranchService.edit(id).then(function(response) {
-                self.branch = response.branch;
-                self.branch.locations_selected = response.branch.locations;
+                self.item = response.branch;
             });
         },
 
@@ -146,7 +150,7 @@ new Vue({
     
     ready: function () {
         var self = this;
-        BranchService.index().then(function(response) {
+        BranchService.create().then(function(response) {
             self.locations = response.locations;
         });
     }
