@@ -75,13 +75,14 @@ class WarehousesController extends ApiController
             ->addColumn('actions', function ($item) {
 
                 $actions = '';
-                    if ($this->before('edit', $item, false)) {
-                        $actions .=  'Edit';
-                    }
+                
+                if ($this->before('edit', $item, false)) {
+                    $actions .= '<a href="javascript::void(0);" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Sửa</a>';
+                }
 
-                    if ($this->before('delete', $item, false)) {
-                        $actions .= 'Delete';
-                    }
+                if ($this->before('delete', $item, false)) {
+                    $actions .= '<a href="javascript::void(0);" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Xóa</a>';
+                }
 
                 return $actions;
             })
