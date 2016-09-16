@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\Backend\Branches\StoreRequest;
 use App\Contracts\Repositories\BranchRepository;
+use App\Contracts\Repositories\LocationRepository;
 use App\Contracts\Services\BranchService;
 use Illuminate\Support\Str;
 use App\Model\Location;
@@ -14,13 +15,17 @@ class BranchesController extends ApiController
 {
     protected $dataSelect = ['id', 'code', 'name', 'address', 'status'];
 
-    public function __construct(BranchRepository $branch)
+    protected $locationSelect = ['id', 'name'];
+
+    protected $locationRepository;
+
+    public function __construct(BranchRepository $branch, LocationRepository $location)
     {
         parent::__construct($branch);
-        $this->branchRepository = $branch;
+        $this->locationRepository = $location;
     }
 
-    public function getData(Request $request)
+    public function index(Request $request)
     {
         return \Datatables::of($this->repository->datatables($this->dataSelect))
         ->filter(function ($instance) use ($request) {
@@ -58,28 +63,24 @@ class BranchesController extends ApiController
         })->make(true);
     }
 
-    public function index()
+    public function create()
     {
-
-    }
-
-    public function store(StoreRequest $request)
-    {
-        $params = $request->all();
-        $locationIds = [];
-        
-        $branch = Branch::create($params);
-
-        if (isset($params['locations_selected']) && $params['locations_selected'] != null) {
-            $locationIds = array_pluck($params['locations_selected'], 'id');
-            $branch->locations()->attach($locationIds);
+        try {
+            $this->compacts['locations'] = $this->locationRepository->all($this->locationSelect);
+            $code = 200;
+        } catch (\Exception $e) {
+            $code = 500;
+            $this->compacts['errors'] = $e->getMessage();
         }
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'Thêm thành công!',
-            'branch' => $branch,
-        ]);
+        return $this->jsonRender();
+    }
+
+    public function store(StoreRequest $request, BranchService $service)
+    {
+        $data = $request->all();
+
+        return $this->storeData($data, $service);
     }
 
     public function edit($id)

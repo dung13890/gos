@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Backend\Branches;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class StoreRequest extends FormRequest
+class StoreRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required',
-            'name' => 'required',
-            'phone' => 'numeric',
-            'address' => 'required',
-            'fax' => 'numeric',
+            'code' => 'required|max:11|min:5|unique:branches,code',
+            'name' => 'required|max:50|min:2|unique:branches,name',
         ];
     }
 }

@@ -33,7 +33,7 @@
             var self = this;
             return {
                 route: {
-                    url: window.laroute.route('api.v1.branches.data'),
+                    url: window.laroute.route('api.v1.branches.index'),
                     data: function (d) {
                         d.code = self.code;
                         d.name = self.name;

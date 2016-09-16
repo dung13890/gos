@@ -13,10 +13,23 @@
 
 @section('page-content')
 <div id="BranchesController">
-        
+    
+    <modal-form 
+        :item="item" 
+        :locations="locations",
+        :location_ids="location_ids"
+        :modal-title="modalTitle" 
+        :errors="errors"
+    ></modal-form>
+
     <div id="content">
         <div class="container-fluid">
-            <h3>Quản lý chi nhánh</h3>
+            <h3>
+                Quản lý chi nhánh
+                <a href="#" v-on:click="create" role="button" class="btn btn-success pull-right">
+                    <i class="fa fa-plus"></i> Thêm mới chi nhánh
+                </a>
+            </h3>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="widget">
