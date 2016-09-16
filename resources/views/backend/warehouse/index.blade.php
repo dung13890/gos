@@ -1,15 +1,20 @@
 @extends('layouts.backend')
 
 @push('prestyles')
-    {{ HTML::style("assets/css/backend/checkbox-radiobox.css") }}
     {{ HTML::style("assets/css/backend/promtions/promotion.css") }}
+    {{ HTML::style('vendor/datatables-bs/css/dataTables.bootstrap.min.css') }}
+@endpush
+
+@push('prescripts')
+    {{ HTML::script("vendor/datatables/js/jquery.dataTables.min.js") }}
+    {{ HTML::script("vendor/datatables-bs/js/dataTables.bootstrap.min.js") }}
+    {{ HTML::script("assets/vue/warehouses/warehouse.js") }}
 @endpush
 
 @section('page-content')
-<div id="PositionsController">
-    
-    @include('backend.warehouse._form')
 
+<div id="WarehousesController">
+    
     <div id="content">
         <div class="container-fluid">
             <h3>
@@ -29,82 +34,10 @@
                         </div>
                         
                         <div id="providerList">
-                        
                             <div class="widget-content">
                                 <div class="table-responsive">
-                                    <table class="table table-condensed table-default table-bordered table-hover" id="table-index">
-                                        <thead>
-                                            <tr class="active">
-                                                <th width="80" class="text-center">Mã</th>
-                                                <th>Tên kho hàng</th>
-                                                <th width="300">Tên chủ kho</th>
-                                                <th width="300">Thuộc chi nhánh</th>
-                                                <th width="80" class="text-center">Thao tác</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr style="    background: #e3eff1;">
-                                                <td><input type="" name="" class="event-code" /></td>
-                                                <td><input type="" name="" class="form-control input-sm" /></td>
-                                                <td>
-                                                    <select class="form-control input-sm">
-                                                        <option>Chỉ chọn 1</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <select class="form-control input-sm">
-                                                        <option>Cho chọn nhiều chi nhánh</option>
-                                                    </select>
-                                                </td>
-                                                <td class="text-center">
-                                                    <button type="button" class="btn btn-info btn-filter">
-                                                        <span class="glyphicon glyphicon-search"></span> Tìm kiếm
-                                                    </button>
-
-                                                    <button type="button" class="btn btn-danger btn-filter">
-                                                        <span class="glyphicon glyphicon glyphicon-ban-circle"></span> Reset
-                                                    </button>
-                                                </td>
-                                            </tr>
-
-                                            @for($i = 1; $i <= 3; $i ++)
-                                            <tr>
-                                                <td>ABCXYZ</td>
-                                                <td>Get up to 50% off on Candle hotders</td>
-                                                <td>15/11/2014 00h00</td>
-                                                <td>20/11/2014 00h00</td>
-                                                <td class="text-center">
-                                                    <a href="#newRoom"
-                                                        title="Sửa"
-                                                        class="btn-icon label-edit"
-                                                        data-toggle="modal"
-                                                        v-on="click: getUserProfile()">
-                                                        <span class="glyphicon glyphicon-edit"></span>
-                                                    </a>
-
-                                                    <a href="javascript:void(0);" title="Xóa" 
-                                                        class="btn-icon label-delete"
-                                                        v-on:click="destroy(room.id, room)">
-                                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            @endfor
-                                        </tbody>
-                                    </table>
+                                    <data-table></data-table>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="widget-footer">
-                            <div class="text-right">
-                                <ul class="pagination">
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>

@@ -19,16 +19,7 @@ class Branch extends Model
         'image',
         'status',
     ];
-
-    public static function all($columns = [])
-    {
-        if ($columns != null) {
-            return self::select($columns)->get();
-        } else {
-            return self::all();
-        }
-    }
-
+    
     public function locations()
     {
         return $this->belongsToMany(Location::class);
@@ -37,5 +28,10 @@ class Branch extends Model
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function warehouses()
+    {
+        return $this->hasMany(Warehouse::class);
     }
 }

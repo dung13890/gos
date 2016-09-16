@@ -18,11 +18,11 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
     Route::resource('positions', 'PositionsController');
     
     Route::resource('branches', 'BranchesController');
+    
     Route::resource('units', 'UnitsController');
     
     Route::get('rooms/data', ['as' => 'rooms.data', 'uses' => 'RoomsController@getData']);
     Route::resource('rooms', 'RoomsController');
-
 
     Route::get('users/profile', ['as' => 'users.profile', 'uses' => 'UsersController@profile']);
     Route::get('users/data', ['as' => 'users.data', 'uses' => 'UsersController@getData']);
@@ -37,4 +37,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
 
     Route::get('locations/data', ['as' => 'locations.data', 'uses' => 'LocationsController@getData']);
     Route::resource('locations', 'LocationsController');
+
+    Route::resource('warehouses', 'WarehousesController', ['only' =>['index', 'store', 'update', 'destroy']]);
+    Route::get('warehouses/start', ['as' => 'warehouses.start-controller', 'uses' => 'WarehousesController@startController']);
 });

@@ -8,7 +8,7 @@
                         <th>Mã địa điểm</th>
                         <th>Tên địa điểm</th>
                         <th>Mô tả</th>
-                        <th class="text-center">Thao tác</th>
+                        <th class="text-center" width="180">Thao tác</th>
                     </tr>
                     <tr style="background: #e3eff1;">
                         <td style="display:none"></td>

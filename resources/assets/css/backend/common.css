@@ -592,3 +592,7 @@ ul.sub-right-menu {
  ul.sub-node-system li:hover ul.sub-right-menu {
     display: block;
  }
+
+ #dataTables_filter {
+    display: none !important;
+ }

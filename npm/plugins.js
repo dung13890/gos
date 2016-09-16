@@ -115,6 +115,11 @@ var plugins = {
       in: '',
       out: 'locations'
     },
+    {
+      name: 'warehouses/warehouse.js',
+      in: '',
+      out: 'warehouses'
+    },
   ]
 }
 module.exports = plugins;

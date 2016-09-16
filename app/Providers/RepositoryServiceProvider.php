@@ -39,6 +39,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\Repositories\RoomRepository::class,
             \App\Repositories\RoomRepositoryEloquent::class,
         ],
+        'Warehouse' => [
+            \App\Contracts\Repositories\WarehouseRepository::class,
+            \App\Repositories\WarehouseRepositoryEloquent::class,
+        ],
     ];
 
     public function boot()
