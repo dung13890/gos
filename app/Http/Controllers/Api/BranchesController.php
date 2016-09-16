@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\Backend\Branches\StoreRequest;
+use App\Http\Requests\Backend\Branches\UpdateRequest;
 use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Repositories\LocationRepository;
 use App\Contracts\Services\BranchService;
 use Illuminate\Support\Str;
-use App\Model\Location;
 
 class BranchesController extends ApiController
 {
@@ -85,34 +85,18 @@ class BranchesController extends ApiController
 
     public function edit($id)
     {
-        $branch = Branch::findOrFail($id);
-        $branch->locations = $branch->locations()->get(['id', 'name']);
+        parent::edit($id);
+        $this->compacts['item']->load('locations');
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'Đã lấy được thông tin!',
-            'branch' => $branch,
-        ]);
+        return $this->jsonRender(200);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, BranchService $service, $id)
     {
-        $params = $request->all();
-        $locationIds = [];
+        $data = $request->all();
+        $entity = $this->repository->findOrFail($id);
 
-        $branch = Branch::findOrFail($id);
-        $branch->update($params);
-
-        if (isset($params['locations_selected']) && $params['locations_selected'] != null) {
-            $locationIds = array_pluck($params['locations_selected'], 'id');
-            $branch->locations()->sync($locationIds);
-        }
-
-        return response()->json([
-            'code' => 200,
-            'message' => 'Sửa thành công!',
-            'branch' => $branch,
-        ]);
+        return $this->updateData($data, $service, $entity);
     }
 
     public function destroy($id, BranchService $service)

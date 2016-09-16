@@ -4,7 +4,7 @@ return [
     'statusBranch' => [
         0 => [
             'name' => 'Ngừng hoạt động',
-            'lable' => 'label-disable'
+            'label' => 'label-default'
         ],
         
         1 => [
