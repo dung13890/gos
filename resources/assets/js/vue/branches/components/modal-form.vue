@@ -12,6 +12,7 @@
 	                        <div class="form-group">
 	                            <div class="col-md-12">
 	                                <div class="required-wrapper form-field">
+	                                	<small>Vùng kinh doanh</small>
 	                                    <multiselect
 	                                        :options="locations"
 	                                        :type="json"
@@ -32,6 +33,7 @@
 	                                </div>
 
 	                                <div class="required-wrapper form-field">
+	                                	<small>Mã chi nhánh</small>
 	                                    <input type='text' v-model='item.code'
 	                                        class='form-control input-sm'
 	                                        value=''
@@ -45,6 +47,7 @@
 	                                </div>
 
 	                                <div class="required-wrapper form-field">
+	                                	<small>Tên chi nhánh</small>
 	                                    <input type='text' v-model='item.name'
 	                                        class='form-control input-sm'
 	                                        placeholder='Tên chi nhánh'
@@ -58,6 +61,7 @@
 	                                </div>
 
 	                                <div class="required-wrapper form-field">
+	                                	<small>Địa chỉ</small>
 	                                    <input type='text' v-model='item.address'
 	                                        class='form-control input-sm'
 	                                        placeholder='Địa chỉ'
@@ -69,6 +73,7 @@
 	                                </div>
 
 	                                <div class="required-wrapper form-field">
+	                                	<small>Điện thoại</small>
 	                                    <input type='text' v-model='item.phone'
 	                                        placeholder='Điện thoại'
 	                                        class='form-control input-sm'
@@ -76,6 +81,7 @@
 	                                </div>
 
 	                                <div class="required-wrapper form-field">
+	                                	<small>Fax</small>
 	                                    <input type='text' v-model='item.fax'
 	                                        placeholder='Số Fax'
 	                                        class='form-control input-sm'
@@ -83,12 +89,14 @@
 	                                </div>
 
 	                                <div class="required-wrapper form-field">
+	                                	<small>Website</small>
 	                                    <input type='text' v-model='item.website'
 	                                        placeholder='Website'
 	                                        class='form-control input-sm'
 	                                    />
 	                                </div>
 
+	                                <small>Trạng thái </small>
 	                                <div class="required-wrapper form-field">
 	                                    <div class="checkbox checkbox-success checkbox-inline">
 	                                        <input type="checkbox" id="inlineCheckbox2" v-model='item.status'>
