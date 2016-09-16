@@ -110,7 +110,7 @@ new Vue({
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Đồng ý!",
                 cancelButtonText: 'Hủy',
-                closeOnConfirm: true
+                closeOnConfirm: false
             }, function(isConfirm) {
                 if (isConfirm) {
                     PermissionService.destroy(id).then(function(response) {
