@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import BranchService from '../services/branch'
-import Multiselect from 'vue-multiselect'
+import DataTable from './components/datatable.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
@@ -12,13 +12,10 @@ var token = $('meta[name="csrf-token"]').attr('content');
 new Vue({
     el: '#BranchesController',
     
-    components: {
-        'multiselect': Multiselect
-    },
+    components: { DataTable },
 
     data: function () {
         return {
-            branches: {},
             branch: {
                 id: '',
                 code: '',
@@ -34,7 +31,10 @@ new Vue({
 
             modalTitle: '',
             errors: {},
-            isError: false,
+            formElement: {},
+            oTable: {
+                type: Object
+            }
         }
     },
 
@@ -96,11 +96,11 @@ new Vue({
             });
         },
 
-        destroy: function(id, branch) {
+        destroy: function(id, code) {
             var self = this;
             swal({
                 title: "Bạn có chắc chắn không?",
-                text: "Bản ghi có mã "+ branch.name + " sẽ bị xóa",
+                text: "Bản ghi có mã "+ code + " sẽ bị xóa",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -109,12 +109,11 @@ new Vue({
                 closeOnConfirm: false
             }, function(isConfirm) {
                 if (isConfirm) {
-                    self.branches.$remove(branch);
                     BranchService.destroy(id).then(function(response) {
-                        self.branch = response.branch;
+                        self.oTable.draw();
                     });
 
-                    swal("Đã xóa!", "Bản ghi có mã " + branch.code, "success");
+                    swal("Đã xóa!", "Bản ghi có mã " + code, "success");
                 }
             });
         },
@@ -148,7 +147,6 @@ new Vue({
     ready: function () {
         var self = this;
         BranchService.index().then(function(response) {
-            self.branches = response.branches;
             self.locations = response.locations;
         });
     }
