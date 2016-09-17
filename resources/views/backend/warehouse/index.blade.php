@@ -14,7 +14,7 @@
 @section('page-content')
 
 <div id="WarehousesController">
-    
+    @include('backend.warehouse._form')
     <div id="content">
         <div class="container-fluid">
             <h3>
