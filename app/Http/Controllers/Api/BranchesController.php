@@ -43,7 +43,7 @@ class BranchesController extends ApiController
 
             if ($request->has('address')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['name'], $request->name);
+                    return Str::contains($row['address'], $request->address);
                 });
             }
         })

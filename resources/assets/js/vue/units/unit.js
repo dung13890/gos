@@ -3,6 +3,8 @@ import VueResource from 'vue-resource'
 import VueValidator from 'vue-validator'
 import UnitService from '../services/unit';
 
+import DataTable from './components/datatable.vue';
+
 Vue.use(VueResource)
 Vue.use(VueValidator)
 
@@ -10,6 +12,8 @@ var token = $('meta[name="csrf-token"]').attr('content');
 
 new Vue({
     el: '#UnitsController',
+
+    components: { DataTable },
 
     data: function () {
         return {
@@ -19,12 +23,11 @@ new Vue({
                 short_name: '',
                 description: '',
             },
-            units: {},
-            locations: {},
             modalTitle: '',
             errors: {},
-            isError: false,
-            options: ['list', 'of', 'options'],
+            oTable: {
+                type: Object
+            }
         }
     },
 
@@ -83,11 +86,11 @@ new Vue({
             });
         },
 
-        destroy: function(id, unit) {
+        destroy: function(id, name) {
             var self = this;
             swal({
                 title: "Bạn có chắc chắn không?",
-                text: "Bản ghi có tên "+ unit.name + " sẽ bị xóa",
+                text: "Bản ghi có ký hiệu "+ name + " sẽ bị xóa",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -96,35 +99,14 @@ new Vue({
                 closeOnConfirm: false
             }, function(isConfirm) {
                 if (isConfirm) {
-                    self.units.$remove(unit);
                     UnitService.destroy(id).then(function(response) {
-                        self.unit = response.unit;
+                        self.oTable.draw();
                     });
 
-                    swal("Đã xóa!", "Bản ghi có tên " + unit.name, "success");
+                    swal("Đã xóa!", "Bản ghi có ký hiệu " + name, "success");
                 }
             });
         },
-
-        validate: function()
-        {
-            var self = this;
-            this.$validate(true, function () {
-                if (self.$validation.invalid) { return; }
-
-                if (self.unit.id) {
-                    self.update(self.unit, self.unit.id);
-                } else {
-                    self.store(self.unit);
-                }
-            });
-        },
-
-        reload: function() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 1000);
-        }
     },
 
     ready: function () {
