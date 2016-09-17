@@ -49,6 +49,12 @@ new Vue({
         WarehouseService.setHttp(this.$http);
     },
 
+    methods: {
+        test: function() {
+            alert('OK')
+        }
+    },
+
     ready: function () {
         var self = this;
         
