@@ -17,6 +17,7 @@ new Vue({
     data: function () {
         return {
             warehouse: {
+                _token: '',
                 id: '',
                 code: '',
                 name: '',
@@ -50,6 +51,25 @@ new Vue({
     },
 
     methods: {
+
+        store: function(params) {
+            var self = this;
+
+            WarehouseService.store(params).then((response) => {
+                if (response.code === 200) {
+                    toastr.success(response.message);
+                    this.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
+                }
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
+                }
+            });
+        },
+
         destroy: function(id, name) {
             var self = this;
             swal({
@@ -71,6 +91,26 @@ new Vue({
                 }
             });
         },
+
+        validate: function () {
+                this.errors = {};
+                var self = this;
+
+                this.$validate(true, function () {
+                    if (self.$validation.invalid) {
+                        self.isError = true;
+                    } else {
+                        self.isError = false;
+                        self.warehouse._token = token;
+
+                        if (self.warehouse.id) {
+                            self.$parent.update(self.warehouse, self.warehouse.id);
+                        } else {
+                            self.store(self.warehouse);
+                        }
+                    }
+                });
+            }
     },
 
     ready: function () {
@@ -82,13 +122,11 @@ new Vue({
 
         $(document).on("click", ".edit-entity", function() {
             var idWarehouse = parseInt($(this).attr('id'));
-
         });
 
         $(document).on("click", ".destroy-entity", function() {
             var idWarehouse = $(this).attr('id');
             var nameWarehouse = $(this).attr('name');
-
             self.destroy(idWarehouse, nameWarehouse);
         });
     }

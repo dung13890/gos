@@ -13,7 +13,6 @@
 @section('page-content')
 
 <div id="RoomsController">
-
     <modal-form 
         :item="item" 
         :branches="branches" 

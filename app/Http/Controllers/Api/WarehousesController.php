@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Contracts\Repositories\WarehouseRepository;
 use App\Contracts\Services\WarehouseService;
+use App\Http\Requests\Backend\Warehouses\StoreRequest;
 use App\Model\Branch;
 
 class WarehousesController extends ApiController
@@ -94,6 +95,13 @@ class WarehousesController extends ApiController
             })
 
             ->make(true);
+    }
+
+    public function store(StoreRequest $request, WarehouseService $service)
+    {
+        $data = $request->all();
+
+        return $this->storeData($data, $service);
     }
 
     public function destroy($id, WarehouseService $warehouse)
