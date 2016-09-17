@@ -50,16 +50,46 @@ new Vue({
     },
 
     methods: {
-        test: function() {
-            alert('OK')
-        }
+        destroy: function(id, name) {
+            var self = this;
+            swal({
+                title: "Bạn có chắc chắn không?",
+                text: "Bản ghi có tên "+ name + " sẽ bị xóa",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Đồng ý!",
+                cancelButtonText: 'Hủy',
+                closeOnConfirm: false
+            }, function(isConfirm) {
+                if (isConfirm) {
+                    WarehouseService.destroy(id).then(function(response) {
+                        self.oTable.draw();
+                    });
+
+                    swal("Đã xóa!", "Bản ghi có tên " + name, "success");
+                }
+            });
+        },
     },
 
     ready: function () {
         var self = this;
-        
+
         WarehouseService.index().then(function(response) {
             self.branches = response.branches;
+        });
+
+        $(document).on("click", ".edit-entity", function() {
+            var idWarehouse = parseInt($(this).attr('id'));
+
+        });
+
+        $(document).on("click", ".destroy-entity", function() {
+            var idWarehouse = $(this).attr('id');
+            var nameWarehouse = $(this).attr('name');
+
+            self.destroy(idWarehouse, nameWarehouse);
         });
     }
 });
