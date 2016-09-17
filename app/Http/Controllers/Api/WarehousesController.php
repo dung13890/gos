@@ -72,21 +72,32 @@ class WarehousesController extends ApiController
                 return ($warehouse->branch_id) ? $warehouse->branch->name : null;
             })
 
-            ->addColumn('actions', function ($item) {
-
+            ->addColumn('actions', function ($warehouse) {
                 $actions = '';
-                
-                if ($this->before('edit', $item, false)) {
-                    $actions .= '<a href="javascript::void(0);" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Sửa</a>';
+                if ($this->before('edit', $warehouse, false)) {
+                    $actions .= '<a href="#" 
+                        class="btn btn-xs btn-primary edit-entity"
+                        id="'. $warehouse->id .'"
+                        name="'. $warehouse->name .'"
+                    ><i class="glyphicon glyphicon-edit"></i> Sửa</a>';
                 }
 
-                if ($this->before('delete', $item, false)) {
-                    $actions .= '<a href="javascript::void(0);" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Xóa</a>';
+                if ($this->before('delete', $warehouse, false)) {
+                    $actions .= '<a href="#" 
+                        class="btn btn-xs btn-danger destroy-entity"
+                        id="'. $warehouse->id .'"
+                        name="'. $warehouse->name .'"
+                    ><i class="glyphicon glyphicon-remove"></i> Xóa</a>';
                 }
 
                 return $actions;
             })
 
             ->make(true);
+    }
+
+    public function destroy($id, WarehouseService $warehouse)
+    {
+        return $this->deleteData($warehouse, $this->repository->findOrFail($id));
     }
 }

@@ -99,7 +99,7 @@
                 this.$set('code', '');
                 this.$set('user', '');
                 this.$set('branch', '');
-
+                
                 this.$parent.oTable.draw();
             }
         },
