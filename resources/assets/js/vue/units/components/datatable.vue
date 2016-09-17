@@ -5,16 +5,17 @@
             <thead>
                 <tr>
                     <th style="display:none">ID</th>
-                    <th>Mã</th>
-                    <th>Tên chức vụ</th>
-                    <th>Ngày tạo</th>
-                    <th class="text-center">Thao tác</th>
+                    <th>Tên</th>
+                    <th>Ký hiệu</th>
+                    <th>Mô tả</th>
+                    <th width="100">Thao tác</th>
                 </tr>
                 <tr style="background: #e3eff1;">
                     <td style="display:none"></td>
-                    <td><input v-model="code" type="text" class="form-control input-sm"> </td>
-                    <td><input v-model="name" type="text" class="form-control input-sm" ></td>
-                    <td class="text-right" colspan="2">
+                    <td><input type="text" v-model="name" class="form-control input-sm" /></td>
+                    <td><input type="text" v-model="short_name" class="form-control input-sm" /></td>
+                    <td><input type="text" v-model="description" class="form-control input-sm" /></td>
+                    <td class="text-right">
                         <a v-on:click.prevent="search"class="btn btn-info input-sm btnForFilter">
                             <span class="glyphicon glyphicon-search"></span> Tìm kiếm
                         </a>
@@ -35,21 +36,23 @@
             var self = this;
             return {
                 route: {
-                    url: window.laroute.route('api.v1.positions.data'),
+                    url: window.laroute.route('api.v1.units.index'),
                     data: function (d) {
-                        d.code = self.code;
                         d.name = self.name;
+                        d.short_name = self.short_name;
+                        d.description = self.description;
                     }
                 },
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'code', name: 'code'},
                     {data: 'name', name: 'name'},
-                    {data: 'created_at', name: 'created_at'},
+                    {data: 'short_name', name: 'short_name'},
+                    {data: 'description', name: 'description'},
                     {data: 'actions', name: 'actions', orderable: false, searchable: false, sClass: "text-center"}
                 ],
-                code: '',
                 name: '',
+                short_name: '',
+                description: '',
             }
         },
 
@@ -70,23 +73,24 @@
                         actionHtml.html('');
 
                         if (actions.edit) {
-                            var edit = actionHtml.append('<a href="#" v-on:click="edit('+data.id+')" title="Sửa" class="btn-icon label-edit"><span class="glyphicon glyphicon-edit"></span></a>');
+                            var edit = actionHtml.append('<a href="#" v-on:click.prevent="edit('+data.id+')" title="Sửa" class="btn-icon label-edit"><span class="glyphicon glyphicon-edit"></span></a>');
                             self.$compile(edit.get(0));
                         }
 
                         if (actions.delete) {
-                            var destroy = actionHtml.append('<a href="#" title="Xóa" class="btn-icon label-delete btn-xs" v-on:click="destroy(' + data.id + ', \'' + data.code + '\')" ><span class="glyphicon glyphicon-remove-circle"></span></a>');
+                            var destroy = actionHtml.append('<a href="#" title="Xóa" class="btn-icon label-delete btn-xs" v-on:click="destroy(' + data.id + ', \'' + data.short_name + '\')" ><span class="glyphicon glyphicon-remove-circle"></span></a>');
                             self.$compile(destroy.get(0));
                         }
                     }
                 });
             },
+
             edit: function (id) {
                 this.$parent.edit(id);
             },
 
-            destroy: function(id, code) {
-                this.$parent.destroy(id, code);
+            destroy: function(id, short_name) {
+                this.$parent.destroy(id, short_name);
             },
 
             search: function () {
@@ -95,7 +99,8 @@
 
             reset: function () {
                 this.$set('name', '');
-                this.$set('code', '');
+                this.$set('short_name', '');
+                this.$set('description', '');
                 this.$parent.oTable.draw();
             },
         },

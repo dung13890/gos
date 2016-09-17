@@ -68,6 +68,7 @@ function renderTable(route, columns, options, callback, selector) {
         bLengthChange: false,
         bSortCellsTop: true,
         pageLength: 15,
+        searching: false,
         language: {
             search:"_INPUT_",
             lengthMenu: "_MENU_",

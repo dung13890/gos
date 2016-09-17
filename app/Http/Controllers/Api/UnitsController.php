@@ -4,21 +4,55 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Model\Unit;
+use App\Contracts\Repositories\UnitRepository;
+use App\Contracts\Services\UnitService;
 use App\Http\Requests\Backend\Units\StoreRequest;
 use App\Http\Requests\Backend\Units\UpdateRequest;
+use Illuminate\Support\Str;
 
-class UnitsController extends Controller
+class UnitsController extends ApiController
 {
-    public function index()
+    protected $dataSelect = ['id', 'name', 'short_name', 'description'];
+
+    public function __construct(UnitRepository $unit)
     {
-        return response()->json([
-            'code' => 200,
-            'message' => 'Load thành công',
-            'units' => Unit::select(['id', 'name', 'short_name', 'description'])->orderBy('id', 'desc')->get()
-        ]);
+        parent::__construct($unit);
+    }
+
+    public function index(Request $request)
+    {
+        return \Datatables::of($this->repository->datatables($this->dataSelect))
+        ->filter(function ($instance) use ($request) {
+            if ($request->has('name')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['name'], $request->name);
+                });
+            }
+
+            if ($request->has('short_name')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['short_name'], $request->short_name);
+                });
+            }
+
+            if ($request->has('description')) {
+                $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    return Str::contains($row['description'], $request->description);
+                });
+            }
+        })
+        ->addColumn('actions', function ($item) {
+            $actions = [];
+                if ($this->before('edit',$item, false)) {
+                    $actions['edit'] = true;
+                }
+
+                if ($this->before('delete',$item, false)) {
+                    $actions['delete'] = true;
+                }
+
+            return $actions;
+        })->make(true);
     }
     
     public function store(StoreRequest $request)
@@ -53,12 +87,10 @@ class UnitsController extends Controller
         ]);
     }
 
-    public function destroy($id)
+    public function destroy($id, UnitService $service)
     {
-        Unit::findOrFail($id)->delete();
-        return response()->json([
-            'code' => 200,
-            'message' => 'Xóa thành công!',
-        ]);
+        $entity = $this->repository->findOrFail($id);
+
+        return $this->deleteData($service, $entity);
     }
 }

@@ -159,12 +159,12 @@
                                     </div>
 
                                     <div class="required-wrapper form-field">
-                                        <small>Vị trí hiện tại</small>
+                                        <small>Chức vụ</small>
                                         <select
                                             required class="form-control input-sm"
                                             v-model='item.position_id'
                                             v-validate:position_id="{
-                                                required: {rule: true, message: 'Vui lòng chọn vị trí hiện tại'}
+                                                required: {rule: true, message: 'Vui lòng chọn chức vụ'}
                                             }">
                                             <option value="">--Chọn--</option>
                                             <option v-for="position in positions"

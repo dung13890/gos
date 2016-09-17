@@ -86,6 +86,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Services\LocationServiceJob::class
         );
         $this->app->bind(
+            \App\Contracts\Services\UnitService::class,
+            \App\Services\UnitServiceJob::class
+        );
+        $this->app->bind(
             \App\Contracts\Services\ManufacturerService::class,
             \App\Services\ManufacturerServiceJob::class
         );
