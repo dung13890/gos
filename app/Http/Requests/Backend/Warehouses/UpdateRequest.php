@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend\Warehouses;
 
 use App\Http\Requests\Request;
 
-class StoreRequest extends Request
+class UpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class StoreRequest extends Request
     public function rules()
     {
         return [
-            'code' => 'required|max:11|min:5|unique:warehouses,code',
-            'name' => 'required|max:50|min:2|unique:warehouses,name',
+            'code' => 'required|max:11|min:5|unique:warehouses,code,' . $this->warehouse,
+            'name' => 'required|max:50|min:2|unique:warehouses,name,' . $this->warehouse,
         ];
     }
 }

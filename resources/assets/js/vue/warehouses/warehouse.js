@@ -21,7 +21,7 @@ new Vue({
                 id: '',
                 code: '',
                 name: '',
-                type: '',
+                type: 1,
                 note: '',
                 user_id: '',
                 branch_id: ''
@@ -37,8 +37,6 @@ new Vue({
 
             modalTitle: 'sadsad',
             errors: {},
-            formElement: {},
-
             oTable: {
                 type: Object
             }
@@ -51,6 +49,20 @@ new Vue({
     },
 
     methods: {
+        create: function() {
+            var self = this;
+            self.warehouse = {};
+            self.errors = {};
+        },
+
+        edit: function(id) {
+            var self = this;
+            self.errors = {};
+
+            WarehouseService.edit(id).then(function(response) {
+                self.warehouse = response.item;
+            });
+        },
 
         store: function(params) {
             var self = this;
@@ -58,7 +70,23 @@ new Vue({
             WarehouseService.store(params).then((response) => {
                 if (response.code === 200) {
                     toastr.success(response.message);
-                    this.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
+                }
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
+                }
+            });
+        },
+
+        update: function(params, id) {
+            var self = this;
+
+            WarehouseService.update(params, id).then((response) => {
+                if (response.code === 200) {
+                    toastr.success(response.message);
                     self.oTable.draw();
                 } else {
                     toastr.error(response.message);
@@ -104,7 +132,7 @@ new Vue({
                         self.warehouse._token = token;
 
                         if (self.warehouse.id) {
-                            self.$parent.update(self.warehouse, self.warehouse.id);
+                            self.update(self.warehouse, self.warehouse.id);
                         } else {
                             self.store(self.warehouse);
                         }
@@ -122,6 +150,7 @@ new Vue({
 
         $(document).on("click", ".edit-entity", function() {
             var idWarehouse = parseInt($(this).attr('id'));
+            self.edit(idWarehouse);
         });
 
         $(document).on("click", ".destroy-entity", function() {

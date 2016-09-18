@@ -5,7 +5,7 @@ namespace App\Jobs\Warehouse;
 use App\Jobs\Job;
 use App\Contracts\Repositories\WarehouseRepository;
 
-class Update extends Job
+class UpdateWarehouse extends Job
 {
     protected $attributes;
 
@@ -25,9 +25,5 @@ class Update extends Job
     public function handle()
     {
         $this->entity->update($this->attributes);
-
-        // if (isset($this->attributes['permission_ids']) && count($this->attributes['permission_ids'])) {
-        //     $this->entity->permissions()->sync($this->attributes['permission_ids']);
-        // }
     }
 }

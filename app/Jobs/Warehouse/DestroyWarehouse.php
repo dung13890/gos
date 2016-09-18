@@ -6,7 +6,7 @@ use App\Jobs\Job;
 use App\Contracts\Repositories\WarehouseRepository;
 use Illuminate\Database\Eloquent\Model;
 
-class Destroy extends Job
+class DestroyWarehouse extends Job
 {
     protected $warehouse;
 

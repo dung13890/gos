@@ -2,7 +2,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button"
+                    v-on:click="create()"
+                    class="close" data-dismiss="modal"
+                    aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Thêm mới kho hàng</h4>
             </div>
             <div class="modal-body">
@@ -72,6 +75,12 @@
                                     <span class="error" v-if="$validation.branch_id.errors && isError">
                                         @{{ $validation.branch_id.errors[0].message }}
                                     </span>
+                                </div>
+
+                                <div v-show="errors.errors" class="alert alert-danger animated jello">
+                                    <ul>
+                                        <li v-for="error in errors.messages">@{{ error }}</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

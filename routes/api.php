@@ -38,6 +38,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
     Route::get('locations/data', ['as' => 'locations.data', 'uses' => 'LocationsController@getData']);
     Route::resource('locations', 'LocationsController');
 
-    Route::resource('warehouses', 'WarehousesController', ['only' =>['index', 'store', 'update', 'destroy']]);
+    Route::resource('warehouses', 'WarehousesController', ['only' =>['index', 'store', 'edit', 'update', 'destroy']]);
     Route::get('warehouses/start', ['as' => 'warehouses.start-controller', 'uses' => 'WarehousesController@startController']);
 });
