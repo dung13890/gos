@@ -21,7 +21,7 @@
                                     minlength: {rule: 5, message: 'Mã địa điểm không được nhỏ hơn 5 ký tự.'},
                                 }"
                             />
-                            <span class="error" v-if="$validation.code.errors">
+                            <span class="error" v-if="$validation.code.errors && isError">
                                 @{{ $validation.code.errors[0].message  }}
                             </span>
                         </div>
@@ -39,15 +39,30 @@
                                     minlength: {rule: 10, message: 'Tên địa điểm không được nhỏ hơn 10 ký tự.'},
                                 }"
                             />
-                            <span class="error" v-if="$validation.name.errors">
+                            <span class="error" v-if="$validation.name.errors && isError">
                                 @{{ $validation.name.errors[0].message  }}
                             </span>
                         </div>
 
-                        <div v-show="errors.errors" class="alert alert-danger animated jello">
-                            <ul>
-                                <li v-for="error in errors.messages">@{{ error }}</li>
-                            </ul>
+                        <div class="required-wrapper">
+                            <small>Chi Nhánh</small>
+                            <multiselect
+                                :options="branches"
+                                :type="json"
+                                :selected.sync="branch_ids"
+                                :multiple="true"
+                                :searchable="true"
+                                :local-search="true",
+                                :allow-empty="true"
+                                v-on:update="branchSelected"
+                                :hide-selected="true",
+                                :close-on-select="false",
+                                deselect-label="Bỏ chọn"
+                                select-label="Enter để chọn"
+                                label="name"
+                                key="id"
+                                placeholder="Chi nhánh"
+                            ></multiselect>
                         </div>
 
                         <div class="required-wrapper">
@@ -61,9 +76,15 @@
                                 class="form-control input-sm"
                                 rows="3"
                             ></textarea>
-                            <span class="error" v-if="$validation.description.errors">
+                            <span class="error" v-if="$validation.description.errors && isError">
                                 @{{ $validation.description.errors[0].message  }}
                             </span>
+                        </div>
+
+                        <div v-show="errors.errors" class="alert alert-danger animated jello">
+                            <ul>
+                                <li v-for="error in errors.messages">@{{ error }}</li>
+                            </ul>
                         </div>
 
                         @include('errors.validate')

@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Model\Location;
-use App\Http\Requests\Backend\Location\StoreRequest;
 use App\Contracts\Services\LocationService;
+use App\Contracts\Repositories\LocationRepository;
+use App\Http\Requests\Backend\Location\StoreRequest;
+use App\Http\Requests\Backend\Location\UpdateRequest;
+
 
 class LocationsController extends ApiController
 {
     protected $dataSelect = ['id', 'code', 'name', 'description'];
 
-    public function __construct(Location $location)
+    public function __construct(LocationRepository $location)
     {
         parent::__construct($location);
     }
@@ -65,8 +68,23 @@ class LocationsController extends ApiController
     {
         parent::edit($id);
 
+        $this->compacts['branch_ids'] = $this->compacts['item']->branches->toArray();
+
         return $this->jsonRender(200);
     }
+
+    public function update(UpdateRequest $request, LocationService $service,  $id)
+    {
+        $data = $request->all();
+        $entity = $this->repository->findOrFail($id);
+
+        return $this->updateData($data, $service, $entity);
+    }
+
+    public function destroy(LocationService $service, $id)
+    {
+        $entity = $this->repository->findOrFail($id);
+
+        return $this->deleteData($service, $entity);
+    }
 }
-
-
