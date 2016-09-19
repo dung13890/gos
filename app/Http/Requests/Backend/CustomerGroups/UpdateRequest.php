@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend\CustomerGroups;
 
 use App\Http\Requests\Request;
 
-class UpdateRequest extends FormRequest
+class UpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code' => 'required|max:11|min:5|unique:customer_groups,code,' . $this->customergroup,
+            'name' => 'required|max:50|min:2|unique:customer_groups,name,' . $this->customergroup,
         ];
     }
 }

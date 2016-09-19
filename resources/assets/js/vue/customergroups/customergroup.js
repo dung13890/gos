@@ -71,6 +71,34 @@ new Vue({
             });
         },
 
+        edit: function(id) {
+            var self = this;
+            self.errors = {};
+            self.modalTitle = 'Sửa thông tin nhóm khách hàng';
+
+            CustomerGroupService.edit(id).then(function(response) {
+                self.customer_group = response.item;
+            });
+        },
+
+        update: function(params, id) {
+            var self = this;
+
+            CustomerGroupService.update(params, id).then((response) => {
+                if (response.code === 200) {
+                    toastr.success(response.message);
+                    $("#newGroupCustomer").modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
+                }
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
+                }
+            });
+        },
+        
         destroy: function(id, name) {
             var self = this;
             swal({

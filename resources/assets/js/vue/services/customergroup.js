@@ -19,19 +19,7 @@ export default {
             });
         });
     },
-
-    create: function() {
-        var self = this;
-        
-        return new Promise(function(resolve, reject) {
-            self.http.get(self.router.route('api.v1.warehouses.create')).then(function (response) {
-                resolve(response.data);
-            }, function (response) {
-                reject(response.data);
-            });
-        });
-    },
-
+    
     store: function(params) {
         var self = this;
 
@@ -48,7 +36,7 @@ export default {
         var self = this;
 
         return new Promise(function(resolve, reject) {
-            self.http.get(self.router.route('api.v1.warehouses.edit', {warehouse: id})).then(function (response) {
+            self.http.get(self.router.route('api.v1.customergroups.edit', {customergroup: id})).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);
@@ -60,7 +48,7 @@ export default {
         var self = this;
 
         return new Promise(function(resolve, reject) {
-            self.http.patch(self.router.route('api.v1.warehouses.update', {warehouse: id}), params).then(function (response) {
+            self.http.patch(self.router.route('api.v1.customergroups.update', {customergroup: id}), params).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);
