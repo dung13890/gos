@@ -15,13 +15,13 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="required-wrapper form-field">
-                                    <small>Mã nhóm khách hàng</small>
+                                    <small>Mã</small>
                                     <input type='text' v-model='customer_group.code' 
                                         class='form-control input-sm'
                                         value=''
                                         v-validate:code="{
-                                            required: {rule: true, message: 'Mã kho hàng không được để trống'},
-                                            maxlength: {rule: 11, message: 'Mã kho hàng không được quá 11 ký tự'}
+                                            required: {rule: true, message: 'Mã nhóm được để trống'},
+                                            maxlength: {rule: 11, message: 'Mã nhóm không được quá 11 ký tự'}
                                         }" />
 
                                     <span class="error" v-if="$validation.code.errors && isError">
@@ -30,12 +30,12 @@
                                 </div>
 
                                 <div class="required-wrapper form-field">
-                                    <small>Tên nhóm khách hàng</small>
+                                    <small>Tên nhóm</small>
                                     <input type='text' v-model='customer_group.name'
                                         class='form-control input-sm'
                                         v-validate:name="{
-                                            required: {rule: true, message: 'Tên kho hàng không được bỏ trống'},
-                                            maxlength: {rule: 50, message: 'Tên kho hàng không được quá 50 ký tự'}
+                                            required: {rule: true, message: 'Tên nhóm không được bỏ trống'},
+                                            maxlength: {rule: 50, message: 'Tên nhóm không được quá 50 ký tự'}
                                         }" />
 
                                     <span class="error" v-if="$validation.name.errors && isError">

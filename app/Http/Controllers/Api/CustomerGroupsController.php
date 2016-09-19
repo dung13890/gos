@@ -15,15 +15,19 @@ use App\Http\Requests\Backend\CustomerGroups\UpdateRequest;
 class CustomerGroupsController extends ApiController
 {
     protected $dataSelect = ['id', 'code', 'name'];
+    protected $type;
 
-    public function __construct(CustomerGroupRepository $customerGroup)
+    public function __construct(Request $request, CustomerGroupRepository $customerGroup)
     {
         parent::__construct($customerGroup);
+        $this->type = $request->type == config('gso.customer_group.type_sup') 
+            ? $request->type : config('gso.customer_group.type_cus');
     }
 
     public function index(Request $request)
     {
-        return \Datatables::of($this->repository->datatables($this->dataSelect))
+
+        return \Datatables::of($this->repository->datatables($this->dataSelect, $this->type))
 
             ->filter(function ($instance) use ($request) {
 

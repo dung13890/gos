@@ -18,12 +18,13 @@
     <div id="content">
         <div class="container-fluid">
             <h3>
-                Quản nhóm khách hàng
+                {{ $titlePage }}
+
                 <a href="javascript::void(0);"
                     role="button" class="btn btn-success pull-right"
-                    v-on:click="create()">
+                    v-on:click="create('{{ $type }}')">
                     <i class="fa fa-plus"></i>
-                    Thêm mới nhóm khách hàng
+                    Thêm mới
                 </a>
             </h3>
             <div class="row">
@@ -39,7 +40,7 @@
                         <div id="providerList">
                             <div class="widget-content">
                                 <div class="table-responsive">
-                                    <data-table></data-table>
+                                    <data-table :type="'{{ $type }}'"></data-table>
                                 </div>
                             </div>
                         </div>

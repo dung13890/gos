@@ -3,7 +3,9 @@
         <thead>
             <tr class="active">
                 <th width="5%" class="text-center">Mã</th>
-                <th width="90%">Tên nhóm khách hàng</th>
+                <th width="90%">
+                    {{ type == "customer" ? 'Tên nhóm khách hàng' : 'Tên nhóm nhà cung cấp' }}
+                </th>
                 <th width="5%" class="text-center">Thao tác</th>
             </tr>
 
@@ -27,18 +29,22 @@
 <script>
     export default {
 
+        props: {
+            type: '',
+        },
+        
         data: function () {
             var self = this;
 
             return {
                 route: {
-                    url: window.laroute.route('api.v1.customergroups.index'),
+                    url: window.laroute.route('api.v1.customergroups.index', {type: self.type}),
                     data: function (customer_group) {
                         customer_group.code = self.code;
                         customer_group.name = self.name;
                     }
                 },
-                
+
                 columns: [
                     {data: 'code', name: 'code'},
                     {data: 'name', name: 'name'},
@@ -53,14 +59,6 @@
         methods: {
             tableRender: function () {
                 this.$parent.oTable = renderTable(this.route, this.columns);
-            },
-
-            edit: function (id) {
-                this.$parent.edit(id);
-            },
-
-            destroy: function(id, code) {
-                this.$parent.destroy(id, code);
             },
 
             search: function () {
