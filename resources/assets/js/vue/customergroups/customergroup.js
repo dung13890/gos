@@ -39,6 +39,38 @@ new Vue({
     },
 
     methods: {
+
+        create: function() {
+            var self = this;
+            self.errors = {};
+            self.customer_group = {};
+
+            self.modalTitle = 'Thêm mới nhóm khách hàng';
+            $("#newGroupCustomer").modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+        },
+
+        store: function(params) {
+            var self = this;
+
+            CustomerGroupService.store(params).then((response) => {
+                if (response.code === 200) {
+                    toastr.success(response.message);
+                    $("#newGroupCustomer").modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
+                }
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
+                }
+            });
+        },
+
         destroy: function(id, name) {
             var self = this;
             swal({
@@ -60,22 +92,42 @@ new Vue({
                 }
             });
         },
+
+        validate: function () {
+            this.errors = {};
+            var self = this;
+
+            this.$validate(true, function () {
+                if (self.$validation.invalid) {
+                    self.isError = true;
+                } else {
+                    self.isError = false;
+                    self.customer_group._token = token;
+
+                    if (self.customer_group.id) {
+                        self.update(self.customer_group, self.customer_group.id);
+                    } else {
+                        self.store(self.customer_group);
+                    }
+                }
+            });
+        }
     },
 
     ready: function () {
         var self = this;
 
-        // $(document).on("click", ".edit-entity", function() {
-        //     var idWarehouse = parseInt($(this).attr('id'));
+        $(document).on("click", ".edit-entity", function() {
+            var idWarehouse = parseInt($(this).attr('id'));
             
-        //     $("#newGroupCustomer").modal({
-        //         backdrop: 'static',
-        //         keyboard: false,
-        //         show: true
-        //     });
+            $("#newGroupCustomer").modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
 
-        //     self.edit(idWarehouse);
-        // });
+            self.edit(idWarehouse);
+        });
 
         $(document).on("click", ".destroy-entity", function() {
             var idCustomerGroup = $(this).attr('id');

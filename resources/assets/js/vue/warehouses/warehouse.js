@@ -128,24 +128,24 @@ new Vue({
         },
 
         validate: function () {
-                this.errors = {};
-                var self = this;
+            this.errors = {};
+            var self = this;
 
-                this.$validate(true, function () {
-                    if (self.$validation.invalid) {
-                        self.isError = true;
+            this.$validate(true, function () {
+                if (self.$validation.invalid) {
+                    self.isError = true;
+                } else {
+                    self.isError = false;
+                    self.warehouse._token = token;
+
+                    if (self.warehouse.id) {
+                        self.update(self.warehouse, self.warehouse.id);
                     } else {
-                        self.isError = false;
-                        self.warehouse._token = token;
-
-                        if (self.warehouse.id) {
-                            self.update(self.warehouse, self.warehouse.id);
-                        } else {
-                            self.store(self.warehouse);
-                        }
+                        self.store(self.warehouse);
                     }
-                });
-            }
+                }
+            });
+        }
     },
 
     ready: function () {
