@@ -54,37 +54,27 @@ class UnitsController extends ApiController
             return $actions;
         })->make(true);
     }
-    
-    public function store(StoreRequest $request)
+
+    public function store(StoreRequest $request, UnitService $service)
     {
-        $unit = Unit::create($request->all());
-        
-        return response()->json([
-            'code' => 200,
-            'message' => 'Thêm thành công!',
-            'unit' => $unit,
-        ]);
+        $data = $request->all();
+
+        return $this->storeData($data, $service);
     }
 
     public function edit($id)
     {
-        return response()->json([
-            'code' => 200,
-            'message' => 'Đã lấy được thông tin!',
-            'unit' => Unit::findOrFail($id),
-        ]);
+        parent::edit($id);
+
+        return $this->jsonRender(200);
     }
 
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, UnitService $service,  $id)
     {
-        $unit = Unit::findOrFail($id);
-        $unit->update($request->all());
+        $data = $request->only('name', 'short_name', 'description');
+        $entity = $this->repository->findOrFail($id);
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'Sửa thành công!',
-            'unit' => $unit,
-        ]);
+        return $this->updateData($data, $service, $entity);
     }
 
     public function destroy($id, UnitService $service)

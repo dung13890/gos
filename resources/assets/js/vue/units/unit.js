@@ -4,6 +4,7 @@ import VueValidator from 'vue-validator'
 import UnitService from '../services/unit';
 
 import DataTable from './components/datatable.vue';
+import ModalForm from './components/modal-form.vue';
 
 Vue.use(VueResource)
 Vue.use(VueValidator)
@@ -13,11 +14,11 @@ var token = $('meta[name="csrf-token"]').attr('content');
 new Vue({
     el: '#UnitsController',
 
-    components: { DataTable },
+    components: { DataTable, ModalForm },
 
     data: function () {
         return {
-            unit: {
+            item: {
                 id: '',
                 name: '',
                 short_name: '',
@@ -25,6 +26,7 @@ new Vue({
             },
             modalTitle: '',
             errors: {},
+            formElement: {},
             oTable: {
                 type: Object
             }
@@ -38,51 +40,63 @@ new Vue({
 
     methods: {
         create: function() {
-            var self = this;
-            self.branch = {};
-            self.modalTitle = 'Thêm mới đơn vị tính';
+            this.item = {};
+            this.errors = {};
+            this.formElement.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+            this.modalTitle = 'Thêm mới đơn vị tính';
         },
 
         store: function(params) {
             var self = this;
-
             UnitService.store(params).then((response) => {
-                toastr.success(response.message);
                 if (response.code === 200) {
-                    self.reload();
+                    toastr.success(response.message);
+                    self.formElement.modal('hide');
+                    self.oTable.draw();
+                } else {
+                    toastr.error(response.message);
                 }
 
             }, (response) => {
                 if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
-                }
-            });
-        },
-
-        update: function (params, id) {
-            var self = this;
-            UnitService.update(params, id).then((response) => {
-                toastr.success(response.message);
-
-                if (response.code === 200) {
-                    self.reload();
-                }
-
-            }, (response) => {
-                if (response.errors) {
-                    self.errors = response.messages;
-                    self.isError = response.errors
+                    self.errors = response;
                 }
             });
         },
 
         edit: function(id) {
             var self = this;
-            self.modalTitle = 'Sửa thông tin đơn vị tính';
+            this.modalTitle = 'Sửa thông tin đơn vị tính';
+            this.errors = {};
+            this.formElement.modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
 
             UnitService.edit(id).then(function(response) {
-                self.unit = response.unit;
+                self.item = response.item;
+            });
+        },
+
+        update: function (params, id) {
+            var self = this;
+            UnitService.update(params, id).then((response) => {
+
+                if (response.code === 200) {
+                    toastr.success(response.message);
+                    self.formElement.modal('hide');
+                    self.oTable.draw();
+                }
+
+            }, (response) => {
+                if (response.errors) {
+                    self.errors = response;
+                }
             });
         },
 
@@ -108,11 +122,4 @@ new Vue({
             });
         },
     },
-
-    ready: function () {
-        var self = this;
-        UnitService.index().then(function(response) {
-            self.units = response.units;
-        });
-    }
 });
