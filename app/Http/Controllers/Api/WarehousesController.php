@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Contracts\Repositories\WarehouseRepository;
 use App\Contracts\Services\WarehouseService;
 use App\Http\Requests\Backend\Warehouses\StoreRequest;
+use App\Http\Requests\Backend\Warehouses\UpdateRequest;
 use App\Model\Branch;
 
 class WarehousesController extends ApiController
@@ -76,10 +77,11 @@ class WarehousesController extends ApiController
             ->addColumn('actions', function ($warehouse) {
                 $actions = '';
                 if ($this->before('edit', $warehouse, false)) {
-                    $actions .= '<a href="#" 
+                    $actions .= '<a href="#newProvider" 
                         class="btn btn-xs btn-primary edit-entity"
                         id="'. $warehouse->id .'"
                         name="'. $warehouse->name .'"
+                        data-toggle="modal"
                     ><i class="glyphicon glyphicon-edit"></i> Sửa</a>';
                 }
 
@@ -104,6 +106,19 @@ class WarehousesController extends ApiController
         return $this->storeData($data, $service);
     }
 
+    public function edit($id)
+    {
+        parent::edit($id);
+        return $this->jsonRender(200);
+    }
+
+    public function update(UpdateRequest $request, WarehouseService $service, $id)
+    {
+        $data = $request->all();
+        $warehouse = $this->repository->findOrFail($id);
+        return $this->updateData($data, $service, $warehouse);
+    }
+    
     public function destroy($id, WarehouseService $warehouse)
     {
         return $this->deleteData($warehouse, $this->repository->findOrFail($id));

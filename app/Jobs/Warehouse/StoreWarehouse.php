@@ -6,7 +6,7 @@ use App\Jobs\Job;
 use App\Contracts\Repositories\WarehouseRepository;
 use Illuminate\Database\Eloquent\Model;
 
-class Store extends Job
+class StoreWarehouse extends Job
 {
     protected $attributes;
 
@@ -18,8 +18,5 @@ class Store extends Job
     public function handle(WarehouseRepository $repository)
     {
         $item = $repository->create($this->attributes);
-        // if (isset($this->attributes['location_ids']) && count($this->attributes['location_ids'])) {
-        //     $item->locations()->sync($this->attributes['location_ids']);
-        // }
     }
 }
