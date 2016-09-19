@@ -19,8 +19,11 @@
         <div class="container-fluid">
             <h3>
                 Quản nhóm khách hàng
-                <a href="javascript::void(0);" role="button" class="btn btn-success pull-right" v-on:click="create()">
-                    <i class="fa fa-plus"></i> Thêm mới nhóm khách hàng
+                <a href="javascript::void(0);"
+                    role="button" class="btn btn-success pull-right"
+                    v-on:click="create()">
+                    <i class="fa fa-plus"></i>
+                    Thêm mới nhóm khách hàng
                 </a>
             </h3>
             <div class="row">

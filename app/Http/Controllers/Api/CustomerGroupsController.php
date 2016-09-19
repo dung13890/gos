@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Contracts\Repositories\CustomerGroupRepository;
 use App\Contracts\Services\CustomerGroupService;
+use App\Http\Requests\Backend\CustomerGroups\StoreRequest;
+use App\Http\Requests\Backend\CustomerGroups\UpdateRequest;
 
 class CustomerGroupsController extends ApiController
 {
@@ -69,6 +71,11 @@ class CustomerGroupsController extends ApiController
             })
 
             ->make(true);
+    }
+
+    public function store(StoreRequest $request, CustomerGroupService $service)
+    {
+        return $this->storeData($request->all(), $service);
     }
 
     public function destroy($id, CustomerGroupService $customerGroup)

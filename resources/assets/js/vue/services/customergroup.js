@@ -36,7 +36,7 @@ export default {
         var self = this;
 
         return new Promise(function(resolve, reject) {
-            self.http.post(self.router.route('api.v1.warehouses.store'), params).then(function (response) {
+            self.http.post(self.router.route('api.v1.customergroups.store'), params).then(function (response) {
                 resolve(response.data);
             }, function (response) {
                 reject(response.data);
