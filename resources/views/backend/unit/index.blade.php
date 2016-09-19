@@ -14,9 +14,18 @@
 
 @section('page-content')
 <div id="UnitsController">
+    <modal-form 
+        :item="item" 
+        :modal-title="modalTitle" 
+        :errors="errors"
+    ></modal-form>
     <div id="content">
         <div class="container-fluid">
-            <h3>Quản lý đơn vị tính</h3>
+            <h3>Quản lý đơn vị tính
+                <a href="#" v-on:click="create" role="button" class="btn btn-success pull-right">
+                    <i class="fa fa-plus"></i> Thêm mới đơn vị tính
+                </a>
+            </h3>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="widget">
@@ -36,4 +45,4 @@
         </div>
     </div>
 </div>
-@endsection        
+@endsection

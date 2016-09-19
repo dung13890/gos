@@ -56,16 +56,6 @@ var plugins = {
       out: ''
     },
     {
-      name: 'room.js',
-      in: '',
-      out: ''
-    },
-    {
-      name: 'bill.js',
-      in: '',
-      out: ''
-    },
-    {
       name: 'positions/position.js',
       in: '',
       out: 'positions'

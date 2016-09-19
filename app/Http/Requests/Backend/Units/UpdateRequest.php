@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Backend\Units;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class UpdateRequest extends FormRequest
+class UpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:50|min:2|unique:units,name,' . $this->unit,
+            'short_name' => 'required|max:50|min:2|unique:units,short_name,' . $this->unit,
+            'description' => 'max:200',
         ];
-    }
-
-    public function response(array $errors)
-    {
-        return response()->json([
-            'errors' => true,
-            'messages'  => $errors,
-        ], 422);
     }
 }

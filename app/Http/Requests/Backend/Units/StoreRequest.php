@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Backend\Units;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class StoreRequest extends FormRequest
+class StoreRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required|min:m'
+            'name'=> 'required|min:2|max:50|unique:units',
+            'short_name'=> 'required|min:2|max:50|unique:units',
+            'description' => 'max:200',
         ];
-    }
-
-    public function response(array $errors)
-    {
-        return response()->json([
-            'errors' => true,
-            'messages'  => $errors,
-        ], 422);
     }
 }
