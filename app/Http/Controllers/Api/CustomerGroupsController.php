@@ -78,6 +78,18 @@ class CustomerGroupsController extends ApiController
         return $this->storeData($request->all(), $service);
     }
 
+    public function edit($id)
+    {
+        parent::edit($id);
+        return $this->jsonRender(200);
+    }
+
+    public function update(UpdateRequest $request, CustomerGroupService $service, $id)
+    {
+        $data = $request->all();
+        return $this->updateData($data, $service, $this->repository->findOrFail($id));
+    }
+    
     public function destroy($id, CustomerGroupService $customerGroup)
     {
         return $this->deleteData($customerGroup, $this->repository->findOrFail($id));
