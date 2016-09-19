@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <h3>
                 Quản lý kho
-                <a href="#newProvider" role="button" class="btn btn-success pull-right" data-toggle="modal">
+                <a href="javascript::void(0);" role="button" class="btn btn-success pull-right" v-on:click="create()">
                     <i class="fa fa-plus"></i> Thêm mới kho
                 </a>
             </h3>
@@ -36,7 +36,7 @@
                         <div id="providerList">
                             <div class="widget-content">
                                 <div class="table-responsive">
-                                    <data-table></data-table>
+                                    <data-table :branches="branches"></data-table>
                                 </div>
                             </div>
                         </div>

@@ -27,16 +27,12 @@ new Vue({
                 branch_id: ''
             },
 
-            branches: [
-                {"id": 6,"name":"dsfdsf"},
-                {"id":2,"name":"Flossie Lemke"},
-                {"id":5,"name":"Josiah Sporer"},
-                {"id":4,"name":"Miss Bria Keeling"},
-                {"id":1,"name":"Mohammed VonRueden"}
-            ],
+            branches: [],
+            users: [],
 
-            modalTitle: 'sadsad',
+            modalTitle: '',
             errors: {},
+            formElement: {},
             oTable: {
                 type: Object
             }
@@ -51,6 +47,14 @@ new Vue({
     methods: {
         create: function() {
             var self = this;
+            self.modalTitle = 'Thêm mới kho hàng';
+
+            $("#newWarehouse").modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+
             self.warehouse = {};
             self.errors = {};
         },
@@ -58,6 +62,7 @@ new Vue({
         edit: function(id) {
             var self = this;
             self.errors = {};
+            self.modalTitle = 'Sửa thông tin kho hàng';
 
             WarehouseService.edit(id).then(function(response) {
                 self.warehouse = response.item;
@@ -70,6 +75,7 @@ new Vue({
             WarehouseService.store(params).then((response) => {
                 if (response.code === 200) {
                     toastr.success(response.message);
+                    $("#newWarehouse").modal('hide');
                     self.oTable.draw();
                 } else {
                     toastr.error(response.message);
@@ -87,6 +93,7 @@ new Vue({
             WarehouseService.update(params, id).then((response) => {
                 if (response.code === 200) {
                     toastr.success(response.message);
+                    $("#newWarehouse").modal('hide');
                     self.oTable.draw();
                 } else {
                     toastr.error(response.message);
@@ -146,16 +153,25 @@ new Vue({
 
         WarehouseService.index().then(function(response) {
             self.branches = response.branches;
+            self.users = response.users;
         });
 
         $(document).on("click", ".edit-entity", function() {
             var idWarehouse = parseInt($(this).attr('id'));
+            
+            $("#newWarehouse").modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+
             self.edit(idWarehouse);
         });
 
         $(document).on("click", ".destroy-entity", function() {
             var idWarehouse = $(this).attr('id');
             var nameWarehouse = $(this).attr('name');
+
             self.destroy(idWarehouse, nameWarehouse);
         });
     }

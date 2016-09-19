@@ -4,11 +4,11 @@ namespace App\Jobs\Warehouse;
 
 use App\Jobs\Job;
 use App\Contracts\Repositories\WarehouseRepository;
+use Illuminate\Database\Eloquent\Model;
 
 class UpdateWarehouse extends Job
 {
     protected $attributes;
-
     protected $entity;
 
     public function __construct(Model $entity, array $attributes)

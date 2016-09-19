@@ -36,7 +36,7 @@
 <script>
     export default {
         props: {
-            
+            branches: [],
         },
 
         data: function () {
@@ -65,14 +65,6 @@
                 name: '',
                 user: '',
                 branch: '',
-
-                branches: [
-                    {"id": 6,"name":"dsfdsf"},
-                    {"id":2,"name":"Flossie Lemke"},
-                    {"id":5,"name":"Josiah Sporer"},
-                    {"id":4,"name":"Miss Bria Keeling"},
-                    {"id":1,"name":"Mohammed VonRueden"}
-                ],
             }
         },
 
