@@ -121,6 +121,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Services\CustomerGroupServiceJob::class
         );
 
+        $this->app->bind(
+            \App\Contracts\Services\CategoryService::class,
+            \App\Services\CategoryServiceJob::class
+        );
+
         $this->composers();
     }
 

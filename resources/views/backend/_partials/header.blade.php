@@ -139,7 +139,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('groupproducts.index') }}">
+                            <a href="{{ route('categories.type', 'product') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm hàng hóa
                             </a>
                         </li>

@@ -14,8 +14,7 @@ return [
 
     ],
 
-    'customer_group' => [
-        'type_cus' => 'customer',
-        'type_sup' => 'supplier',
+    'typeCategories' => [
+        'product', 'other'
     ]
 ];

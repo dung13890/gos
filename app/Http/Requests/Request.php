@@ -43,6 +43,10 @@ abstract class Request extends FormRequest
             'role_ids.required' => 'Nhóm quyền quản trị không được bỏ trống',
 
             'phone.numeric' => 'Điện thoại phải là định dạng số',
+
+            'type.in' => 'Nhập sai định dạng',
+
+            'slug.min' => 'Slug phải lớn hơn :min ký tự',
             
             'gender.required' => 'Vui lòng chọn giới tính',
 

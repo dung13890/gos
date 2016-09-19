@@ -115,6 +115,11 @@ var plugins = {
       in: '',
       out: 'customergroups'
     },
+    {
+      name: 'categories/category.js',
+      in: '',
+      out: 'categories'
+    },
   ]
 }
 module.exports = plugins;

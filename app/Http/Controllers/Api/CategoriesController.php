@@ -3,46 +3,43 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests\Backend\Roles\StoreRequest;
-use App\Http\Requests\Backend\Roles\UpdateRequest;
-use App\Http\Controllers\Controller;
-use App\Contracts\Services\RoleService;
-use App\Model\Role;
-use App\Model\Permission;
+use App\Contracts\Services\CategoryService;
+use App\Contracts\Repositories\CategoryRepository;
+use App\Http\Requests\Backend\Category\StoreRequest;
+use App\Http\Requests\Backend\Category\UpdateRequest;
 use Illuminate\Support\Str;
 
-class RolesController extends ApiController
+class CategoriesController extends ApiController
 {
-    protected $dataSelect = ['id', 'name', 'description'];
+    protected $dataSelect = ['id', 'name', 'slug', 'type'];
 
-    public function __construct(Role $role)
+    public function __construct(CategoryRepository $category)
     {
-        parent::__construct($role);
+        parent::__construct($category);
     }
 
-    public function getData(Request $request)
+    public function type(Request $request, $type)
     {
-        return \Datatables::of(app(Role::class)->all($this->dataSelect))
+    	return \Datatables::of($this->repository->datatables($this->dataSelect))
         ->filter(function ($instance) use ($request) {
             if ($request->has('name')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['name'], $request->name) ? true : false;
+                    return Str::contains($row['name'], $request->name);
                 });
             }
 
-            if ($request->has('description')) {
+            if ($request->has('slug')) {
                 $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-                    return Str::contains($row['description'], $request->description) ? true : false;
+                    return Str::contains($row['slug'], $request->slug);
                 });
             }
-
         })
         ->addColumn('actions', function ($item) {
             $actions = [];
                 if ($this->before('edit',$item, false)) {
                     $actions['edit'] = true;
                 }
+
                 if ($this->before('delete',$item, false)) {
                     $actions['delete'] = true;
                 }
@@ -51,14 +48,7 @@ class RolesController extends ApiController
         })->make(true);
     }
 
-    public function index()
-    {
-        $this->compacts['permissions'] = app(Permission::class)->all();
-
-        return $this->jsonRender(200);
-    }
-
-    public function store(StoreRequest $request, RoleService $service)
+    public function store(StoreRequest $request, CategoryService $service)
     {
         $data = $request->all();
 
@@ -67,13 +57,13 @@ class RolesController extends ApiController
 
     public function edit($id)
     {
-        parent::edit($id);
-        $this->compacts['item']->load('permissions');
+    	parent::edit($id);
+        $this->compacts['item'];
 
         return $this->jsonRender(200);
     }
 
-    public function update(UpdateRequest $request, RoleService $service,  $id)
+    public function update(UpdateRequest $request, CategoryService $service,  $id)
     {
         $data = $request->all();
         $entity = $this->repository->findOrFail($id);
@@ -81,7 +71,7 @@ class RolesController extends ApiController
         return $this->updateData($data, $service, $entity);
     }
 
-    public function destroy($id, RoleService $service)
+    public function destroy($id, CategoryService $service)
     {
         $entity = $this->repository->findOrFail($id);
 

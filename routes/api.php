@@ -20,6 +20,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
     Route::resource('branches', 'BranchesController');
     
     Route::resource('units', 'UnitsController');
+
+    Route::get('categories/type/{type}', ['as' => 'categories.type', 'uses' => 'CategoriesController@type']);
+    Route::resource('categories', 'CategoriesController');
     
     Route::get('rooms/data', ['as' => 'rooms.data', 'uses' => 'RoomsController@getData']);
     Route::resource('rooms', 'RoomsController');
