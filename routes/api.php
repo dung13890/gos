@@ -40,4 +40,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.v1.'], functi
 
     Route::resource('warehouses', 'WarehousesController', ['only' =>['index', 'store', 'edit', 'update', 'destroy']]);
     Route::get('warehouses/start', ['as' => 'warehouses.start-controller', 'uses' => 'WarehousesController@startController']);
+
+    Route::resource('customergroups', 'CustomerGroupsController', ['only' =>['index', 'store', 'edit', 'update', 'destroy']]);
 });

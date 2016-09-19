@@ -44,7 +44,8 @@ Route::group(['prefix' => '/', 'namespace' => 'Backend', 'middleware' => ['auth'
     Route::resource('roles', 'RolesController', ['only' => 'index']);
 
     Route::resource('groupproducts', 'GroupProductsController', ['only' => 'index']);
-    Route::resource('groupcustomers', 'GroupCustomersController', ['only' => 'index']);
+    Route::resource('customergroups', 'CustomerGroupsController', ['only' => 'index']);
+
     Route::resource('manufacturers', 'ManufacturersController', ['only' => 'index']);
     Route::resource('warehouses', 'WarehousesController', ['only' => 'index']);
     Route::resource('branches', 'BranchesController', ['only' => 'index']);

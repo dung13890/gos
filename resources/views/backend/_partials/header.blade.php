@@ -144,7 +144,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('groupcustomers.index') }}">
+                            <a href="{{ route('customergroups.index') }}">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm khách hàng
                             </a>
                         </li>

@@ -1,4 +1,4 @@
-<div id="newProvider" class="modal fade">
+<div id="newGroupCustomer" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

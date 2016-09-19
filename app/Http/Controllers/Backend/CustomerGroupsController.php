@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class GroupCustomersController extends Controller
+class CustomerGroupsController extends Controller
 {
     public function index()
     {
-        return view('backend.groupcustomer.index');
+        return view('backend.customergroup.index');
     }
 }
