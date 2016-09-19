@@ -110,10 +110,17 @@ class AppServiceProvider extends ServiceProvider
             \App\Contracts\Services\RoleService::class,
             \App\Services\RoleServiceJob::class
         );
+
         $this->app->bind(
             \App\Contracts\Services\WarehouseService::class,
             \App\Services\WarehouseServiceJob::class
         );
+
+        $this->app->bind(
+            \App\Contracts\Services\CustomerGroupService::class,
+            \App\Services\CustomerGroupServiceJob::class
+        );
+
         $this->composers();
     }
 

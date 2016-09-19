@@ -110,6 +110,11 @@ var plugins = {
       in: '',
       out: 'warehouses'
     },
+    {
+      name: 'customergroups/customergroup.js',
+      in: '',
+      out: 'customergroups'
+    },
   ]
 }
 module.exports = plugins;
