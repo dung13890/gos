@@ -10,7 +10,6 @@
     <div class="login-content">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>Lỗi!</strong> Đã có lỗi xảy ra.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

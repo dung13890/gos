@@ -60,7 +60,7 @@
 
         <div class="login-footer">
             <div class="text-center">
-                <a href="password/reset">Quên mật khẩu?</a>
+                <a href="password/email">Quên mật khẩu?</a>
             </div>
         </div>
     </div>

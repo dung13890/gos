@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use GetImageTrait, SoftDeletes, DateAMTrait;
+    use GetImageTrait, SoftDeletes, DateAMTrait, Notifiable;
 
     protected $fillable = [
         'code',

@@ -19,6 +19,7 @@ Route::group(['namespace' => 'Auth'], function () {
         Route::post('login', ['as' => 'login', 'uses' => 'LoginController@login']);
         Route::get('logout', 'LoginController@logout');
         Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+        Route::get('password/email', 'ForgotPasswordController@showLinkRequestForm');
         Route::post('password/reset', 'ResetPasswordController@reset');
         Route::get('password/reset/{token?}', 'ResetPasswordController@showResetForm');
     });
