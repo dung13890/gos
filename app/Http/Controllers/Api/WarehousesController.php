@@ -11,11 +11,13 @@ use App\Contracts\Services\WarehouseService;
 use App\Http\Requests\Backend\Warehouses\StoreRequest;
 use App\Http\Requests\Backend\Warehouses\UpdateRequest;
 use App\Model\Branch;
+use App\Model\User;
 
 class WarehousesController extends ApiController
 {
     protected $dataSelect = ['id', 'code', 'name', 'user_id', 'branch_id'];
     protected $branchSelect = ['id', 'name'];
+    protected $userSelect = ['id', 'fullname'];
 
     public function __construct(WarehouseRepository $warehouse)
     {
@@ -26,6 +28,7 @@ class WarehousesController extends ApiController
     {
         try {
             $this->compacts['branches'] = app(Branch::class)->get($this->branchSelect);
+            $this->compacts['users'] = app(User::class)->get($this->userSelect);
             $code = 200;
         } catch (\Exception $e) {
             $code = 500;
@@ -37,7 +40,7 @@ class WarehousesController extends ApiController
 
     public function index(Request $request)
     {
-        return \Datatables::of($this->repository->datatables($this->dataSelect, ['user']))
+        return \Datatables::of($this->repository->datatables($this->dataSelect, ['branch', 'user']))
 
             ->filter(function ($instance) use ($request) {
 
@@ -73,7 +76,7 @@ class WarehousesController extends ApiController
             ->addColumn('branch', function ($warehouse) {
                 return ($warehouse->branch_id) ? $warehouse->branch->name : null;
             })
-
+            
             ->addColumn('actions', function ($warehouse) {
                 $actions = '';
                 if ($this->before('edit', $warehouse, false)) {
