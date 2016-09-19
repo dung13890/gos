@@ -9,6 +9,20 @@
     {{ HTML::script("vendor/datatables/js/jquery.dataTables.min.js") }}
     {{ HTML::script("vendor/datatables-bs/js/dataTables.bootstrap.min.js") }}
     {{ HTML::script('assets/vue/locations/location.js') }}
+
+    <script type="text/javascript">
+        if ($(window).width() < 864) {
+            $('#locationsList .btn-search').css('margin-bottom', '3px');
+        }
+
+        $(window).resize(function() {
+            if ($(this).width() < 864) {
+                $('#locationsList .btn-search').css('margin-bottom', '3px');
+            } else {
+                $('#locationsList .btn-search').css('margin-bottom', '0');
+            }
+        });
+    </script>
 @endpush
 
 @section('page-content')

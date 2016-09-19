@@ -17,5 +17,9 @@ class StoreLocation extends Job
     public function handle(LocationRepository $repository)
     {
         $item = $repository->create($this->attributes);
+
+        if (isset($this->attributes['branch_ids'])) {
+            $item->branches()->sync($this->attributes['branch_ids']);
+        }
     }
 }
