@@ -109,7 +109,7 @@ $factory->define(App\Model\Customer::class, function (Faker\Generator $faker) {
         'code' => str_random(5),
         'people_id' => str_random(10),
         'name' =>  $faker->text(50),
-        'type' => 'CUS', // 1: khách hàng; 2: Nhà cung cấp
+        'type' => 'customer', // 1: khách hàng; 2: Nhà cung cấp
         'address' => $faker->text(50),
         'phone' => $faker->phoneNumber,
         'fax' => str_random(10),

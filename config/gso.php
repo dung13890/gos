@@ -12,5 +12,10 @@ return [
             'label' => 'label-success'
         ],
 
+    ],
+
+    'customer_group' => [
+        'type_cus' => 'customer',
+        'type_sup' => 'supplier',
     ]
 ];

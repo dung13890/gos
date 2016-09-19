@@ -8,6 +8,7 @@ Vue.use(VueResource)
 Vue.use(VueValidator)
 
 var token = $('meta[name="csrf-token"]').attr('content');
+var type = window.type;
 
 new Vue({
     el: '#GroupCustomersController',
@@ -21,10 +22,10 @@ new Vue({
                 id: '',
                 code: '',
                 name: '',
-                type: 'CUSTOMER',
             },
 
             modalTitle: '',
+            pageTitle: '',
             errors: {},
             formElement: {},
             oTable: {
@@ -40,12 +41,16 @@ new Vue({
 
     methods: {
 
-        create: function() {
+        create: function(type = '') {
             var self = this;
             self.errors = {};
             self.customer_group = {};
 
-            self.modalTitle = 'Thêm mới nhóm khách hàng';
+            self.modalTitle = type === 'customer' ? 'Thêm mới nhóm khách hàng' : 'Thêm mới nhóm nhà cung cấp';
+            self.customer_group.type = type;
+            
+            console.log(self.customer_group.type);
+
             $("#newGroupCustomer").modal({
                 backdrop: 'static',
                 keyboard: false,
@@ -147,7 +152,6 @@ new Vue({
 
         $(document).on("click", ".edit-entity", function() {
             var idWarehouse = parseInt($(this).attr('id'));
-            
             $("#newGroupCustomer").modal({
                 backdrop: 'static',
                 keyboard: false,

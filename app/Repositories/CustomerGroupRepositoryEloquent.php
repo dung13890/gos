@@ -11,4 +11,10 @@ class CustomerGroupRepositoryEloquent extends AbstractRepositoryEloquent impleme
     {
         parent::__construct($customerGroup);
     }
+
+    public function datatables($columns = ['*'], $type = '')
+    {
+    	return $this->model->where('type', $type)
+    		->orderBy('id', 'desc')->get($columns);
+    }
 }

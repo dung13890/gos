@@ -143,12 +143,19 @@
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm hàng hóa
                             </a>
                         </li>
+
                         <li>
                             <a href="{{ route('customergroups.index') }}">
-                                <i class="glyphicon glyphicon-pushpin"></i> Quản lý nhóm khách hàng
+                                <i class="glyphicon glyphicon-pushpin"></i> Nhóm khách hàng
                             </a>
                         </li>
-                        
+
+                        <li>
+                            <a href="{{ route('customergroups.index', ['type' => 'supplier']) }}">
+                                <i class="glyphicon glyphicon-pushpin"></i> Nhóm nhà cung cấp
+                            </a>
+                        </li>
+
                         <li>
                             <a href="#">
                                 <i class="glyphicon glyphicon-pushpin"></i> Quản lý mã vạch
